@@ -165,8 +165,6 @@ html, body {
   .toc-link.active-parent {
     background-color: $nav-active-parent-bg;
     color: $nav-active-parent-text;
-    padding-top: 8px;
-    padding-bottom: 8px;
   }
 
   .toc-list-h2 {
@@ -183,7 +181,8 @@ html, body {
 
   .toc-h2 {
     padding-left: $nav-padding + $nav-indent;
-    font-size: 12px;
+    font-size: 16px;
+    font-weight: normal;
   }
 
   .toc-footer {
