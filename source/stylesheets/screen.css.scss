@@ -364,14 +364,15 @@ html, body {
 
   h1 {
     @extend %header-font;
-    font-size: 25px;
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
-    margin-bottom: $h1-margin-bottom;
-    margin-top: 2em;
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
     background-color: #fdfdfd;
+    border-top: 0;
+    border-bottom: 0;
+    margin-top: 2em;
+    margin-bottom: 0.75em;
+    padding-top: 0;
+    padding-bottom: 0;
+    font-size: 30px;
+    line-height: 44px;
   }
 
   h1:first-child, div:first-child + h1 {
@@ -381,13 +382,16 @@ html, body {
 
   h2 {
     @extend %header-font;
-    font-size: 19px;
-    margin-top: 4em;
-    margin-bottom: 0;
-    border-top: 1px solid #ccc;
-    padding-top: 1.2em;
-    padding-bottom: 1.2em;
     background-image: linear-gradient(to bottom, rgba(#fff, 0.2), rgba(#fff, 0));
+    border-top: 0;
+    border-bottom: 0;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 30px;
+    margin-top: 2em;
+    margin-bottom: 0.75em;
+    padding-top: 0;
+    padding-bottom: 0;
   }
 
   // h2s right after h1s should bump right up
@@ -399,7 +403,7 @@ html, body {
 
   h3, h4, h5, h6 {
     @extend %header-font;
-    font-size: 15px;
+    font-size: 16px;
     margin-top: 2.5em;
     margin-bottom: 0.8em;
   }
