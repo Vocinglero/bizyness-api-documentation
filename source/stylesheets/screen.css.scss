@@ -290,7 +290,7 @@ html, body {
   .lang-selector {
     position: fixed;
     z-index: 50;
-    border-bottom: 5px solid $lang-select-active-bg;
+    border-bottom: none;
   }
 }
 
@@ -300,6 +300,7 @@ html, body {
   width: 100%;
   font-weight: bold;
   overflow-x: auto;
+  padding: 10px;
   a {
     display: inline;
     color: $lang-select-text;
