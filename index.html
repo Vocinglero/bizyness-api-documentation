@@ -397,6 +397,9 @@
                     <a href="#tocS_JSONPatchRequestMoveCopy" class="toc-h2 toc-link" data-title="JSONPatchRequestMoveCopy">JSONPatchRequestMoveCopy</a>
                   </li>
                   <li>
+                    <a href="#tocS_ArticleBody" class="toc-h2 toc-link" data-title="ArticleBody">ArticleBody</a>
+                  </li>
+                  <li>
                     <a href="#tocS_Article" class="toc-h2 toc-link" data-title="Article">Article</a>
                   </li>
                   <li>
@@ -2975,90 +2978,137 @@ ApiKey, JWTAuth
 </thead><tbody>
 <tr>
 <td>» articles</td>
-<td>[<a href="#schemaarticle">Article</a>]</td>
+<td>[allOf]</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<p><em>allOf</em></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>»» <em>anonymous</em></td>
+<td><a href="#schemacollectionid">CollectionId</a></td>
 <td>false</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
-<td>»» id</td>
+<td>»»» id</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<p><em>and</em></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>»» <em>anonymous</em></td>
+<td><a href="#schemaarticlebody">ArticleBody</a></td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>»»» id</td>
 <td>string</td>
 <td>false</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
-<td>»» manufacturer</td>
+<td>»»» manufacturer</td>
 <td>string</td>
 <td>false</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
-<td>»» origin_country</td>
+<td>»»» origin_country</td>
 <td>string</td>
 <td>false</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
-<td>»» price</td>
+<td>»»» price</td>
 <td>number</td>
 <td>false</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
-<td>»» purchase_price</td>
+<td>»»» purchase_price</td>
 <td>number</td>
 <td>false</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
-<td>»» sku</td>
+<td>»»» sku</td>
 <td>string</td>
 <td>false</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
-<td>»» title</td>
+<td>»»» title</td>
 <td>string</td>
 <td>false</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
-<td>»» description</td>
+<td>»»» description</td>
 <td>string</td>
 <td>false</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
-<td>»» vat</td>
+<td>»»» vat</td>
 <td>number</td>
 <td>false</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
-<td>»» type</td>
+<td>»»» type</td>
 <td>number</td>
 <td>false</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
-<td>»» vat_included</td>
+<td>»»» vat_included</td>
 <td>boolean</td>
 <td>false</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
-<td>»» second_hand_good</td>
+<td>»»» second_hand_good</td>
 <td>boolean</td>
 <td>false</td>
 <td>none</td>
@@ -4959,14 +5009,14 @@ ApiKey, JWTAuth
 </tr>
 </tbody></table>
 
-<h2 id="tocS_Article">Article</h2>
+<h2 id="tocS_ArticleBody">ArticleBody</h2>
 
 <!-- backwards compatibility -->
 
-<p><a id="schemaarticle"></a>
-<a id="schema_Article"></a>
-<a id="tocSarticle"></a>
-<a id="tocsarticle"></a></p>
+<p><a id="schemaarticlebody"></a>
+<a id="schema_ArticleBody"></a>
+<a id="tocSarticlebody"></a>
+<a id="tocsarticlebody"></a></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d5env258126ab647499f9bf"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apple"</span><span class="p">,</span><span class="w">
@@ -5078,6 +5128,70 @@ ApiKey, JWTAuth
 </tr>
 </tbody></table>
 
+<h2 id="tocS_Article">Article</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaarticle"></a>
+<a id="schema_Article"></a>
+<a id="tocSarticle"></a>
+<a id="tocsarticle"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d5env258126ab647499f9bf"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apple"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"origin_country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FR"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">10.32</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"purchase_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">10.32</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AZ123"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Shirt"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Size M"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"vat"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"vat_included"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"second_hand_good"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h3 id='properties-6'>Properties</h3>
+<p>allOf</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td><a href="#schemacollectionid">CollectionId</a></td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<p>and</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td><a href="#schemaarticlebody">ArticleBody</a></td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
 <h2 id="tocS_Country">Country</h2>
 
 <!-- backwards compatibility -->
@@ -5095,7 +5209,7 @@ ApiKey, JWTAuth
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-6'>Properties</h3>
+</span></code></pre></div><h3 id='properties-7'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5155,7 +5269,7 @@ ApiKey, JWTAuth
   </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-7'>Properties</h3>
+</span></code></pre></div><h3 id='properties-8'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5212,7 +5326,7 @@ ApiKey, JWTAuth
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-8'>Properties</h3>
+</span></code></pre></div><h3 id='properties-9'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5372,7 +5486,7 @@ ApiKey, JWTAuth
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-9'>Properties</h3>
+</span></code></pre></div><h3 id='properties-10'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5410,7 +5524,7 @@ ApiKey, JWTAuth
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d5eca258126ab647499f9bf"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-10'>Properties</h3>
+</span></code></pre></div><h3 id='properties-11'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5515,7 +5629,7 @@ ApiKey, JWTAuth
   </span><span class="nl">"payment_method"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-11'>Properties</h3>
+</span></code></pre></div><h3 id='properties-12'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6068,7 +6182,7 @@ ApiKey, JWTAuth
   </span><span class="nl">"payment_method"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-12'>Properties</h3>
+</span></code></pre></div><h3 id='properties-13'>Properties</h3>
 <p>allOf</p>
 
 <table><thead>
