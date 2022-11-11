@@ -49,7 +49,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/inline_response_200"
+                  "$ref" : "#/components/schemas/InvoiceList"
                 }
               }
             }
@@ -653,7 +653,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/inline_response_200_1"
+                  "$ref" : "#/components/schemas/inline_response_200"
                 }
               }
             }
@@ -710,7 +710,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/inline_response_200_2"
+                  "$ref" : "#/components/schemas/inline_response_200_1"
                 }
               }
             }
@@ -1301,12 +1301,82 @@
           }
         }
       },
-      "Invoice" : {
+      "ListSummaryItem" : {
+        "type" : "object",
+        "properties" : {
+          "size" : {
+            "type" : "integer"
+          },
+          "amount" : {
+            "type" : "number"
+          }
+        }
+      },
+      "InvoiceListSummary" : {
+        "type" : "object",
+        "properties" : {
+          "total" : {
+            "$ref" : "#/components/schemas/ListSummaryItem"
+          },
+          "paid" : {
+            "$ref" : "#/components/schemas/ListSummaryItem"
+          },
+          "unpaid" : {
+            "$ref" : "#/components/schemas/ListSummaryItem"
+          },
+          "overdue" : {
+            "$ref" : "#/components/schemas/ListSummaryItem"
+          },
+          "draft" : {
+            "$ref" : "#/components/schemas/ListSummaryItem"
+          }
+        },
+        "example" : {
+          "total" : {
+            "size" : 123,
+            "amount" : 1203.54
+          },
+          "paid" : {
+            "size" : 110,
+            "amount" : 1052.23
+          },
+          "unpaid" : {
+            "size" : 2,
+            "amount" : 100
+          },
+          "overdue" : {
+            "size" : 6,
+            "amount" : 32.3
+          },
+          "draft" : {
+            "size" : 5,
+            "amount" : 19.01
+          }
+        }
+      },
+      "InvoiceList" : {
+        "type" : "object",
+        "properties" : {
+          "summary" : {
+            "$ref" : "#/components/schemas/InvoiceListSummary"
+          },
+          "invoices" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Invoice"
+            }
+          }
+        }
+      },
+      "CollectionId" : {
+        "type" : "string",
+        "example" : "5d5eca258126ab647499f9bf"
+      },
+      "BillOfSale" : {
         "type" : "object",
         "properties" : {
           "id" : {
-            "type" : "string",
-            "example" : "5d5eca258126ab647499f9bf"
+            "$ref" : "#/components/schemas/CollectionId"
           },
           "currency" : {
             "type" : "string",
@@ -1358,7 +1428,7 @@
             "$ref" : "#/components/schemas/invoices_client"
           },
           "billing_address" : {
-            "$ref" : "#/components/schemas/Invoice_billing_address"
+            "$ref" : "#/components/schemas/BillOfSale_billing_address"
           },
           "subject" : {
             "type" : "string",
@@ -1367,7 +1437,7 @@
           "lines" : {
             "type" : "array",
             "items" : {
-              "$ref" : "#/components/schemas/Invoice_lines"
+              "$ref" : "#/components/schemas/BillOfSale_lines"
             }
           },
           "lines_groups" : {
@@ -1393,34 +1463,29 @@
           "vat_exemption_text" : {
             "type" : "string",
             "example" : "Article 138 CE/2008"
-          },
-          "execution_date" : {
-            "type" : "integer",
-            "example" : 1566493220992
-          },
-          "paid_date" : {
-            "type" : "integer",
-            "example" : 1566493220992
-          },
-          "paid_method" : {
-            "type" : "integer",
-            "example" : 1
           }
         }
       },
-      "inline_response_200" : {
-        "type" : "object",
-        "properties" : {
-          "summary" : {
-            "$ref" : "#/components/schemas/inline_response_200_summary"
-          },
-          "invoices" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "#/components/schemas/Invoice"
+      "Invoice" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/BillOfSale"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "execution_date" : {
+              "type" : "integer",
+              "example" : 1566493220992
+            },
+            "paid_date" : {
+              "type" : "integer",
+              "example" : 1566493220992
+            },
+            "paid_method" : {
+              "type" : "integer",
+              "example" : 1
             }
           }
-        }
+        } ]
       },
       "invoices_client" : {
         "type" : "object",
@@ -1669,7 +1734,7 @@
           }
         }
       },
-      "inline_response_200_1" : {
+      "inline_response_200" : {
         "type" : "object",
         "properties" : {
           "countries" : {
@@ -1680,7 +1745,7 @@
           }
         }
       },
-      "inline_response_200_2" : {
+      "inline_response_200_1" : {
         "type" : "object",
         "properties" : {
           "articles" : {
@@ -1742,7 +1807,7 @@
           }
         }
       },
-      "Invoice_billing_address" : {
+      "BillOfSale_billing_address" : {
         "type" : "object",
         "properties" : {
           "last_name" : {
@@ -1783,7 +1848,7 @@
           }
         }
       },
-      "Invoice_lines" : {
+      "BillOfSale_lines" : {
         "type" : "object",
         "properties" : {
           "sku" : {
@@ -1832,91 +1897,6 @@
           },
           "second_hand_good" : {
             "type" : "boolean"
-          }
-        }
-      },
-      "inline_response_200_summary_total" : {
-        "type" : "object",
-        "properties" : {
-          "size" : {
-            "type" : "integer",
-            "example" : 123
-          },
-          "amount" : {
-            "type" : "number",
-            "example" : 1203.54
-          }
-        }
-      },
-      "inline_response_200_summary_paid" : {
-        "type" : "object",
-        "properties" : {
-          "size" : {
-            "type" : "integer",
-            "example" : 110
-          },
-          "amount" : {
-            "type" : "number",
-            "example" : 1052.23
-          }
-        }
-      },
-      "inline_response_200_summary_unpaid" : {
-        "type" : "object",
-        "properties" : {
-          "size" : {
-            "type" : "integer",
-            "example" : 2
-          },
-          "amount" : {
-            "type" : "number",
-            "example" : 100
-          }
-        }
-      },
-      "inline_response_200_summary_overdue" : {
-        "type" : "object",
-        "properties" : {
-          "size" : {
-            "type" : "integer",
-            "example" : 6
-          },
-          "amount" : {
-            "type" : "number",
-            "example" : 32.3
-          }
-        }
-      },
-      "inline_response_200_summary_draft" : {
-        "type" : "object",
-        "properties" : {
-          "size" : {
-            "type" : "integer",
-            "example" : 5
-          },
-          "amount" : {
-            "type" : "number",
-            "example" : 19.01
-          }
-        }
-      },
-      "inline_response_200_summary" : {
-        "type" : "object",
-        "properties" : {
-          "total" : {
-            "$ref" : "#/components/schemas/inline_response_200_summary_total"
-          },
-          "paid" : {
-            "$ref" : "#/components/schemas/inline_response_200_summary_paid"
-          },
-          "unpaid" : {
-            "$ref" : "#/components/schemas/inline_response_200_summary_unpaid"
-          },
-          "overdue" : {
-            "$ref" : "#/components/schemas/inline_response_200_summary_overdue"
-          },
-          "draft" : {
-            "$ref" : "#/components/schemas/inline_response_200_summary_draft"
           }
         }
       }
