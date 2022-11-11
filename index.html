@@ -328,25 +328,25 @@
             <a href="#bizyness-api-documentation-invoice" class="toc-h1 toc-link" data-title="Invoice">Invoice</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get__invoices" class="toc-h2 toc-link" data-title="get__invoices">get__invoices</a>
+                    <a href="#retrieve-all-invoices" class="toc-h2 toc-link" data-title="Retrieve all invoices">Retrieve all invoices</a>
                   </li>
                   <li>
-                    <a href="#post__invoices" class="toc-h2 toc-link" data-title="post__invoices">post__invoices</a>
+                    <a href="#create-a-new-invoice" class="toc-h2 toc-link" data-title="Create a new invoice">Create a new invoice</a>
                   </li>
                   <li>
-                    <a href="#get_invoices-id-_download" class="toc-h2 toc-link" data-title="get_invoices{id}_download">get_<em>invoices</em>{id}_download</a>
+                    <a href="#download-invoice-pdf-by-id" class="toc-h2 toc-link" data-title="Download invoice PDF by ID">Download invoice PDF by ID</a>
                   </li>
                   <li>
-                    <a href="#get_invoices-id" class="toc-h2 toc-link" data-title="get_invoices{id}">get_<em>invoices</em>{id}</a>
+                    <a href="#find-invoice-by-id" class="toc-h2 toc-link" data-title="Find invoice by ID">Find invoice by ID</a>
                   </li>
                   <li>
-                    <a href="#put_invoices-id" class="toc-h2 toc-link" data-title="put_invoices{id}">put_<em>invoices</em>{id}</a>
+                    <a href="#update-a-complete-invoice" class="toc-h2 toc-link" data-title="Update a complete invoice">Update a complete invoice</a>
                   </li>
                   <li>
-                    <a href="#delete_invoices-id" class="toc-h2 toc-link" data-title="delete_invoices{id}">delete_<em>invoices</em>{id}</a>
+                    <a href="#delete-invoice-by-id" class="toc-h2 toc-link" data-title="Delete invoice by ID">Delete invoice by ID</a>
                   </li>
                   <li>
-                    <a href="#patch_invoices-id" class="toc-h2 toc-link" data-title="patch_invoices{id}">patch_<em>invoices</em>{id}</a>
+                    <a href="#update-an-invoice-partially" class="toc-h2 toc-link" data-title="Update an invoice partially">Update an invoice partially</a>
                   </li>
               </ul>
           </li>
@@ -354,22 +354,22 @@
             <a href="#bizyness-api-documentation-article" class="toc-h1 toc-link" data-title="Article">Article</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get__articles" class="toc-h2 toc-link" data-title="get__articles">get__articles</a>
+                    <a href="#retrieve-all-invoices-2" class="toc-h2 toc-link" data-title="Retrieve all invoices">Retrieve all invoices</a>
                   </li>
                   <li>
-                    <a href="#post__articles" class="toc-h2 toc-link" data-title="post__articles">post__articles</a>
+                    <a href="#create-a-new-article" class="toc-h2 toc-link" data-title="Create a new article">Create a new article</a>
                   </li>
                   <li>
-                    <a href="#get_articles-id" class="toc-h2 toc-link" data-title="get_articles{id}">get_<em>articles</em>{id}</a>
+                    <a href="#find-article-by-id" class="toc-h2 toc-link" data-title="Find article by ID">Find article by ID</a>
                   </li>
                   <li>
-                    <a href="#put_articles-id" class="toc-h2 toc-link" data-title="put_articles{id}">put_<em>articles</em>{id}</a>
+                    <a href="#update-a-complete-article" class="toc-h2 toc-link" data-title="Update a complete article">Update a complete article</a>
                   </li>
                   <li>
-                    <a href="#delete_articles-id" class="toc-h2 toc-link" data-title="delete_articles{id}">delete_<em>articles</em>{id}</a>
+                    <a href="#delete-article-by-id" class="toc-h2 toc-link" data-title="Delete article by ID">Delete article by ID</a>
                   </li>
                   <li>
-                    <a href="#patch_articles-id" class="toc-h2 toc-link" data-title="patch_articles{id}">patch_<em>articles</em>{id}</a>
+                    <a href="#update-an-article-partially" class="toc-h2 toc-link" data-title="Update an article partially">Update an article partially</a>
                   </li>
               </ul>
           </li>
@@ -377,7 +377,7 @@
             <a href="#bizyness-api-documentation-miscellaneous" class="toc-h1 toc-link" data-title="Miscellaneous">Miscellaneous</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get__countries" class="toc-h2 toc-link" data-title="get__countries">get__countries</a>
+                    <a href="#retrieve-all-countries" class="toc-h2 toc-link" data-title="Retrieve all countries">Retrieve all countries</a>
                   </li>
               </ul>
           </li>
@@ -505,7 +505,7 @@
 <h1 id="bizyness-api-documentation-invoice">Invoice</h1>
 
 <p>Managing your invoices</p>
-<h2 id='get__invoices'>get__invoices</h2>
+<h2 id='retrieve-all-invoices'>Retrieve all invoices</h2>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -626,8 +626,6 @@
 </code></pre></div>
 <p><code>GET /invoices</code></p>
 
-<p><em>Retrieve all invoices</em></p>
-
 <blockquote>
 <p>Example responses</p>
 
@@ -747,7 +745,7 @@
   </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Internal server error"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<h3 id="get__invoices-responses">Responses</h3>
+<h3 id="retrieve-all-invoices-responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -787,7 +785,7 @@
 To perform this operation, you must be authenticated by means of one of the following methods:
 ApiKey, JWTAuth
 </aside>
-<h2 id='post__invoices'>post__invoices</h2>
+<h2 id='create-a-new-invoice'>Create a new invoice</h2>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -1003,8 +1001,6 @@ ApiKey, JWTAuth
 </code></pre></div>
 <p><code>POST /invoices</code></p>
 
-<p><em>Create a new invoice</em></p>
-
 <blockquote>
 <p>Body parameter</p>
 </blockquote>
@@ -1086,7 +1082,7 @@ ApiKey, JWTAuth
   </span><span class="nl">"paid_method"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<h3 id="post__invoices-parameters">Parameters</h3>
+<h3 id="create-a-new-invoice-parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -1653,7 +1649,7 @@ ApiKey, JWTAuth
   </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Internal server error"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<h3 id="post__invoices-responses">Responses</h3>
+<h3 id="create-a-new-invoice-responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -1693,7 +1689,7 @@ ApiKey, JWTAuth
 To perform this operation, you must be authenticated by means of one of the following methods:
 ApiKey, JWTAuth
 </aside>
-<h2 id='get_invoices-id-_download'>get_<em>invoices</em>{id}_download</h2>
+<h2 id='download-invoice-pdf-by-id'>Download invoice PDF by ID</h2>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -1814,9 +1810,7 @@ ApiKey, JWTAuth
 </code></pre></div>
 <p><code>GET /invoices/{id}/download</code></p>
 
-<p><em>Download invoice PDF by ID</em></p>
-
-<h3 id="get__invoices_{id}_download-parameters">Parameters</h3>
+<h3 id="download-invoice-pdf-by-id-parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -1864,7 +1858,7 @@ ApiKey, JWTAuth
   </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Internal server error"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<h3 id="get__invoices_{id}_download-responses">Responses</h3>
+<h3 id="download-invoice-pdf-by-id-responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -1904,7 +1898,7 @@ ApiKey, JWTAuth
 To perform this operation, you must be authenticated by means of one of the following methods:
 ApiKey, JWTAuth
 </aside>
-<h2 id='get_invoices-id'>get_<em>invoices</em>{id}</h2>
+<h2 id='find-invoice-by-id'>Find invoice by ID</h2>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -2025,9 +2019,7 @@ ApiKey, JWTAuth
 </code></pre></div>
 <p><code>GET /invoices/{id}</code></p>
 
-<p><em>Find invoice by ID</em></p>
-
-<h3 id="get__invoices_{id}-parameters">Parameters</h3>
+<h3 id="find-invoice-by-id-parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -2140,7 +2132,7 @@ ApiKey, JWTAuth
   </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Internal server error"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<h3 id="get__invoices_{id}-responses">Responses</h3>
+<h3 id="find-invoice-by-id-responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -2180,7 +2172,7 @@ ApiKey, JWTAuth
 To perform this operation, you must be authenticated by means of one of the following methods:
 ApiKey, JWTAuth
 </aside>
-<h2 id='put_invoices-id'>put_<em>invoices</em>{id}</h2>
+<h2 id='update-a-complete-invoice'>Update a complete invoice</h2>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -2382,8 +2374,6 @@ ApiKey, JWTAuth
 </code></pre></div>
 <p><code>PUT /invoices/{id}</code></p>
 
-<p><em>Update a complete invoice</em></p>
-
 <blockquote>
 <p>Body parameter</p>
 </blockquote>
@@ -2451,7 +2441,7 @@ ApiKey, JWTAuth
   </span><span class="nl">"paid_method"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<h3 id="put__invoices_{id}-parameters">Parameters</h3>
+<h3 id="update-a-complete-invoice-parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -3032,7 +3022,7 @@ ApiKey, JWTAuth
   </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Internal server error"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<h3 id="put__invoices_{id}-responses">Responses</h3>
+<h3 id="update-a-complete-invoice-responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -3072,7 +3062,7 @@ ApiKey, JWTAuth
 To perform this operation, you must be authenticated by means of one of the following methods:
 ApiKey, JWTAuth
 </aside>
-<h2 id='delete_invoices-id'>delete_<em>invoices</em>{id}</h2>
+<h2 id='delete-invoice-by-id'>Delete invoice by ID</h2>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -3193,9 +3183,7 @@ ApiKey, JWTAuth
 </code></pre></div>
 <p><code>DELETE /invoices/{id}</code></p>
 
-<p><em>Delete invoice by ID</em></p>
-
-<h3 id="delete__invoices_{id}-parameters">Parameters</h3>
+<h3 id="delete-invoice-by-id-parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -3241,7 +3229,7 @@ ApiKey, JWTAuth
   </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Internal server error"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<h3 id="delete__invoices_{id}-responses">Responses</h3>
+<h3 id="delete-invoice-by-id-responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -3281,7 +3269,7 @@ ApiKey, JWTAuth
 To perform this operation, you must be authenticated by means of one of the following methods:
 ApiKey, JWTAuth
 </aside>
-<h2 id='patch_invoices-id'>patch_<em>invoices</em>{id}</h2>
+<h2 id='update-an-invoice-partially'>Update an invoice partially</h2>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -3421,8 +3409,6 @@ ApiKey, JWTAuth
 </code></pre></div>
 <p><code>PATCH /invoices/{id}</code></p>
 
-<p><em>Update an invoice partially</em></p>
-
 <blockquote>
 <p>Body parameter</p>
 </blockquote>
@@ -3434,7 +3420,7 @@ ApiKey, JWTAuth
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
-<h3 id="patch__invoices_{id}-parameters">Parameters</h3>
+<h3 id="update-an-invoice-partially-parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -3554,7 +3540,7 @@ ApiKey, JWTAuth
   </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Internal server error"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<h3 id="patch__invoices_{id}-responses">Responses</h3>
+<h3 id="update-an-invoice-partially-responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -3598,7 +3584,7 @@ ApiKey, JWTAuth
 <h1 id="bizyness-api-documentation-article">Article</h1>
 
 <p>Managing your articles</p>
-<h2 id='get__articles'>get__articles</h2>
+<h2 id='retrieve-all-invoices-2'>Retrieve all invoices</h2>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -3719,9 +3705,7 @@ ApiKey, JWTAuth
 </code></pre></div>
 <p><code>GET /articles</code></p>
 
-<p><em>Retrieve all invoices</em></p>
-
-<h3 id="get__articles-parameters">Parameters</h3>
+<h3 id="retrieve-all-invoices-parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -3789,7 +3773,7 @@ ApiKey, JWTAuth
   </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Internal server error"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<h3 id="get__articles-responses">Responses</h3>
+<h3 id="retrieve-all-invoices-responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -3829,7 +3813,7 @@ ApiKey, JWTAuth
 To perform this operation, you must be authenticated by means of one of the following methods:
 ApiKey, JWTAuth
 </aside>
-<h2 id='post__articles'>post__articles</h2>
+<h2 id='create-a-new-article'>Create a new article</h2>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -3981,8 +3965,6 @@ ApiKey, JWTAuth
 </code></pre></div>
 <p><code>POST /articles</code></p>
 
-<p><em>Create a new article</em></p>
-
 <blockquote>
 <p>Body parameter</p>
 </blockquote>
@@ -4000,7 +3982,7 @@ ApiKey, JWTAuth
   </span><span class="nl">"second_hand_good"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<h3 id="post__articles-parameters">Parameters</h3>
+<h3 id="create-a-new-article-parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -4190,7 +4172,7 @@ ApiKey, JWTAuth
   </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Internal server error"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<h3 id="post__articles-responses">Responses</h3>
+<h3 id="create-a-new-article-responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -4230,7 +4212,7 @@ ApiKey, JWTAuth
 To perform this operation, you must be authenticated by means of one of the following methods:
 ApiKey, JWTAuth
 </aside>
-<h2 id='get_articles-id'>get_<em>articles</em>{id}</h2>
+<h2 id='find-article-by-id'>Find article by ID</h2>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -4351,9 +4333,7 @@ ApiKey, JWTAuth
 </code></pre></div>
 <p><code>GET /articles/{id}</code></p>
 
-<p><em>Find article by ID</em></p>
-
-<h3 id="get__articles_{id}-parameters">Parameters</h3>
+<h3 id="find-article-by-id-parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -4417,7 +4397,7 @@ ApiKey, JWTAuth
   </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Internal server error"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<h3 id="get__articles_{id}-responses">Responses</h3>
+<h3 id="find-article-by-id-responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -4457,7 +4437,7 @@ ApiKey, JWTAuth
 To perform this operation, you must be authenticated by means of one of the following methods:
 ApiKey, JWTAuth
 </aside>
-<h2 id='put_articles-id'>put_<em>articles</em>{id}</h2>
+<h2 id='update-a-complete-article'>Update a complete article</h2>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -4610,8 +4590,6 @@ ApiKey, JWTAuth
 </code></pre></div>
 <p><code>PUT /articles/{id}</code></p>
 
-<p><em>Update a complete article</em></p>
-
 <blockquote>
 <p>Body parameter</p>
 </blockquote>
@@ -4630,7 +4608,7 @@ ApiKey, JWTAuth
   </span><span class="nl">"second_hand_good"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<h3 id="put__articles_{id}-parameters">Parameters</h3>
+<h3 id="update-a-complete-article-parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -4834,7 +4812,7 @@ ApiKey, JWTAuth
   </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Internal server error"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<h3 id="put__articles_{id}-responses">Responses</h3>
+<h3 id="update-a-complete-article-responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -4874,7 +4852,7 @@ ApiKey, JWTAuth
 To perform this operation, you must be authenticated by means of one of the following methods:
 ApiKey, JWTAuth
 </aside>
-<h2 id='delete_articles-id'>delete_<em>articles</em>{id}</h2>
+<h2 id='delete-article-by-id'>Delete article by ID</h2>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -4995,9 +4973,7 @@ ApiKey, JWTAuth
 </code></pre></div>
 <p><code>DELETE /articles/{id}</code></p>
 
-<p><em>Delete article by ID</em></p>
-
-<h3 id="delete__articles_{id}-parameters">Parameters</h3>
+<h3 id="delete-article-by-id-parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -5043,7 +5019,7 @@ ApiKey, JWTAuth
   </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Internal server error"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<h3 id="delete__articles_{id}-responses">Responses</h3>
+<h3 id="delete-article-by-id-responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -5083,7 +5059,7 @@ ApiKey, JWTAuth
 To perform this operation, you must be authenticated by means of one of the following methods:
 ApiKey, JWTAuth
 </aside>
-<h2 id='patch_articles-id'>patch_<em>articles</em>{id}</h2>
+<h2 id='update-an-article-partially'>Update an article partially</h2>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -5223,8 +5199,6 @@ ApiKey, JWTAuth
 </code></pre></div>
 <p><code>PATCH /articles/{id}</code></p>
 
-<p><em>Update an article partially</em></p>
-
 <blockquote>
 <p>Body parameter</p>
 </blockquote>
@@ -5236,7 +5210,7 @@ ApiKey, JWTAuth
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
-<h3 id="patch__articles_{id}-parameters">Parameters</h3>
+<h3 id="update-an-article-partially-parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -5307,7 +5281,7 @@ ApiKey, JWTAuth
   </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Internal server error"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<h3 id="patch__articles_{id}-responses">Responses</h3>
+<h3 id="update-an-article-partially-responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -5351,7 +5325,7 @@ ApiKey, JWTAuth
 <h1 id="bizyness-api-documentation-miscellaneous">Miscellaneous</h1>
 
 <p>Transverval ressources</p>
-<h2 id='get__countries'>get__countries</h2>
+<h2 id='retrieve-all-countries'>Retrieve all countries</h2>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -5472,8 +5446,6 @@ ApiKey, JWTAuth
 </code></pre></div>
 <p><code>GET /countries</code></p>
 
-<p><em>Retrieve all countries</em></p>
-
 <blockquote>
 <p>Example responses</p>
 
@@ -5508,7 +5480,7 @@ ApiKey, JWTAuth
   </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Internal server error"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<h3 id="get__countries-responses">Responses</h3>
+<h3 id="retrieve-all-countries-responses">Responses</h3>
 
 <table><thead>
 <tr>
