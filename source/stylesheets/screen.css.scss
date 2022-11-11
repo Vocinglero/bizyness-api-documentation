@@ -567,16 +567,18 @@ html, body {
 
   pre {
     @extend %code-font;
-    padding-top: 2em;
-    padding-bottom: 2em;
-    padding: 2em $main-padding;
+    background-color: transparent;
+    padding: 1em 2.4em;
+    margin-top: -10px;
+    max-height: inherit;
+    padding-top: 30px;
   }
 
   blockquote {
     &>p {
       background-color: $code-annotation-bg;
-      padding: $code-annotation-padding 2em;
-      color: #eee;
+      padding: $code-annotation-padding 1.8em;
+      color: #fff;
     }
   }
 }
