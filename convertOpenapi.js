@@ -2,10 +2,7 @@ const widdershins = require('widdershins');
 const fs = require('fs');
 
 const options = {
-  expandBody:true,
-  httpsnippet:true,
-  sample:true,
-  codeSamples:true
+
 };
 
 const fileData = fs.readFileSync('source/bizyness-api.json', 'utf8');
