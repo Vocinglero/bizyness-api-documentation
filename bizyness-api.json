@@ -1112,7 +1112,7 @@
             "type" : "integer",
             "example" : 1566493220992
           },
-          "paid_method" : {
+          "payment_method" : {
             "type" : "integer",
             "example" : 1
           }
