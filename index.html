@@ -406,7 +406,16 @@
                     <a href="#tocS_ListSummaryItem" class="toc-h2 toc-link" data-title="ListSummaryItem">ListSummaryItem</a>
                   </li>
                   <li>
+                    <a href="#tocS_InvoiceListSummary" class="toc-h2 toc-link" data-title="InvoiceListSummary">InvoiceListSummary</a>
+                  </li>
+                  <li>
                     <a href="#tocS_InvoiceList" class="toc-h2 toc-link" data-title="InvoiceList">InvoiceList</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_CollectionId" class="toc-h2 toc-link" data-title="CollectionId">CollectionId</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_BillOfSale" class="toc-h2 toc-link" data-title="BillOfSale">BillOfSale</a>
                   </li>
                   <li>
                     <a href="#tocS_Invoice" class="toc-h2 toc-link" data-title="Invoice">Invoice</a>
@@ -5461,8 +5470,8 @@ ApiKey, JWTAuth
 <a id="tocSlistsummaryitem"></a>
 <a id="tocslistsummaryitem"></a></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">1203.54</span><span class="w">
+  </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div><h3 id='properties-7'>Properties</h3>
@@ -5485,6 +5494,84 @@ ApiKey, JWTAuth
 <tr>
 <td>amount</td>
 <td>number</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_InvoiceListSummary">InvoiceListSummary</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemainvoicelistsummary"></a>
+<a id="schema_InvoiceListSummary"></a>
+<a id="tocSinvoicelistsummary"></a>
+<a id="tocsinvoicelistsummary"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">1203.54</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"paid"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">110</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">1052.23</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"unpaid"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"overdue"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">32.3</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"draft"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.01</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h3 id='properties-8'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>total</td>
+<td><a href="#schemalistsummaryitem">ListSummaryItem</a></td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>paid</td>
+<td><a href="#schemalistsummaryitem">ListSummaryItem</a></td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>unpaid</td>
+<td><a href="#schemalistsummaryitem">ListSummaryItem</a></td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>overdue</td>
+<td><a href="#schemalistsummaryitem">ListSummaryItem</a></td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>draft</td>
+<td><a href="#schemalistsummaryitem">ListSummaryItem</a></td>
 <td>false</td>
 <td>none</td>
 <td>none</td>
@@ -5589,7 +5676,7 @@ ApiKey, JWTAuth
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-8'>Properties</h3>
+</span></code></pre></div><h3 id='properties-9'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5601,98 +5688,7 @@ ApiKey, JWTAuth
 </thead><tbody>
 <tr>
 <td>summary</td>
-<td>object</td>
-<td>false</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>» total</td>
-<td><a href="#schemalistsummaryitem">ListSummaryItem</a></td>
-<td>false</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>» paid</td>
-<td>object</td>
-<td>false</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»» size</td>
-<td>integer</td>
-<td>false</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»» amount</td>
-<td>number</td>
-<td>false</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>» unpaid</td>
-<td>object</td>
-<td>false</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»» size</td>
-<td>integer</td>
-<td>false</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»» amount</td>
-<td>number</td>
-<td>false</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>» overdue</td>
-<td>object</td>
-<td>false</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»» size</td>
-<td>integer</td>
-<td>false</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»» amount</td>
-<td>number</td>
-<td>false</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>» draft</td>
-<td>object</td>
-<td>false</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»» size</td>
-<td>integer</td>
-<td>false</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»» amount</td>
-<td>number</td>
+<td><a href="#schemainvoicelistsummary">InvoiceListSummary</a></td>
 <td>false</td>
 <td>none</td>
 <td>none</td>
@@ -5706,14 +5702,43 @@ ApiKey, JWTAuth
 </tr>
 </tbody></table>
 
-<h2 id="tocS_Invoice">Invoice</h2>
+<h2 id="tocS_CollectionId">CollectionId</h2>
 
 <!-- backwards compatibility -->
 
-<p><a id="schemainvoice"></a>
-<a id="schema_Invoice"></a>
-<a id="tocSinvoice"></a>
-<a id="tocsinvoice"></a></p>
+<p><a id="schemacollectionid"></a>
+<a id="schema_CollectionId"></a>
+<a id="tocScollectionid"></a>
+<a id="tocscollectionid"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">"5d5eca258126ab647499f9bf"</span><span class="w">
+
+</span></code></pre></div><h3 id='properties-10'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_BillOfSale">BillOfSale</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemabillofsale"></a>
+<a id="schema_BillOfSale"></a>
+<a id="tocSbillofsale"></a>
+<a id="tocsbillofsale"></a></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d5eca258126ab647499f9bf"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EUR"</span><span class="p">,</span><span class="w">
@@ -5772,13 +5797,10 @@ ApiKey, JWTAuth
   </span><span class="nl">"payment_instructions_included"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="nl">"payment_conditions_included"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fr"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"vat_exemption_text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Article 138 CE/2008"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"execution_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1566493220992</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"paid_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1566493220992</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"paid_method"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="nl">"vat_exemption_text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Article 138 CE/2008"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-9'>Properties</h3>
+</span></code></pre></div><h3 id='properties-11'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5790,7 +5812,7 @@ ApiKey, JWTAuth
 </thead><tbody>
 <tr>
 <td>id</td>
-<td>string</td>
+<td><a href="#schemacollectionid">CollectionId</a></td>
 <td>false</td>
 <td>none</td>
 <td>none</td>
@@ -6124,27 +6146,6 @@ ApiKey, JWTAuth
 <td>none</td>
 <td>none</td>
 </tr>
-<tr>
-<td>execution_date</td>
-<td>integer</td>
-<td>false</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>paid_date</td>
-<td>integer</td>
-<td>false</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>paid_method</td>
-<td>integer</td>
-<td>false</td>
-<td>none</td>
-<td>none</td>
-</tr>
 </tbody></table>
 <h4 id='enumerated-values-4'>Enumerated Values</h4>
 <table><thead>
@@ -6248,6 +6249,140 @@ ApiKey, JWTAuth
 <tr>
 <td>language</td>
 <td>it</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_Invoice">Invoice</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemainvoice"></a>
+<a id="schema_Invoice"></a>
+<a id="tocSinvoice"></a>
+<a id="tocsinvoice"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d5eca258126ab647499f9bf"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EUR"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"draft"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"payment_term"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"discount_amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.2</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"discount_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"percentage"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"rebate"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"activity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d5efds258126ab647499f9bf"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"template"</span><span class="p">:</span><span class="w"> </span><span class="s2">"basic"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"shipping_amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.5</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"shipping_vat"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"vat_liable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"vat_included"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"client"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d5eca258126ab647499f9bf"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"billing_address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"company_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John's company"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123 rue des archives"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"address_supplement"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Porte gauche"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"zip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A1234"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Paris"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"country_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FR"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"vat_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FR123456789"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"subject"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Design of the homepage"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"lines"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AX123"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mockup and copywriting"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Homepage design"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">120.32</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"piece"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"discount_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"discount_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"percentage"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"vat"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"origin_country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FR"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"second_hand_good"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"lines_groups"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Design and mockup"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"articles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="mi">0</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Payment to be done within 3 days"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"payment_instructions_included"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"payment_conditions_included"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fr"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"vat_exemption_text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Article 138 CE/2008"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"execution_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1566493220992</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"paid_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1566493220992</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"paid_method"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h3 id='properties-12'>Properties</h3>
+<p>allOf</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td><a href="#schemabillofsale">BillOfSale</a></td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<p>and</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td>object</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» execution_date</td>
+<td>integer</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» paid_date</td>
+<td>integer</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» paid_method</td>
+<td>integer</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
 </tr>
 </tbody></table>
 
