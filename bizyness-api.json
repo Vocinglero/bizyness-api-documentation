@@ -386,55 +386,7 @@
           "content" : {
             "application/json" : {
               "schema" : {
-                "type" : "object",
-                "properties" : {
-                  "manufacturer" : {
-                    "type" : "string"
-                  },
-                  "origin_country" : {
-                    "type" : "string"
-                  },
-                  "price" : {
-                    "type" : "number"
-                  },
-                  "purchase_price" : {
-                    "type" : "number"
-                  },
-                  "sku" : {
-                    "type" : "string"
-                  },
-                  "title" : {
-                    "type" : "string"
-                  },
-                  "description" : {
-                    "type" : "string"
-                  },
-                  "vat" : {
-                    "type" : "number"
-                  },
-                  "type" : {
-                    "type" : "number"
-                  },
-                  "vat_included" : {
-                    "type" : "boolean"
-                  },
-                  "second_hand_good" : {
-                    "type" : "boolean"
-                  }
-                }
-              },
-              "example" : {
-                "manufacturer" : "Apple",
-                "origin_country" : "FR",
-                "price" : 10.32,
-                "purchase_price" : 8.32,
-                "sku" : "AZ123",
-                "title" : "Shirt",
-                "description" : "Size M",
-                "vat" : 20,
-                "type" : 0,
-                "vat_included" : true,
-                "second_hand_good" : false
+                "$ref" : "#/components/schemas/ArticleBody"
               }
             }
           }
@@ -736,10 +688,6 @@
       "ArticleBody" : {
         "type" : "object",
         "properties" : {
-          "id" : {
-            "type" : "string",
-            "example" : "5d5env258126ab647499f9bf"
-          },
           "manufacturer" : {
             "type" : "string",
             "example" : "Apple"

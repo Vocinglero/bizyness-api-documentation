@@ -2887,7 +2887,7 @@ ApiKey, JWTAuth
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"articles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d5env258126ab647499f9bf"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d5eca258126ab647499f9bf"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apple"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"origin_country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FR"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">10.32</span><span class="p">,</span><span class="w">
@@ -3031,13 +3031,6 @@ ApiKey, JWTAuth
 <td>none</td>
 </tr>
 <tr>
-<td>»»» id</td>
-<td>string</td>
-<td>false</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
 <td>»»» manufacturer</td>
 <td>string</td>
 <td>false</td>
@@ -3129,24 +3122,24 @@ ApiKey, JWTAuth
   <span class="nt">--header</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
   <span class="nt">--header</span> <span class="s1">'X-Api-Key: API_KEY'</span> <span class="se">\</span>
-  <span class="nt">--data</span> <span class="s1">'{"manufacturer":"string","origin_country":"string","price":0,"purchase_price":0,"sku":"string","title":"string","description":"string","vat":0,"type":0,"vat_included":true,"second_hand_good":true}'</span>
+  <span class="nt">--data</span> <span class="s1">'{"manufacturer":"Apple","origin_country":"FR","price":10.32,"purchase_price":10.32,"sku":"AZ123","title":"Shirt","description":"Size M","vat":20,"type":0,"vat_included":true,"second_hand_good":true}'</span>
 </code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">/lpb/bizyness-api/1.0.0/articles</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">X-Api-Key</span><span class="p">:</span> <span class="s">API_KEY</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">virtserver.swaggerhub.com</span>
-<span class="na">Content-Length</span><span class="p">:</span> <span class="s">196</span>
+<span class="na">Content-Length</span><span class="p">:</span> <span class="s">198</span>
 
-<span class="p">{</span><span class="nl">"manufacturer"</span><span class="p">:</span><span class="s2">"string"</span><span class="p">,</span><span class="nl">"origin_country"</span><span class="p">:</span><span class="s2">"string"</span><span class="p">,</span><span class="nl">"price"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="nl">"purchase_price"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="nl">"sku"</span><span class="p">:</span><span class="s2">"string"</span><span class="p">,</span><span class="nl">"title"</span><span class="p">:</span><span class="s2">"string"</span><span class="p">,</span><span class="nl">"description"</span><span class="p">:</span><span class="s2">"string"</span><span class="p">,</span><span class="nl">"vat"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="nl">"type"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="nl">"vat_included"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="nl">"second_hand_good"</span><span class="p">:</span><span class="kc">true</span><span class="p">}</span><span class="w">
+<span class="p">{</span><span class="nl">"manufacturer"</span><span class="p">:</span><span class="s2">"Apple"</span><span class="p">,</span><span class="nl">"origin_country"</span><span class="p">:</span><span class="s2">"FR"</span><span class="p">,</span><span class="nl">"price"</span><span class="p">:</span><span class="mf">10.32</span><span class="p">,</span><span class="nl">"purchase_price"</span><span class="p">:</span><span class="mf">10.32</span><span class="p">,</span><span class="nl">"sku"</span><span class="p">:</span><span class="s2">"AZ123"</span><span class="p">,</span><span class="nl">"title"</span><span class="p">:</span><span class="s2">"Shirt"</span><span class="p">,</span><span class="nl">"description"</span><span class="p">:</span><span class="s2">"Size M"</span><span class="p">,</span><span class="nl">"vat"</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span><span class="nl">"type"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="nl">"vat_included"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="nl">"second_hand_good"</span><span class="p">:</span><span class="kc">true</span><span class="p">}</span><span class="w">
 </span></code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
-  <span class="dl">"</span><span class="s2">manufacturer</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">origin_country</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">price</span><span class="dl">"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">purchase_price</span><span class="dl">"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">sku</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">title</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">description</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">vat</span><span class="dl">"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">manufacturer</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Apple</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">origin_country</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">FR</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">price</span><span class="dl">"</span><span class="p">:</span> <span class="mf">10.32</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">purchase_price</span><span class="dl">"</span><span class="p">:</span> <span class="mf">10.32</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">sku</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">AZ123</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">title</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Shirt</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">description</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Size M</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">vat</span><span class="dl">"</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
   <span class="dl">"</span><span class="s2">type</span><span class="dl">"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
   <span class="dl">"</span><span class="s2">vat_included</span><span class="dl">"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
   <span class="dl">"</span><span class="s2">second_hand_good</span><span class="dl">"</span><span class="p">:</span> <span class="kc">true</span>
@@ -3181,7 +3174,7 @@ ApiKey, JWTAuth
 <span class="n">request</span><span class="p">[</span><span class="s2">"Content-Type"</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'application/json'</span>
 <span class="n">request</span><span class="p">[</span><span class="s2">"Accept"</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'application/json'</span>
 <span class="n">request</span><span class="p">[</span><span class="s2">"X-Api-Key"</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'API_KEY'</span>
-<span class="n">request</span><span class="p">.</span><span class="nf">body</span> <span class="o">=</span> <span class="s2">"{</span><span class="se">\"</span><span class="s2">manufacturer</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">string</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">origin_country</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">string</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">price</span><span class="se">\"</span><span class="s2">:0,</span><span class="se">\"</span><span class="s2">purchase_price</span><span class="se">\"</span><span class="s2">:0,</span><span class="se">\"</span><span class="s2">sku</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">string</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">title</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">string</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">description</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">string</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">vat</span><span class="se">\"</span><span class="s2">:0,</span><span class="se">\"</span><span class="s2">type</span><span class="se">\"</span><span class="s2">:0,</span><span class="se">\"</span><span class="s2">vat_included</span><span class="se">\"</span><span class="s2">:true,</span><span class="se">\"</span><span class="s2">second_hand_good</span><span class="se">\"</span><span class="s2">:true}"</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">body</span> <span class="o">=</span> <span class="s2">"{</span><span class="se">\"</span><span class="s2">manufacturer</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">Apple</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">origin_country</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">FR</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">price</span><span class="se">\"</span><span class="s2">:10.32,</span><span class="se">\"</span><span class="s2">purchase_price</span><span class="se">\"</span><span class="s2">:10.32,</span><span class="se">\"</span><span class="s2">sku</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">AZ123</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">title</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">Shirt</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">description</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">Size M</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">vat</span><span class="se">\"</span><span class="s2">:20,</span><span class="se">\"</span><span class="s2">type</span><span class="se">\"</span><span class="s2">:0,</span><span class="se">\"</span><span class="s2">vat_included</span><span class="se">\"</span><span class="s2">:true,</span><span class="se">\"</span><span class="s2">second_hand_good</span><span class="se">\"</span><span class="s2">:true}"</span>
 
 <span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
 <span class="nb">puts</span> <span class="n">response</span><span class="p">.</span><span class="nf">read_body</span>
@@ -3189,7 +3182,7 @@ ApiKey, JWTAuth
 
 <span class="n">conn</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="n">client</span><span class="p">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="s">"virtserver.swaggerhub.com"</span><span class="p">)</span>
 
-<span class="n">payload</span> <span class="o">=</span> <span class="s">"{</span><span class="se">\"</span><span class="s">manufacturer</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">string</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">origin_country</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">string</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">price</span><span class="se">\"</span><span class="s">:0,</span><span class="se">\"</span><span class="s">purchase_price</span><span class="se">\"</span><span class="s">:0,</span><span class="se">\"</span><span class="s">sku</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">string</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">title</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">string</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">description</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">string</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">vat</span><span class="se">\"</span><span class="s">:0,</span><span class="se">\"</span><span class="s">type</span><span class="se">\"</span><span class="s">:0,</span><span class="se">\"</span><span class="s">vat_included</span><span class="se">\"</span><span class="s">:true,</span><span class="se">\"</span><span class="s">second_hand_good</span><span class="se">\"</span><span class="s">:true}"</span>
+<span class="n">payload</span> <span class="o">=</span> <span class="s">"{</span><span class="se">\"</span><span class="s">manufacturer</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">Apple</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">origin_country</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">FR</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">price</span><span class="se">\"</span><span class="s">:10.32,</span><span class="se">\"</span><span class="s">purchase_price</span><span class="se">\"</span><span class="s">:10.32,</span><span class="se">\"</span><span class="s">sku</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">AZ123</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">title</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">Shirt</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">description</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">Size M</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">vat</span><span class="se">\"</span><span class="s">:20,</span><span class="se">\"</span><span class="s">type</span><span class="se">\"</span><span class="s">:0,</span><span class="se">\"</span><span class="s">vat_included</span><span class="se">\"</span><span class="s">:true,</span><span class="se">\"</span><span class="s">second_hand_good</span><span class="se">\"</span><span class="s">:true}"</span>
 
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
@@ -3215,7 +3208,7 @@ ApiKey, JWTAuth
   <span class="no">CURLOPT_TIMEOUT</span> <span class="o">=&gt;</span> <span class="mi">30</span><span class="p">,</span>
   <span class="no">CURLOPT_HTTP_VERSION</span> <span class="o">=&gt;</span> <span class="no">CURL_HTTP_VERSION_1_1</span><span class="p">,</span>
   <span class="no">CURLOPT_CUSTOMREQUEST</span> <span class="o">=&gt;</span> <span class="s2">"POST"</span><span class="p">,</span>
-  <span class="no">CURLOPT_POSTFIELDS</span> <span class="o">=&gt;</span> <span class="s2">"</span><span class="si">{</span><span class="nv">\"manufacturer\":\"string\",\"origin_country\":\"string\",\"price\":0,\"purchase_price\":0,\"sku\":\"string\",\"title\":\"string\",\"description\":\"string\",\"vat\":0,\"type\":0,\"vat_included\":true,\"second_hand_good\":true</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
+  <span class="no">CURLOPT_POSTFIELDS</span> <span class="o">=&gt;</span> <span class="s2">"{\"</span><span class="n">manufacturer</span><span class="err">\</span><span class="s2">":</span><span class="se">\"</span><span class="s2">Apple</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">origin_country</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">FR</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">price</span><span class="se">\"</span><span class="s2">:10.32,</span><span class="se">\"</span><span class="s2">purchase_price</span><span class="se">\"</span><span class="s2">:10.32,</span><span class="se">\"</span><span class="s2">sku</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">AZ123</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">title</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">Shirt</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">description</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">Size M</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">vat</span><span class="se">\"</span><span class="s2">:20,</span><span class="se">\"</span><span class="s2">type</span><span class="se">\"</span><span class="s2">:0,</span><span class="se">\"</span><span class="s2">vat_included</span><span class="se">\"</span><span class="s2">:true,</span><span class="se">\"</span><span class="s2">second_hand_good</span><span class="se">\"</span><span class="s2">:true}"</span><span class="p">,</span>
   <span class="no">CURLOPT_HTTPHEADER</span> <span class="o">=&gt;</span> <span class="p">[</span>
     <span class="s2">"Accept: application/json"</span><span class="p">,</span>
     <span class="s2">"Content-Type: application/json"</span><span class="p">,</span>
@@ -3237,7 +3230,7 @@ ApiKey, JWTAuth
   <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"Content-Type"</span><span class="o">,</span> <span class="s">"application/json"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"Accept"</span><span class="o">,</span> <span class="s">"application/json"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"X-Api-Key"</span><span class="o">,</span> <span class="s">"API_KEY"</span><span class="o">)</span>
-  <span class="o">.</span><span class="na">body</span><span class="o">(</span><span class="s">"{\"manufacturer\":\"string\",\"origin_country\":\"string\",\"price\":0,\"purchase_price\":0,\"sku\":\"string\",\"title\":\"string\",\"description\":\"string\",\"vat\":0,\"type\":0,\"vat_included\":true,\"second_hand_good\":true}"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">body</span><span class="o">(</span><span class="s">"{\"manufacturer\":\"Apple\",\"origin_country\":\"FR\",\"price\":10.32,\"purchase_price\":10.32,\"sku\":\"AZ123\",\"title\":\"Shirt\",\"description\":\"Size M\",\"vat\":20,\"type\":0,\"vat_included\":true,\"second_hand_good\":true}"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">asString</span><span class="o">();</span>
 </code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
 
@@ -3252,7 +3245,7 @@ ApiKey, JWTAuth
 
     <span class="n">url</span> <span class="o">:=</span> <span class="s">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/articles"</span>
 
-    <span class="n">payload</span> <span class="o">:=</span> <span class="n">strings</span><span class="o">.</span><span class="n">NewReader</span><span class="p">(</span><span class="s">"{</span><span class="se">\"</span><span class="s">manufacturer</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">string</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">origin_country</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">string</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">price</span><span class="se">\"</span><span class="s">:0,</span><span class="se">\"</span><span class="s">purchase_price</span><span class="se">\"</span><span class="s">:0,</span><span class="se">\"</span><span class="s">sku</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">string</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">title</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">string</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">description</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">string</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">vat</span><span class="se">\"</span><span class="s">:0,</span><span class="se">\"</span><span class="s">type</span><span class="se">\"</span><span class="s">:0,</span><span class="se">\"</span><span class="s">vat_included</span><span class="se">\"</span><span class="s">:true,</span><span class="se">\"</span><span class="s">second_hand_good</span><span class="se">\"</span><span class="s">:true}"</span><span class="p">)</span>
+    <span class="n">payload</span> <span class="o">:=</span> <span class="n">strings</span><span class="o">.</span><span class="n">NewReader</span><span class="p">(</span><span class="s">"{</span><span class="se">\"</span><span class="s">manufacturer</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">Apple</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">origin_country</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">FR</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">price</span><span class="se">\"</span><span class="s">:10.32,</span><span class="se">\"</span><span class="s">purchase_price</span><span class="se">\"</span><span class="s">:10.32,</span><span class="se">\"</span><span class="s">sku</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">AZ123</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">title</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">Shirt</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">description</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">Size M</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">vat</span><span class="se">\"</span><span class="s">:20,</span><span class="se">\"</span><span class="s">type</span><span class="se">\"</span><span class="s">:0,</span><span class="se">\"</span><span class="s">vat_included</span><span class="se">\"</span><span class="s">:true,</span><span class="se">\"</span><span class="s">second_hand_good</span><span class="se">\"</span><span class="s">:true}"</span><span class="p">)</span>
 
     <span class="n">req</span><span class="p">,</span> <span class="n">_</span> <span class="o">:=</span> <span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">payload</span><span class="p">)</span>
 
@@ -3276,14 +3269,14 @@ ApiKey, JWTAuth
 <p>Body parameter</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"origin_country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"purchase_price"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"vat"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apple"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"origin_country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FR"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">10.32</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"purchase_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">10.32</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AZ123"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Shirt"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Size M"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"vat"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="nl">"vat_included"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="nl">"second_hand_good"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
@@ -3303,85 +3296,8 @@ ApiKey, JWTAuth
 <tr>
 <td>body</td>
 <td>body</td>
-<td>object</td>
+<td><a href="#schemaarticlebody">ArticleBody</a></td>
 <td>true</td>
-<td>none</td>
-</tr>
-<tr>
-<td>» manufacturer</td>
-<td>body</td>
-<td>string</td>
-<td>false</td>
-<td>none</td>
-</tr>
-<tr>
-<td>» origin_country</td>
-<td>body</td>
-<td>string</td>
-<td>false</td>
-<td>none</td>
-</tr>
-<tr>
-<td>» price</td>
-<td>body</td>
-<td>number</td>
-<td>false</td>
-<td>none</td>
-</tr>
-<tr>
-<td>» purchase_price</td>
-<td>body</td>
-<td>number</td>
-<td>false</td>
-<td>none</td>
-</tr>
-<tr>
-<td>» sku</td>
-<td>body</td>
-<td>string</td>
-<td>false</td>
-<td>none</td>
-</tr>
-<tr>
-<td>» title</td>
-<td>body</td>
-<td>string</td>
-<td>false</td>
-<td>none</td>
-</tr>
-<tr>
-<td>» description</td>
-<td>body</td>
-<td>string</td>
-<td>false</td>
-<td>none</td>
-</tr>
-<tr>
-<td>» vat</td>
-<td>body</td>
-<td>number</td>
-<td>false</td>
-<td>none</td>
-</tr>
-<tr>
-<td>» type</td>
-<td>body</td>
-<td>number</td>
-<td>false</td>
-<td>none</td>
-</tr>
-<tr>
-<td>» vat_included</td>
-<td>body</td>
-<td>boolean</td>
-<td>false</td>
-<td>none</td>
-</tr>
-<tr>
-<td>» second_hand_good</td>
-<td>body</td>
-<td>boolean</td>
-<td>false</td>
 <td>none</td>
 </tr>
 </tbody></table>
@@ -3681,7 +3597,7 @@ ApiKey, JWTAuth
 <p>200 Response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d5env258126ab647499f9bf"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d5eca258126ab647499f9bf"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apple"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"origin_country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FR"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">10.32</span><span class="p">,</span><span class="w">
@@ -3975,7 +3891,7 @@ ApiKey, JWTAuth
   <span class="nt">--header</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
   <span class="nt">--header</span> <span class="s1">'X-Api-Key: API_KEY'</span> <span class="se">\</span>
-  <span class="nt">--data</span> <span class="s1">'{"id":"5d5env258126ab647499f9bf","manufacturer":"Apple","origin_country":"FR","price":10.32,"purchase_price":10.32,"sku":"AZ123","title":"Shirt","description":"Size M","vat":20,"type":0,"vat_included":true,"second_hand_good":true}'</span>
+  <span class="nt">--data</span> <span class="s1">'{"id":"5d5eca258126ab647499f9bf","manufacturer":"Apple","origin_country":"FR","price":10.32,"purchase_price":10.32,"sku":"AZ123","title":"Shirt","description":"Size M","vat":20,"type":0,"vat_included":true,"second_hand_good":true}'</span>
 </code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">PUT</span> <span class="nn">/lpb/bizyness-api/1.0.0/articles/string</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
@@ -3983,9 +3899,9 @@ ApiKey, JWTAuth
 <span class="na">Host</span><span class="p">:</span> <span class="s">virtserver.swaggerhub.com</span>
 <span class="na">Content-Length</span><span class="p">:</span> <span class="s">230</span>
 
-<span class="p">{</span><span class="nl">"id"</span><span class="p">:</span><span class="s2">"5d5env258126ab647499f9bf"</span><span class="p">,</span><span class="nl">"manufacturer"</span><span class="p">:</span><span class="s2">"Apple"</span><span class="p">,</span><span class="nl">"origin_country"</span><span class="p">:</span><span class="s2">"FR"</span><span class="p">,</span><span class="nl">"price"</span><span class="p">:</span><span class="mf">10.32</span><span class="p">,</span><span class="nl">"purchase_price"</span><span class="p">:</span><span class="mf">10.32</span><span class="p">,</span><span class="nl">"sku"</span><span class="p">:</span><span class="s2">"AZ123"</span><span class="p">,</span><span class="nl">"title"</span><span class="p">:</span><span class="s2">"Shirt"</span><span class="p">,</span><span class="nl">"description"</span><span class="p">:</span><span class="s2">"Size M"</span><span class="p">,</span><span class="nl">"vat"</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span><span class="nl">"type"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="nl">"vat_included"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="nl">"second_hand_good"</span><span class="p">:</span><span class="kc">true</span><span class="p">}</span><span class="w">
+<span class="p">{</span><span class="nl">"id"</span><span class="p">:</span><span class="s2">"5d5eca258126ab647499f9bf"</span><span class="p">,</span><span class="nl">"manufacturer"</span><span class="p">:</span><span class="s2">"Apple"</span><span class="p">,</span><span class="nl">"origin_country"</span><span class="p">:</span><span class="s2">"FR"</span><span class="p">,</span><span class="nl">"price"</span><span class="p">:</span><span class="mf">10.32</span><span class="p">,</span><span class="nl">"purchase_price"</span><span class="p">:</span><span class="mf">10.32</span><span class="p">,</span><span class="nl">"sku"</span><span class="p">:</span><span class="s2">"AZ123"</span><span class="p">,</span><span class="nl">"title"</span><span class="p">:</span><span class="s2">"Shirt"</span><span class="p">,</span><span class="nl">"description"</span><span class="p">:</span><span class="s2">"Size M"</span><span class="p">,</span><span class="nl">"vat"</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span><span class="nl">"type"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="nl">"vat_included"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="nl">"second_hand_good"</span><span class="p">:</span><span class="kc">true</span><span class="p">}</span><span class="w">
 </span></code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
-  <span class="dl">"</span><span class="s2">id</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">5d5env258126ab647499f9bf</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">id</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">5d5eca258126ab647499f9bf</span><span class="dl">"</span><span class="p">,</span>
   <span class="dl">"</span><span class="s2">manufacturer</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Apple</span><span class="dl">"</span><span class="p">,</span>
   <span class="dl">"</span><span class="s2">origin_country</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">FR</span><span class="dl">"</span><span class="p">,</span>
   <span class="dl">"</span><span class="s2">price</span><span class="dl">"</span><span class="p">:</span> <span class="mf">10.32</span><span class="p">,</span>
@@ -4028,7 +3944,7 @@ ApiKey, JWTAuth
 <span class="n">request</span><span class="p">[</span><span class="s2">"Content-Type"</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'application/json'</span>
 <span class="n">request</span><span class="p">[</span><span class="s2">"Accept"</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'application/json'</span>
 <span class="n">request</span><span class="p">[</span><span class="s2">"X-Api-Key"</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'API_KEY'</span>
-<span class="n">request</span><span class="p">.</span><span class="nf">body</span> <span class="o">=</span> <span class="s2">"{</span><span class="se">\"</span><span class="s2">id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">5d5env258126ab647499f9bf</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">manufacturer</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">Apple</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">origin_country</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">FR</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">price</span><span class="se">\"</span><span class="s2">:10.32,</span><span class="se">\"</span><span class="s2">purchase_price</span><span class="se">\"</span><span class="s2">:10.32,</span><span class="se">\"</span><span class="s2">sku</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">AZ123</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">title</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">Shirt</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">description</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">Size M</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">vat</span><span class="se">\"</span><span class="s2">:20,</span><span class="se">\"</span><span class="s2">type</span><span class="se">\"</span><span class="s2">:0,</span><span class="se">\"</span><span class="s2">vat_included</span><span class="se">\"</span><span class="s2">:true,</span><span class="se">\"</span><span class="s2">second_hand_good</span><span class="se">\"</span><span class="s2">:true}"</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">body</span> <span class="o">=</span> <span class="s2">"{</span><span class="se">\"</span><span class="s2">id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">5d5eca258126ab647499f9bf</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">manufacturer</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">Apple</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">origin_country</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">FR</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">price</span><span class="se">\"</span><span class="s2">:10.32,</span><span class="se">\"</span><span class="s2">purchase_price</span><span class="se">\"</span><span class="s2">:10.32,</span><span class="se">\"</span><span class="s2">sku</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">AZ123</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">title</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">Shirt</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">description</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">Size M</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">vat</span><span class="se">\"</span><span class="s2">:20,</span><span class="se">\"</span><span class="s2">type</span><span class="se">\"</span><span class="s2">:0,</span><span class="se">\"</span><span class="s2">vat_included</span><span class="se">\"</span><span class="s2">:true,</span><span class="se">\"</span><span class="s2">second_hand_good</span><span class="se">\"</span><span class="s2">:true}"</span>
 
 <span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
 <span class="nb">puts</span> <span class="n">response</span><span class="p">.</span><span class="nf">read_body</span>
@@ -4036,7 +3952,7 @@ ApiKey, JWTAuth
 
 <span class="n">conn</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="n">client</span><span class="p">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="s">"virtserver.swaggerhub.com"</span><span class="p">)</span>
 
-<span class="n">payload</span> <span class="o">=</span> <span class="s">"{</span><span class="se">\"</span><span class="s">id</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">5d5env258126ab647499f9bf</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">manufacturer</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">Apple</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">origin_country</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">FR</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">price</span><span class="se">\"</span><span class="s">:10.32,</span><span class="se">\"</span><span class="s">purchase_price</span><span class="se">\"</span><span class="s">:10.32,</span><span class="se">\"</span><span class="s">sku</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">AZ123</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">title</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">Shirt</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">description</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">Size M</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">vat</span><span class="se">\"</span><span class="s">:20,</span><span class="se">\"</span><span class="s">type</span><span class="se">\"</span><span class="s">:0,</span><span class="se">\"</span><span class="s">vat_included</span><span class="se">\"</span><span class="s">:true,</span><span class="se">\"</span><span class="s">second_hand_good</span><span class="se">\"</span><span class="s">:true}"</span>
+<span class="n">payload</span> <span class="o">=</span> <span class="s">"{</span><span class="se">\"</span><span class="s">id</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">5d5eca258126ab647499f9bf</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">manufacturer</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">Apple</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">origin_country</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">FR</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">price</span><span class="se">\"</span><span class="s">:10.32,</span><span class="se">\"</span><span class="s">purchase_price</span><span class="se">\"</span><span class="s">:10.32,</span><span class="se">\"</span><span class="s">sku</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">AZ123</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">title</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">Shirt</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">description</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">Size M</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">vat</span><span class="se">\"</span><span class="s">:20,</span><span class="se">\"</span><span class="s">type</span><span class="se">\"</span><span class="s">:0,</span><span class="se">\"</span><span class="s">vat_included</span><span class="se">\"</span><span class="s">:true,</span><span class="se">\"</span><span class="s">second_hand_good</span><span class="se">\"</span><span class="s">:true}"</span>
 
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
@@ -4062,7 +3978,7 @@ ApiKey, JWTAuth
   <span class="no">CURLOPT_TIMEOUT</span> <span class="o">=&gt;</span> <span class="mi">30</span><span class="p">,</span>
   <span class="no">CURLOPT_HTTP_VERSION</span> <span class="o">=&gt;</span> <span class="no">CURL_HTTP_VERSION_1_1</span><span class="p">,</span>
   <span class="no">CURLOPT_CUSTOMREQUEST</span> <span class="o">=&gt;</span> <span class="s2">"PUT"</span><span class="p">,</span>
-  <span class="no">CURLOPT_POSTFIELDS</span> <span class="o">=&gt;</span> <span class="s2">"{\"</span><span class="n">id</span><span class="err">\</span><span class="s2">":</span><span class="se">\"</span><span class="s2">5d5env258126ab647499f9bf</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">manufacturer</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">Apple</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">origin_country</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">FR</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">price</span><span class="se">\"</span><span class="s2">:10.32,</span><span class="se">\"</span><span class="s2">purchase_price</span><span class="se">\"</span><span class="s2">:10.32,</span><span class="se">\"</span><span class="s2">sku</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">AZ123</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">title</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">Shirt</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">description</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">Size M</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">vat</span><span class="se">\"</span><span class="s2">:20,</span><span class="se">\"</span><span class="s2">type</span><span class="se">\"</span><span class="s2">:0,</span><span class="se">\"</span><span class="s2">vat_included</span><span class="se">\"</span><span class="s2">:true,</span><span class="se">\"</span><span class="s2">second_hand_good</span><span class="se">\"</span><span class="s2">:true}"</span><span class="p">,</span>
+  <span class="no">CURLOPT_POSTFIELDS</span> <span class="o">=&gt;</span> <span class="s2">"{\"</span><span class="n">id</span><span class="err">\</span><span class="s2">":</span><span class="se">\"</span><span class="s2">5d5eca258126ab647499f9bf</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">manufacturer</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">Apple</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">origin_country</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">FR</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">price</span><span class="se">\"</span><span class="s2">:10.32,</span><span class="se">\"</span><span class="s2">purchase_price</span><span class="se">\"</span><span class="s2">:10.32,</span><span class="se">\"</span><span class="s2">sku</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">AZ123</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">title</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">Shirt</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">description</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">Size M</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">vat</span><span class="se">\"</span><span class="s2">:20,</span><span class="se">\"</span><span class="s2">type</span><span class="se">\"</span><span class="s2">:0,</span><span class="se">\"</span><span class="s2">vat_included</span><span class="se">\"</span><span class="s2">:true,</span><span class="se">\"</span><span class="s2">second_hand_good</span><span class="se">\"</span><span class="s2">:true}"</span><span class="p">,</span>
   <span class="no">CURLOPT_HTTPHEADER</span> <span class="o">=&gt;</span> <span class="p">[</span>
     <span class="s2">"Accept: application/json"</span><span class="p">,</span>
     <span class="s2">"Content-Type: application/json"</span><span class="p">,</span>
@@ -4084,7 +4000,7 @@ ApiKey, JWTAuth
   <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"Content-Type"</span><span class="o">,</span> <span class="s">"application/json"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"Accept"</span><span class="o">,</span> <span class="s">"application/json"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"X-Api-Key"</span><span class="o">,</span> <span class="s">"API_KEY"</span><span class="o">)</span>
-  <span class="o">.</span><span class="na">body</span><span class="o">(</span><span class="s">"{\"id\":\"5d5env258126ab647499f9bf\",\"manufacturer\":\"Apple\",\"origin_country\":\"FR\",\"price\":10.32,\"purchase_price\":10.32,\"sku\":\"AZ123\",\"title\":\"Shirt\",\"description\":\"Size M\",\"vat\":20,\"type\":0,\"vat_included\":true,\"second_hand_good\":true}"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">body</span><span class="o">(</span><span class="s">"{\"id\":\"5d5eca258126ab647499f9bf\",\"manufacturer\":\"Apple\",\"origin_country\":\"FR\",\"price\":10.32,\"purchase_price\":10.32,\"sku\":\"AZ123\",\"title\":\"Shirt\",\"description\":\"Size M\",\"vat\":20,\"type\":0,\"vat_included\":true,\"second_hand_good\":true}"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">asString</span><span class="o">();</span>
 </code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
 
@@ -4099,7 +4015,7 @@ ApiKey, JWTAuth
 
     <span class="n">url</span> <span class="o">:=</span> <span class="s">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/articles/string"</span>
 
-    <span class="n">payload</span> <span class="o">:=</span> <span class="n">strings</span><span class="o">.</span><span class="n">NewReader</span><span class="p">(</span><span class="s">"{</span><span class="se">\"</span><span class="s">id</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">5d5env258126ab647499f9bf</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">manufacturer</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">Apple</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">origin_country</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">FR</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">price</span><span class="se">\"</span><span class="s">:10.32,</span><span class="se">\"</span><span class="s">purchase_price</span><span class="se">\"</span><span class="s">:10.32,</span><span class="se">\"</span><span class="s">sku</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">AZ123</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">title</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">Shirt</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">description</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">Size M</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">vat</span><span class="se">\"</span><span class="s">:20,</span><span class="se">\"</span><span class="s">type</span><span class="se">\"</span><span class="s">:0,</span><span class="se">\"</span><span class="s">vat_included</span><span class="se">\"</span><span class="s">:true,</span><span class="se">\"</span><span class="s">second_hand_good</span><span class="se">\"</span><span class="s">:true}"</span><span class="p">)</span>
+    <span class="n">payload</span> <span class="o">:=</span> <span class="n">strings</span><span class="o">.</span><span class="n">NewReader</span><span class="p">(</span><span class="s">"{</span><span class="se">\"</span><span class="s">id</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">5d5eca258126ab647499f9bf</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">manufacturer</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">Apple</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">origin_country</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">FR</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">price</span><span class="se">\"</span><span class="s">:10.32,</span><span class="se">\"</span><span class="s">purchase_price</span><span class="se">\"</span><span class="s">:10.32,</span><span class="se">\"</span><span class="s">sku</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">AZ123</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">title</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">Shirt</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">description</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">Size M</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">vat</span><span class="se">\"</span><span class="s">:20,</span><span class="se">\"</span><span class="s">type</span><span class="se">\"</span><span class="s">:0,</span><span class="se">\"</span><span class="s">vat_included</span><span class="se">\"</span><span class="s">:true,</span><span class="se">\"</span><span class="s">second_hand_good</span><span class="se">\"</span><span class="s">:true}"</span><span class="p">)</span>
 
     <span class="n">req</span><span class="p">,</span> <span class="n">_</span> <span class="o">:=</span> <span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"PUT"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">payload</span><span class="p">)</span>
 
@@ -4123,7 +4039,7 @@ ApiKey, JWTAuth
 <p>Body parameter</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d5env258126ab647499f9bf"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d5eca258126ab647499f9bf"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apple"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"origin_country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FR"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">10.32</span><span class="p">,</span><span class="w">
@@ -4496,7 +4412,7 @@ ApiKey, JWTAuth
 <p>200 Response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d5env258126ab647499f9bf"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d5eca258126ab647499f9bf"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apple"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"origin_country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FR"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">10.32</span><span class="p">,</span><span class="w">
@@ -5018,7 +4934,6 @@ ApiKey, JWTAuth
 <a id="tocSarticlebody"></a>
 <a id="tocsarticlebody"></a></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d5env258126ab647499f9bf"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apple"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"origin_country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FR"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">10.32</span><span class="p">,</span><span class="w">
@@ -5042,13 +4957,6 @@ ApiKey, JWTAuth
 <th>Description</th>
 </tr>
 </thead><tbody>
-<tr>
-<td>id</td>
-<td>string</td>
-<td>false</td>
-<td>none</td>
-<td>none</td>
-</tr>
 <tr>
 <td>manufacturer</td>
 <td>string</td>
@@ -5137,7 +5045,7 @@ ApiKey, JWTAuth
 <a id="tocSarticle"></a>
 <a id="tocsarticle"></a></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d5env258126ab647499f9bf"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d5eca258126ab647499f9bf"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apple"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"origin_country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FR"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">10.32</span><span class="p">,</span><span class="w">
