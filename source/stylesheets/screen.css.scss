@@ -208,11 +208,6 @@ html, body {
   }
 }
 
-.toc-link {
-  padding-top: 8px;
-  padding-bottom: 8px;
-}
-
 .toc-link, .toc-footer li {
   padding: 0 $nav-padding 0 $nav-padding;
   display: block;
@@ -224,6 +219,11 @@ html, body {
   transition-property: background;
   transition-timing-function: linear;
   transition-duration: 130ms;
+}
+
+.toc-link {
+  padding-top: 8px;
+  padding-bottom: 8px;
 }
 
 // button to show navigation on mobile devices
