@@ -1112,12 +1112,52 @@
         "type" : "object",
         "properties" : {
           "size" : {
-            "type" : "integer",
-            "example" : 123
+            "type" : "integer"
           },
           "amount" : {
-            "type" : "number",
-            "example" : 1203.54
+            "type" : "number"
+          }
+        }
+      },
+      "InvoiceListSummary" : {
+        "type" : "object",
+        "properties" : {
+          "total" : {
+            "$ref" : "#/components/schemas/ListSummaryItem"
+          },
+          "paid" : {
+            "$ref" : "#/components/schemas/ListSummaryItem"
+          },
+          "unpaid" : {
+            "$ref" : "#/components/schemas/ListSummaryItem"
+          },
+          "overdue" : {
+            "$ref" : "#/components/schemas/ListSummaryItem"
+          },
+          "draft" : {
+            "$ref" : "#/components/schemas/ListSummaryItem"
+          }
+        },
+        "example" : {
+          "total" : {
+            "size" : 123,
+            "amount" : 1203.54
+          },
+          "paid" : {
+            "size" : 110,
+            "amount" : 1052.23
+          },
+          "unpaid" : {
+            "size" : 2,
+            "amount" : 100
+          },
+          "overdue" : {
+            "size" : 6,
+            "amount" : 32.3
+          },
+          "draft" : {
+            "size" : 5,
+            "amount" : 19.01
           }
         }
       },
@@ -1125,64 +1165,7 @@
         "type" : "object",
         "properties" : {
           "summary" : {
-            "type" : "object",
-            "properties" : {
-              "total" : {
-                "$ref" : "#/components/schemas/ListSummaryItem"
-              },
-              "paid" : {
-                "type" : "object",
-                "properties" : {
-                  "size" : {
-                    "type" : "integer",
-                    "example" : 110
-                  },
-                  "amount" : {
-                    "type" : "number",
-                    "example" : 1052.23
-                  }
-                }
-              },
-              "unpaid" : {
-                "type" : "object",
-                "properties" : {
-                  "size" : {
-                    "type" : "integer",
-                    "example" : 2
-                  },
-                  "amount" : {
-                    "type" : "number",
-                    "example" : 100
-                  }
-                }
-              },
-              "overdue" : {
-                "type" : "object",
-                "properties" : {
-                  "size" : {
-                    "type" : "integer",
-                    "example" : 6
-                  },
-                  "amount" : {
-                    "type" : "number",
-                    "example" : 32.3
-                  }
-                }
-              },
-              "draft" : {
-                "type" : "object",
-                "properties" : {
-                  "size" : {
-                    "type" : "integer",
-                    "example" : 5
-                  },
-                  "amount" : {
-                    "type" : "number",
-                    "example" : 19.01
-                  }
-                }
-              }
-            }
+            "$ref" : "#/components/schemas/InvoiceListSummary"
           },
           "invoices" : {
             "type" : "array",
@@ -1192,12 +1175,15 @@
           }
         }
       },
-      "Invoice" : {
+      "CollectionId" : {
+        "type" : "string",
+        "example" : "5d5eca258126ab647499f9bf"
+      },
+      "BillOfSale" : {
         "type" : "object",
         "properties" : {
           "id" : {
-            "type" : "string",
-            "example" : "5d5eca258126ab647499f9bf"
+            "$ref" : "#/components/schemas/CollectionId"
           },
           "currency" : {
             "type" : "string",
@@ -1394,20 +1380,29 @@
           "vat_exemption_text" : {
             "type" : "string",
             "example" : "Article 138 CE/2008"
-          },
-          "execution_date" : {
-            "type" : "integer",
-            "example" : 1566493220992
-          },
-          "paid_date" : {
-            "type" : "integer",
-            "example" : 1566493220992
-          },
-          "paid_method" : {
-            "type" : "integer",
-            "example" : 1
           }
         }
+      },
+      "Invoice" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/BillOfSale"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "execution_date" : {
+              "type" : "integer",
+              "example" : 1566493220992
+            },
+            "paid_date" : {
+              "type" : "integer",
+              "example" : 1566493220992
+            },
+            "paid_method" : {
+              "type" : "integer",
+              "example" : 1
+            }
+          }
+        } ]
       }
     },
     "securitySchemes" : {
