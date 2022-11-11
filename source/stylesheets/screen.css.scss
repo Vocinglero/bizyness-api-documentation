@@ -59,8 +59,10 @@ html, body {
   bottom: 0;
   width: $nav-width;
   background-color: $nav-bg;
-  font-size: 13px;
-  font-weight: bold;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  border-right: 1px solid rgba(12, 18, 28, 0.12);
 
   // language selector for mobile devices
   .lang-selector {
@@ -79,6 +81,8 @@ html, body {
   }
 
   &>.search {
+    margin-bottom: 1.5em;
+    background: #fff;
     position: relative;
 
     input {
