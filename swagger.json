@@ -699,20 +699,7 @@
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/articles_body"
-              },
-              "example" : {
-                "manufacturer" : "Apple",
-                "origin_country" : "FR",
-                "price" : 10.32,
-                "purchase_price" : 8.32,
-                "sku" : "AZ123",
-                "title" : "Shirt",
-                "description" : "Size M",
-                "vat" : 20,
-                "type" : 0,
-                "vat_included" : true,
-                "second_hand_good" : false
+                "$ref" : "#/components/schemas/ArticleBody"
               }
             }
           },
@@ -1168,13 +1155,9 @@
         },
         "additionalProperties" : false
       },
-      "Article" : {
+      "ArticleBody" : {
         "type" : "object",
         "properties" : {
-          "id" : {
-            "type" : "string",
-            "example" : "5d5env258126ab647499f9bf"
-          },
           "manufacturer" : {
             "type" : "string",
             "example" : "Apple"
@@ -1218,6 +1201,13 @@
             "type" : "boolean"
           }
         }
+      },
+      "Article" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/CollectionId"
+        }, {
+          "$ref" : "#/components/schemas/ArticleBody"
+        } ]
       },
       "Country" : {
         "type" : "object",
@@ -1302,8 +1292,13 @@
         }
       },
       "CollectionId" : {
-        "type" : "string",
-        "example" : "5d5eca258126ab647499f9bf"
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "example" : "5d5eca258126ab647499f9bf"
+          }
+        }
       },
       "InvoiceBody" : {
         "type" : "object",
@@ -1433,7 +1428,7 @@
             "type" : "integer",
             "example" : 1566493220992
           },
-          "paid_method" : {
+          "payment_method" : {
             "type" : "integer",
             "example" : 1
           }
@@ -1465,44 +1460,6 @@
             "items" : {
               "$ref" : "#/components/schemas/Article"
             }
-          }
-        }
-      },
-      "articles_body" : {
-        "type" : "object",
-        "properties" : {
-          "manufacturer" : {
-            "type" : "string"
-          },
-          "origin_country" : {
-            "type" : "string"
-          },
-          "price" : {
-            "type" : "number"
-          },
-          "purchase_price" : {
-            "type" : "number"
-          },
-          "sku" : {
-            "type" : "string"
-          },
-          "title" : {
-            "type" : "string"
-          },
-          "description" : {
-            "type" : "string"
-          },
-          "vat" : {
-            "type" : "number"
-          },
-          "type" : {
-            "type" : "number"
-          },
-          "vat_included" : {
-            "type" : "boolean"
-          },
-          "second_hand_good" : {
-            "type" : "boolean"
           }
         }
       },
