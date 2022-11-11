@@ -6,7 +6,8 @@ const options = {
   httpsnippet:true,
   sample:true,
   codeSamples:true,
-  shallowSchemas:false
+  shallowSchemas:false,
+  tocSummary:true
 };
 
 const fileData = fs.readFileSync('source/bizyness-api.json', 'utf8');
