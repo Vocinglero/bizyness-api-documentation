@@ -28,6 +28,24 @@ jobs:
           gems-${{ runner.os }}-${{ env.ruby-version }}-
           gems-${{ runner.os }}-
 
+    - name: Setup Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '16'
+    
+    - name: Cache NPM dependencies
+      uses: actions/cache@v2
+      with:
+        path: ~/.npm
+        key: npm-${{ hashFiles('package-lock.json') }}
+        restore-keys: npm-
+        
+    - name: Install dependencies
+      run: npm ci --ignore-scripts
+      
+    - name: Convert Openapi file
+      run: node convertOpenapi.js
+
     - run: bundle config set deployment 'true'
     - name: bundle install
       run: |
