@@ -4,6 +4,7 @@ const fs = require('fs');
 const options = {
   expandBody:true,
   httpsnippet:true,
+  sample:true,
   codeSamples:true,
   shallowSchemas:true
 };
