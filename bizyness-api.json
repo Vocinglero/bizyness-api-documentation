@@ -877,8 +877,13 @@
         }
       },
       "CollectionId" : {
-        "type" : "string",
-        "example" : "5d5eca258126ab647499f9bf"
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "example" : "5d5eca258126ab647499f9bf"
+          }
+        }
       },
       "InvoiceBody" : {
         "type" : "object",
