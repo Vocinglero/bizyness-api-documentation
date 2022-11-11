@@ -51,7 +51,7 @@ jobs:
       run: npm ci --ignore-scripts
       
     - name: Convert Openapi file
-      run: widdershins source/bizyness-api.json -o source/index.html.md
+      run: node convertOpenapi.js
 
     # necessary to get ruby 2.3 to work nicely with bundler vendor/bundle cache
     # can remove once ruby 2.3 is no longer supported
