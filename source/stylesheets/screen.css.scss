@@ -181,8 +181,9 @@ html, body {
 
   .toc-h2 {
     padding-left: $nav-padding + $nav-indent;
-    font-size: 16px;
+    font-size: 17px;
     font-weight: normal;
+    color: rgba(12, 18, 28, 0.6);
   }
 
   .toc-footer {
