@@ -8,7 +8,7 @@ const options = {
   codeSamples:true,
   shallowSchemas:false,
   tocSummary:true,
-  verbose:true
+  help:true
 };
 
 const fileData = fs.readFileSync('source/bizyness-api.json', 'utf8');
