@@ -733,7 +733,7 @@
           }
         }
       },
-      "Article" : {
+      "ArticleBody" : {
         "type" : "object",
         "properties" : {
           "id" : {
@@ -783,6 +783,13 @@
             "type" : "boolean"
           }
         }
+      },
+      "Article" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/CollectionId"
+        }, {
+          "$ref" : "#/components/schemas/ArticleBody"
+        } ]
       },
       "Country" : {
         "type" : "object",
