@@ -2,7 +2,7 @@ const widdershins = require('widdershins');
 const fs = require('fs');
 
 const options = {
-  expandBody:false,
+  expandBody:true,
   httpsnippet:true,
   sample:true,
   codeSamples:true,
