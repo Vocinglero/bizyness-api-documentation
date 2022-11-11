@@ -1128,7 +1128,8 @@
             "type" : "object",
             "properties" : {
               "total" : {
-                "$ref" : "#/components/schemas/ListSummaryItem"
+                "$ref" : "#/components/schemas/ListSummaryItem",
+                "example" : "size:123456"
               },
               "paid" : {
                 "type" : "object",
