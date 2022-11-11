@@ -105,74 +105,7 @@
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/invoices_body"
-              },
-              "example" : {
-                "currency" : "EUR",
-                "status" : "draft",
-                "payment_term" : 1,
-                "discount_amount" : 10,
-                "discount_type" : "percentage",
-                "rebate" : 0,
-                "activity" : "5d5efds258126ab647499f9bf",
-                "template" : "basic",
-                "shipping_amount" : 3.3,
-                "shipping_vat" : 20,
-                "vat_liable" : true,
-                "vat_included" : true,
-                "client" : {
-                  "label" : "5d5eca258126ab647499f9bf",
-                  "identifier" : "John Doe"
-                },
-                "billing_address" : {
-                  "last_name" : "Doe",
-                  "first_name" : "John",
-                  "company_name" : "John's company",
-                  "address" : "123 rue des archives",
-                  "address_supplement" : "Porte gauche",
-                  "zip" : "A1234",
-                  "city" : "Paris",
-                  "country_code" : "FR",
-                  "vat_number" : "FR123456789"
-                },
-                "subject" : "Design of the homepage",
-                "lines" : [ {
-                  "sku" : "AX123",
-                  "description" : "Mockup and copywriting",
-                  "title" : "Homepage design",
-                  "type" : 0,
-                  "price" : 120.32,
-                  "quantity" : 1,
-                  "unit" : "piece",
-                  "discount_amount" : 10,
-                  "discount_type" : "percentage",
-                  "vat" : 20,
-                  "origin_country" : "FR",
-                  "second_hand_good" : false
-                }, {
-                  "sku" : "AX456",
-                  "description" : "Logo with 3 colors",
-                  "title" : "Logo design",
-                  "type" : 0,
-                  "price" : 59,
-                  "quantity" : 1,
-                  "unit" : "piece",
-                  "discount_amount" : 0,
-                  "discount_type" : "percentage",
-                  "vat" : 20,
-                  "origin_country" : "FR",
-                  "second_hand_good" : false
-                } ],
-                "lines_groups" : [ {
-                  "name" : "Design",
-                  "articles" : [ 0, 1 ]
-                } ],
-                "comments" : "Payment to be done within 3 days",
-                "payment_instructions_included" : true,
-                "payment_conditions_included" : true,
-                "language" : "fr",
-                "vat_exemption_text" : "Article 138 CE/2008",
-                "execution_date" : 1566493220992
+                "$ref" : "#/components/schemas/InvoiceBody"
               }
             }
           },
@@ -1372,12 +1305,9 @@
         "type" : "string",
         "example" : "5d5eca258126ab647499f9bf"
       },
-      "BillOfSale" : {
+      "InvoiceBody" : {
         "type" : "object",
         "properties" : {
-          "id" : {
-            "$ref" : "#/components/schemas/CollectionId"
-          },
           "currency" : {
             "type" : "string",
             "example" : "EUR"
@@ -1425,235 +1355,10 @@
             "type" : "boolean"
           },
           "client" : {
-            "$ref" : "#/components/schemas/invoices_client"
+            "$ref" : "#/components/schemas/InvoiceBody_client"
           },
           "billing_address" : {
-            "$ref" : "#/components/schemas/BillOfSale_billing_address"
-          },
-          "subject" : {
-            "type" : "string",
-            "example" : "Design of the homepage"
-          },
-          "lines" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "#/components/schemas/BillOfSale_lines"
-            }
-          },
-          "lines_groups" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "#/components/schemas/invoices_lines_groups"
-            }
-          },
-          "comments" : {
-            "type" : "string",
-            "example" : "Payment to be done within 3 days"
-          },
-          "payment_instructions_included" : {
-            "type" : "boolean"
-          },
-          "payment_conditions_included" : {
-            "type" : "boolean"
-          },
-          "language" : {
-            "type" : "string",
-            "enum" : [ "fr", "en", "de", "es", "it" ]
-          },
-          "vat_exemption_text" : {
-            "type" : "string",
-            "example" : "Article 138 CE/2008"
-          }
-        }
-      },
-      "Invoice" : {
-        "allOf" : [ {
-          "$ref" : "#/components/schemas/BillOfSale"
-        }, {
-          "type" : "object",
-          "properties" : {
-            "execution_date" : {
-              "type" : "integer",
-              "example" : 1566493220992
-            },
-            "paid_date" : {
-              "type" : "integer",
-              "example" : 1566493220992
-            },
-            "paid_method" : {
-              "type" : "integer",
-              "example" : 1
-            }
-          }
-        } ]
-      },
-      "invoices_client" : {
-        "type" : "object",
-        "properties" : {
-          "label" : {
-            "type" : "string",
-            "example" : "5d5eca258126ab647499f9bf"
-          },
-          "identifier" : {
-            "type" : "string",
-            "example" : "John Doe"
-          }
-        }
-      },
-      "invoices_billing_address" : {
-        "type" : "object",
-        "properties" : {
-          "last_name" : {
-            "type" : "string",
-            "example" : "Doe"
-          },
-          "first_name" : {
-            "type" : "string",
-            "example" : "John"
-          },
-          "company_name" : {
-            "type" : "string",
-            "example" : "John's company"
-          },
-          "address" : {
-            "type" : "string",
-            "example" : "123 rue des archives"
-          },
-          "address_supplement" : {
-            "type" : "string",
-            "example" : "Porte gauche"
-          },
-          "zip" : {
-            "type" : "string",
-            "example" : "A1234"
-          },
-          "city" : {
-            "type" : "string",
-            "example" : "Paris"
-          },
-          "country_code" : {
-            "type" : "string",
-            "example" : "FR"
-          },
-          "vat_number" : {
-            "type" : "string",
-            "example" : "FR12345678934"
-          }
-        }
-      },
-      "invoices_lines" : {
-        "type" : "object",
-        "properties" : {
-          "sku" : {
-            "type" : "string"
-          },
-          "description" : {
-            "type" : "string"
-          },
-          "title" : {
-            "type" : "string"
-          },
-          "type" : {
-            "type" : "integer"
-          },
-          "price" : {
-            "type" : "number"
-          },
-          "quantity" : {
-            "type" : "number"
-          },
-          "unit" : {
-            "type" : "string",
-            "enum" : [ "piece", "hour", "day", "meter", "kilometer", "kilogram", "square_meter" ]
-          },
-          "discount_amount" : {
-            "type" : "number"
-          },
-          "discount_type" : {
-            "type" : "string",
-            "enum" : [ "percentage", "fixed" ]
-          },
-          "vat" : {
-            "type" : "number"
-          },
-          "origin_country" : {
-            "type" : "string"
-          },
-          "second_hand_good" : {
-            "type" : "boolean"
-          }
-        }
-      },
-      "invoices_lines_groups" : {
-        "type" : "object",
-        "properties" : {
-          "name" : {
-            "type" : "string",
-            "example" : "Design and mockup"
-          },
-          "articles" : {
-            "type" : "array",
-            "items" : {
-              "type" : "integer",
-              "example" : 0
-            }
-          }
-        }
-      },
-      "invoices_body" : {
-        "type" : "object",
-        "properties" : {
-          "currency" : {
-            "type" : "string",
-            "example" : "EUR"
-          },
-          "status" : {
-            "type" : "string",
-            "enum" : [ "draft", "not_paid", "paid", "cancelled" ]
-          },
-          "payment_term" : {
-            "type" : "integer",
-            "example" : 1
-          },
-          "discount_amount" : {
-            "type" : "number",
-            "example" : 10
-          },
-          "discount_type" : {
-            "type" : "string",
-            "enum" : [ "percentage", "fixed" ]
-          },
-          "rebate" : {
-            "type" : "number",
-            "example" : 0
-          },
-          "activity" : {
-            "type" : "string",
-            "example" : "5d5efds258126ab647499f9bf"
-          },
-          "template" : {
-            "type" : "string",
-            "enum" : [ "basic", "london", "paris", "berlin" ]
-          },
-          "shipping_amount" : {
-            "type" : "number",
-            "example" : 12.45
-          },
-          "shipping_vat" : {
-            "type" : "number",
-            "example" : 20
-          },
-          "vat_liable" : {
-            "type" : "boolean"
-          },
-          "vat_included" : {
-            "type" : "boolean"
-          },
-          "client" : {
-            "$ref" : "#/components/schemas/invoices_client"
-          },
-          "billing_address" : {
-            "$ref" : "#/components/schemas/invoices_billing_address"
+            "$ref" : "#/components/schemas/InvoiceBody_billing_address"
           },
           "subject" : {
             "type" : "string",
@@ -1689,17 +1394,17 @@
               "second_hand_good" : false
             } ],
             "items" : {
-              "$ref" : "#/components/schemas/invoices_lines"
+              "$ref" : "#/components/schemas/InvoiceBody_lines"
             }
           },
           "lines_groups" : {
             "type" : "array",
             "example" : [ {
-              "name" : "Design",
+              "name" : "Design and mockup",
               "articles" : [ 0, 1 ]
             } ],
             "items" : {
-              "$ref" : "#/components/schemas/invoices_lines_groups"
+              "$ref" : "#/components/schemas/InvoiceBody_lines_groups"
             }
           },
           "comments" : {
@@ -1733,6 +1438,13 @@
             "example" : 1
           }
         }
+      },
+      "Invoice" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/CollectionId"
+        }, {
+          "$ref" : "#/components/schemas/InvoiceBody"
+        } ]
       },
       "inline_response_200" : {
         "type" : "object",
@@ -1807,7 +1519,20 @@
           }
         }
       },
-      "BillOfSale_billing_address" : {
+      "InvoiceBody_client" : {
+        "type" : "object",
+        "properties" : {
+          "label" : {
+            "type" : "string",
+            "example" : "5d5eca258126ab647499f9bf"
+          },
+          "identifier" : {
+            "type" : "string",
+            "example" : "John Doe"
+          }
+        }
+      },
+      "InvoiceBody_billing_address" : {
         "type" : "object",
         "properties" : {
           "last_name" : {
@@ -1848,55 +1573,60 @@
           }
         }
       },
-      "BillOfSale_lines" : {
+      "InvoiceBody_lines" : {
         "type" : "object",
         "properties" : {
           "sku" : {
-            "type" : "string",
-            "example" : "AX123"
+            "type" : "string"
           },
           "description" : {
-            "type" : "string",
-            "example" : "Mockup and copywriting"
+            "type" : "string"
           },
           "title" : {
-            "type" : "string",
-            "example" : "Homepage design"
+            "type" : "string"
           },
           "type" : {
-            "type" : "integer",
-            "example" : 0
+            "type" : "integer"
           },
           "price" : {
-            "type" : "number",
-            "example" : 120.32
+            "type" : "number"
           },
           "quantity" : {
-            "type" : "number",
-            "example" : 1
+            "type" : "number"
           },
           "unit" : {
             "type" : "string",
             "enum" : [ "piece", "hour", "day", "meter", "kilometer", "kilogram", "square_meter" ]
           },
           "discount_amount" : {
-            "type" : "number",
-            "example" : 10
+            "type" : "number"
           },
           "discount_type" : {
             "type" : "string",
             "enum" : [ "percentage", "fixed" ]
           },
           "vat" : {
-            "type" : "number",
-            "example" : 20
+            "type" : "number"
           },
           "origin_country" : {
-            "type" : "string",
-            "example" : "FR"
+            "type" : "string"
           },
           "second_hand_good" : {
             "type" : "boolean"
+          }
+        }
+      },
+      "InvoiceBody_lines_groups" : {
+        "type" : "object",
+        "properties" : {
+          "name" : {
+            "type" : "string"
+          },
+          "articles" : {
+            "type" : "array",
+            "items" : {
+              "type" : "integer"
+            }
           }
         }
       }
