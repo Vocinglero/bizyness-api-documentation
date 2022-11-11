@@ -169,6 +169,12 @@ html, body {
     font-weight: 500;
   }
 
+  .toc-h1 {
+    font-size: 16px;
+    font-weight: normal;
+    color: $nav-text;
+  }
+
   .toc-h2 {
     padding-left: $nav-padding + $nav-indent;
     font-size: 12px;
