@@ -873,8 +873,21 @@
             }, {
               "date" : 1566423220992,
               "key" : "invoice.history.issued",
-              "values" : [ "€", 23 ]
+              "values" : [ ]
             } ]
+          }
+        }
+      },
+      "BillOfSaleAmounts" : {
+        "type" : "object",
+        "properties" : {
+          "total_amount" : {
+            "type" : "number",
+            "example" : 123.54
+          },
+          "before_tax_total_amount" : {
+            "type" : "number",
+            "example" : 98.12
           }
         }
       },
@@ -1118,6 +1131,8 @@
           "$ref" : "#/components/schemas/InvoiceBody"
         }, {
           "$ref" : "#/components/schemas/BillOfSaleEvents"
+        }, {
+          "$ref" : "#/components/schemas/BillOfSaleAmounts"
         } ]
       }
     },
