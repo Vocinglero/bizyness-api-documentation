@@ -840,6 +840,35 @@
           }
         }
       },
+      "BillOfSaveEvents" : {
+        "type" : "object",
+        "properties" : {
+          "events" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "properties" : {
+                "date" : {
+                  "type" : "integer"
+                },
+                "key" : {
+                  "type" : "string"
+                },
+                "values" : {
+                  "type" : "array",
+                  "items" : {
+                    "oneOf" : [ {
+                      "type" : "string"
+                    }, {
+                      "type" : "integer"
+                    } ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
       "InvoiceBody" : {
         "type" : "object",
         "properties" : {
@@ -1079,37 +1108,7 @@
         }, {
           "$ref" : "#/components/schemas/InvoiceBody"
         }, {
-          "type" : "object",
-          "properties" : {
-            "events" : {
-              "type" : "array",
-              "items" : {
-                "type" : "object",
-                "properties" : {
-                  "date" : {
-                    "type" : "integer"
-                  },
-                  "key" : {
-                    "type" : "string"
-                  },
-                  "values" : {
-                    "type" : "array",
-                    "items" : {
-                      "oneOf" : [ {
-                        "type" : "string"
-                      }, {
-                        "type" : "integer"
-                      } ]
-                    }
-                  }
-                }
-              },
-              "example" : [ {
-                "name" : "Design and mockup",
-                "articles" : [ 0, 1 ]
-              } ]
-            }
-          }
+          "$ref" : "#/components/schemas/InvoiceBody"
         } ]
       }
     },
