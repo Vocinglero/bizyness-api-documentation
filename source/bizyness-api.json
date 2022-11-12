@@ -38,6 +38,11 @@
       "get" : {
         "tags" : [ "Invoice" ],
         "summary" : "Retrieve all invoices",
+        "parameters" : [ {
+          "$ref" : "#/components/parameters/PageParam"
+        }, {
+          "$ref" : "#/components/parameters/limitParam"
+        } ],
         "responses" : {
           "200" : {
             "description" : "Return the list of invoices",
