@@ -1041,6 +1041,34 @@
               "articles" : [ 0, 1 ]
             } ]
           },
+          "events" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "properties" : {
+                "date" : {
+                  "type" : "integer"
+                },
+                "key" : {
+                  "type" : "string"
+                },
+                "values" : {
+                  "type" : "array",
+                  "items" : {
+                    "oneOf" : [ {
+                      "type" : "string"
+                    }, {
+                      "type" : "integer"
+                    } ]
+                  }
+                }
+              }
+            },
+            "example" : [ {
+              "name" : "Design and mockup",
+              "articles" : [ 0, 1 ]
+            } ]
+          },
           "comments" : {
             "type" : "string",
             "example" : "Payment to be done within 3 days"
