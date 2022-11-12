@@ -2,7 +2,7 @@
   "openapi" : "3.0.3",
   "info" : {
     "title" : "Bizyness API Documentation",
-    "description" : "Bizyness is an accounting software that helps entrepreneurs to manage their activities with ease.\n\n# Introduction\nThis API provides endpoints to manage the data in your Bizyness account.\n\n# Authentication\n\nBizyness offers two forms of authentication:\n- API Key\n- JWT Token\n\n<SecurityDefinitions />\n",
+    "description" : "Bizyness is an accounting software that helps entrepreneurs to manage their activities with ease.\n\n# Introduction\nThis API provides endpoints to manage the data in your Bizyness account.\n\n## Super intro\nfdsgfdsg fdsg fdsg sfdg fd\n\n# Authentication\n\nBizyness offers two forms of authentication:\n- API Key\n- JWT Token\n\n<SecurityDefinitions />\n",
     "version" : "1.0.0"
   },
   "servers" : [ {
@@ -1300,7 +1300,40 @@
           }
         }
       },
-      "InvoiceBody" : {
+      "BillOfSaleEvents" : {
+        "type" : "object",
+        "properties" : {
+          "events" : {
+            "type" : "array",
+            "example" : [ {
+              "date" : 1566493220992,
+              "key" : "invoice.history.paymentAdded",
+              "values" : [ "€", 23 ]
+            }, {
+              "date" : 1566423220992,
+              "key" : "invoice.history.issued",
+              "values" : [ ]
+            } ],
+            "items" : {
+              "$ref" : "#/components/schemas/BillOfSaleEvents_events"
+            }
+          }
+        }
+      },
+      "BillOfSaleAmounts" : {
+        "type" : "object",
+        "properties" : {
+          "total_including_taxes" : {
+            "type" : "number",
+            "example" : 123.54
+          },
+          "total_excluding_taxes" : {
+            "type" : "number",
+            "example" : 98.12
+          }
+        }
+      },
+      "BillOfSaleBody" : {
         "type" : "object",
         "properties" : {
           "currency" : {
@@ -1350,10 +1383,10 @@
             "type" : "boolean"
           },
           "client" : {
-            "$ref" : "#/components/schemas/InvoiceBody_client"
+            "$ref" : "#/components/schemas/BillOfSaleBody_client"
           },
           "billing_address" : {
-            "$ref" : "#/components/schemas/InvoiceBody_billing_address"
+            "$ref" : "#/components/schemas/BillOfSaleBody_billing_address"
           },
           "subject" : {
             "type" : "string",
@@ -1389,7 +1422,7 @@
               "second_hand_good" : false
             } ],
             "items" : {
-              "$ref" : "#/components/schemas/InvoiceBody_lines"
+              "$ref" : "#/components/schemas/BillOfSaleBody_lines"
             }
           },
           "lines_groups" : {
@@ -1399,7 +1432,7 @@
               "articles" : [ 0, 1 ]
             } ],
             "items" : {
-              "$ref" : "#/components/schemas/InvoiceBody_lines_groups"
+              "$ref" : "#/components/schemas/BillOfSaleBody_lines_groups"
             }
           },
           "comments" : {
@@ -1419,26 +1452,39 @@
           "vat_exemption_text" : {
             "type" : "string",
             "example" : "Article 138 CE/2008"
-          },
-          "execution_date" : {
-            "type" : "integer",
-            "example" : 1566493220992
-          },
-          "paid_date" : {
-            "type" : "integer",
-            "example" : 1566493220992
-          },
-          "payment_method" : {
-            "type" : "integer",
-            "example" : 1
           }
         }
+      },
+      "InvoiceBody" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/BillOfSaleBody"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "execution_date" : {
+              "type" : "integer",
+              "example" : 1566493220992
+            },
+            "paid_date" : {
+              "type" : "integer",
+              "example" : 1566493220992
+            },
+            "payment_method" : {
+              "type" : "integer",
+              "example" : 1
+            }
+          }
+        } ]
       },
       "Invoice" : {
         "allOf" : [ {
           "$ref" : "#/components/schemas/CollectionId"
         }, {
           "$ref" : "#/components/schemas/InvoiceBody"
+        }, {
+          "$ref" : "#/components/schemas/BillOfSaleEvents"
+        }, {
+          "$ref" : "#/components/schemas/BillOfSaleAmounts"
         } ]
       },
       "inline_response_200" : {
@@ -1476,7 +1522,28 @@
           }
         }
       },
-      "InvoiceBody_client" : {
+      "BillOfSaleEvents_events" : {
+        "type" : "object",
+        "properties" : {
+          "date" : {
+            "type" : "integer"
+          },
+          "key" : {
+            "type" : "string"
+          },
+          "values" : {
+            "type" : "array",
+            "items" : {
+              "oneOf" : [ {
+                "type" : "string"
+              }, {
+                "type" : "integer"
+              } ]
+            }
+          }
+        }
+      },
+      "BillOfSaleBody_client" : {
         "type" : "object",
         "properties" : {
           "label" : {
@@ -1489,7 +1556,7 @@
           }
         }
       },
-      "InvoiceBody_billing_address" : {
+      "BillOfSaleBody_billing_address" : {
         "type" : "object",
         "properties" : {
           "last_name" : {
@@ -1530,7 +1597,7 @@
           }
         }
       },
-      "InvoiceBody_lines" : {
+      "BillOfSaleBody_lines" : {
         "type" : "object",
         "properties" : {
           "sku" : {
@@ -1573,7 +1640,7 @@
           }
         }
       },
-      "InvoiceBody_lines_groups" : {
+      "BillOfSaleBody_lines_groups" : {
         "type" : "object",
         "properties" : {
           "name" : {
