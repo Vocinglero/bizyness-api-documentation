@@ -840,7 +840,7 @@
           }
         }
       },
-      "BillOfSaveEvents" : {
+      "BillOfSaleEvents" : {
         "type" : "object",
         "properties" : {
           "events" : {
@@ -1108,7 +1108,7 @@
         }, {
           "$ref" : "#/components/schemas/InvoiceBody"
         }, {
-          "$ref" : "#/components/schemas/InvoiceBody"
+          "$ref" : "#/components/schemas/BillOfSaleEvents"
         } ]
       }
     },
