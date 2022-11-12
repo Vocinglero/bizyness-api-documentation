@@ -1109,18 +1109,6 @@
           "vat_exemption_text" : {
             "type" : "string",
             "example" : "Article 138 CE/2008"
-          },
-          "execution_date" : {
-            "type" : "integer",
-            "example" : 1566493220992
-          },
-          "paid_date" : {
-            "type" : "integer",
-            "example" : 1566493220992
-          },
-          "payment_method" : {
-            "type" : "integer",
-            "example" : 1
           }
         }
       },
