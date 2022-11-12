@@ -891,7 +891,7 @@
           }
         }
       },
-      "InvoiceBody" : {
+      "BillOfSaleBody" : {
         "type" : "object",
         "properties" : {
           "currency" : {
@@ -1124,6 +1124,25 @@
           }
         }
       },
+      "InvoiceBody" : [ {
+        "$ref" : "#/components/schemas/CollectionId"
+      }, {
+        "type" : "object",
+        "properties" : {
+          "execution_date" : {
+            "type" : "integer",
+            "example" : 1566493220992
+          },
+          "paid_date" : {
+            "type" : "integer",
+            "example" : 1566493220992
+          },
+          "payment_method" : {
+            "type" : "integer",
+            "example" : 1
+          }
+        }
+      } ],
       "Invoice" : {
         "allOf" : [ {
           "$ref" : "#/components/schemas/CollectionId"
