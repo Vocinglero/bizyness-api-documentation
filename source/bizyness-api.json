@@ -352,6 +352,10 @@
           "schema" : {
             "type" : "string"
           }
+        }, {
+          "$ref" : "#/components/parameters/PageParam"
+        }, {
+          "$ref" : "#/components/parameters/LimitParam"
         } ],
         "responses" : {
           "200" : {
