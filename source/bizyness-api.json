@@ -881,11 +881,11 @@
       "BillOfSaleAmounts" : {
         "type" : "object",
         "properties" : {
-          "total_amount" : {
+          "total_including_taxes" : {
             "type" : "number",
             "example" : 123.54
           },
-          "before_tax_total_amount" : {
+          "total_excluding_taxes" : {
             "type" : "number",
             "example" : 98.12
           }
