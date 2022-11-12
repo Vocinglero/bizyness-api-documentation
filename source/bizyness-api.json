@@ -41,7 +41,7 @@
         "parameters" : [ {
           "$ref" : "#/components/parameters/PageParam"
         }, {
-          "$ref" : "#/components/parameters/limitParam"
+          "$ref" : "#/components/parameters/LimitParam"
         } ],
         "responses" : {
           "200" : {
@@ -586,7 +586,7 @@
   },
   "components" : {
     "parameters" : {
-      "pageParam" : {
+      "PageParam" : {
         "in" : "query",
         "name" : "page",
         "required" : false,
@@ -596,7 +596,7 @@
         },
         "description" : "The page of results to return."
       },
-      "limitParam" : {
+      "LimitParam" : {
         "in" : "query",
         "name" : "limit",
         "required" : false,
