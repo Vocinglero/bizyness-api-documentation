@@ -345,13 +345,7 @@
         "tags" : [ "Article" ],
         "summary" : "Retrieve all invoices",
         "parameters" : [ {
-          "name" : "keyword",
-          "in" : "query",
-          "description" : "Keyword to search for",
-          "required" : false,
-          "schema" : {
-            "type" : "string"
-          }
+          "$ref" : "#/components/parameters/KeywordParam"
         }, {
           "$ref" : "#/components/parameters/PageParam"
         }, {
@@ -611,6 +605,15 @@
           "default" : 100
         },
         "description" : "The number of records to return in one request."
+      },
+      "KeywordParam" : {
+        "in" : "query",
+        "name" : "keyword",
+        "required" : false,
+        "schema" : {
+          "type" : "string"
+        },
+        "description" : "Keyword to search for."
       }
     },
     "responses" : {
