@@ -613,7 +613,7 @@
         "schema" : {
           "type" : "string"
         },
-        "description" : "Keyword to search for."
+        "description" : "The keyword to search for."
       }
     },
     "responses" : {
