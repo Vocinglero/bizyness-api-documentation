@@ -59,9 +59,10 @@
           "name" : "status",
           "required" : false,
           "schema" : {
-            "$ref" : "#/components/schemas/InvoiceStatus"
+            "type" : "string",
+            "example" : "draft"
           },
-          "description" : "The page of results to return"
+          "description" : "Filter invoices by their status"
         } ],
         "responses" : {
           "200" : {
@@ -1950,22 +1951,11 @@
           }
         }
       },
-      "InvoiceStatus" : {
-        "type" : "object",
-        "properties" : {
-          "status" : {
-            "enum" : [ "draft", "not_paid", "paid", "cancelled", "overdue" ],
-            "type" : "string"
-          }
-        }
-      },
       "Invoice" : {
         "allOf" : [ {
           "$ref" : "#/components/schemas/CollectionId"
         }, {
           "$ref" : "#/components/schemas/InvoiceBody"
-        }, {
-          "$ref" : "#/components/schemas/InvoiceStatus"
         }, {
           "$ref" : "#/components/schemas/BillOfSaleEvents"
         }, {
@@ -1973,6 +1963,10 @@
         }, {
           "type" : "object",
           "properties" : {
+            "status" : {
+              "enum" : [ "draft", "not_paid", "paid", "cancelled", "overdue" ],
+              "type" : "string"
+            },
             "paid_date" : {
               "type" : "integer",
               "example" : 1566493220992
