@@ -1077,6 +1077,49 @@
           }
         }
       },
+      "BillOfSaleLine" : {
+        "type" : "object",
+        "properties" : {
+          "sku" : {
+            "type" : "string"
+          },
+          "description" : {
+            "type" : "string"
+          },
+          "title" : {
+            "type" : "string"
+          },
+          "type" : {
+            "type" : "integer"
+          },
+          "price" : {
+            "type" : "number"
+          },
+          "quantity" : {
+            "type" : "number"
+          },
+          "unit" : {
+            "enum" : [ "piece", "hour", "day", "meter", "kilometer", "kilogram", "square_meter" ],
+            "type" : "string"
+          },
+          "discount_amount" : {
+            "type" : "number"
+          },
+          "discount_type" : {
+            "enum" : [ "percentage", "fixed" ],
+            "type" : "string"
+          },
+          "vat" : {
+            "type" : "number"
+          },
+          "origin_country" : {
+            "type" : "string"
+          },
+          "second_hand_good" : {
+            "type" : "boolean"
+          }
+        }
+      },
       "BillOfSaleBody" : {
         "type" : "object",
         "properties" : {
@@ -1084,9 +1127,8 @@
             "type" : "string",
             "example" : "EUR"
           },
-          "status" : {
-            "enum" : [ "draft", "not_paid", "paid", "cancelled" ],
-            "type" : "string"
+          "is_draft" : {
+            "type" : "boolean"
           },
           "payment_term" : {
             "type" : "integer",
@@ -1139,47 +1181,7 @@
           "lines" : {
             "type" : "array",
             "items" : {
-              "type" : "object",
-              "properties" : {
-                "sku" : {
-                  "type" : "string"
-                },
-                "description" : {
-                  "type" : "string"
-                },
-                "title" : {
-                  "type" : "string"
-                },
-                "type" : {
-                  "type" : "integer"
-                },
-                "price" : {
-                  "type" : "number"
-                },
-                "quantity" : {
-                  "type" : "number"
-                },
-                "unit" : {
-                  "enum" : [ "piece", "hour", "day", "meter", "kilometer", "kilogram", "square_meter" ],
-                  "type" : "string"
-                },
-                "discount_amount" : {
-                  "type" : "number"
-                },
-                "discount_type" : {
-                  "enum" : [ "percentage", "fixed" ],
-                  "type" : "string"
-                },
-                "vat" : {
-                  "type" : "number"
-                },
-                "origin_country" : {
-                  "type" : "string"
-                },
-                "second_hand_good" : {
-                  "type" : "boolean"
-                }
-              }
+              "$ref" : "#/components/schemas/BillOfSaleLine"
             },
             "example" : [ {
               "sku" : "AX123",
@@ -1280,6 +1282,14 @@
           "$ref" : "#/components/schemas/BillOfSaleEvents"
         }, {
           "$ref" : "#/components/schemas/BillOfSaleAmounts"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "status" : {
+              "enum" : [ "draft", "not_paid", "paid", "cancelled" ],
+              "type" : "string"
+            }
+          }
         } ]
       }
     },
