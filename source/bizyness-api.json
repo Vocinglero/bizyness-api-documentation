@@ -271,7 +271,7 @@
       },
       "post" : {
         "tags" : [ "Invoice" ],
-        "summary" : "Create an payment",
+        "summary" : "Create an payment.",
         "parameters" : [ {
           "name" : "id",
           "in" : "path",
@@ -765,7 +765,7 @@
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/InvoiceBody"
+                "$ref" : "#/components/schemas/Invoice"
               }
             }
           },
@@ -1309,7 +1309,7 @@
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/ArticleBody"
+                "$ref" : "#/components/schemas/Article"
               }
             }
           },
@@ -1729,7 +1729,7 @@
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/PaymentBody"
+                "$ref" : "#/components/schemas/Payment"
               }
             }
           },
