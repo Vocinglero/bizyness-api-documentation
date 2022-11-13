@@ -465,7 +465,7 @@
       },
       "patch" : {
         "tags" : [ "Invoice" ],
-        "summary" : "Update an invoice partially",
+        "summary" : "Update an invoice (partial)",
         "requestBody" : {
           "required" : true,
           "content" : {
@@ -815,7 +815,7 @@
       },
       "patch" : {
         "tags" : [ "Article" ],
-        "summary" : "Update an article partially",
+        "summary" : "Update an article (partial)",
         "requestBody" : {
           "required" : true,
           "content" : {
@@ -1047,7 +1047,7 @@
       },
       "patch" : {
         "tags" : [ "Activity" ],
-        "summary" : "Update an activity partially",
+        "summary" : "Update an activity (partial)",
         "requestBody" : {
           "required" : true,
           "content" : {
@@ -1403,7 +1403,7 @@
       },
       "patch" : {
         "tags" : [ "Client" ],
-        "summary" : "Update a client partially",
+        "summary" : "Update a client (partial)",
         "requestBody" : {
           "required" : true,
           "content" : {
@@ -1600,7 +1600,7 @@
       },
       "patch" : {
         "tags" : [ "Payment" ],
-        "summary" : "Update a payment partially",
+        "summary" : "Update a payment (partial)",
         "requestBody" : {
           "required" : true,
           "content" : {

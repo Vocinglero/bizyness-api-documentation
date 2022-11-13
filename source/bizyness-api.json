@@ -920,7 +920,7 @@
       },
       "patch" : {
         "tags" : [ "Invoice" ],
-        "summary" : "Update an invoice partially",
+        "summary" : "Update an invoice (partial)",
         "parameters" : [ {
           "name" : "id",
           "in" : "path",
@@ -1627,7 +1627,7 @@
       },
       "patch" : {
         "tags" : [ "Article" ],
-        "summary" : "Update an article partially",
+        "summary" : "Update an article (partial)",
         "parameters" : [ {
           "name" : "id",
           "in" : "path",
@@ -2116,7 +2116,7 @@
       },
       "patch" : {
         "tags" : [ "Activity" ],
-        "summary" : "Update an activity partially",
+        "summary" : "Update an activity (partial)",
         "parameters" : [ {
           "name" : "id",
           "in" : "path",
@@ -2869,7 +2869,7 @@
       },
       "patch" : {
         "tags" : [ "Client" ],
-        "summary" : "Update a client partially",
+        "summary" : "Update a client (partial)",
         "parameters" : [ {
           "name" : "id",
           "in" : "path",
@@ -3290,7 +3290,7 @@
       },
       "patch" : {
         "tags" : [ "Payment" ],
-        "summary" : "Update a payment partially",
+        "summary" : "Update a payment (partial)",
         "parameters" : [ {
           "name" : "id",
           "in" : "path",
@@ -3920,7 +3920,7 @@
       "ActivityList" : {
         "type" : "object",
         "properties" : {
-          "payments" : {
+          "activities" : {
             "type" : "array",
             "items" : {
               "$ref" : "#/components/schemas/Activity"
