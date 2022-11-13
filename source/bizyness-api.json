@@ -81,6 +81,38 @@
             "default" : 100
           }
         }, {
+          "name" : "keyword",
+          "in" : "query",
+          "description" : "The keyword to search for",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "date_min",
+          "in" : "query",
+          "description" : "Filter invoices created at or after date",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer",
+            "example" : 1566493220992
+          }
+        }, {
+          "name" : "date_max",
+          "in" : "query",
+          "description" : "Filter invoices created at or before date",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer",
+            "example" : 1586493220992
+          }
+        }, {
           "name" : "status",
           "in" : "query",
           "description" : "Filter invoices by their status",
@@ -95,6 +127,17 @@
           "name" : "client",
           "in" : "query",
           "description" : "Filter invoices by client",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "example" : "5d5eca258126ab647499f9bf"
+          }
+        }, {
+          "name" : "activity",
+          "in" : "query",
+          "description" : "Filter invoices by activity",
           "required" : false,
           "style" : "form",
           "explode" : true,
@@ -4486,6 +4529,30 @@
         "explode" : true,
         "schema" : {
           "type" : "string"
+        }
+      },
+      "DateMinParam" : {
+        "name" : "date_min",
+        "in" : "query",
+        "description" : "Filter invoices created at or after date",
+        "required" : false,
+        "style" : "form",
+        "explode" : true,
+        "schema" : {
+          "type" : "integer",
+          "example" : 1566493220992
+        }
+      },
+      "DateMaxParam" : {
+        "name" : "date_max",
+        "in" : "query",
+        "description" : "Filter invoices created at or before date",
+        "required" : false,
+        "style" : "form",
+        "explode" : true,
+        "schema" : {
+          "type" : "integer",
+          "example" : 1586493220992
         }
       }
     },
