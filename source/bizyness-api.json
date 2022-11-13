@@ -3,7 +3,7 @@
   "info" : {
     "title" : "Bizyness API Documentation",
     "version" : "1.0.0",
-    "description" : "Bizyness is an accounting software that helps entrepreneurs to manage their activities with ease.\n\n# Introduction\nThis API provides endpoints to manage the data in your Bizyness account.\n\n## Super intro\nfdsgfdsg fdsg fdsg sfdg fd\n\n# Authentication\n\nBizyness offers two forms of authentication:\n- API Key\n- JWT Token\n\n<SecurityDefinitions />\n"
+    "description" : "Bizyness is an accounting software that helps entrepreneurs to manage their activities with ease.\n\n# Introduction\nThis API provides endpoints to manage the data in your Bizyness account.\n\n# Authentication\n\nBizyness offers two forms of authentication:\n- API Key\n- JWT Token\n\n<SecurityDefinitions />\n"
   },
   "servers" : [ {
     "description" : "SwaggerHub API Auto Mocking",
@@ -42,8 +42,6 @@
           "$ref" : "#/components/parameters/PageParam"
         }, {
           "$ref" : "#/components/parameters/LimitParam"
-        }, {
-          "$ref" : "#/components/parameters/KeywordParam"
         } ],
         "responses" : {
           "200" : {
@@ -592,7 +590,7 @@
         "required" : false,
         "schema" : {
           "type" : "integer",
-          "minimum" : 0
+          "minimum" : 1
         },
         "description" : "The page of results to return."
       },
