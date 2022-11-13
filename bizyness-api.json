@@ -37,7 +37,7 @@
     "/invoices" : {
       "get" : {
         "tags" : [ "Invoice" ],
-        "summary" : "Retrieve all invoices",
+        "summary" : "List all invoices",
         "parameters" : [ {
           "$ref" : "#/components/parameters/PageParam"
         }, {
@@ -67,7 +67,7 @@
       },
       "post" : {
         "tags" : [ "Invoice" ],
-        "summary" : "Create a new invoice",
+        "summary" : "Create an invoice",
         "requestBody" : {
           "required" : true,
           "content" : {
@@ -101,6 +101,42 @@
         }
       }
     },
+    "/invoices/{id}/payments" : {
+      "parameters" : [ {
+        "name" : "id",
+        "in" : "path",
+        "description" : "Invoice ID",
+        "required" : true,
+        "schema" : {
+          "type" : "string"
+        }
+      } ],
+      "get" : {
+        "tags" : [ "Invoice" ],
+        "summary" : "Retrieve payments",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Invoice"
+                }
+              }
+            },
+            "description" : "List of payments"
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      }
+    },
     "/invoices/{id}/download" : {
       "parameters" : [ {
         "name" : "id",
@@ -113,7 +149,7 @@
       } ],
       "get" : {
         "tags" : [ "Invoice" ],
-        "summary" : "Download invoice PDF by ID",
+        "summary" : "Download PDF file",
         "responses" : {
           "200" : {
             "description" : "Return the PDF file",
@@ -156,7 +192,7 @@
       } ],
       "get" : {
         "tags" : [ "Invoice" ],
-        "summary" : "Find invoice by ID",
+        "summary" : "Retrieve an invoice",
         "responses" : {
           "200" : {
             "description" : "Return a single invoice",
@@ -181,7 +217,7 @@
       },
       "delete" : {
         "tags" : [ "Invoice" ],
-        "summary" : "Delete invoice by ID",
+        "summary" : "Delete an invoice",
         "responses" : {
           "204" : {
             "description" : "The invoice was deleted successfully"
@@ -199,7 +235,7 @@
       },
       "put" : {
         "tags" : [ "Invoice" ],
-        "summary" : "Update a complete invoice",
+        "summary" : "Update an invoice",
         "requestBody" : {
           "required" : true,
           "content" : {
@@ -234,7 +270,7 @@
       },
       "patch" : {
         "tags" : [ "Invoice" ],
-        "summary" : "Update an invoice partially",
+        "summary" : "Update an invoice",
         "requestBody" : {
           "required" : true,
           "content" : {
@@ -311,7 +347,7 @@
     "/countries" : {
       "get" : {
         "tags" : [ "Miscellaneous" ],
-        "summary" : "Retrieve all countries",
+        "summary" : "List all countries",
         "responses" : {
           "200" : {
             "description" : "Return the list of countries",
@@ -343,7 +379,7 @@
     "/articles" : {
       "get" : {
         "tags" : [ "Article" ],
-        "summary" : "Retrieve all invoices",
+        "summary" : "List all invoices",
         "parameters" : [ {
           "$ref" : "#/components/parameters/KeywordParam"
         }, {
@@ -383,7 +419,7 @@
       },
       "post" : {
         "tags" : [ "Article" ],
-        "summary" : "Create a new article",
+        "summary" : "Create an article",
         "requestBody" : {
           "required" : true,
           "content" : {
@@ -429,7 +465,7 @@
       } ],
       "get" : {
         "tags" : [ "Article" ],
-        "summary" : "Find article by ID",
+        "summary" : "Retrieve an article",
         "responses" : {
           "200" : {
             "description" : "Return a single article",
@@ -454,7 +490,7 @@
       },
       "delete" : {
         "tags" : [ "Article" ],
-        "summary" : "Delete article by ID",
+        "summary" : "Delete an article",
         "responses" : {
           "204" : {
             "description" : "The article was deleted successfully"
@@ -472,7 +508,7 @@
       },
       "put" : {
         "tags" : [ "Article" ],
-        "summary" : "Update a complete article",
+        "summary" : "Update an article",
         "requestBody" : {
           "required" : true,
           "content" : {
@@ -507,7 +543,7 @@
       },
       "patch" : {
         "tags" : [ "Article" ],
-        "summary" : "Update an article partially",
+        "summary" : "Update an article",
         "requestBody" : {
           "required" : true,
           "content" : {
