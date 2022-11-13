@@ -1192,7 +1192,7 @@
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/Account"
+                "$ref" : "#/components/schemas/AccountBody"
               }
             }
           }
@@ -2891,13 +2891,9 @@
           }
         } ]
       },
-      "Account" : {
+      "AccountBody" : {
         "type" : "object",
         "properties" : {
-          "billing_provider" : {
-            "type" : "string",
-            "example" : "chargebee"
-          },
           "first_name" : {
             "type" : "string",
             "example" : "John"
@@ -2906,19 +2902,44 @@
             "type" : "string",
             "example" : "Doe"
           },
-          "display_name" : {
-            "type" : "string",
-            "example" : "John Doe"
-          },
           "email" : {
             "type" : "string",
             "example" : "john@google.com"
-          },
-          "subscription_status" : {
-            "enum" : [ "trial", "active", "suspended" ],
-            "type" : "string"
           }
         }
+      },
+      "Account" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/AccountBody"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "billing_provider" : {
+              "type" : "string",
+              "example" : "chargebee"
+            },
+            "first_name" : {
+              "type" : "string",
+              "example" : "John"
+            },
+            "last_name" : {
+              "type" : "string",
+              "example" : "Doe"
+            },
+            "display_name" : {
+              "type" : "string",
+              "example" : "John Doe"
+            },
+            "email" : {
+              "type" : "string",
+              "example" : "john@google.com"
+            },
+            "subscription_status" : {
+              "enum" : [ "trial", "active", "suspended" ],
+              "type" : "string"
+            }
+          }
+        } ]
       }
     },
     "securitySchemes" : {

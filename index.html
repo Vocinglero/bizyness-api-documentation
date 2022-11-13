@@ -642,6 +642,9 @@
                     <a href="#tocS_Invoice" class="toc-h2 toc-link" data-title="Invoice">Invoice</a>
                   </li>
                   <li>
+                    <a href="#tocS_AccountBody" class="toc-h2 toc-link" data-title="AccountBody">AccountBody</a>
+                  </li>
+                  <li>
                     <a href="#tocS_Account" class="toc-h2 toc-link" data-title="Account">Account</a>
                   </li>
               </ul>
@@ -11804,11 +11807,11 @@ ApiKey, JWTAuth
 <p>200 Response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"billing_provider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"chargebee"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john@google.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"billing_provider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"chargebee"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"subscription_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"trial"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -11885,22 +11888,19 @@ ApiKey, JWTAuth
   <span class="nt">--header</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
   <span class="nt">--header</span> <span class="s1">'X-Api-Key: API_KEY'</span> <span class="se">\</span>
-  <span class="nt">--data</span> <span class="s1">'{"billing_provider":"chargebee","first_name":"John","last_name":"Doe","display_name":"John Doe","email":"john@google.com","subscription_status":"trial"}'</span>
+  <span class="nt">--data</span> <span class="s1">'{"first_name":"John","last_name":"Doe","email":"john@google.com"}'</span>
 </code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">PUT</span> <span class="nn">/lpb/bizyness-api/1.0.0/users/me</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">X-Api-Key</span><span class="p">:</span> <span class="s">API_KEY</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">virtserver.swaggerhub.com</span>
-<span class="na">Content-Length</span><span class="p">:</span> <span class="s">152</span>
+<span class="na">Content-Length</span><span class="p">:</span> <span class="s">65</span>
 
-<span class="p">{</span><span class="nl">"billing_provider"</span><span class="p">:</span><span class="s2">"chargebee"</span><span class="p">,</span><span class="nl">"first_name"</span><span class="p">:</span><span class="s2">"John"</span><span class="p">,</span><span class="nl">"last_name"</span><span class="p">:</span><span class="s2">"Doe"</span><span class="p">,</span><span class="nl">"display_name"</span><span class="p">:</span><span class="s2">"John Doe"</span><span class="p">,</span><span class="nl">"email"</span><span class="p">:</span><span class="s2">"john@google.com"</span><span class="p">,</span><span class="nl">"subscription_status"</span><span class="p">:</span><span class="s2">"trial"</span><span class="p">}</span><span class="w">
+<span class="p">{</span><span class="nl">"first_name"</span><span class="p">:</span><span class="s2">"John"</span><span class="p">,</span><span class="nl">"last_name"</span><span class="p">:</span><span class="s2">"Doe"</span><span class="p">,</span><span class="nl">"email"</span><span class="p">:</span><span class="s2">"john@google.com"</span><span class="p">}</span><span class="w">
 </span></code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
-  <span class="dl">"</span><span class="s2">billing_provider</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">chargebee</span><span class="dl">"</span><span class="p">,</span>
   <span class="dl">"</span><span class="s2">first_name</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">John</span><span class="dl">"</span><span class="p">,</span>
   <span class="dl">"</span><span class="s2">last_name</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Doe</span><span class="dl">"</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">display_name</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">John Doe</span><span class="dl">"</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">email</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">john@google.com</span><span class="dl">"</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">subscription_status</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">trial</span><span class="dl">"</span>
+  <span class="dl">"</span><span class="s2">email</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">john@google.com</span><span class="dl">"</span>
 <span class="p">});</span>
 
 <span class="kd">const</span> <span class="nx">xhr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
@@ -11932,7 +11932,7 @@ ApiKey, JWTAuth
 <span class="n">request</span><span class="p">[</span><span class="s2">"Content-Type"</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'application/json'</span>
 <span class="n">request</span><span class="p">[</span><span class="s2">"Accept"</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'application/json'</span>
 <span class="n">request</span><span class="p">[</span><span class="s2">"X-Api-Key"</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'API_KEY'</span>
-<span class="n">request</span><span class="p">.</span><span class="nf">body</span> <span class="o">=</span> <span class="s2">"{</span><span class="se">\"</span><span class="s2">billing_provider</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">chargebee</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">first_name</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">John</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">last_name</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">Doe</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">display_name</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">John Doe</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">email</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">john@google.com</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">subscription_status</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">trial</span><span class="se">\"</span><span class="s2">}"</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">body</span> <span class="o">=</span> <span class="s2">"{</span><span class="se">\"</span><span class="s2">first_name</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">John</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">last_name</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">Doe</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">email</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">john@google.com</span><span class="se">\"</span><span class="s2">}"</span>
 
 <span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
 <span class="nb">puts</span> <span class="n">response</span><span class="p">.</span><span class="nf">read_body</span>
@@ -11940,7 +11940,7 @@ ApiKey, JWTAuth
 
 <span class="n">conn</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="n">client</span><span class="p">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="s">"virtserver.swaggerhub.com"</span><span class="p">)</span>
 
-<span class="n">payload</span> <span class="o">=</span> <span class="s">"{</span><span class="se">\"</span><span class="s">billing_provider</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">chargebee</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">first_name</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">John</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">last_name</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">Doe</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">display_name</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">John Doe</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">email</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">john@google.com</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">subscription_status</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">trial</span><span class="se">\"</span><span class="s">}"</span>
+<span class="n">payload</span> <span class="o">=</span> <span class="s">"{</span><span class="se">\"</span><span class="s">first_name</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">John</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">last_name</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">Doe</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">email</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">john@google.com</span><span class="se">\"</span><span class="s">}"</span>
 
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
@@ -11966,7 +11966,7 @@ ApiKey, JWTAuth
   <span class="no">CURLOPT_TIMEOUT</span> <span class="o">=&gt;</span> <span class="mi">30</span><span class="p">,</span>
   <span class="no">CURLOPT_HTTP_VERSION</span> <span class="o">=&gt;</span> <span class="no">CURL_HTTP_VERSION_1_1</span><span class="p">,</span>
   <span class="no">CURLOPT_CUSTOMREQUEST</span> <span class="o">=&gt;</span> <span class="s2">"PUT"</span><span class="p">,</span>
-  <span class="no">CURLOPT_POSTFIELDS</span> <span class="o">=&gt;</span> <span class="s2">"{\"</span><span class="n">billing_provider</span><span class="err">\</span><span class="s2">":</span><span class="se">\"</span><span class="s2">chargebee</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">first_name</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">John</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">last_name</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">Doe</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">display_name</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">John Doe</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">email</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">john@google.com</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">subscription_status</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">trial</span><span class="se">\"</span><span class="s2">}"</span><span class="p">,</span>
+  <span class="no">CURLOPT_POSTFIELDS</span> <span class="o">=&gt;</span> <span class="s2">"</span><span class="si">{</span><span class="nv">\"first_name\":\"John\",\"last_name\":\"Doe\",\"email\":\"john@google.com\"</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
   <span class="no">CURLOPT_HTTPHEADER</span> <span class="o">=&gt;</span> <span class="p">[</span>
     <span class="s2">"Accept: application/json"</span><span class="p">,</span>
     <span class="s2">"Content-Type: application/json"</span><span class="p">,</span>
@@ -11988,7 +11988,7 @@ ApiKey, JWTAuth
   <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"Content-Type"</span><span class="o">,</span> <span class="s">"application/json"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"Accept"</span><span class="o">,</span> <span class="s">"application/json"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"X-Api-Key"</span><span class="o">,</span> <span class="s">"API_KEY"</span><span class="o">)</span>
-  <span class="o">.</span><span class="na">body</span><span class="o">(</span><span class="s">"{\"billing_provider\":\"chargebee\",\"first_name\":\"John\",\"last_name\":\"Doe\",\"display_name\":\"John Doe\",\"email\":\"john@google.com\",\"subscription_status\":\"trial\"}"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">body</span><span class="o">(</span><span class="s">"{\"first_name\":\"John\",\"last_name\":\"Doe\",\"email\":\"john@google.com\"}"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">asString</span><span class="o">();</span>
 </code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
 
@@ -12003,7 +12003,7 @@ ApiKey, JWTAuth
 
     <span class="n">url</span> <span class="o">:=</span> <span class="s">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/users/me"</span>
 
-    <span class="n">payload</span> <span class="o">:=</span> <span class="n">strings</span><span class="o">.</span><span class="n">NewReader</span><span class="p">(</span><span class="s">"{</span><span class="se">\"</span><span class="s">billing_provider</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">chargebee</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">first_name</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">John</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">last_name</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">Doe</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">display_name</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">John Doe</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">email</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">john@google.com</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">subscription_status</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">trial</span><span class="se">\"</span><span class="s">}"</span><span class="p">)</span>
+    <span class="n">payload</span> <span class="o">:=</span> <span class="n">strings</span><span class="o">.</span><span class="n">NewReader</span><span class="p">(</span><span class="s">"{</span><span class="se">\"</span><span class="s">first_name</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">John</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">last_name</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">Doe</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">email</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">john@google.com</span><span class="se">\"</span><span class="s">}"</span><span class="p">)</span>
 
     <span class="n">req</span><span class="p">,</span> <span class="n">_</span> <span class="o">:=</span> <span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"PUT"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">payload</span><span class="p">)</span>
 
@@ -12027,12 +12027,9 @@ ApiKey, JWTAuth
 <p>Body parameter</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"billing_provider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"chargebee"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john@google.com"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"subscription_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"trial"</span><span class="w">
+  </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john@google.com"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <h3 id="update-current-account-parameters">Parameters</h3>
@@ -12049,7 +12046,7 @@ ApiKey, JWTAuth
 <tr>
 <td>body</td>
 <td>body</td>
-<td><a href="#schemaaccount">Account</a></td>
+<td><a href="#schemaaccountbody">AccountBody</a></td>
 <td>true</td>
 <td>none</td>
 </tr>
@@ -12061,11 +12058,11 @@ ApiKey, JWTAuth
 <p>200 Response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"billing_provider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"chargebee"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john@google.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"billing_provider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"chargebee"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"subscription_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"trial"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -12310,11 +12307,11 @@ ApiKey, JWTAuth
 <p>200 Response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"billing_provider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"chargebee"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john@google.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"billing_provider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"chargebee"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"subscription_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"trial"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -15829,21 +15826,18 @@ ApiKey, JWTAuth
 </tr>
 </tbody></table>
 
-<h2 id="tocS_Account">Account</h2>
+<h2 id="tocS_AccountBody">AccountBody</h2>
 
 <!-- backwards compatibility -->
 
-<p><a id="schemaaccount"></a>
-<a id="schema_Account"></a>
-<a id="tocSaccount"></a>
-<a id="tocsaccount"></a></p>
+<p><a id="schemaaccountbody"></a>
+<a id="schema_AccountBody"></a>
+<a id="tocSaccountbody"></a>
+<a id="tocsaccountbody"></a></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"billing_provider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"chargebee"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john@google.com"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"subscription_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"trial"</span><span class="w">
+  </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john@google.com"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div><h3 id='properties-41'>Properties</h3>
@@ -15856,13 +15850,6 @@ ApiKey, JWTAuth
 <th>Description</th>
 </tr>
 </thead><tbody>
-<tr>
-<td>billing_provider</td>
-<td>string</td>
-<td>false</td>
-<td>none</td>
-<td>none</td>
-</tr>
 <tr>
 <td>first_name</td>
 <td>string</td>
@@ -15878,21 +15865,107 @@ ApiKey, JWTAuth
 <td>none</td>
 </tr>
 <tr>
-<td>display_name</td>
-<td>string</td>
-<td>false</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
 <td>email</td>
 <td>string</td>
 <td>false</td>
 <td>none</td>
 <td>none</td>
 </tr>
+</tbody></table>
+
+<h2 id="tocS_Account">Account</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaaccount"></a>
+<a id="schema_Account"></a>
+<a id="tocSaccount"></a>
+<a id="tocsaccount"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john@google.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"billing_provider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"chargebee"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"subscription_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"trial"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h3 id='properties-42'>Properties</h3>
+<p>allOf</p>
+
+<table><thead>
 <tr>
-<td>subscription_status</td>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td><a href="#schemaaccountbody">AccountBody</a></td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<p>and</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td>object</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» billing_provider</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» first_name</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» last_name</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» display_name</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» email</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» subscription_status</td>
 <td>string</td>
 <td>false</td>
 <td>none</td>
