@@ -74,6 +74,33 @@
             "example" : "5d5eca258126ab647499f9bf"
           },
           "description" : "Filter invoices by client"
+        }, {
+          "in" : "query",
+          "name" : "activity",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "example" : "5d5eca258126ab647499f9bf"
+          },
+          "description" : "Filter invoices by activity"
+        }, {
+          "in" : "query",
+          "name" : "date_min",
+          "required" : false,
+          "schema" : {
+            "type" : "integer",
+            "example" : 1566493220992
+          },
+          "description" : "Filter invoices created at or after date"
+        }, {
+          "in" : "query",
+          "name" : "date_max",
+          "required" : false,
+          "schema" : {
+            "type" : "integer",
+            "example" : 1586493220992
+          },
+          "description" : "Filter invoices created at or before date"
         } ],
         "responses" : {
           "200" : {
