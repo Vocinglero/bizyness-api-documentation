@@ -57,6 +57,10 @@
         }, {
           "$ref" : "#/components/parameters/KeywordParam"
         }, {
+          "$ref" : "#/components/parameters/DateMinParam"
+        }, {
+          "$ref" : "#/components/parameters/DateMaxParam"
+        }, {
           "in" : "query",
           "name" : "status",
           "required" : false,
@@ -83,24 +87,6 @@
             "example" : "5d5eca258126ab647499f9bf"
           },
           "description" : "Filter invoices by activity"
-        }, {
-          "in" : "query",
-          "name" : "date_min",
-          "required" : false,
-          "schema" : {
-            "type" : "integer",
-            "example" : 1566493220992
-          },
-          "description" : "Filter invoices created at or after date"
-        }, {
-          "in" : "query",
-          "name" : "date_max",
-          "required" : false,
-          "schema" : {
-            "type" : "integer",
-            "example" : 1586493220992
-          },
-          "description" : "Filter invoices created at or before date"
         } ],
         "responses" : {
           "200" : {
@@ -1753,6 +1739,26 @@
           "type" : "string"
         },
         "description" : "The keyword to search for"
+      },
+      "DateMinParam" : {
+        "in" : "query",
+        "name" : "date_min",
+        "required" : false,
+        "schema" : {
+          "type" : "integer",
+          "example" : 1566493220992
+        },
+        "description" : "Filter invoices created at or after date"
+      },
+      "DateMaxParam" : {
+        "in" : "query",
+        "name" : "date_max",
+        "required" : false,
+        "schema" : {
+          "type" : "integer",
+          "example" : 1586493220992
+        },
+        "description" : "Filter invoices created at or before date"
       }
     },
     "responses" : {
