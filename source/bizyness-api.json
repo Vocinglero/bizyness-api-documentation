@@ -1565,7 +1565,7 @@
             "type" : "integer",
             "example" : 3214
           },
-          "payments" : {
+          "transactions" : {
             "type" : "array",
             "items" : {
               "$ref" : "#/components/schemas/BankTransaction"
