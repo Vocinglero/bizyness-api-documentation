@@ -23,9 +23,6 @@
     "name" : "Quote",
     "description" : "Managing your quotes"
   }, {
-    "name" : "Activity",
-    "description" : "Managing your activities"
-  }, {
     "name" : "Payment",
     "description" : "Managing your payments"
   }, {
@@ -41,10 +38,13 @@
     "name" : "Article",
     "description" : "Managing your articles"
   }, {
-    "name" : "Report",
+    "name" : "Bank",
     "description" : "Managing your reports"
   }, {
-    "name" : "Bank",
+    "name" : "Activity",
+    "description" : "Managing your activities"
+  }, {
+    "name" : "Report",
     "description" : "Managing your reports"
   }, {
     "name" : "Miscellaneous",
@@ -1101,6 +1101,16 @@
             "minimum" : 1,
             "type" : "integer"
           }
+        }, {
+          "name" : "client",
+          "in" : "query",
+          "description" : "Filter revenue by client",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
         } ],
         "responses" : {
           "200" : {
@@ -1157,6 +1167,16 @@
           "explode" : true,
           "schema" : {
             "type" : "integer"
+          }
+        }, {
+          "name" : "client",
+          "in" : "query",
+          "description" : "Filter revenue by client",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
           }
         } ],
         "responses" : {
