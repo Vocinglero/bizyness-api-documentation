@@ -2,7 +2,7 @@
   "openapi" : "3.0.3",
   "info" : {
     "title" : "API Reference",
-    "description" : "# Overview\n\n<mark>This API in under construction and should not be used in a production environment</mark>\n\nThe Bizyness API allows customers to create and search for accounting objects such as invoices, clients, payments and to generate various reports.\n\nThis documentation provides information about each endpoint in the API. The right-hand pane of this page shows example requests and responses for each endpoint in cURL and many other languages.\n\n## Getting started\nFollow these steps to start licensing media:\n\n1. Create a Bizyness account\n\n2. Go in your Settings and create an API Key, you can also use the JWT method to authenticate your requests\n\n## Request/Response Format\nThe default response format is JSON. Requests with a message-body use plain JSON to set or update resource attributes. Successful requests will return a 200 OK HTTP status.\n\nSome general information about responses:\n\n- Dates are returned in Unix timestamp, see [Unix time](https://en.wikipedia.org/wiki/Unix_time).\n- Resource IDs are returned as strings.\n- Any decimal monetary amount, such as prices or totals, will be returned as numbers with two decimal places.\n- Other amounts, such as item counts, are returned as integers.\n\n## Errors\nThe API returns error codes such as 400, 403, 404, and 500 along with information about the error. Here are some common error responses:\n\nA 400 Bad Request response often means that the request body is improperly formatted or missing required fields. In the case of missing fields, the response includes the name of the field that is missing, as in the example in the right-hand column.\n\nA 401 Unauthorized response often means that the request did not include a valid authentication.\n\nA 404 Not Found response can mean that the object you are trying to access does not exist.\n\nA 500 Internal Server Error response means that an error happened on the server. This can mean that the request is not valid, such as if you try to delete or edit a collection that does not exist, or if the API otherwise can't do what you requested. It can also mean a temporary problem with the API. Check your request and try again or contact us.\n\n## Pagination\nRequests that return multiple items will be paginated to 100 items by default. Alternatively the items per page can be specified with the `?limit` parameter:\n\n`GET /invoices?limit=200`\n\nYou can specify further pages with the `?page` parameter:\n\n`GET /invoices?page=2`\n\nPage number is 1-based and omitting the `?page` parameter will return the first page.\n\n## Rate limits\nAll applications are limited to a certain number of API requests per minute. If your application exceeds its limit, the API returns an error response with a status code of 429.\n\nThe API supports a limit of 10 requests per second.\n",
+    "description" : "# Overview\n\n<mark>This API in under construction and should not be used in a production environment</mark>\n\nThe Bizyness API allows customers to create and search for accounting objects such as invoices, clients, payments and to generate various reports.\n\nThis documentation provides information about each endpoint in the API. The right-hand pane of this page shows example requests and responses for each endpoint in cURL and many other languages.\n\n## Getting started\nFollow these steps to start licensing media:\n\n1. Create a Bizyness account\n\n2. Go in your Settings and create an API Key, you can also use the JWT method to authenticate your requests\n\n## Request/Response Format\nThe default response format is JSON. Requests with a message-body use plain JSON to set or update resource attributes. Successful requests will return a 200 OK HTTP status.\n\nSome general information about responses:\n\n- Dates are returned in Unix timestamp, see [Unix time](https://en.wikipedia.org/wiki/Unix_time).\n- Resource IDs are returned as strings.\n- Any decimal monetary amount, such as prices or totals, will be returned as numbers with two decimal places.\n- Other amounts, such as item counts, are returned as integers.\n\n## Errors\nThe API returns error codes such as 400, 403, 404, and 500 along with information about the error. Here are some common error responses:\n\nA 400 Bad Request response often means that the request body is improperly formatted or missing required fields. In the case of missing fields, the response includes the name of the field that is missing, as in the example in the right-hand column.\n\nA 401 Unauthorized response often means that the request did not include a valid authentication.\n\nA 404 Not Found response can mean that the object you are trying to access does not exist.\n\nA 500 Internal Server Error response means that an error happened on the server. This can mean that the request is not valid, such as if you try to delete or edit a collection that does not exist, or if the API otherwise can't do what you requested. It can also mean a temporary problem with the API. Check your request and try again or contact us.\n\n## Pagination\nRequests that return multiple items will be paginated to 100 items by default. Alternatively the items per page can be specified with the `?limit` parameter:\n\n`GET /invoices?limit=200`\n\nYou can specify further pages with the `?page` parameter:\n\n`GET /invoices?page=2`\n\nPage number is 1-based and omitting the `?page` parameter will return the first page.\n\n## PUT/PATCH methods\nPUT and PATCH requests are used to update objects identified in the requests' paths:\n\n- PUT method can be used to update all attributes of an object in one call.\n- PATCH method can be used to update partial attributes of an object. This method supports [JSON Patch](https://www.rfc-editor.org/rfc/rfc6902) and [JSON Merge](https://www.rfc-editor.org/rfc/rfc7386). The media type of the request is used to identify the proper PATCH methog.\n\n\n## Rate limits\nAll applications are limited to a certain number of API requests per minute. If your application exceeds its limit, the API returns an error response with a status code of 429.\n\nThe API supports a limit of 10 requests per second.\n",
     "version" : "1.0.0"
   },
   "servers" : [ {
@@ -374,11 +374,11 @@
         },
         "responses" : {
           "200" : {
-            "description" : "Created invoice",
+            "description" : "Created payment",
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Invoice"
+                  "$ref" : "#/components/schemas/Payment"
                 }
               }
             }
@@ -535,7 +535,7 @@
         },
         "responses" : {
           "200" : {
-            "description" : "Created invoice",
+            "description" : "Updated invoice",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -1099,6 +1099,52 @@
               "application/json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/CountryList"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 500,
+                  "message" : "Internal server error"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 401,
+                  "message" : "Unauthorized"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/currencies" : {
+      "get" : {
+        "tags" : [ "Miscellaneous" ],
+        "summary" : "List all currencies",
+        "responses" : {
+          "200" : {
+            "description" : "Return the list of currencies",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/CurrencyList"
                 }
               }
             }
@@ -2776,6 +2822,127 @@
         }
       }
     },
+    "/companies/my/logo" : {
+      "post" : {
+        "tags" : [ "Company" ],
+        "summary" : "Upload the logo",
+        "requestBody" : {
+          "content" : {
+            "multipart/form-data" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/my_logo_body"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Updated company",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Company"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 500,
+                  "message" : "Internal server error"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 401,
+                  "message" : "Unauthorized"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "The specified resource was not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 404,
+                  "message" : "Resource not found"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Company" ],
+        "summary" : "Delete the logo",
+        "responses" : {
+          "204" : {
+            "description" : "The activity was deleted successfully"
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 500,
+                  "message" : "Internal server error"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 401,
+                  "message" : "Unauthorized"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "The specified resource was not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 404,
+                  "message" : "Resource not found"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/banks/transactions" : {
       "get" : {
         "tags" : [ "Bank" ],
@@ -2976,7 +3143,7 @@
         },
         "responses" : {
           "200" : {
-            "description" : "Created client",
+            "description" : "Updated client",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -4067,6 +4234,22 @@
           "$ref" : "#/components/schemas/ArticleBody"
         } ]
       },
+      "Currency" : {
+        "type" : "object",
+        "properties" : {
+          "code" : {
+            "type" : "string",
+            "example" : "EUR"
+          },
+          "symbol" : {
+            "type" : "string",
+            "example" : "€"
+          },
+          "label" : {
+            "$ref" : "#/components/schemas/Currency_label"
+          }
+        }
+      },
       "Country" : {
         "type" : "object",
         "properties" : {
@@ -4502,6 +4685,17 @@
             "type" : "array",
             "items" : {
               "$ref" : "#/components/schemas/Country"
+            }
+          }
+        }
+      },
+      "CurrencyList" : {
+        "type" : "object",
+        "properties" : {
+          "currencies" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Currency"
             }
           }
         }
@@ -4989,9 +5183,33 @@
       "Company" : {
         "allOf" : [ {
           "$ref" : "#/components/schemas/CompanyBody"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "status" : {
+              "type" : "integer",
+              "example" : 0
+            },
+            "logo" : {
+              "type" : "string",
+              "example" : "logo-company-123456789.png"
+            }
+          }
         } ]
       },
       "id_attachments_body" : {
+        "type" : "object",
+        "properties" : {
+          "file" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string",
+              "format" : "binary"
+            }
+          }
+        }
+      },
+      "my_logo_body" : {
         "type" : "object",
         "properties" : {
           "file" : {
@@ -5012,6 +5230,19 @@
               "type" : "string",
               "format" : "binary"
             }
+          }
+        }
+      },
+      "Currency_label" : {
+        "type" : "object",
+        "properties" : {
+          "fr" : {
+            "type" : "string",
+            "example" : "Euros"
+          },
+          "en" : {
+            "type" : "string",
+            "example" : "Euros"
           }
         }
       },
