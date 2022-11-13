@@ -3112,6 +3112,51 @@
             "mobile" : {
               "type" : "string",
               "example" : 321564987
+            },
+            "registration_type" : {
+              "type" : "integer",
+              "example" : 0
+            },
+            "company_identifier" : {
+              "type" : "string",
+              "example" : "123456DS"
+            },
+            "vat_number" : {
+              "type" : "string",
+              "example" : "123456DS"
+            },
+            "insurance_type" : {
+              "type" : "integer",
+              "example" : 0
+            },
+            "insurance_company_name" : {
+              "type" : "string",
+              "example" : "Super Insurance Company"
+            },
+            "insurance_geographic_coverage" : {
+              "type" : "string",
+              "example" : "France"
+            },
+            "activity_type" : {
+              "type" : "integer",
+              "example" : 0
+            },
+            "second_hand_goods_selling" : {
+              "type" : "boolean"
+            },
+            "urssaf_statement_frequency" : {
+              "type" : "string",
+              "enum" : [ "montly", "quarterly" ]
+            },
+            "income_tax_discharged" : {
+              "type" : "boolean"
+            },
+            "acre_applied" : {
+              "type" : "boolean"
+            },
+            "creation_date" : {
+              "type" : "number",
+              "example" : 1566493220992
             }
           }
         } ]
