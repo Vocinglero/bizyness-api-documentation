@@ -12554,7 +12554,9 @@ ApiKey, JWTAuth
   </span><span class="nl">"urssaf_statement_frequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"montly"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"income_tax_discharged"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="nl">"acre_applied"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"creation_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1566493220992</span><span class="w">
+  </span><span class="nl">"creation_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1566493220992</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"logo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"logo-company-123456789.png"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
@@ -12859,7 +12861,9 @@ ApiKey, JWTAuth
   </span><span class="nl">"urssaf_statement_frequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"montly"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"income_tax_discharged"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="nl">"acre_applied"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"creation_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1566493220992</span><span class="w">
+  </span><span class="nl">"creation_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1566493220992</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"logo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"logo-company-123456789.png"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
@@ -13124,7 +13128,9 @@ ApiKey, JWTAuth
   </span><span class="nl">"urssaf_statement_frequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"montly"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"income_tax_discharged"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="nl">"acre_applied"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"creation_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1566493220992</span><span class="w">
+  </span><span class="nl">"creation_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1566493220992</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"logo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"logo-company-123456789.png"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
@@ -17101,11 +17107,65 @@ ApiKey, JWTAuth
   </span><span class="nl">"urssaf_statement_frequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"montly"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"income_tax_discharged"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="nl">"acre_applied"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"creation_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1566493220992</span><span class="w">
+  </span><span class="nl">"creation_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1566493220992</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"logo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"logo-company-123456789.png"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div><h3 id='properties-45'>Properties</h3>
-<p><em>None</em></p>
+<p>allOf</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td><a href="#schemacompanybody">CompanyBody</a></td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<p>and</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td>object</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» status</td>
+<td>integer</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» logo</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
 
       </div>
       <div class="dark-box">
