@@ -36,6 +36,9 @@
     "name" : "Article",
     "description" : "Managing your articles"
   }, {
+    "name" : "Reports",
+    "description" : "Managing your reports"
+  }, {
     "name" : "Miscellaneous",
     "description" : "Transverval ressources"
   } ],
@@ -522,6 +525,41 @@
         "responses" : {
           "200" : {
             "description" : "Return the list of countries",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/CountryList"
+                }
+              }
+            }
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          }
+        }
+      }
+    },
+    "/reports/revenue/monthly" : {
+      "parameters" : [ {
+        "in" : "query",
+        "name" : "month",
+        "schema" : {
+          "type" : "integer",
+          "minimum" : 1,
+          "maximum" : 12
+        },
+        "required" : true,
+        "description" : "The month number of the year"
+      } ],
+      "get" : {
+        "tags" : [ "Reports" ],
+        "summary" : "Figures of the month",
+        "responses" : {
+          "200" : {
+            "description" : "Return the figures of the month",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -1186,6 +1224,50 @@
                 "example" : "France"
               }
             }
+          }
+        }
+      },
+      "FiguresMonthReport" : {
+        "type" : "object",
+        "properties" : {
+          "margin" : {
+            "type" : "integer",
+            "example" : 32483
+          },
+          "incomes" : {
+            "type" : "integer",
+            "example" : 6013
+          },
+          "expenses" : {
+            "type" : "integer",
+            "example" : 214
+          },
+          "variation" : {
+            "type" : "integer",
+            "example" : 10.3
+          },
+          "months" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "properties" : {
+                "month" : {
+                  "type" : "integer",
+                  "minimum" : 1,
+                  "maximum" : 12
+                },
+                "margin" : {
+                  "type" : "integer"
+                }
+              }
+            },
+            "example" : [ {
+              "month" : 1,
+              "margin" : 123
+            }, {
+              "month" : 2,
+              "margin" : 456
+            } ]
           }
         }
       },
