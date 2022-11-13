@@ -80,6 +80,17 @@
             "type" : "integer",
             "default" : 100
           }
+        }, {
+          "name" : "status",
+          "in" : "query",
+          "description" : "Filter invoices by their status",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "example" : "draft"
+          }
         } ],
         "responses" : {
           "200" : {
@@ -2606,7 +2617,7 @@
             "type" : "integer",
             "example" : 3214
           },
-          "payments" : {
+          "transactions" : {
             "type" : "array",
             "items" : {
               "$ref" : "#/components/schemas/BankTransaction"
@@ -2967,7 +2978,7 @@
           "properties" : {
             "status" : {
               "type" : "string",
-              "enum" : [ "draft", "not_paid", "paid", "cancelled" ]
+              "enum" : [ "draft", "not_paid", "paid", "cancelled", "overdue" ]
             },
             "paid_date" : {
               "type" : "integer",
