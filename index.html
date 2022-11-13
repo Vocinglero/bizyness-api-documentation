@@ -331,6 +331,9 @@
                     <a href="#pagination" class="toc-h2 toc-link" data-title="Pagination">Pagination</a>
                   </li>
                   <li>
+                    <a href="#put-patch-methods" class="toc-h2 toc-link" data-title="PUT/PATCH methods">PUT/PATCH methods</a>
+                  </li>
+                  <li>
                     <a href="#rate-limits" class="toc-h2 toc-link" data-title="Rate limits">Rate limits</a>
                   </li>
               </ul>
@@ -730,6 +733,13 @@
 <p><code>GET /invoices?page=2</code></p>
 
 <p>Page number is 1-based and omitting the <code>?page</code> parameter will return the first page.</p>
+<h2 id='put-patch-methods'>PUT/PATCH methods</h2>
+<p>PUT and PATCH requests are used to update objects identified in the requests&#39; paths:</p>
+
+<ul>
+<li>PUT method can be used to update all attributes of an object in one call.</li>
+<li>PATCH method can be used to update partial attributes of an object. This method supports <a href="https://www.rfc-editor.org/rfc/rfc6902">JSON Patch</a> and <a href="https://www.rfc-editor.org/rfc/rfc7386">JSON Merge</a>. The media type of the request is used to identify the proper PATCH methog.</li>
+</ul>
 <h2 id='rate-limits'>Rate limits</h2>
 <p>All applications are limited to a certain number of API requests per minute. If your application exceeds its limit, the API returns an error response with a status code of 429.</p>
 
