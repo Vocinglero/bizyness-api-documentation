@@ -639,7 +639,7 @@
               "$ref" : "#/components/schemas/Error"
             },
             "example" : {
-              "code" : 403,
+              "code" : 401,
               "message" : "Unauthorized"
             }
           }
