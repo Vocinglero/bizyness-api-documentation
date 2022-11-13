@@ -891,7 +891,7 @@
       },
       "patch" : {
         "tags" : [ "Invoice" ],
-        "summary" : "Update an invoice",
+        "summary" : "Update an invoice partially",
         "parameters" : [ {
           "name" : "id",
           "in" : "path",
@@ -1435,7 +1435,7 @@
       },
       "patch" : {
         "tags" : [ "Article" ],
-        "summary" : "Update an article",
+        "summary" : "Update an article partially",
         "parameters" : [ {
           "name" : "id",
           "in" : "path",
@@ -1855,7 +1855,7 @@
       },
       "patch" : {
         "tags" : [ "Payment" ],
-        "summary" : "Update a payment",
+        "summary" : "Update a payment partially",
         "parameters" : [ {
           "name" : "id",
           "in" : "path",
