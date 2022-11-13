@@ -610,6 +610,30 @@
         }
       }
     },
+    "/reports/urssaf/current" : {
+      "get" : {
+        "tags" : [ "Reports" ],
+        "summary" : "URSSAF statement",
+        "responses" : {
+          "200" : {
+            "description" : "Return the URSSAF statement",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/URSSAFReportStatement"
+                }
+              }
+            }
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          }
+        }
+      }
+    },
     "/articles" : {
       "get" : {
         "tags" : [ "Article" ],
@@ -1257,6 +1281,35 @@
                 "example" : "France"
               }
             }
+          }
+        }
+      },
+      "URSSAFReportStatement" : {
+        "type" : "object",
+        "properties" : {
+          "period" : {
+            "type" : "integer",
+            "example" : 1651356000000
+          },
+          "dueDate" : {
+            "type" : "integer",
+            "example" : 1656540000000
+          },
+          "distanceSalesAmount" : {
+            "type" : "integer",
+            "example" : 1235
+          },
+          "servicesAmount" : {
+            "type" : "integer",
+            "example" : 554
+          },
+          "otherServicesAmount" : {
+            "type" : "integer",
+            "example" : 787
+          },
+          "estimate" : {
+            "type" : "integer",
+            "example" : 457
           }
         }
       },
