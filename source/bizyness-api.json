@@ -889,6 +889,238 @@
         }
       }
     },
+    "/activities" : {
+      "get" : {
+        "tags" : [ "Activity" ],
+        "summary" : "List all activities",
+        "parameters" : [ {
+          "$ref" : "#/components/parameters/PageParam"
+        }, {
+          "$ref" : "#/components/parameters/LimitParam"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Return the list of activities",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ActivityList"
+                }
+              }
+            }
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Activity" ],
+        "summary" : "Create an activity",
+        "requestBody" : {
+          "required" : true,
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/ActivityBody"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Activity"
+                }
+              }
+            },
+            "description" : "Created activity"
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      }
+    },
+    "/activities/{id}" : {
+      "parameters" : [ {
+        "name" : "id",
+        "in" : "path",
+        "description" : "Activity ID",
+        "required" : true,
+        "schema" : {
+          "type" : "string",
+          "example" : "636945f14ce97a4c1c561885"
+        }
+      } ],
+      "get" : {
+        "tags" : [ "Activity" ],
+        "summary" : "Retrieve an activity",
+        "responses" : {
+          "200" : {
+            "description" : "Return a single activity",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Activity"
+                }
+              }
+            }
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Activity" ],
+        "summary" : "Delete an activity",
+        "responses" : {
+          "204" : {
+            "description" : "The activity was deleted successfully"
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Activity" ],
+        "summary" : "Update an activity",
+        "requestBody" : {
+          "required" : true,
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/ActivityBody"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Updated activity",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Activity"
+                }
+              }
+            }
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      },
+      "patch" : {
+        "tags" : [ "Activity" ],
+        "summary" : "Update an activity partially",
+        "requestBody" : {
+          "required" : true,
+          "content" : {
+            "application/json-patch+json" : {
+              "schema" : {
+                "type" : "array",
+                "items" : {
+                  "oneOf" : [ {
+                    "$ref" : "#/components/schemas/JSONPatchRequestAddReplaceTest"
+                  }, {
+                    "$ref" : "#/components/schemas/JSONPatchRequestRemove"
+                  }, {
+                    "$ref" : "#/components/schemas/JSONPatchRequestMoveCopy"
+                  } ]
+                }
+              },
+              "examples" : {
+                "AddReplaceTest" : {
+                  "value" : [ {
+                    "op" : "replace",
+                    "path" : "/name",
+                    "value" : "My activity"
+                  } ]
+                },
+                "Remove" : {
+                  "value" : [ {
+                    "op" : "remove",
+                    "path" : "/name"
+                  } ]
+                },
+                "MoveCopy" : {
+                  "value" : [ {
+                    "op" : "copy",
+                    "from" : "/name",
+                    "path" : "/name"
+                  } ]
+                }
+              }
+            },
+            "application/merge-patch+json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Activity"
+              },
+              "example" : {
+                "payment_term" : 3,
+                "template" : "london"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Updated activity",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Activity"
+                }
+              }
+            }
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      }
+    },
     "/banks/transactions" : {
       "get" : {
         "tags" : [ "Bank" ],
@@ -1049,7 +1281,7 @@
       },
       "get" : {
         "tags" : [ "Client" ],
-        "summary" : "Download the attachment file",
+        "summary" : "Download an attachment file",
         "responses" : {
           "200" : {
             "description" : "Return the attachment file",
@@ -1783,6 +2015,25 @@
           }
         }
       },
+      "Activity" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/CollectionId"
+        }, {
+          "$ref" : "#/components/schemas/ActivityBody"
+        } ]
+      },
+      "ActivityBody" : {
+        "type" : "object",
+        "properties" : {
+          "name" : {
+            "type" : "string",
+            "example" : "My activity"
+          },
+          "is_default" : {
+            "type" : "boolean"
+          }
+        }
+      },
       "Payment" : {
         "allOf" : [ {
           "$ref" : "#/components/schemas/CollectionId"
@@ -2021,6 +2272,17 @@
           }
         }
       },
+      "ActivityList" : {
+        "type" : "object",
+        "properties" : {
+          "payments" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Activity"
+            }
+          }
+        }
+      },
       "BankTransactionList" : {
         "type" : "object",
         "properties" : {
@@ -2039,7 +2301,7 @@
       "ArticleList" : {
         "type" : "object",
         "properties" : {
-          "articles" : {
+          "activities" : {
             "type" : "array",
             "items" : {
               "$ref" : "#/components/schemas/Article"
