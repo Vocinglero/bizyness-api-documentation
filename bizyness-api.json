@@ -322,7 +322,7 @@
         "summary" : "Download the attachment file",
         "responses" : {
           "200" : {
-            "description" : "Return the PDF file",
+            "description" : "Return the attachment file",
             "content" : {
               "application/pdf" : {
                 "schema" : {
