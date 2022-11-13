@@ -36,7 +36,10 @@
     "name" : "Article",
     "description" : "Managing your articles"
   }, {
-    "name" : "Reports",
+    "name" : "Report",
+    "description" : "Managing your reports"
+  }, {
+    "name" : "Bank",
     "description" : "Managing your reports"
   }, {
     "name" : "Miscellaneous",
@@ -555,7 +558,7 @@
         "description" : "The month number of the year"
       } ],
       "get" : {
-        "tags" : [ "Reports" ],
+        "tags" : [ "Report" ],
         "summary" : "Figures of the month",
         "responses" : {
           "200" : {
@@ -588,7 +591,7 @@
         "description" : "The year"
       } ],
       "get" : {
-        "tags" : [ "Reports" ],
+        "tags" : [ "Report" ],
         "summary" : "Figures of the year",
         "responses" : {
           "200" : {
@@ -612,7 +615,7 @@
     },
     "/reports/urssaf/current" : {
       "get" : {
-        "tags" : [ "Reports" ],
+        "tags" : [ "Report" ],
         "summary" : "URSSAF statement",
         "responses" : {
           "200" : {
@@ -868,6 +871,38 @@
         }
       }
     },
+    "/banks/transactions" : {
+      "get" : {
+        "tags" : [ "Bank" ],
+        "summary" : "List all transactions",
+        "parameters" : [ {
+          "$ref" : "#/components/parameters/PageParam"
+        }, {
+          "$ref" : "#/components/parameters/LimitParam"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Return the list of transactions",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/BankTransactionList"
+                }
+              }
+            }
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      }
+    },
     "/payments" : {
       "get" : {
         "tags" : [ "Payment" ],
@@ -1074,7 +1109,8 @@
         "required" : false,
         "schema" : {
           "type" : "integer",
-          "minimum" : 1
+          "minimum" : 1,
+          "default" : 1
         },
         "description" : "The page of results to return"
       },
@@ -1522,6 +1558,21 @@
           }
         }
       },
+      "BankTransactionList" : {
+        "type" : "object",
+        "properties" : {
+          "balance" : {
+            "type" : "integer",
+            "example" : 3214
+          },
+          "payments" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/BankTransaction"
+            }
+          }
+        }
+      },
       "ArticleList" : {
         "type" : "object",
         "properties" : {
@@ -1873,6 +1924,23 @@
             }
           }
         } ]
+      },
+      "BankTransaction" : {
+        "type" : "object",
+        "properties" : {
+          "date" : {
+            "type" : "integer",
+            "example" : 1566493220992
+          },
+          "label" : {
+            "type" : "string",
+            "example" : "Facebook ads"
+          },
+          "amount" : {
+            "type" : "integer",
+            "example" : 52.04
+          }
+        }
       },
       "Invoice" : {
         "allOf" : [ {
