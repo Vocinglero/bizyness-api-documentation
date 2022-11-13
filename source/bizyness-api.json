@@ -119,7 +119,15 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Payment"
+                  "type" : "object",
+                  "properties" : {
+                    "payment" : {
+                      "type" : "array",
+                      "items" : {
+                        "$ref" : "#/components/schemas/Payment"
+                      }
+                    }
+                  }
                 }
               }
             },
