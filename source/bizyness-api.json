@@ -1084,7 +1084,7 @@
       } ],
       "get" : {
         "tags" : [ "Client" ],
-        "summary" : "Retrieve invoices",
+        "summary" : "Retrieve invoices of a client",
         "parameters" : [ {
           "$ref" : "#/components/parameters/PageParam"
         }, {
