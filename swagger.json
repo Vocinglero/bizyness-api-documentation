@@ -1,8 +1,8 @@
 {
   "openapi" : "3.0.3",
   "info" : {
-    "title" : "Bizyness API Documentation",
-    "description" : "Bizyness is an accounting software that helps entrepreneurs to manage their activities with ease.\n\n# Introduction\nThis API provides endpoints to manage the data in your Bizyness account.\n\n## Super intro\nfdsgfdsg fdsg fdsg sfdg fd\n\n# Authentication\n\nBizyness offers two forms of authentication:\n- API Key\n- JWT Token\n\n<SecurityDefinitions />\n",
+    "title" : "API Reference",
+    "description" : "# Overview\nThe Bizyness API allows customers to create and search for accounting objects such as invoices, clients, payments and to generate various reports.\n\nThis documentation provides information about each endpoint in the API. The right-hand pane of this page shows example requests and responses for each endpoint in cURL and many other languages.\n\n## Getting started\nFollow these steps to start licensing media:\n1. Create a Bizyness account\n2. Go in your Settings and create an API Key, you can also use the JWT method to authenticate your requests\n\n## Request/Response Format\nThe default response format is JSON. Requests with a message-body use plain JSON to set or update resource attributes. Successful requests will return a 200 OK HTTP status.\n\nSome general information about responses:\n\n- Dates are returned in Unix timestamp, see [Unix time](https://en.wikipedia.org/wiki/Unix_time).\n- Resource IDs are returned as strings.\n- Any decimal monetary amount, such as prices or totals, will be returned as numbers with two decimal places.\n- Other amounts, such as item counts, are returned as integers.\n- Blank fields are generally included as null or emtpy string instead of being omitted.\n\n## Errors\nThe API returns error codes such as 400, 403, 404, and 500 along with information about the error. Here are some common error responses:\n\nA 400 Bad Request response often means that the request body is improperly formatted or missing required fields. In the case of missing fields, the response includes the name of the field that is missing, as in the example in the right-hand column.\n\nA 401 Unauthorized response often means that the request did not include a valid authentication.\n\nA 404 Not Found response can mean that the object you are trying to access does not exist.\n\nA 500 Internal Server Error response means that an error happened on the server. This can mean that the request is not valid, such as if you try to delete or edit a collection that does not exist, or if the API otherwise can't do what you requested. It can also mean a temporary problem with the API. Check your request and try again or contact us.\n\n## Pagination\nRequests that return multiple items will be paginated to 100 items by default. Alternatively the items per page can be specified with the `?limit` parameter:\n\n`GET /invoices?limit=200`\n\nYou can specify further pages with the `?page` parameter:\n\n`GET /invoices?page=2`\n\nPage number is 1-based and omitting the `?page` parameter will return the first page.\n\n## Rate limits\nAll applications are limited to a certain number of API requests per minute. If your application exceeds its limit, the API returns an error response with a status code of 429.\n\nThe API supports a limit of 10 requests per second.\n",
     "version" : "1.0.0"
   },
   "servers" : [ {
@@ -43,6 +43,31 @@
       "get" : {
         "tags" : [ "Invoice" ],
         "summary" : "Retrieve all invoices",
+        "parameters" : [ {
+          "name" : "page",
+          "in" : "query",
+          "description" : "The page of results to return",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "minimum" : 1,
+            "type" : "integer"
+          }
+        }, {
+          "name" : "limit",
+          "in" : "query",
+          "description" : "The number of records to return in one request",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "maximum" : 250,
+            "minimum" : 1,
+            "type" : "integer",
+            "default" : 100
+          }
+        } ],
         "responses" : {
           "200" : {
             "description" : "Return the list of invoices",
@@ -68,7 +93,7 @@
               }
             }
           },
-          "403" : {
+          "401" : {
             "description" : "Unauthorized",
             "content" : {
               "application/json" : {
@@ -136,7 +161,7 @@
               }
             }
           },
-          "403" : {
+          "401" : {
             "description" : "Unauthorized",
             "content" : {
               "application/json" : {
@@ -214,7 +239,7 @@
               }
             }
           },
-          "403" : {
+          "401" : {
             "description" : "Unauthorized",
             "content" : {
               "application/json" : {
@@ -285,7 +310,7 @@
               }
             }
           },
-          "403" : {
+          "401" : {
             "description" : "Unauthorized",
             "content" : {
               "application/json" : {
@@ -364,7 +389,7 @@
               }
             }
           },
-          "403" : {
+          "401" : {
             "description" : "Unauthorized",
             "content" : {
               "application/json" : {
@@ -426,7 +451,7 @@
               }
             }
           },
-          "403" : {
+          "401" : {
             "description" : "Unauthorized",
             "content" : {
               "application/json" : {
@@ -545,7 +570,7 @@
               }
             }
           },
-          "403" : {
+          "401" : {
             "description" : "Unauthorized",
             "content" : {
               "application/json" : {
@@ -605,7 +630,7 @@
               }
             }
           },
-          "403" : {
+          "401" : {
             "description" : "Unauthorized",
             "content" : {
               "application/json" : {
@@ -629,12 +654,36 @@
         "parameters" : [ {
           "name" : "keyword",
           "in" : "query",
-          "description" : "Keyword to search for",
+          "description" : "The keyword to search for",
           "required" : false,
           "style" : "form",
           "explode" : true,
           "schema" : {
             "type" : "string"
+          }
+        }, {
+          "name" : "page",
+          "in" : "query",
+          "description" : "The page of results to return",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "minimum" : 1,
+            "type" : "integer"
+          }
+        }, {
+          "name" : "limit",
+          "in" : "query",
+          "description" : "The number of records to return in one request",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "maximum" : 250,
+            "minimum" : 1,
+            "type" : "integer",
+            "default" : 100
           }
         } ],
         "responses" : {
@@ -662,7 +711,7 @@
               }
             }
           },
-          "403" : {
+          "401" : {
             "description" : "Unauthorized",
             "content" : {
               "application/json" : {
@@ -730,7 +779,7 @@
               }
             }
           },
-          "403" : {
+          "401" : {
             "description" : "Unauthorized",
             "content" : {
               "application/json" : {
@@ -801,7 +850,7 @@
               }
             }
           },
-          "403" : {
+          "401" : {
             "description" : "Unauthorized",
             "content" : {
               "application/json" : {
@@ -880,7 +929,7 @@
               }
             }
           },
-          "403" : {
+          "401" : {
             "description" : "Unauthorized",
             "content" : {
               "application/json" : {
@@ -942,7 +991,7 @@
               }
             }
           },
-          "403" : {
+          "401" : {
             "description" : "Unauthorized",
             "content" : {
               "application/json" : {
@@ -1061,7 +1110,7 @@
               }
             }
           },
-          "403" : {
+          "401" : {
             "description" : "Unauthorized",
             "content" : {
               "application/json" : {
@@ -1696,6 +1745,45 @@
               "message" : "Internal server error"
             }
           }
+        }
+      }
+    },
+    "parameters" : {
+      "PageParam" : {
+        "name" : "page",
+        "in" : "query",
+        "description" : "The page of results to return",
+        "required" : false,
+        "style" : "form",
+        "explode" : true,
+        "schema" : {
+          "minimum" : 1,
+          "type" : "integer"
+        }
+      },
+      "LimitParam" : {
+        "name" : "limit",
+        "in" : "query",
+        "description" : "The number of records to return in one request",
+        "required" : false,
+        "style" : "form",
+        "explode" : true,
+        "schema" : {
+          "maximum" : 250,
+          "minimum" : 1,
+          "type" : "integer",
+          "default" : 100
+        }
+      },
+      "KeywordParam" : {
+        "name" : "keyword",
+        "in" : "query",
+        "description" : "The keyword to search for",
+        "required" : false,
+        "style" : "form",
+        "explode" : true,
+        "schema" : {
+          "type" : "string"
         }
       }
     },
