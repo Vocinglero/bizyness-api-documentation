@@ -1158,6 +1158,143 @@
         }
       }
     },
+    "/users/me" : {
+      "get" : {
+        "tags" : [ "Account" ],
+        "summary" : "Get current account",
+        "responses" : {
+          "200" : {
+            "description" : "Return the connected account",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Account"
+                }
+              }
+            }
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Account" ],
+        "summary" : "Update current account",
+        "requestBody" : {
+          "required" : true,
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Account"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Updated account",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Account"
+                }
+              }
+            }
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      },
+      "patch" : {
+        "tags" : [ "Account" ],
+        "summary" : "Update current account (partial)",
+        "requestBody" : {
+          "required" : true,
+          "content" : {
+            "application/json-patch+json" : {
+              "schema" : {
+                "type" : "array",
+                "items" : {
+                  "oneOf" : [ {
+                    "$ref" : "#/components/schemas/JSONPatchRequestAddReplaceTest"
+                  }, {
+                    "$ref" : "#/components/schemas/JSONPatchRequestRemove"
+                  }, {
+                    "$ref" : "#/components/schemas/JSONPatchRequestMoveCopy"
+                  } ]
+                }
+              },
+              "examples" : {
+                "AddReplaceTest" : {
+                  "value" : [ {
+                    "op" : "replace",
+                    "path" : "/last_name",
+                    "value" : "Dupont"
+                  } ]
+                },
+                "Remove" : {
+                  "value" : [ {
+                    "op" : "remove",
+                    "path" : "/last_name"
+                  } ]
+                },
+                "MoveCopy" : {
+                  "value" : [ {
+                    "op" : "copy",
+                    "from" : "/last_name",
+                    "path" : "/last_name"
+                  } ]
+                }
+              }
+            },
+            "application/merge-patch+json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Account"
+              },
+              "example" : {
+                "payment_term" : 3,
+                "template" : "london"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Updated account",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Account"
+                }
+              }
+            }
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      }
+    },
     "/banks/transactions" : {
       "get" : {
         "tags" : [ "Bank" ],
@@ -2754,7 +2891,7 @@
           }
         } ]
       },
-      "User" : {
+      "Account" : {
         "type" : "object",
         "properties" : {
           "billing_provider" : {
@@ -2762,16 +2899,24 @@
             "example" : "chargebee"
           },
           "first_name" : {
-            "type" : "String",
+            "type" : "string",
             "example" : "John"
           },
           "last_name" : {
-            "type" : "String",
+            "type" : "string",
             "example" : "Doe"
           },
           "display_name" : {
-            "type" : "String",
+            "type" : "string",
             "example" : "John Doe"
+          },
+          "email" : {
+            "type" : "string",
+            "example" : "john@google.com"
+          },
+          "subscription_status" : {
+            "enum" : [ "trial", "active", "suspended" ],
+            "type" : "string"
           }
         }
       }
