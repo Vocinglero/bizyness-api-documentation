@@ -563,7 +563,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/CountryList"
+                  "$ref" : "#/components/schemas/FiguresMonthReport"
                 }
               }
             }
