@@ -1,0 +1,2735 @@
+{
+  "openapi" : "3.0.3",
+  "info" : {
+    "title" : "API Reference",
+    "description" : "# Overview\n\n<mark>This API in under construction and should not be used in a production environment</mark>\n\nThe Bizyness API allows customers to create and search for accounting objects such as invoices, clients, payments and to generate various reports.\n\nThis documentation provides information about each endpoint in the API. The right-hand pane of this page shows example requests and responses for each endpoint in cURL and many other languages.\n\n## Getting started\nFollow these steps to start licensing media:\n\n1. Create a Bizyness account\n\n2. Go in your Settings and create an API Key, you can also use the JWT method to authenticate your requests\n\n## Request/Response Format\nThe default response format is JSON. Requests with a message-body use plain JSON to set or update resource attributes. Successful requests will return a 200 OK HTTP status.\n\nSome general information about responses:\n\n- Dates are returned in Unix timestamp, see [Unix time](https://en.wikipedia.org/wiki/Unix_time).\n- Resource IDs are returned as strings.\n- Any decimal monetary amount, such as prices or totals, will be returned as numbers with two decimal places.\n- Other amounts, such as item counts, are returned as integers.\n- Blank fields are generally included as null or emtpy string instead of being omitted.\n\n## Errors\nThe API returns error codes such as 400, 403, 404, and 500 along with information about the error. Here are some common error responses:\n\nA 400 Bad Request response often means that the request body is improperly formatted or missing required fields. In the case of missing fields, the response includes the name of the field that is missing, as in the example in the right-hand column.\n\nA 401 Unauthorized response often means that the request did not include a valid authentication.\n\nA 404 Not Found response can mean that the object you are trying to access does not exist.\n\nA 500 Internal Server Error response means that an error happened on the server. This can mean that the request is not valid, such as if you try to delete or edit a collection that does not exist, or if the API otherwise can't do what you requested. It can also mean a temporary problem with the API. Check your request and try again or contact us.\n\n## Pagination\nRequests that return multiple items will be paginated to 100 items by default. Alternatively the items per page can be specified with the `?limit` parameter:\n\n`GET /invoices?limit=200`\n\nYou can specify further pages with the `?page` parameter:\n\n`GET /invoices?page=2`\n\nPage number is 1-based and omitting the `?page` parameter will return the first page.\n\n## Rate limits\nAll applications are limited to a certain number of API requests per minute. If your application exceeds its limit, the API returns an error response with a status code of 429.\n\nThe API supports a limit of 10 requests per second.\n",
+    "version" : "1.0.0"
+  },
+  "servers" : [ {
+    "url" : "https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0",
+    "description" : "SwaggerHub API Auto Mocking"
+  }, {
+    "url" : "https://api.bizyness.fr"
+  } ],
+  "security" : [ {
+    "ApiKey" : [ ]
+  }, {
+    "JWTAuth" : [ ]
+  } ],
+  "tags" : [ {
+    "name" : "Invoice",
+    "description" : "Managing your invoices"
+  }, {
+    "name" : "Quote",
+    "description" : "Managing your quotes"
+  }, {
+    "name" : "Activity",
+    "description" : "Managing your activities"
+  }, {
+    "name" : "Payment",
+    "description" : "Managing your payments"
+  }, {
+    "name" : "Expense",
+    "description" : "Managing your expenses"
+  }, {
+    "name" : "Client",
+    "description" : "Managing your clients"
+  }, {
+    "name" : "Supplier",
+    "description" : "Managing your suppliers"
+  }, {
+    "name" : "Article",
+    "description" : "Managing your articles"
+  }, {
+    "name" : "Miscellaneous",
+    "description" : "Transverval ressources"
+  } ],
+  "paths" : {
+    "/invoices" : {
+      "get" : {
+        "tags" : [ "Invoice" ],
+        "summary" : "List all invoices",
+        "parameters" : [ {
+          "name" : "page",
+          "in" : "query",
+          "description" : "The page of results to return",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "minimum" : 1,
+            "type" : "integer"
+          }
+        }, {
+          "name" : "limit",
+          "in" : "query",
+          "description" : "The number of records to return in one request",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "maximum" : 250,
+            "minimum" : 1,
+            "type" : "integer",
+            "default" : 100
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Return the list of invoices",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/InvoiceList"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 500,
+                  "message" : "Internal server error"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 401,
+                  "message" : "Unauthorized"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "The specified resource was not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 404,
+                  "message" : "Resource not found"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Invoice" ],
+        "summary" : "Create an invoice",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/InvoiceBody"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Created invoice",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Invoice"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 500,
+                  "message" : "Internal server error"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 401,
+                  "message" : "Unauthorized"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "The specified resource was not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 404,
+                  "message" : "Resource not found"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/invoices/{id}/payments" : {
+      "get" : {
+        "tags" : [ "Invoice" ],
+        "summary" : "Retrieve payments",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "Invoice ID",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "example" : "636945e14ce97a4c1c561885"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "List of payments",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/PaymentList"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 500,
+                  "message" : "Internal server error"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 401,
+                  "message" : "Unauthorized"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "The specified resource was not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 404,
+                  "message" : "Resource not found"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Invoice" ],
+        "summary" : "Create an payment",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "Invoice ID",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "example" : "636945e14ce97a4c1c561885"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/PaymentBody"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Created invoice",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Invoice"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 500,
+                  "message" : "Internal server error"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 401,
+                  "message" : "Unauthorized"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "The specified resource was not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 404,
+                  "message" : "Resource not found"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/invoices/{id}/download" : {
+      "get" : {
+        "tags" : [ "Invoice" ],
+        "summary" : "Download the PDF file",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "Invoice ID",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "example" : "636945e14ce97a4c1c561885"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Return the PDF file",
+            "content" : {
+              "application/pdf" : {
+                "schema" : {
+                  "type" : "string",
+                  "format" : "binary"
+                },
+                "examples" : {
+                  "sampleFile" : {
+                    "summary" : "A sample file",
+                    "externalValue" : "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+                  }
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 500,
+                  "message" : "Internal server error"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 401,
+                  "message" : "Unauthorized"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "The specified resource was not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 404,
+                  "message" : "Resource not found"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/invoices/{id}/attachments" : {
+      "post" : {
+        "tags" : [ "Invoice" ],
+        "summary" : "Add a list of attachments",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "Invoice ID",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "example" : "636945e14ce97a4c1c561885"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "multipart/form-data" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/id_attachments_body"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Created invoice",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Invoice"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 500,
+                  "message" : "Internal server error"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 401,
+                  "message" : "Unauthorized"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "The specified resource was not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 404,
+                  "message" : "Resource not found"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/invoices/{id}/attachments/{attachmentId}" : {
+      "get" : {
+        "tags" : [ "Invoice" ],
+        "summary" : "Download the attachment file",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "Invoice ID",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "example" : "636945e14ce97a4c1c561885"
+          }
+        }, {
+          "name" : "attachmentId",
+          "in" : "path",
+          "description" : "Attachment index",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer",
+            "example" : 0
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Return the PDF file",
+            "content" : {
+              "application/pdf" : {
+                "schema" : {
+                  "type" : "string",
+                  "format" : "binary"
+                },
+                "examples" : {
+                  "sampleFile" : {
+                    "summary" : "A sample file",
+                    "externalValue" : "https://file-examples.com/storage/fe954b025e6370d449e6aa6/2017/10/file_example_PNG_500kB.png"
+                  }
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 500,
+                  "message" : "Internal server error"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 401,
+                  "message" : "Unauthorized"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "The specified resource was not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 404,
+                  "message" : "Resource not found"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Invoice" ],
+        "summary" : "Delete an attachment",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "Invoice ID",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "example" : "636945e14ce97a4c1c561885"
+          }
+        }, {
+          "name" : "attachmentId",
+          "in" : "path",
+          "description" : "Attachment index",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer",
+            "example" : 0
+          }
+        } ],
+        "responses" : {
+          "204" : {
+            "description" : "The attachment was deleted successfully"
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 500,
+                  "message" : "Internal server error"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 401,
+                  "message" : "Unauthorized"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "The specified resource was not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 404,
+                  "message" : "Resource not found"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/invoices/{id}" : {
+      "get" : {
+        "tags" : [ "Invoice" ],
+        "summary" : "Retrieve an invoice",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "Invoice ID",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "example" : "636945e14ce97a4c1c561885"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Return a single invoice",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Invoice"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 500,
+                  "message" : "Internal server error"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 401,
+                  "message" : "Unauthorized"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "The specified resource was not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 404,
+                  "message" : "Resource not found"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Invoice" ],
+        "summary" : "Update an invoice",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "Invoice ID",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "example" : "636945e14ce97a4c1c561885"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Invoice"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Updated invoice",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Invoice"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 500,
+                  "message" : "Internal server error"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 401,
+                  "message" : "Unauthorized"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "The specified resource was not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 404,
+                  "message" : "Resource not found"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Invoice" ],
+        "summary" : "Delete an invoice",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "Invoice ID",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "example" : "636945e14ce97a4c1c561885"
+          }
+        } ],
+        "responses" : {
+          "204" : {
+            "description" : "The invoice was deleted successfully"
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 500,
+                  "message" : "Internal server error"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 401,
+                  "message" : "Unauthorized"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "The specified resource was not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 404,
+                  "message" : "Resource not found"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch" : {
+        "tags" : [ "Invoice" ],
+        "summary" : "Update an invoice partially",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "Invoice ID",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "example" : "636945e14ce97a4c1c561885"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json-patch+json" : {
+              "schema" : {
+                "type" : "array",
+                "items" : {
+                  "oneOf" : [ {
+                    "$ref" : "#/components/schemas/JSONPatchRequestAddReplaceTest"
+                  }, {
+                    "$ref" : "#/components/schemas/JSONPatchRequestRemove"
+                  }, {
+                    "$ref" : "#/components/schemas/JSONPatchRequestMoveCopy"
+                  } ]
+                }
+              },
+              "examples" : {
+                "AddReplaceTest" : {
+                  "value" : [ {
+                    "op" : "replace",
+                    "path" : "/lines/0/type",
+                    "value" : 1
+                  } ]
+                },
+                "Remove" : {
+                  "value" : [ {
+                    "op" : "remove",
+                    "path" : "/subject"
+                  } ]
+                },
+                "MoveCopy" : {
+                  "value" : [ {
+                    "op" : "copy",
+                    "from" : "/lines/0/sku",
+                    "path" : "/lines/1/sku"
+                  } ]
+                }
+              }
+            },
+            "application/merge-patch+json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Invoice"
+              },
+              "example" : {
+                "payment_term" : 3,
+                "template" : "london"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Updated invoice",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Invoice"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 500,
+                  "message" : "Internal server error"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 401,
+                  "message" : "Unauthorized"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "The specified resource was not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 404,
+                  "message" : "Resource not found"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/countries" : {
+      "get" : {
+        "tags" : [ "Miscellaneous" ],
+        "summary" : "List all countries",
+        "responses" : {
+          "200" : {
+            "description" : "Return the list of countries",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/CountryList"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 500,
+                  "message" : "Internal server error"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 401,
+                  "message" : "Unauthorized"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/articles" : {
+      "get" : {
+        "tags" : [ "Article" ],
+        "summary" : "List all articles",
+        "parameters" : [ {
+          "name" : "keyword",
+          "in" : "query",
+          "description" : "The keyword to search for",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "page",
+          "in" : "query",
+          "description" : "The page of results to return",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "minimum" : 1,
+            "type" : "integer"
+          }
+        }, {
+          "name" : "limit",
+          "in" : "query",
+          "description" : "The number of records to return in one request",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "maximum" : 250,
+            "minimum" : 1,
+            "type" : "integer",
+            "default" : 100
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Return the list of articles",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ArticleList"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 500,
+                  "message" : "Internal server error"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 401,
+                  "message" : "Unauthorized"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "The specified resource was not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 404,
+                  "message" : "Resource not found"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Article" ],
+        "summary" : "Create an article",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/ArticleBody"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Created invoice",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Invoice"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 500,
+                  "message" : "Internal server error"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 401,
+                  "message" : "Unauthorized"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "The specified resource was not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 404,
+                  "message" : "Resource not found"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/articles/{id}" : {
+      "get" : {
+        "tags" : [ "Article" ],
+        "summary" : "Retrieve an article",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "Article ID",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "example" : "636945f14ce97a4c1c561885"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Return a single article",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Article"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 500,
+                  "message" : "Internal server error"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 401,
+                  "message" : "Unauthorized"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "The specified resource was not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 404,
+                  "message" : "Resource not found"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Article" ],
+        "summary" : "Update an article",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "Article ID",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "example" : "636945f14ce97a4c1c561885"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Article"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Updated article",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Invoice"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 500,
+                  "message" : "Internal server error"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 401,
+                  "message" : "Unauthorized"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "The specified resource was not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 404,
+                  "message" : "Resource not found"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Article" ],
+        "summary" : "Delete an article",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "Article ID",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "example" : "636945f14ce97a4c1c561885"
+          }
+        } ],
+        "responses" : {
+          "204" : {
+            "description" : "The article was deleted successfully"
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 500,
+                  "message" : "Internal server error"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 401,
+                  "message" : "Unauthorized"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "The specified resource was not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 404,
+                  "message" : "Resource not found"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch" : {
+        "tags" : [ "Article" ],
+        "summary" : "Update an article partially",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "Article ID",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "example" : "636945f14ce97a4c1c561885"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json-patch+json" : {
+              "schema" : {
+                "type" : "array",
+                "items" : {
+                  "oneOf" : [ {
+                    "$ref" : "#/components/schemas/JSONPatchRequestAddReplaceTest"
+                  }, {
+                    "$ref" : "#/components/schemas/JSONPatchRequestRemove"
+                  }, {
+                    "$ref" : "#/components/schemas/JSONPatchRequestMoveCopy"
+                  } ]
+                }
+              },
+              "examples" : {
+                "AddReplaceTest" : {
+                  "value" : [ {
+                    "op" : "replace",
+                    "path" : "/lines/0/type",
+                    "value" : 1
+                  } ]
+                },
+                "Remove" : {
+                  "value" : [ {
+                    "op" : "remove",
+                    "path" : "/subject"
+                  } ]
+                },
+                "MoveCopy" : {
+                  "value" : [ {
+                    "op" : "copy",
+                    "from" : "/lines/0/sku",
+                    "path" : "/lines/1/sku"
+                  } ]
+                }
+              }
+            },
+            "application/merge-patch+json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Article"
+              },
+              "example" : {
+                "payment_term" : 3,
+                "template" : "london"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Updated article",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Article"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 500,
+                  "message" : "Internal server error"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 401,
+                  "message" : "Unauthorized"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "The specified resource was not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 404,
+                  "message" : "Resource not found"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/payments" : {
+      "get" : {
+        "tags" : [ "Payment" ],
+        "summary" : "List all payments",
+        "parameters" : [ {
+          "name" : "page",
+          "in" : "query",
+          "description" : "The page of results to return",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "minimum" : 1,
+            "type" : "integer"
+          }
+        }, {
+          "name" : "limit",
+          "in" : "query",
+          "description" : "The number of records to return in one request",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "maximum" : 250,
+            "minimum" : 1,
+            "type" : "integer",
+            "default" : 100
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Return the list of payments",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/PaymentList"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 500,
+                  "message" : "Internal server error"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 401,
+                  "message" : "Unauthorized"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "The specified resource was not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 404,
+                  "message" : "Resource not found"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/payments/{id}" : {
+      "get" : {
+        "tags" : [ "Payment" ],
+        "summary" : "Retrieve a payment",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "Payment ID",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "example" : "636945f14ce97a4c1c561885"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Return a single payment",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Payment"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 500,
+                  "message" : "Internal server error"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 401,
+                  "message" : "Unauthorized"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "The specified resource was not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 404,
+                  "message" : "Resource not found"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Payment" ],
+        "summary" : "Update a payment",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "Payment ID",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "example" : "636945f14ce97a4c1c561885"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Payment"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Updated payment",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Payment"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 500,
+                  "message" : "Internal server error"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 401,
+                  "message" : "Unauthorized"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "The specified resource was not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 404,
+                  "message" : "Resource not found"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Payment" ],
+        "summary" : "Delete a payment",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "Payment ID",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "example" : "636945f14ce97a4c1c561885"
+          }
+        } ],
+        "responses" : {
+          "204" : {
+            "description" : "The payment was deleted successfully"
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 500,
+                  "message" : "Internal server error"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 401,
+                  "message" : "Unauthorized"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "The specified resource was not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 404,
+                  "message" : "Resource not found"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch" : {
+        "tags" : [ "Payment" ],
+        "summary" : "Update a payment partially",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "Payment ID",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "example" : "636945f14ce97a4c1c561885"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json-patch+json" : {
+              "schema" : {
+                "type" : "array",
+                "items" : {
+                  "oneOf" : [ {
+                    "$ref" : "#/components/schemas/JSONPatchRequestAddReplaceTest"
+                  }, {
+                    "$ref" : "#/components/schemas/JSONPatchRequestRemove"
+                  }, {
+                    "$ref" : "#/components/schemas/JSONPatchRequestMoveCopy"
+                  } ]
+                }
+              },
+              "examples" : {
+                "AddReplaceTest" : {
+                  "value" : [ {
+                    "op" : "replace",
+                    "path" : "/lines/0/type",
+                    "value" : 1
+                  } ]
+                },
+                "Remove" : {
+                  "value" : [ {
+                    "op" : "remove",
+                    "path" : "/subject"
+                  } ]
+                },
+                "MoveCopy" : {
+                  "value" : [ {
+                    "op" : "copy",
+                    "from" : "/lines/0/sku",
+                    "path" : "/lines/1/sku"
+                  } ]
+                }
+              }
+            },
+            "application/merge-patch+json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Payment"
+              },
+              "example" : {
+                "payment_term" : 3,
+                "template" : "london"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Updated article",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Payment"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 500,
+                  "message" : "Internal server error"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 401,
+                  "message" : "Unauthorized"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "The specified resource was not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 404,
+                  "message" : "Resource not found"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "Error" : {
+        "required" : [ "code", "message" ],
+        "type" : "object",
+        "properties" : {
+          "message" : {
+            "type" : "string",
+            "description" : "The error message indicating what the issue is"
+          },
+          "code" : {
+            "type" : "integer",
+            "description" : "The http status code"
+          }
+        }
+      },
+      "JSONPatchRequestAddReplaceTest" : {
+        "required" : [ "op", "path", "value" ],
+        "type" : "object",
+        "properties" : {
+          "path" : {
+            "type" : "string",
+            "description" : "A JSON Pointer path."
+          },
+          "value" : {
+            "description" : "The value to add, replace or test."
+          }
+        },
+        "additionalProperties" : false
+      },
+      "JSONPatchRequestRemove" : {
+        "required" : [ "op", "path" ],
+        "type" : "object",
+        "properties" : {
+          "path" : {
+            "type" : "string",
+            "description" : "A JSON Pointer path."
+          },
+          "op" : {
+            "type" : "string",
+            "description" : "The operation to perform.",
+            "enum" : [ "remove" ]
+          }
+        },
+        "additionalProperties" : false
+      },
+      "JSONPatchRequestMoveCopy" : {
+        "required" : [ "from", "op", "path" ],
+        "type" : "object",
+        "properties" : {
+          "path" : {
+            "type" : "string",
+            "description" : "A JSON Pointer path."
+          },
+          "op" : {
+            "type" : "string",
+            "description" : "The operation to perform.",
+            "enum" : [ "move", "copy" ]
+          }
+        },
+        "additionalProperties" : false
+      },
+      "ArticleBody" : {
+        "type" : "object",
+        "properties" : {
+          "manufacturer" : {
+            "type" : "string",
+            "example" : "Apple"
+          },
+          "origin_country" : {
+            "type" : "string",
+            "example" : "FR"
+          },
+          "price" : {
+            "type" : "number",
+            "example" : 10.32
+          },
+          "purchase_price" : {
+            "type" : "number",
+            "example" : 10.32
+          },
+          "sku" : {
+            "type" : "string",
+            "example" : "AZ123"
+          },
+          "title" : {
+            "type" : "string",
+            "example" : "Shirt"
+          },
+          "description" : {
+            "type" : "string",
+            "example" : "Size M"
+          },
+          "tax_rate" : {
+            "type" : "number",
+            "example" : 20
+          },
+          "type" : {
+            "type" : "number",
+            "example" : 0
+          },
+          "taxes_included" : {
+            "type" : "boolean"
+          },
+          "second_hand_good" : {
+            "type" : "boolean"
+          }
+        }
+      },
+      "Article" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/CollectionId"
+        }, {
+          "$ref" : "#/components/schemas/ArticleBody"
+        } ]
+      },
+      "Country" : {
+        "type" : "object",
+        "properties" : {
+          "code" : {
+            "type" : "string",
+            "example" : "FR"
+          },
+          "eu_member" : {
+            "type" : "boolean"
+          },
+          "label" : {
+            "$ref" : "#/components/schemas/Country_label"
+          }
+        }
+      },
+      "Payment" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/CollectionId"
+        }, {
+          "$ref" : "#/components/schemas/PaymentBody"
+        } ]
+      },
+      "PaymentBody" : {
+        "type" : "object",
+        "properties" : {
+          "amount" : {
+            "type" : "integer"
+          },
+          "currency" : {
+            "type" : "string",
+            "example" : "EUR"
+          },
+          "label" : {
+            "type" : "string",
+            "example" : "Subscription"
+          },
+          "date" : {
+            "type" : "integer",
+            "example" : 1566493220992
+          },
+          "notes" : {
+            "type" : "string",
+            "example" : "Client will provide the next payment tomorrow"
+          },
+          "method" : {
+            "$ref" : "#/components/schemas/PaymentMethod"
+          }
+        }
+      },
+      "PaymentMethod" : {
+        "type" : "string",
+        "enum" : [ "bank_transfer", "cash", "check", "cesu", "direct_debit", "credit_card", "paypal", "other" ]
+      },
+      "ListSummaryItem" : {
+        "type" : "object",
+        "properties" : {
+          "size" : {
+            "type" : "integer"
+          },
+          "amount" : {
+            "type" : "number"
+          }
+        }
+      },
+      "InvoiceListSummary" : {
+        "type" : "object",
+        "properties" : {
+          "total" : {
+            "$ref" : "#/components/schemas/ListSummaryItem"
+          },
+          "paid" : {
+            "$ref" : "#/components/schemas/ListSummaryItem"
+          },
+          "unpaid" : {
+            "$ref" : "#/components/schemas/ListSummaryItem"
+          },
+          "overdue" : {
+            "$ref" : "#/components/schemas/ListSummaryItem"
+          },
+          "draft" : {
+            "$ref" : "#/components/schemas/ListSummaryItem"
+          }
+        },
+        "example" : {
+          "total" : {
+            "size" : 123,
+            "amount" : 1203.54
+          },
+          "paid" : {
+            "size" : 110,
+            "amount" : 1052.23
+          },
+          "unpaid" : {
+            "size" : 2,
+            "amount" : 100
+          },
+          "overdue" : {
+            "size" : 6,
+            "amount" : 32.3
+          },
+          "draft" : {
+            "size" : 5,
+            "amount" : 19.01
+          }
+        }
+      },
+      "InvoiceList" : {
+        "type" : "object",
+        "properties" : {
+          "summary" : {
+            "$ref" : "#/components/schemas/InvoiceListSummary"
+          },
+          "invoices" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Invoice"
+            }
+          }
+        }
+      },
+      "PaymentList" : {
+        "type" : "object",
+        "properties" : {
+          "payments" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Payment"
+            }
+          }
+        }
+      },
+      "ArticleList" : {
+        "type" : "object",
+        "properties" : {
+          "articles" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Article"
+            }
+          }
+        }
+      },
+      "CountryList" : {
+        "type" : "object",
+        "properties" : {
+          "countries" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Country"
+            }
+          }
+        }
+      },
+      "CollectionId" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "example" : "5d5eca258126ab647499f9bf"
+          }
+        }
+      },
+      "BillOfSaleEvents" : {
+        "type" : "object",
+        "properties" : {
+          "events" : {
+            "type" : "array",
+            "example" : [ {
+              "date" : 1566493220992,
+              "key" : "invoice.history.paymentAdded",
+              "values" : [ "€", 23 ]
+            }, {
+              "date" : 1566423220992,
+              "key" : "invoice.history.issued",
+              "values" : [ ]
+            } ],
+            "items" : {
+              "$ref" : "#/components/schemas/BillOfSaleEvents_events"
+            }
+          }
+        }
+      },
+      "BillOfSaleAmounts" : {
+        "type" : "object",
+        "properties" : {
+          "total_including_taxes" : {
+            "type" : "number",
+            "example" : 123.54
+          },
+          "total_excluding_taxes" : {
+            "type" : "number",
+            "example" : 98.12
+          }
+        }
+      },
+      "ExternalReference" : {
+        "type" : "object",
+        "properties" : {
+          "label" : {
+            "type" : "string",
+            "example" : "5d5eca258126ab647499f9bf"
+          },
+          "identifier" : {
+            "type" : "string",
+            "example" : "John Doe"
+          }
+        }
+      },
+      "Address" : {
+        "type" : "object",
+        "properties" : {
+          "last_name" : {
+            "type" : "string",
+            "example" : "Doe"
+          },
+          "first_name" : {
+            "type" : "string",
+            "example" : "John"
+          },
+          "company_name" : {
+            "type" : "string",
+            "example" : "John's company"
+          },
+          "address" : {
+            "type" : "string",
+            "example" : "123 rue des archives"
+          },
+          "address_supplement" : {
+            "type" : "string",
+            "example" : "Porte gauche"
+          },
+          "zip" : {
+            "type" : "string",
+            "example" : "A1234"
+          },
+          "city" : {
+            "type" : "string",
+            "example" : "Paris"
+          },
+          "country_code" : {
+            "type" : "string",
+            "example" : "FR"
+          },
+          "vat_number" : {
+            "type" : "string",
+            "example" : "FR123456789"
+          }
+        }
+      },
+      "BillOfSaleLine" : {
+        "type" : "object",
+        "properties" : {
+          "sku" : {
+            "type" : "string"
+          },
+          "description" : {
+            "type" : "string"
+          },
+          "title" : {
+            "type" : "string"
+          },
+          "type" : {
+            "type" : "integer"
+          },
+          "price" : {
+            "type" : "number"
+          },
+          "quantity" : {
+            "type" : "number"
+          },
+          "unit" : {
+            "type" : "string",
+            "enum" : [ "piece", "hour", "day", "meter", "kilometer", "kilogram", "square_meter" ]
+          },
+          "discount_amount" : {
+            "type" : "number"
+          },
+          "discount_type" : {
+            "type" : "string",
+            "enum" : [ "percentage", "fixed" ]
+          },
+          "tax_rate" : {
+            "type" : "number"
+          },
+          "origin_country" : {
+            "type" : "string"
+          },
+          "second_hand_good" : {
+            "type" : "boolean"
+          }
+        }
+      },
+      "BillOfSaleBody" : {
+        "type" : "object",
+        "properties" : {
+          "currency" : {
+            "type" : "string",
+            "example" : "EUR"
+          },
+          "is_draft" : {
+            "type" : "boolean"
+          },
+          "payment_term" : {
+            "type" : "integer",
+            "example" : 1
+          },
+          "discount_amount" : {
+            "type" : "number",
+            "example" : 12.2
+          },
+          "discount_type" : {
+            "type" : "string",
+            "enum" : [ "percentage", "fixed" ]
+          },
+          "rebate" : {
+            "type" : "number",
+            "example" : 10
+          },
+          "activity" : {
+            "type" : "string",
+            "example" : "5d5efds258126ab647499f9bf"
+          },
+          "template" : {
+            "type" : "string",
+            "enum" : [ "basic", "london", "paris", "berlin" ]
+          },
+          "shipping_amount" : {
+            "type" : "number",
+            "example" : 4.5
+          },
+          "shipping_tax_rate" : {
+            "type" : "number",
+            "example" : 20
+          },
+          "taxes_liable" : {
+            "type" : "boolean"
+          },
+          "taxes_included" : {
+            "type" : "boolean"
+          },
+          "client" : {
+            "$ref" : "#/components/schemas/ExternalReference"
+          },
+          "billing_address" : {
+            "$ref" : "#/components/schemas/Address"
+          },
+          "subject" : {
+            "type" : "string",
+            "example" : "Design of the homepage"
+          },
+          "lines" : {
+            "type" : "array",
+            "example" : [ {
+              "sku" : "AX123",
+              "description" : "Mockup and copywriting",
+              "title" : "Homepage design",
+              "type" : 0,
+              "price" : 120.32,
+              "quantity" : 1,
+              "unit" : "piece",
+              "discount_amount" : 10,
+              "discount_type" : "percentage",
+              "tax_rate" : 20,
+              "origin_country" : "FR",
+              "second_hand_good" : false
+            }, {
+              "sku" : "AX456",
+              "description" : "Logo with 3 colors",
+              "title" : "Logo design",
+              "type" : 0,
+              "price" : 59,
+              "quantity" : 1,
+              "unit" : "piece",
+              "discount_amount" : 0,
+              "discount_type" : "percentage",
+              "tax_rate" : 20,
+              "origin_country" : "FR",
+              "second_hand_good" : false
+            } ],
+            "items" : {
+              "$ref" : "#/components/schemas/BillOfSaleLine"
+            }
+          },
+          "lines_groups" : {
+            "type" : "array",
+            "example" : [ {
+              "name" : "Design and mockup",
+              "articles" : [ 0, 1 ]
+            } ],
+            "items" : {
+              "$ref" : "#/components/schemas/BillOfSaleBody_lines_groups"
+            }
+          },
+          "comments" : {
+            "type" : "string",
+            "example" : "Payment to be done within 3 days"
+          },
+          "payment_conditions_included" : {
+            "type" : "boolean"
+          },
+          "language" : {
+            "type" : "string",
+            "enum" : [ "fr", "en", "de", "es", "it" ]
+          },
+          "tax_exemption_text" : {
+            "type" : "string",
+            "example" : "Article 138 CE/2008"
+          },
+          "payment_methods" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          }
+        }
+      },
+      "InvoiceBody" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/BillOfSaleBody"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "execution_date" : {
+              "type" : "integer",
+              "example" : 1566493220992
+            },
+            "online_payment_enabled" : {
+              "type" : "boolean",
+              "example" : false
+            },
+            "payment_gateways" : {
+              "type" : "array",
+              "items" : {
+                "type" : "string",
+                "example" : "[\"5d5eca258126ab647499f9bf\",\"5b17da549a7feb695f703975\"]"
+              }
+            },
+            "tracking_numbers" : {
+              "type" : "array",
+              "items" : {
+                "type" : "string",
+                "example" : "[\"456SDFDFD\"]"
+              }
+            },
+            "tracking_carriers" : {
+              "type" : "array",
+              "items" : {
+                "type" : "string",
+                "example" : "[\"UPS\"]"
+              }
+            }
+          }
+        } ]
+      },
+      "Invoice" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/CollectionId"
+        }, {
+          "$ref" : "#/components/schemas/InvoiceBody"
+        }, {
+          "$ref" : "#/components/schemas/BillOfSaleEvents"
+        }, {
+          "$ref" : "#/components/schemas/BillOfSaleAmounts"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "status" : {
+              "type" : "string",
+              "enum" : [ "draft", "not_paid", "paid", "cancelled" ]
+            },
+            "paid_date" : {
+              "type" : "integer",
+              "example" : 1566493220992
+            },
+            "attachments" : {
+              "type" : "array",
+              "items" : {
+                "type" : "string",
+                "example" : "[\"myfile1.png\",\"mydocument.pdf\"]"
+              }
+            }
+          }
+        } ]
+      },
+      "id_attachments_body" : {
+        "type" : "object",
+        "properties" : {
+          "file" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string",
+              "format" : "binary"
+            }
+          }
+        }
+      },
+      "Country_label" : {
+        "type" : "object",
+        "properties" : {
+          "fr" : {
+            "type" : "string",
+            "example" : "France"
+          },
+          "en" : {
+            "type" : "string",
+            "example" : "France"
+          }
+        }
+      },
+      "BillOfSaleEvents_events" : {
+        "type" : "object",
+        "properties" : {
+          "date" : {
+            "type" : "integer"
+          },
+          "key" : {
+            "type" : "string"
+          },
+          "values" : {
+            "type" : "array",
+            "items" : {
+              "oneOf" : [ {
+                "type" : "string"
+              }, {
+                "type" : "integer"
+              } ]
+            }
+          }
+        }
+      },
+      "BillOfSaleBody_lines_groups" : {
+        "type" : "object",
+        "properties" : {
+          "name" : {
+            "type" : "string"
+          },
+          "articles" : {
+            "type" : "array",
+            "items" : {
+              "type" : "integer"
+            }
+          }
+        }
+      }
+    },
+    "responses" : {
+      "NotFound" : {
+        "description" : "The specified resource was not found",
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/Error"
+            },
+            "example" : {
+              "code" : 404,
+              "message" : "Resource not found"
+            }
+          }
+        }
+      },
+      "Unauthorized" : {
+        "description" : "Unauthorized",
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/Error"
+            },
+            "example" : {
+              "code" : 401,
+              "message" : "Unauthorized"
+            }
+          }
+        }
+      },
+      "InternalServerError" : {
+        "description" : "Internal Server Error",
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/Error"
+            },
+            "example" : {
+              "code" : 500,
+              "message" : "Internal server error"
+            }
+          }
+        }
+      }
+    },
+    "parameters" : {
+      "PageParam" : {
+        "name" : "page",
+        "in" : "query",
+        "description" : "The page of results to return",
+        "required" : false,
+        "style" : "form",
+        "explode" : true,
+        "schema" : {
+          "minimum" : 1,
+          "type" : "integer"
+        }
+      },
+      "LimitParam" : {
+        "name" : "limit",
+        "in" : "query",
+        "description" : "The number of records to return in one request",
+        "required" : false,
+        "style" : "form",
+        "explode" : true,
+        "schema" : {
+          "maximum" : 250,
+          "minimum" : 1,
+          "type" : "integer",
+          "default" : 100
+        }
+      },
+      "KeywordParam" : {
+        "name" : "keyword",
+        "in" : "query",
+        "description" : "The keyword to search for",
+        "required" : false,
+        "style" : "form",
+        "explode" : true,
+        "schema" : {
+          "type" : "string"
+        }
+      }
+    },
+    "securitySchemes" : {
+      "ApiKey" : {
+        "type" : "apiKey",
+        "name" : "X-Api-Key",
+        "in" : "header"
+      },
+      "JWTAuth" : {
+        "type" : "http",
+        "scheme" : "bearer",
+        "bearerFormat" : "JWT"
+      }
+    }
+  }
+}
