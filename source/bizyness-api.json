@@ -920,7 +920,7 @@
       },
       "patch" : {
         "tags" : [ "Invoice" ],
-        "summary" : "Update an invoice (partial)",
+        "summary" : "Update an invoice partially",
         "parameters" : [ {
           "name" : "id",
           "in" : "path",
@@ -1627,7 +1627,7 @@
       },
       "patch" : {
         "tags" : [ "Article" ],
-        "summary" : "Update an article (partial)",
+        "summary" : "Update an article partially",
         "parameters" : [ {
           "name" : "id",
           "in" : "path",
@@ -2116,7 +2116,7 @@
       },
       "patch" : {
         "tags" : [ "Activity" ],
-        "summary" : "Update an activity (partial)",
+        "summary" : "Update an activity partially",
         "parameters" : [ {
           "name" : "id",
           "in" : "path",
@@ -2869,7 +2869,7 @@
       },
       "patch" : {
         "tags" : [ "Client" ],
-        "summary" : "Update a client (partial)",
+        "summary" : "Update a client partially",
         "parameters" : [ {
           "name" : "id",
           "in" : "path",
@@ -3290,7 +3290,7 @@
       },
       "patch" : {
         "tags" : [ "Payment" ],
-        "summary" : "Update a payment (partial)",
+        "summary" : "Update a payment partially",
         "parameters" : [ {
           "name" : "id",
           "in" : "path",
