@@ -54,6 +54,14 @@
           "$ref" : "#/components/parameters/PageParam"
         }, {
           "$ref" : "#/components/parameters/LimitParam"
+        }, {
+          "in" : "query",
+          "name" : "status",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/components/schemas/InvoiceStatus"
+          },
+          "description" : "The page of results to return"
         } ],
         "responses" : {
           "200" : {
@@ -1942,11 +1950,22 @@
           }
         }
       },
+      "InvoiceStatus" : {
+        "type" : "object",
+        "properties" : {
+          "status" : {
+            "enum" : [ "draft", "not_paid", "paid", "cancelled", "overdue" ],
+            "type" : "string"
+          }
+        }
+      },
       "Invoice" : {
         "allOf" : [ {
           "$ref" : "#/components/schemas/CollectionId"
         }, {
           "$ref" : "#/components/schemas/InvoiceBody"
+        }, {
+          "$ref" : "#/components/schemas/InvoiceStatus"
         }, {
           "$ref" : "#/components/schemas/BillOfSaleEvents"
         }, {
@@ -1954,10 +1973,6 @@
         }, {
           "type" : "object",
           "properties" : {
-            "status" : {
-              "enum" : [ "draft", "not_paid", "paid", "cancelled" ],
-              "type" : "string"
-            },
             "paid_date" : {
               "type" : "integer",
               "example" : 1566493220992
