@@ -1432,6 +1432,70 @@
         }
       }
     },
+    "/companies/my/logo" : {
+      "post" : {
+        "tags" : [ "Company" ],
+        "summary" : "Upload the logo",
+        "requestBody" : {
+          "required" : true,
+          "content" : {
+            "multipart/form-data" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "file" : {
+                    "type" : "array",
+                    "items" : {
+                      "type" : "string",
+                      "format" : "binary"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Activity"
+                }
+              }
+            },
+            "description" : "Created activity"
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Company" ],
+        "summary" : "Delete the logo",
+        "responses" : {
+          "204" : {
+            "description" : "The activity was deleted successfully"
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      }
+    },
     "/banks/transactions" : {
       "get" : {
         "tags" : [ "Bank" ],
