@@ -41,10 +41,7 @@
     "name" : "Article",
     "description" : "Managing your articles"
   }, {
-    "name" : "Report",
-    "description" : "Managing your reports"
-  }, {
-    "name" : "Bank",
+    "name" : "Reports",
     "description" : "Managing your reports"
   }, {
     "name" : "Miscellaneous",
@@ -64,8 +61,7 @@
           "explode" : true,
           "schema" : {
             "minimum" : 1,
-            "type" : "integer",
-            "default" : 1
+            "type" : "integer"
           }
         }, {
           "name" : "limit",
@@ -1065,7 +1061,7 @@
     },
     "/reports/revenue/monthly" : {
       "get" : {
-        "tags" : [ "Report" ],
+        "tags" : [ "Reports" ],
         "summary" : "Figures of the month",
         "parameters" : [ {
           "name" : "month",
@@ -1124,7 +1120,7 @@
     },
     "/reports/revenue/yearly" : {
       "get" : {
-        "tags" : [ "Report" ],
+        "tags" : [ "Reports" ],
         "summary" : "Figures of the year",
         "parameters" : [ {
           "name" : "year",
@@ -1144,52 +1140,6 @@
               "application/json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/FiguresYearReport"
-                }
-              }
-            }
-          },
-          "500" : {
-            "description" : "Internal Server Error",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/Error"
-                },
-                "example" : {
-                  "code" : 500,
-                  "message" : "Internal server error"
-                }
-              }
-            }
-          },
-          "401" : {
-            "description" : "Unauthorized",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/Error"
-                },
-                "example" : {
-                  "code" : 401,
-                  "message" : "Unauthorized"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/reports/urssaf/current" : {
-      "get" : {
-        "tags" : [ "Report" ],
-        "summary" : "URSSAF statement",
-        "responses" : {
-          "200" : {
-            "description" : "Return the URSSAF statement",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/URSSAFReportStatement"
                 }
               }
             }
@@ -1248,8 +1198,7 @@
           "explode" : true,
           "schema" : {
             "minimum" : 1,
-            "type" : "integer",
-            "default" : 1
+            "type" : "integer"
           }
         }, {
           "name" : "limit",
@@ -1724,92 +1673,6 @@
         }
       }
     },
-    "/banks/transactions" : {
-      "get" : {
-        "tags" : [ "Bank" ],
-        "summary" : "List all transactions",
-        "parameters" : [ {
-          "name" : "page",
-          "in" : "query",
-          "description" : "The page of results to return",
-          "required" : false,
-          "style" : "form",
-          "explode" : true,
-          "schema" : {
-            "minimum" : 1,
-            "type" : "integer",
-            "default" : 1
-          }
-        }, {
-          "name" : "limit",
-          "in" : "query",
-          "description" : "The number of records to return in one request",
-          "required" : false,
-          "style" : "form",
-          "explode" : true,
-          "schema" : {
-            "maximum" : 250,
-            "minimum" : 1,
-            "type" : "integer",
-            "default" : 100
-          }
-        } ],
-        "responses" : {
-          "200" : {
-            "description" : "Return the list of transactions",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/BankTransactionList"
-                }
-              }
-            }
-          },
-          "500" : {
-            "description" : "Internal Server Error",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/Error"
-                },
-                "example" : {
-                  "code" : 500,
-                  "message" : "Internal server error"
-                }
-              }
-            }
-          },
-          "401" : {
-            "description" : "Unauthorized",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/Error"
-                },
-                "example" : {
-                  "code" : 401,
-                  "message" : "Unauthorized"
-                }
-              }
-            }
-          },
-          "404" : {
-            "description" : "The specified resource was not found",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/Error"
-                },
-                "example" : {
-                  "code" : 404,
-                  "message" : "Resource not found"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/payments" : {
       "get" : {
         "tags" : [ "Payment" ],
@@ -1823,8 +1686,7 @@
           "explode" : true,
           "schema" : {
             "minimum" : 1,
-            "type" : "integer",
-            "default" : 1
+            "type" : "integer"
           }
         }, {
           "name" : "limit",
@@ -2363,35 +2225,6 @@
           }
         }
       },
-      "URSSAFReportStatement" : {
-        "type" : "object",
-        "properties" : {
-          "period" : {
-            "type" : "integer",
-            "example" : 1651356000000
-          },
-          "dueDate" : {
-            "type" : "integer",
-            "example" : 1656540000000
-          },
-          "distanceSalesAmount" : {
-            "type" : "integer",
-            "example" : 1235
-          },
-          "servicesAmount" : {
-            "type" : "integer",
-            "example" : 554
-          },
-          "otherServicesAmount" : {
-            "type" : "integer",
-            "example" : 787
-          },
-          "estimate" : {
-            "type" : "integer",
-            "example" : 457
-          }
-        }
-      },
       "FiguresReportTotal" : {
         "type" : "object",
         "properties" : {
@@ -2595,21 +2428,6 @@
             "type" : "array",
             "items" : {
               "$ref" : "#/components/schemas/Payment"
-            }
-          }
-        }
-      },
-      "BankTransactionList" : {
-        "type" : "object",
-        "properties" : {
-          "balance" : {
-            "type" : "integer",
-            "example" : 3214
-          },
-          "payments" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "#/components/schemas/BankTransaction"
             }
           }
         }
@@ -2937,22 +2755,6 @@
           }
         } ]
       },
-      "BankTransaction" : {
-        "type" : "object",
-        "properties" : {
-          "date" : {
-            "type" : "integer",
-            "example" : 1566493220992
-          },
-          "label" : {
-            "type" : "string",
-            "example" : "Facebook ads"
-          },
-          "amount" : {
-            "type" : "integer"
-          }
-        }
-      },
       "Invoice" : {
         "allOf" : [ {
           "$ref" : "#/components/schemas/CollectionId"
@@ -3098,8 +2900,7 @@
         "explode" : true,
         "schema" : {
           "minimum" : 1,
-          "type" : "integer",
-          "default" : 1
+          "type" : "integer"
         }
       },
       "LimitParam" : {
