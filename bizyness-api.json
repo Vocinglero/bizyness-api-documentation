@@ -577,6 +577,39 @@
         }
       }
     },
+    "/reports/revenue/yearly" : {
+      "parameters" : [ {
+        "in" : "query",
+        "name" : "year",
+        "schema" : {
+          "type" : "integer"
+        },
+        "required" : true,
+        "description" : "The year"
+      } ],
+      "get" : {
+        "tags" : [ "Reports" ],
+        "summary" : "Figures of the year",
+        "responses" : {
+          "200" : {
+            "description" : "Return the figures of the year",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/FiguresYearReport"
+                }
+              }
+            }
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          }
+        }
+      }
+    },
     "/articles" : {
       "get" : {
         "tags" : [ "Article" ],
@@ -1227,7 +1260,7 @@
           }
         }
       },
-      "FiguresMonthReport" : {
+      "FiguresReportTotal" : {
         "type" : "object",
         "properties" : {
           "margin" : {
@@ -1245,28 +1278,76 @@
           "variation" : {
             "type" : "integer",
             "example" : 10.3
+          }
+        }
+      },
+      "FiguresMonthReport" : {
+        "type" : "object",
+        "properties" : {
+          "total" : {
+            "$ref" : "#/components/schemas/FiguresReportTotal"
           },
           "months" : {
             "type" : "array",
             "items" : {
-              "type" : "object",
-              "properties" : {
-                "month" : {
-                  "type" : "integer",
-                  "minimum" : 1,
-                  "maximum" : 12
-                },
-                "margin" : {
-                  "type" : "integer"
-                }
-              }
+              "$ref" : "#/components/schemas/FiguresReportMonthItem"
             },
             "example" : [ {
               "month" : 1,
-              "margin" : 123
+              "margin" : -393,
+              "incomes" : 456,
+              "expenses" : 849
             }, {
               "month" : 2,
-              "margin" : 456
+              "margin" : 4507,
+              "incomes" : 4556,
+              "expenses" : 49
+            } ]
+          }
+        }
+      },
+      "FiguresReportMonthItem" : {
+        "type" : "object",
+        "properties" : {
+          "month" : {
+            "type" : "integer"
+          },
+          "margin" : {
+            "type" : "integer"
+          },
+          "incomes" : {
+            "type" : "integer"
+          },
+          "expenses" : {
+            "type" : "integer"
+          }
+        }
+      },
+      "FiguresYearReport" : {
+        "type" : "object",
+        "properties" : {
+          "start" : {
+            "type" : "integer",
+            "example" : 2022
+          },
+          "total" : {
+            "$ref" : "#/components/schemas/FiguresReportTotal"
+          },
+          "months" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/FiguresReportMonthItem"
+            },
+            "example" : [ {
+              "month" : 1,
+              "margin" : -393,
+              "incomes" : 456,
+              "expenses" : 849
+            }, {
+              "month" : 2,
+              "margin" : 4507,
+              "incomes" : 4556,
+              "expenses" : 49
             } ]
           }
         }
