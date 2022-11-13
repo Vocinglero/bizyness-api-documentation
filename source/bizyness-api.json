@@ -206,11 +206,11 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Invoice"
+                  "$ref" : "#/components/schemas/Payment"
                 }
               }
             },
-            "description" : "Created invoice"
+            "description" : "Created payment"
           },
           "500" : {
             "$ref" : "#/components/responses/InternalServerError"
@@ -310,7 +310,7 @@
                 }
               }
             },
-            "description" : "Created invoice"
+            "description" : "Updated invoice"
           },
           "500" : {
             "$ref" : "#/components/responses/InternalServerError"
@@ -1460,11 +1460,11 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Activity"
+                  "$ref" : "#/components/schemas/Company"
                 }
               }
             },
-            "description" : "Created activity"
+            "description" : "Updated company"
           },
           "500" : {
             "$ref" : "#/components/responses/InternalServerError"
@@ -1602,7 +1602,7 @@
                 }
               }
             },
-            "description" : "Created client"
+            "description" : "Updated client"
           },
           "500" : {
             "$ref" : "#/components/responses/InternalServerError"
