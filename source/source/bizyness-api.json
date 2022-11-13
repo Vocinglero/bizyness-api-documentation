@@ -47,6 +47,12 @@
     "name" : "Report",
     "description" : "Managing your reports"
   }, {
+    "name" : "Account",
+    "description" : "Managing your account"
+  }, {
+    "name" : "Company",
+    "description" : "Managing your account"
+  }, {
     "name" : "Miscellaneous",
     "description" : "Transverval ressources"
   } ],
@@ -2298,6 +2304,478 @@
         }
       }
     },
+    "/users/me" : {
+      "get" : {
+        "tags" : [ "Account" ],
+        "summary" : "Get current account",
+        "responses" : {
+          "200" : {
+            "description" : "Return the connected account",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Account"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 500,
+                  "message" : "Internal server error"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 401,
+                  "message" : "Unauthorized"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "The specified resource was not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 404,
+                  "message" : "Resource not found"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Account" ],
+        "summary" : "Update current account",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/AccountBody"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Updated account",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Account"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 500,
+                  "message" : "Internal server error"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 401,
+                  "message" : "Unauthorized"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "The specified resource was not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 404,
+                  "message" : "Resource not found"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch" : {
+        "tags" : [ "Account" ],
+        "summary" : "Update current account (partial)",
+        "requestBody" : {
+          "content" : {
+            "application/json-patch+json" : {
+              "schema" : {
+                "type" : "array",
+                "items" : {
+                  "oneOf" : [ {
+                    "$ref" : "#/components/schemas/JSONPatchRequestAddReplaceTest"
+                  }, {
+                    "$ref" : "#/components/schemas/JSONPatchRequestRemove"
+                  }, {
+                    "$ref" : "#/components/schemas/JSONPatchRequestMoveCopy"
+                  } ]
+                }
+              },
+              "examples" : {
+                "AddReplaceTest" : {
+                  "value" : [ {
+                    "op" : "replace",
+                    "path" : "/last_name",
+                    "value" : "Dupont"
+                  } ]
+                },
+                "Remove" : {
+                  "value" : [ {
+                    "op" : "remove",
+                    "path" : "/last_name"
+                  } ]
+                },
+                "MoveCopy" : {
+                  "value" : [ {
+                    "op" : "copy",
+                    "from" : "/last_name",
+                    "path" : "/last_name"
+                  } ]
+                }
+              }
+            },
+            "application/merge-patch+json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/AccountBody"
+              },
+              "example" : {
+                "payment_term" : 3,
+                "template" : "london"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Updated account",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Account"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 500,
+                  "message" : "Internal server error"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 401,
+                  "message" : "Unauthorized"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "The specified resource was not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 404,
+                  "message" : "Resource not found"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/companies/my" : {
+      "get" : {
+        "tags" : [ "Company" ],
+        "summary" : "Get current company",
+        "responses" : {
+          "200" : {
+            "description" : "Return the connected company",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Company"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 500,
+                  "message" : "Internal server error"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 401,
+                  "message" : "Unauthorized"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "The specified resource was not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 404,
+                  "message" : "Resource not found"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Company" ],
+        "summary" : "Update current company",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/CompanyBody"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Updated company",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Company"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 500,
+                  "message" : "Internal server error"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 401,
+                  "message" : "Unauthorized"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "The specified resource was not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 404,
+                  "message" : "Resource not found"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch" : {
+        "tags" : [ "Company" ],
+        "summary" : "Update current company (partial)",
+        "requestBody" : {
+          "content" : {
+            "application/json-patch+json" : {
+              "schema" : {
+                "type" : "array",
+                "items" : {
+                  "oneOf" : [ {
+                    "$ref" : "#/components/schemas/JSONPatchRequestAddReplaceTest"
+                  }, {
+                    "$ref" : "#/components/schemas/JSONPatchRequestRemove"
+                  }, {
+                    "$ref" : "#/components/schemas/JSONPatchRequestMoveCopy"
+                  } ]
+                }
+              },
+              "examples" : {
+                "AddReplaceTest" : {
+                  "value" : [ {
+                    "op" : "replace",
+                    "path" : "/last_name",
+                    "value" : "Dupont"
+                  } ]
+                },
+                "Remove" : {
+                  "value" : [ {
+                    "op" : "remove",
+                    "path" : "/last_name"
+                  } ]
+                },
+                "MoveCopy" : {
+                  "value" : [ {
+                    "op" : "copy",
+                    "from" : "/last_name",
+                    "path" : "/last_name"
+                  } ]
+                }
+              }
+            },
+            "application/merge-patch+json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/CompanyBody"
+              },
+              "example" : {
+                "payment_term" : 3,
+                "template" : "london"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Updated company",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Company"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 500,
+                  "message" : "Internal server error"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 401,
+                  "message" : "Unauthorized"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "The specified resource was not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 404,
+                  "message" : "Resource not found"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/banks/transactions" : {
       "get" : {
         "tags" : [ "Bank" ],
@@ -4083,21 +4561,34 @@
           }
         }
       },
+      "ContactAddress" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/Address"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "last_name" : {
+              "type" : "string",
+              "example" : "Doe"
+            },
+            "first_name" : {
+              "type" : "string",
+              "example" : "John"
+            },
+            "company_name" : {
+              "type" : "string",
+              "example" : "John's company"
+            },
+            "vat_number" : {
+              "type" : "string",
+              "example" : "FR123456789"
+            }
+          }
+        } ]
+      },
       "Address" : {
         "type" : "object",
         "properties" : {
-          "last_name" : {
-            "type" : "string",
-            "example" : "Doe"
-          },
-          "first_name" : {
-            "type" : "string",
-            "example" : "John"
-          },
-          "company_name" : {
-            "type" : "string",
-            "example" : "John's company"
-          },
           "address" : {
             "type" : "string",
             "example" : "123 rue des archives"
@@ -4117,10 +4608,6 @@
           "country_code" : {
             "type" : "string",
             "example" : "FR"
-          },
-          "vat_number" : {
-            "type" : "string",
-            "example" : "FR123456789"
           }
         }
       },
@@ -4219,7 +4706,7 @@
             "$ref" : "#/components/schemas/ExternalReference"
           },
           "billing_address" : {
-            "$ref" : "#/components/schemas/Address"
+            "$ref" : "#/components/schemas/ContactAddress"
           },
           "subject" : {
             "type" : "string",
@@ -4373,6 +4860,135 @@
               }
             }
           }
+        } ]
+      },
+      "AccountBody" : {
+        "type" : "object",
+        "properties" : {
+          "first_name" : {
+            "type" : "string",
+            "example" : "John"
+          },
+          "last_name" : {
+            "type" : "string",
+            "example" : "Doe"
+          },
+          "email" : {
+            "type" : "string",
+            "example" : "john@google.com"
+          }
+        }
+      },
+      "Account" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/AccountBody"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "billing_provider" : {
+              "type" : "string",
+              "example" : "chargebee"
+            },
+            "first_name" : {
+              "type" : "string",
+              "example" : "John"
+            },
+            "last_name" : {
+              "type" : "string",
+              "example" : "Doe"
+            },
+            "display_name" : {
+              "type" : "string",
+              "example" : "John Doe"
+            },
+            "email" : {
+              "type" : "string",
+              "example" : "john@google.com"
+            },
+            "subscription_status" : {
+              "type" : "string",
+              "enum" : [ "trial", "active", "suspended" ]
+            }
+          }
+        } ]
+      },
+      "CompanyBody" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/Address"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "company_name" : {
+              "type" : "string",
+              "example" : "John's company"
+            },
+            "trade_name" : {
+              "type" : "string",
+              "example" : "Supercar"
+            },
+            "email" : {
+              "type" : "string",
+              "example" : "john@google.com"
+            },
+            "phone" : {
+              "type" : "string",
+              "example" : "456123456789"
+            },
+            "mobile" : {
+              "type" : "string",
+              "example" : "321564987"
+            },
+            "registration_type" : {
+              "type" : "integer",
+              "example" : 0
+            },
+            "company_identifier" : {
+              "type" : "string",
+              "example" : "123456DS"
+            },
+            "vat_number" : {
+              "type" : "string",
+              "example" : "123456DS"
+            },
+            "insurance_type" : {
+              "type" : "integer",
+              "example" : 0
+            },
+            "insurance_company_name" : {
+              "type" : "string",
+              "example" : "Super Insurance Company"
+            },
+            "insurance_geographic_coverage" : {
+              "type" : "string",
+              "example" : "France"
+            },
+            "activity_type" : {
+              "type" : "integer",
+              "example" : 0
+            },
+            "second_hand_goods_selling" : {
+              "type" : "boolean"
+            },
+            "urssaf_statement_frequency" : {
+              "type" : "string",
+              "enum" : [ "montly", "quarterly" ]
+            },
+            "income_tax_discharged" : {
+              "type" : "boolean"
+            },
+            "acre_applied" : {
+              "type" : "boolean"
+            },
+            "creation_date" : {
+              "type" : "number",
+              "example" : 1566493220992
+            }
+          }
+        } ]
+      },
+      "Company" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/CompanyBody"
         } ]
       },
       "id_attachments_body" : {
