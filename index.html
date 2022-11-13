@@ -435,6 +435,15 @@
                     <a href="#tocS_InvoiceList" class="toc-h2 toc-link" data-title="InvoiceList">InvoiceList</a>
                   </li>
                   <li>
+                    <a href="#tocS_PaymentList" class="toc-h2 toc-link" data-title="PaymentList">PaymentList</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_ArticleList" class="toc-h2 toc-link" data-title="ArticleList">ArticleList</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_CountryList" class="toc-h2 toc-link" data-title="CountryList">CountryList</a>
+                  </li>
+                  <li>
                     <a href="#tocS_CollectionId" class="toc-h2 toc-link" data-title="CollectionId">CollectionId</a>
                   </li>
                   <li>
@@ -1369,10 +1378,10 @@ ApiKey, JWTAuth
 <p>Code samples</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> GET <span class="se">\</span>
-  <span class="nt">--url</span> https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/invoices/string/payments <span class="se">\</span>
+  <span class="nt">--url</span> https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/invoices/636945e14ce97a4c1c561885/payments <span class="se">\</span>
   <span class="nt">--header</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">--header</span> <span class="s1">'X-Api-Key: API_KEY'</span>
-</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/lpb/bizyness-api/1.0.0/invoices/string/payments</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/lpb/bizyness-api/1.0.0/invoices/636945e14ce97a4c1c561885/payments</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">X-Api-Key</span><span class="p">:</span> <span class="s">API_KEY</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">virtserver.swaggerhub.com</span>
@@ -1388,7 +1397,7 @@ ApiKey, JWTAuth
   <span class="p">}</span>
 <span class="p">});</span>
 
-<span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="dl">"</span><span class="s2">GET</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/invoices/string/payments</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="dl">"</span><span class="s2">GET</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/invoices/636945e14ce97a4c1c561885/payments</span><span class="dl">"</span><span class="p">);</span>
 <span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">Accept</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">);</span>
 <span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">X-Api-Key</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">API_KEY</span><span class="dl">"</span><span class="p">);</span>
 
@@ -1397,7 +1406,7 @@ ApiKey, JWTAuth
 <span class="nb">require</span> <span class="s1">'net/http'</span>
 <span class="nb">require</span> <span class="s1">'openssl'</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/invoices/string/payments"</span><span class="p">)</span>
+<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/invoices/636945e14ce97a4c1c561885/payments"</span><span class="p">)</span>
 
 <span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">url</span><span class="p">.</span><span class="nf">port</span><span class="p">)</span>
 <span class="n">http</span><span class="p">.</span><span class="nf">use_ssl</span> <span class="o">=</span> <span class="kp">true</span>
@@ -1418,7 +1427,7 @@ ApiKey, JWTAuth
     <span class="s">'X-Api-Key'</span><span class="p">:</span> <span class="s">"API_KEY"</span>
     <span class="p">}</span>
 
-<span class="n">conn</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="s">"/lpb/bizyness-api/1.0.0/invoices/string/payments"</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+<span class="n">conn</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="s">"/lpb/bizyness-api/1.0.0/invoices/636945e14ce97a4c1c561885/payments"</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
 <span class="n">res</span> <span class="o">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">getresponse</span><span class="p">()</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">res</span><span class="p">.</span><span class="n">read</span><span class="p">()</span>
@@ -1429,7 +1438,7 @@ ApiKey, JWTAuth
 <span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
 
 <span class="nb">curl_setopt_array</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="p">[</span>
-  <span class="no">CURLOPT_URL</span> <span class="o">=&gt;</span> <span class="s2">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/invoices/string/payments"</span><span class="p">,</span>
+  <span class="no">CURLOPT_URL</span> <span class="o">=&gt;</span> <span class="s2">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/invoices/636945e14ce97a4c1c561885/payments"</span><span class="p">,</span>
   <span class="no">CURLOPT_RETURNTRANSFER</span> <span class="o">=&gt;</span> <span class="kc">true</span><span class="p">,</span>
   <span class="no">CURLOPT_ENCODING</span> <span class="o">=&gt;</span> <span class="s2">""</span><span class="p">,</span>
   <span class="no">CURLOPT_MAXREDIRS</span> <span class="o">=&gt;</span> <span class="mi">10</span><span class="p">,</span>
@@ -1452,7 +1461,7 @@ ApiKey, JWTAuth
 <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
   <span class="k">echo</span> <span class="nv">$response</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">HttpResponse</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">response</span> <span class="o">=</span> <span class="nc">Unirest</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/invoices/string/payments"</span><span class="o">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">HttpResponse</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">response</span> <span class="o">=</span> <span class="nc">Unirest</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/invoices/636945e14ce97a4c1c561885/payments"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"Accept"</span><span class="o">,</span> <span class="s">"application/json"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"X-Api-Key"</span><span class="o">,</span> <span class="s">"API_KEY"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">asString</span><span class="o">();</span>
@@ -1466,7 +1475,7 @@ ApiKey, JWTAuth
 
 <span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
 
-    <span class="n">url</span> <span class="o">:=</span> <span class="s">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/invoices/string/payments"</span>
+    <span class="n">url</span> <span class="o">:=</span> <span class="s">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/invoices/636945e14ce97a4c1c561885/payments"</span>
 
     <span class="n">req</span><span class="p">,</span> <span class="n">_</span> <span class="o">:=</span> <span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="no">nil</span><span class="p">)</span>
 
@@ -1562,7 +1571,7 @@ ApiKey, JWTAuth
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>List of payments</td>
-<td>Inline</td>
+<td><a href="#schemapaymentlist">PaymentList</a></td>
 </tr>
 <tr>
 <td>401</td>
@@ -1584,157 +1593,6 @@ ApiKey, JWTAuth
 </tr>
 </tbody></table>
 
-<h3 id="retrieve-payments-responseschema">Response Schema</h3>
-
-<p>Status Code <strong>200</strong></p>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Restrictions</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>» payments</td>
-<td>[allOf]</td>
-<td>false</td>
-<td>none</td>
-<td>none</td>
-</tr>
-</tbody></table>
-
-<p><em>allOf</em></p>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Restrictions</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>»» <em>anonymous</em></td>
-<td><a href="#schemacollectionid">CollectionId</a></td>
-<td>false</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»»» id</td>
-<td>string</td>
-<td>false</td>
-<td>none</td>
-<td>none</td>
-</tr>
-</tbody></table>
-
-<p><em>and</em></p>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Restrictions</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>»» <em>anonymous</em></td>
-<td><a href="#schemapaymentbody">PaymentBody</a></td>
-<td>false</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»»» amount</td>
-<td>integer</td>
-<td>false</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»»» currency</td>
-<td>string</td>
-<td>false</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»»» label</td>
-<td>string</td>
-<td>false</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»»» date</td>
-<td>integer</td>
-<td>false</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»»» notes</td>
-<td>string</td>
-<td>false</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»»» method</td>
-<td><a href="#schemapaymentmethod">PaymentMethod</a></td>
-<td>false</td>
-<td>none</td>
-<td>none</td>
-</tr>
-</tbody></table>
-<h4 id='enumerated-values'>Enumerated Values</h4>
-<table><thead>
-<tr>
-<th>Property</th>
-<th>Value</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>method</td>
-<td>bank_transfer</td>
-</tr>
-<tr>
-<td>method</td>
-<td>cash</td>
-</tr>
-<tr>
-<td>method</td>
-<td>check</td>
-</tr>
-<tr>
-<td>method</td>
-<td>cesu</td>
-</tr>
-<tr>
-<td>method</td>
-<td>direct_debit</td>
-</tr>
-<tr>
-<td>method</td>
-<td>credit_card</td>
-</tr>
-<tr>
-<td>method</td>
-<td>paypal</td>
-</tr>
-<tr>
-<td>method</td>
-<td>other</td>
-</tr>
-</tbody></table>
-
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
 ApiKey, JWTAuth
@@ -1744,10 +1602,10 @@ ApiKey, JWTAuth
 <p>Code samples</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> GET <span class="se">\</span>
-  <span class="nt">--url</span> https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/invoices/string/download <span class="se">\</span>
+  <span class="nt">--url</span> https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/invoices/636945e14ce97a4c1c561885/download <span class="se">\</span>
   <span class="nt">--header</span> <span class="s1">'Accept: application/pdf'</span> <span class="se">\</span>
   <span class="nt">--header</span> <span class="s1">'X-Api-Key: API_KEY'</span>
-</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/lpb/bizyness-api/1.0.0/invoices/string/download</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/lpb/bizyness-api/1.0.0/invoices/636945e14ce97a4c1c561885/download</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/pdf</span>
 <span class="na">X-Api-Key</span><span class="p">:</span> <span class="s">API_KEY</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">virtserver.swaggerhub.com</span>
@@ -1763,7 +1621,7 @@ ApiKey, JWTAuth
   <span class="p">}</span>
 <span class="p">});</span>
 
-<span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="dl">"</span><span class="s2">GET</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/invoices/string/download</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="dl">"</span><span class="s2">GET</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/invoices/636945e14ce97a4c1c561885/download</span><span class="dl">"</span><span class="p">);</span>
 <span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">Accept</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">application/pdf</span><span class="dl">"</span><span class="p">);</span>
 <span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">X-Api-Key</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">API_KEY</span><span class="dl">"</span><span class="p">);</span>
 
@@ -1772,7 +1630,7 @@ ApiKey, JWTAuth
 <span class="nb">require</span> <span class="s1">'net/http'</span>
 <span class="nb">require</span> <span class="s1">'openssl'</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/invoices/string/download"</span><span class="p">)</span>
+<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/invoices/636945e14ce97a4c1c561885/download"</span><span class="p">)</span>
 
 <span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">url</span><span class="p">.</span><span class="nf">port</span><span class="p">)</span>
 <span class="n">http</span><span class="p">.</span><span class="nf">use_ssl</span> <span class="o">=</span> <span class="kp">true</span>
@@ -1793,7 +1651,7 @@ ApiKey, JWTAuth
     <span class="s">'X-Api-Key'</span><span class="p">:</span> <span class="s">"API_KEY"</span>
     <span class="p">}</span>
 
-<span class="n">conn</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="s">"/lpb/bizyness-api/1.0.0/invoices/string/download"</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+<span class="n">conn</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="s">"/lpb/bizyness-api/1.0.0/invoices/636945e14ce97a4c1c561885/download"</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
 <span class="n">res</span> <span class="o">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">getresponse</span><span class="p">()</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">res</span><span class="p">.</span><span class="n">read</span><span class="p">()</span>
@@ -1804,7 +1662,7 @@ ApiKey, JWTAuth
 <span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
 
 <span class="nb">curl_setopt_array</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="p">[</span>
-  <span class="no">CURLOPT_URL</span> <span class="o">=&gt;</span> <span class="s2">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/invoices/string/download"</span><span class="p">,</span>
+  <span class="no">CURLOPT_URL</span> <span class="o">=&gt;</span> <span class="s2">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/invoices/636945e14ce97a4c1c561885/download"</span><span class="p">,</span>
   <span class="no">CURLOPT_RETURNTRANSFER</span> <span class="o">=&gt;</span> <span class="kc">true</span><span class="p">,</span>
   <span class="no">CURLOPT_ENCODING</span> <span class="o">=&gt;</span> <span class="s2">""</span><span class="p">,</span>
   <span class="no">CURLOPT_MAXREDIRS</span> <span class="o">=&gt;</span> <span class="mi">10</span><span class="p">,</span>
@@ -1827,7 +1685,7 @@ ApiKey, JWTAuth
 <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
   <span class="k">echo</span> <span class="nv">$response</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">HttpResponse</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">response</span> <span class="o">=</span> <span class="nc">Unirest</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/invoices/string/download"</span><span class="o">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">HttpResponse</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">response</span> <span class="o">=</span> <span class="nc">Unirest</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/invoices/636945e14ce97a4c1c561885/download"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"Accept"</span><span class="o">,</span> <span class="s">"application/pdf"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"X-Api-Key"</span><span class="o">,</span> <span class="s">"API_KEY"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">asString</span><span class="o">();</span>
@@ -1841,7 +1699,7 @@ ApiKey, JWTAuth
 
 <span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
 
-    <span class="n">url</span> <span class="o">:=</span> <span class="s">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/invoices/string/download"</span>
+    <span class="n">url</span> <span class="o">:=</span> <span class="s">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/invoices/636945e14ce97a4c1c561885/download"</span>
 
     <span class="n">req</span><span class="p">,</span> <span class="n">_</span> <span class="o">:=</span> <span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="no">nil</span><span class="p">)</span>
 
@@ -1953,10 +1811,10 @@ ApiKey, JWTAuth
 <p>Code samples</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> GET <span class="se">\</span>
-  <span class="nt">--url</span> https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/invoices/string <span class="se">\</span>
+  <span class="nt">--url</span> https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/invoices/636945e14ce97a4c1c561885 <span class="se">\</span>
   <span class="nt">--header</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">--header</span> <span class="s1">'X-Api-Key: API_KEY'</span>
-</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/lpb/bizyness-api/1.0.0/invoices/string</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/lpb/bizyness-api/1.0.0/invoices/636945e14ce97a4c1c561885</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">X-Api-Key</span><span class="p">:</span> <span class="s">API_KEY</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">virtserver.swaggerhub.com</span>
@@ -1972,7 +1830,7 @@ ApiKey, JWTAuth
   <span class="p">}</span>
 <span class="p">});</span>
 
-<span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="dl">"</span><span class="s2">GET</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/invoices/string</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="dl">"</span><span class="s2">GET</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/invoices/636945e14ce97a4c1c561885</span><span class="dl">"</span><span class="p">);</span>
 <span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">Accept</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">);</span>
 <span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">X-Api-Key</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">API_KEY</span><span class="dl">"</span><span class="p">);</span>
 
@@ -1981,7 +1839,7 @@ ApiKey, JWTAuth
 <span class="nb">require</span> <span class="s1">'net/http'</span>
 <span class="nb">require</span> <span class="s1">'openssl'</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/invoices/string"</span><span class="p">)</span>
+<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/invoices/636945e14ce97a4c1c561885"</span><span class="p">)</span>
 
 <span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">url</span><span class="p">.</span><span class="nf">port</span><span class="p">)</span>
 <span class="n">http</span><span class="p">.</span><span class="nf">use_ssl</span> <span class="o">=</span> <span class="kp">true</span>
@@ -2002,7 +1860,7 @@ ApiKey, JWTAuth
     <span class="s">'X-Api-Key'</span><span class="p">:</span> <span class="s">"API_KEY"</span>
     <span class="p">}</span>
 
-<span class="n">conn</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="s">"/lpb/bizyness-api/1.0.0/invoices/string"</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+<span class="n">conn</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="s">"/lpb/bizyness-api/1.0.0/invoices/636945e14ce97a4c1c561885"</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
 <span class="n">res</span> <span class="o">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">getresponse</span><span class="p">()</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">res</span><span class="p">.</span><span class="n">read</span><span class="p">()</span>
@@ -2013,7 +1871,7 @@ ApiKey, JWTAuth
 <span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
 
 <span class="nb">curl_setopt_array</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="p">[</span>
-  <span class="no">CURLOPT_URL</span> <span class="o">=&gt;</span> <span class="s2">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/invoices/string"</span><span class="p">,</span>
+  <span class="no">CURLOPT_URL</span> <span class="o">=&gt;</span> <span class="s2">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/invoices/636945e14ce97a4c1c561885"</span><span class="p">,</span>
   <span class="no">CURLOPT_RETURNTRANSFER</span> <span class="o">=&gt;</span> <span class="kc">true</span><span class="p">,</span>
   <span class="no">CURLOPT_ENCODING</span> <span class="o">=&gt;</span> <span class="s2">""</span><span class="p">,</span>
   <span class="no">CURLOPT_MAXREDIRS</span> <span class="o">=&gt;</span> <span class="mi">10</span><span class="p">,</span>
@@ -2036,7 +1894,7 @@ ApiKey, JWTAuth
 <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
   <span class="k">echo</span> <span class="nv">$response</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">HttpResponse</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">response</span> <span class="o">=</span> <span class="nc">Unirest</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/invoices/string"</span><span class="o">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">HttpResponse</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">response</span> <span class="o">=</span> <span class="nc">Unirest</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/invoices/636945e14ce97a4c1c561885"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"Accept"</span><span class="o">,</span> <span class="s">"application/json"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"X-Api-Key"</span><span class="o">,</span> <span class="s">"API_KEY"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">asString</span><span class="o">();</span>
@@ -2050,7 +1908,7 @@ ApiKey, JWTAuth
 
 <span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
 
-    <span class="n">url</span> <span class="o">:=</span> <span class="s">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/invoices/string"</span>
+    <span class="n">url</span> <span class="o">:=</span> <span class="s">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/invoices/636945e14ce97a4c1c561885"</span>
 
     <span class="n">req</span><span class="p">,</span> <span class="n">_</span> <span class="o">:=</span> <span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="no">nil</span><span class="p">)</span>
 
@@ -2259,10 +2117,10 @@ ApiKey, JWTAuth
 <p>Code samples</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> DELETE <span class="se">\</span>
-  <span class="nt">--url</span> https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/invoices/string <span class="se">\</span>
+  <span class="nt">--url</span> https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/invoices/636945e14ce97a4c1c561885 <span class="se">\</span>
   <span class="nt">--header</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">--header</span> <span class="s1">'X-Api-Key: API_KEY'</span>
-</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">DELETE</span> <span class="nn">/lpb/bizyness-api/1.0.0/invoices/string</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">DELETE</span> <span class="nn">/lpb/bizyness-api/1.0.0/invoices/636945e14ce97a4c1c561885</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">X-Api-Key</span><span class="p">:</span> <span class="s">API_KEY</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">virtserver.swaggerhub.com</span>
@@ -2278,7 +2136,7 @@ ApiKey, JWTAuth
   <span class="p">}</span>
 <span class="p">});</span>
 
-<span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="dl">"</span><span class="s2">DELETE</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/invoices/string</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="dl">"</span><span class="s2">DELETE</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/invoices/636945e14ce97a4c1c561885</span><span class="dl">"</span><span class="p">);</span>
 <span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">Accept</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">);</span>
 <span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">X-Api-Key</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">API_KEY</span><span class="dl">"</span><span class="p">);</span>
 
@@ -2287,7 +2145,7 @@ ApiKey, JWTAuth
 <span class="nb">require</span> <span class="s1">'net/http'</span>
 <span class="nb">require</span> <span class="s1">'openssl'</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/invoices/string"</span><span class="p">)</span>
+<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/invoices/636945e14ce97a4c1c561885"</span><span class="p">)</span>
 
 <span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">url</span><span class="p">.</span><span class="nf">port</span><span class="p">)</span>
 <span class="n">http</span><span class="p">.</span><span class="nf">use_ssl</span> <span class="o">=</span> <span class="kp">true</span>
@@ -2308,7 +2166,7 @@ ApiKey, JWTAuth
     <span class="s">'X-Api-Key'</span><span class="p">:</span> <span class="s">"API_KEY"</span>
     <span class="p">}</span>
 
-<span class="n">conn</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"DELETE"</span><span class="p">,</span> <span class="s">"/lpb/bizyness-api/1.0.0/invoices/string"</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+<span class="n">conn</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"DELETE"</span><span class="p">,</span> <span class="s">"/lpb/bizyness-api/1.0.0/invoices/636945e14ce97a4c1c561885"</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
 <span class="n">res</span> <span class="o">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">getresponse</span><span class="p">()</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">res</span><span class="p">.</span><span class="n">read</span><span class="p">()</span>
@@ -2319,7 +2177,7 @@ ApiKey, JWTAuth
 <span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
 
 <span class="nb">curl_setopt_array</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="p">[</span>
-  <span class="no">CURLOPT_URL</span> <span class="o">=&gt;</span> <span class="s2">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/invoices/string"</span><span class="p">,</span>
+  <span class="no">CURLOPT_URL</span> <span class="o">=&gt;</span> <span class="s2">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/invoices/636945e14ce97a4c1c561885"</span><span class="p">,</span>
   <span class="no">CURLOPT_RETURNTRANSFER</span> <span class="o">=&gt;</span> <span class="kc">true</span><span class="p">,</span>
   <span class="no">CURLOPT_ENCODING</span> <span class="o">=&gt;</span> <span class="s2">""</span><span class="p">,</span>
   <span class="no">CURLOPT_MAXREDIRS</span> <span class="o">=&gt;</span> <span class="mi">10</span><span class="p">,</span>
@@ -2342,7 +2200,7 @@ ApiKey, JWTAuth
 <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
   <span class="k">echo</span> <span class="nv">$response</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">HttpResponse</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">response</span> <span class="o">=</span> <span class="nc">Unirest</span><span class="o">.</span><span class="na">delete</span><span class="o">(</span><span class="s">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/invoices/string"</span><span class="o">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">HttpResponse</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">response</span> <span class="o">=</span> <span class="nc">Unirest</span><span class="o">.</span><span class="na">delete</span><span class="o">(</span><span class="s">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/invoices/636945e14ce97a4c1c561885"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"Accept"</span><span class="o">,</span> <span class="s">"application/json"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"X-Api-Key"</span><span class="o">,</span> <span class="s">"API_KEY"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">asString</span><span class="o">();</span>
@@ -2356,7 +2214,7 @@ ApiKey, JWTAuth
 
 <span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
 
-    <span class="n">url</span> <span class="o">:=</span> <span class="s">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/invoices/string"</span>
+    <span class="n">url</span> <span class="o">:=</span> <span class="s">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/invoices/636945e14ce97a4c1c561885"</span>
 
     <span class="n">req</span><span class="p">,</span> <span class="n">_</span> <span class="o">:=</span> <span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"DELETE"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="no">nil</span><span class="p">)</span>
 
@@ -2466,12 +2324,12 @@ ApiKey, JWTAuth
 <p>Code samples</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> PATCH <span class="se">\</span>
-  <span class="nt">--url</span> https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/invoices/string <span class="se">\</span>
+  <span class="nt">--url</span> https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/invoices/636945e14ce97a4c1c561885 <span class="se">\</span>
   <span class="nt">--header</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">--header</span> <span class="s1">'Content-Type: application/json-patch+json'</span> <span class="se">\</span>
   <span class="nt">--header</span> <span class="s1">'X-Api-Key: API_KEY'</span> <span class="se">\</span>
   <span class="nt">--data</span> <span class="s1">'[{"op":"replace","path":"/lines/0/type","value":1}]'</span>
-</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">PATCH</span> <span class="nn">/lpb/bizyness-api/1.0.0/invoices/string</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">PATCH</span> <span class="nn">/lpb/bizyness-api/1.0.0/invoices/636945e14ce97a4c1c561885</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json-patch+json</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">X-Api-Key</span><span class="p">:</span> <span class="s">API_KEY</span>
@@ -2490,7 +2348,7 @@ ApiKey, JWTAuth
   <span class="p">}</span>
 <span class="p">});</span>
 
-<span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="dl">"</span><span class="s2">PATCH</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/invoices/string</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="dl">"</span><span class="s2">PATCH</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/invoices/636945e14ce97a4c1c561885</span><span class="dl">"</span><span class="p">);</span>
 <span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">Content-Type</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">application/json-patch+json</span><span class="dl">"</span><span class="p">);</span>
 <span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">Accept</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">);</span>
 <span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">X-Api-Key</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">API_KEY</span><span class="dl">"</span><span class="p">);</span>
@@ -2500,7 +2358,7 @@ ApiKey, JWTAuth
 <span class="nb">require</span> <span class="s1">'net/http'</span>
 <span class="nb">require</span> <span class="s1">'openssl'</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/invoices/string"</span><span class="p">)</span>
+<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/invoices/636945e14ce97a4c1c561885"</span><span class="p">)</span>
 
 <span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">url</span><span class="p">.</span><span class="nf">port</span><span class="p">)</span>
 <span class="n">http</span><span class="p">.</span><span class="nf">use_ssl</span> <span class="o">=</span> <span class="kp">true</span>
@@ -2526,7 +2384,7 @@ ApiKey, JWTAuth
     <span class="s">'X-Api-Key'</span><span class="p">:</span> <span class="s">"API_KEY"</span>
     <span class="p">}</span>
 
-<span class="n">conn</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"PATCH"</span><span class="p">,</span> <span class="s">"/lpb/bizyness-api/1.0.0/invoices/string"</span><span class="p">,</span> <span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
+<span class="n">conn</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"PATCH"</span><span class="p">,</span> <span class="s">"/lpb/bizyness-api/1.0.0/invoices/636945e14ce97a4c1c561885"</span><span class="p">,</span> <span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
 
 <span class="n">res</span> <span class="o">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">getresponse</span><span class="p">()</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">res</span><span class="p">.</span><span class="n">read</span><span class="p">()</span>
@@ -2537,7 +2395,7 @@ ApiKey, JWTAuth
 <span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
 
 <span class="nb">curl_setopt_array</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="p">[</span>
-  <span class="no">CURLOPT_URL</span> <span class="o">=&gt;</span> <span class="s2">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/invoices/string"</span><span class="p">,</span>
+  <span class="no">CURLOPT_URL</span> <span class="o">=&gt;</span> <span class="s2">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/invoices/636945e14ce97a4c1c561885"</span><span class="p">,</span>
   <span class="no">CURLOPT_RETURNTRANSFER</span> <span class="o">=&gt;</span> <span class="kc">true</span><span class="p">,</span>
   <span class="no">CURLOPT_ENCODING</span> <span class="o">=&gt;</span> <span class="s2">""</span><span class="p">,</span>
   <span class="no">CURLOPT_MAXREDIRS</span> <span class="o">=&gt;</span> <span class="mi">10</span><span class="p">,</span>
@@ -2562,7 +2420,7 @@ ApiKey, JWTAuth
 <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
   <span class="k">echo</span> <span class="nv">$response</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">HttpResponse</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">response</span> <span class="o">=</span> <span class="nc">Unirest</span><span class="o">.</span><span class="na">patch</span><span class="o">(</span><span class="s">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/invoices/string"</span><span class="o">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">HttpResponse</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">response</span> <span class="o">=</span> <span class="nc">Unirest</span><span class="o">.</span><span class="na">patch</span><span class="o">(</span><span class="s">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/invoices/636945e14ce97a4c1c561885"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"Content-Type"</span><span class="o">,</span> <span class="s">"application/json-patch+json"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"Accept"</span><span class="o">,</span> <span class="s">"application/json"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"X-Api-Key"</span><span class="o">,</span> <span class="s">"API_KEY"</span><span class="o">)</span>
@@ -2579,7 +2437,7 @@ ApiKey, JWTAuth
 
 <span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
 
-    <span class="n">url</span> <span class="o">:=</span> <span class="s">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/invoices/string"</span>
+    <span class="n">url</span> <span class="o">:=</span> <span class="s">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/invoices/636945e14ce97a4c1c561885"</span>
 
     <span class="n">payload</span> <span class="o">:=</span> <span class="n">strings</span><span class="o">.</span><span class="n">NewReader</span><span class="p">(</span><span class="s">"[{</span><span class="se">\"</span><span class="s">op</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">replace</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">path</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">/lines/0/type</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">value</span><span class="se">\"</span><span class="s">:1}]"</span><span class="p">)</span>
 
@@ -3025,7 +2883,7 @@ ApiKey, JWTAuth
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Return the list of articles</td>
-<td>Inline</td>
+<td><a href="#schemaarticlelist">ArticleList</a></td>
 </tr>
 <tr>
 <td>401</td>
@@ -3044,152 +2902,6 @@ ApiKey, JWTAuth
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.1">Internal Server Error</a></td>
 <td>Internal Server Error</td>
 <td><a href="#schemaerror">Error</a></td>
-</tr>
-</tbody></table>
-
-<h3 id="list-all-invoices-responseschema">Response Schema</h3>
-
-<p>Status Code <strong>200</strong></p>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Restrictions</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>» articles</td>
-<td>[allOf]</td>
-<td>false</td>
-<td>none</td>
-<td>none</td>
-</tr>
-</tbody></table>
-
-<p><em>allOf</em></p>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Restrictions</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>»» <em>anonymous</em></td>
-<td><a href="#schemacollectionid">CollectionId</a></td>
-<td>false</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»»» id</td>
-<td>string</td>
-<td>false</td>
-<td>none</td>
-<td>none</td>
-</tr>
-</tbody></table>
-
-<p><em>and</em></p>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Restrictions</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>»» <em>anonymous</em></td>
-<td><a href="#schemaarticlebody">ArticleBody</a></td>
-<td>false</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»»» manufacturer</td>
-<td>string</td>
-<td>false</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»»» origin_country</td>
-<td>string</td>
-<td>false</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»»» price</td>
-<td>number</td>
-<td>false</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»»» purchase_price</td>
-<td>number</td>
-<td>false</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»»» sku</td>
-<td>string</td>
-<td>false</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»»» title</td>
-<td>string</td>
-<td>false</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»»» description</td>
-<td>string</td>
-<td>false</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»»» vat</td>
-<td>number</td>
-<td>false</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»»» type</td>
-<td>number</td>
-<td>false</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»»» vat_included</td>
-<td>boolean</td>
-<td>false</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»»» second_hand_good</td>
-<td>boolean</td>
-<td>false</td>
-<td>none</td>
-<td>none</td>
 </tr>
 </tbody></table>
 
@@ -3556,10 +3268,10 @@ ApiKey, JWTAuth
 <p>Code samples</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> GET <span class="se">\</span>
-  <span class="nt">--url</span> https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/articles/string <span class="se">\</span>
+  <span class="nt">--url</span> https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/articles/636945f14ce97a4c1c561885 <span class="se">\</span>
   <span class="nt">--header</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">--header</span> <span class="s1">'X-Api-Key: API_KEY'</span>
-</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/lpb/bizyness-api/1.0.0/articles/string</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/lpb/bizyness-api/1.0.0/articles/636945f14ce97a4c1c561885</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">X-Api-Key</span><span class="p">:</span> <span class="s">API_KEY</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">virtserver.swaggerhub.com</span>
@@ -3575,7 +3287,7 @@ ApiKey, JWTAuth
   <span class="p">}</span>
 <span class="p">});</span>
 
-<span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="dl">"</span><span class="s2">GET</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/articles/string</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="dl">"</span><span class="s2">GET</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/articles/636945f14ce97a4c1c561885</span><span class="dl">"</span><span class="p">);</span>
 <span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">Accept</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">);</span>
 <span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">X-Api-Key</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">API_KEY</span><span class="dl">"</span><span class="p">);</span>
 
@@ -3584,7 +3296,7 @@ ApiKey, JWTAuth
 <span class="nb">require</span> <span class="s1">'net/http'</span>
 <span class="nb">require</span> <span class="s1">'openssl'</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/articles/string"</span><span class="p">)</span>
+<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/articles/636945f14ce97a4c1c561885"</span><span class="p">)</span>
 
 <span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">url</span><span class="p">.</span><span class="nf">port</span><span class="p">)</span>
 <span class="n">http</span><span class="p">.</span><span class="nf">use_ssl</span> <span class="o">=</span> <span class="kp">true</span>
@@ -3605,7 +3317,7 @@ ApiKey, JWTAuth
     <span class="s">'X-Api-Key'</span><span class="p">:</span> <span class="s">"API_KEY"</span>
     <span class="p">}</span>
 
-<span class="n">conn</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="s">"/lpb/bizyness-api/1.0.0/articles/string"</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+<span class="n">conn</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="s">"/lpb/bizyness-api/1.0.0/articles/636945f14ce97a4c1c561885"</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
 <span class="n">res</span> <span class="o">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">getresponse</span><span class="p">()</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">res</span><span class="p">.</span><span class="n">read</span><span class="p">()</span>
@@ -3616,7 +3328,7 @@ ApiKey, JWTAuth
 <span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
 
 <span class="nb">curl_setopt_array</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="p">[</span>
-  <span class="no">CURLOPT_URL</span> <span class="o">=&gt;</span> <span class="s2">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/articles/string"</span><span class="p">,</span>
+  <span class="no">CURLOPT_URL</span> <span class="o">=&gt;</span> <span class="s2">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/articles/636945f14ce97a4c1c561885"</span><span class="p">,</span>
   <span class="no">CURLOPT_RETURNTRANSFER</span> <span class="o">=&gt;</span> <span class="kc">true</span><span class="p">,</span>
   <span class="no">CURLOPT_ENCODING</span> <span class="o">=&gt;</span> <span class="s2">""</span><span class="p">,</span>
   <span class="no">CURLOPT_MAXREDIRS</span> <span class="o">=&gt;</span> <span class="mi">10</span><span class="p">,</span>
@@ -3639,7 +3351,7 @@ ApiKey, JWTAuth
 <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
   <span class="k">echo</span> <span class="nv">$response</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">HttpResponse</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">response</span> <span class="o">=</span> <span class="nc">Unirest</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/articles/string"</span><span class="o">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">HttpResponse</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">response</span> <span class="o">=</span> <span class="nc">Unirest</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/articles/636945f14ce97a4c1c561885"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"Accept"</span><span class="o">,</span> <span class="s">"application/json"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"X-Api-Key"</span><span class="o">,</span> <span class="s">"API_KEY"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">asString</span><span class="o">();</span>
@@ -3653,7 +3365,7 @@ ApiKey, JWTAuth
 
 <span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
 
-    <span class="n">url</span> <span class="o">:=</span> <span class="s">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/articles/string"</span>
+    <span class="n">url</span> <span class="o">:=</span> <span class="s">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/articles/636945f14ce97a4c1c561885"</span>
 
     <span class="n">req</span><span class="p">,</span> <span class="n">_</span> <span class="o">:=</span> <span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="no">nil</span><span class="p">)</span>
 
@@ -3781,10 +3493,10 @@ ApiKey, JWTAuth
 <p>Code samples</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> DELETE <span class="se">\</span>
-  <span class="nt">--url</span> https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/articles/string <span class="se">\</span>
+  <span class="nt">--url</span> https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/articles/636945f14ce97a4c1c561885 <span class="se">\</span>
   <span class="nt">--header</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">--header</span> <span class="s1">'X-Api-Key: API_KEY'</span>
-</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">DELETE</span> <span class="nn">/lpb/bizyness-api/1.0.0/articles/string</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">DELETE</span> <span class="nn">/lpb/bizyness-api/1.0.0/articles/636945f14ce97a4c1c561885</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">X-Api-Key</span><span class="p">:</span> <span class="s">API_KEY</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">virtserver.swaggerhub.com</span>
@@ -3800,7 +3512,7 @@ ApiKey, JWTAuth
   <span class="p">}</span>
 <span class="p">});</span>
 
-<span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="dl">"</span><span class="s2">DELETE</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/articles/string</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="dl">"</span><span class="s2">DELETE</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/articles/636945f14ce97a4c1c561885</span><span class="dl">"</span><span class="p">);</span>
 <span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">Accept</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">);</span>
 <span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">X-Api-Key</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">API_KEY</span><span class="dl">"</span><span class="p">);</span>
 
@@ -3809,7 +3521,7 @@ ApiKey, JWTAuth
 <span class="nb">require</span> <span class="s1">'net/http'</span>
 <span class="nb">require</span> <span class="s1">'openssl'</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/articles/string"</span><span class="p">)</span>
+<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/articles/636945f14ce97a4c1c561885"</span><span class="p">)</span>
 
 <span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">url</span><span class="p">.</span><span class="nf">port</span><span class="p">)</span>
 <span class="n">http</span><span class="p">.</span><span class="nf">use_ssl</span> <span class="o">=</span> <span class="kp">true</span>
@@ -3830,7 +3542,7 @@ ApiKey, JWTAuth
     <span class="s">'X-Api-Key'</span><span class="p">:</span> <span class="s">"API_KEY"</span>
     <span class="p">}</span>
 
-<span class="n">conn</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"DELETE"</span><span class="p">,</span> <span class="s">"/lpb/bizyness-api/1.0.0/articles/string"</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+<span class="n">conn</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"DELETE"</span><span class="p">,</span> <span class="s">"/lpb/bizyness-api/1.0.0/articles/636945f14ce97a4c1c561885"</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
 <span class="n">res</span> <span class="o">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">getresponse</span><span class="p">()</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">res</span><span class="p">.</span><span class="n">read</span><span class="p">()</span>
@@ -3841,7 +3553,7 @@ ApiKey, JWTAuth
 <span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
 
 <span class="nb">curl_setopt_array</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="p">[</span>
-  <span class="no">CURLOPT_URL</span> <span class="o">=&gt;</span> <span class="s2">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/articles/string"</span><span class="p">,</span>
+  <span class="no">CURLOPT_URL</span> <span class="o">=&gt;</span> <span class="s2">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/articles/636945f14ce97a4c1c561885"</span><span class="p">,</span>
   <span class="no">CURLOPT_RETURNTRANSFER</span> <span class="o">=&gt;</span> <span class="kc">true</span><span class="p">,</span>
   <span class="no">CURLOPT_ENCODING</span> <span class="o">=&gt;</span> <span class="s2">""</span><span class="p">,</span>
   <span class="no">CURLOPT_MAXREDIRS</span> <span class="o">=&gt;</span> <span class="mi">10</span><span class="p">,</span>
@@ -3864,7 +3576,7 @@ ApiKey, JWTAuth
 <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
   <span class="k">echo</span> <span class="nv">$response</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">HttpResponse</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">response</span> <span class="o">=</span> <span class="nc">Unirest</span><span class="o">.</span><span class="na">delete</span><span class="o">(</span><span class="s">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/articles/string"</span><span class="o">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">HttpResponse</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">response</span> <span class="o">=</span> <span class="nc">Unirest</span><span class="o">.</span><span class="na">delete</span><span class="o">(</span><span class="s">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/articles/636945f14ce97a4c1c561885"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"Accept"</span><span class="o">,</span> <span class="s">"application/json"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"X-Api-Key"</span><span class="o">,</span> <span class="s">"API_KEY"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">asString</span><span class="o">();</span>
@@ -3878,7 +3590,7 @@ ApiKey, JWTAuth
 
 <span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
 
-    <span class="n">url</span> <span class="o">:=</span> <span class="s">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/articles/string"</span>
+    <span class="n">url</span> <span class="o">:=</span> <span class="s">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/articles/636945f14ce97a4c1c561885"</span>
 
     <span class="n">req</span><span class="p">,</span> <span class="n">_</span> <span class="o">:=</span> <span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"DELETE"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="no">nil</span><span class="p">)</span>
 
@@ -3988,12 +3700,12 @@ ApiKey, JWTAuth
 <p>Code samples</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> PATCH <span class="se">\</span>
-  <span class="nt">--url</span> https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/articles/string <span class="se">\</span>
+  <span class="nt">--url</span> https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/articles/636945f14ce97a4c1c561885 <span class="se">\</span>
   <span class="nt">--header</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">--header</span> <span class="s1">'Content-Type: application/json-patch+json'</span> <span class="se">\</span>
   <span class="nt">--header</span> <span class="s1">'X-Api-Key: API_KEY'</span> <span class="se">\</span>
   <span class="nt">--data</span> <span class="s1">'[{"op":"replace","path":"/lines/0/type","value":1}]'</span>
-</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">PATCH</span> <span class="nn">/lpb/bizyness-api/1.0.0/articles/string</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">PATCH</span> <span class="nn">/lpb/bizyness-api/1.0.0/articles/636945f14ce97a4c1c561885</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json-patch+json</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">X-Api-Key</span><span class="p">:</span> <span class="s">API_KEY</span>
@@ -4012,7 +3724,7 @@ ApiKey, JWTAuth
   <span class="p">}</span>
 <span class="p">});</span>
 
-<span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="dl">"</span><span class="s2">PATCH</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/articles/string</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="dl">"</span><span class="s2">PATCH</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/articles/636945f14ce97a4c1c561885</span><span class="dl">"</span><span class="p">);</span>
 <span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">Content-Type</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">application/json-patch+json</span><span class="dl">"</span><span class="p">);</span>
 <span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">Accept</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">);</span>
 <span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">X-Api-Key</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">API_KEY</span><span class="dl">"</span><span class="p">);</span>
@@ -4022,7 +3734,7 @@ ApiKey, JWTAuth
 <span class="nb">require</span> <span class="s1">'net/http'</span>
 <span class="nb">require</span> <span class="s1">'openssl'</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/articles/string"</span><span class="p">)</span>
+<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/articles/636945f14ce97a4c1c561885"</span><span class="p">)</span>
 
 <span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">url</span><span class="p">.</span><span class="nf">port</span><span class="p">)</span>
 <span class="n">http</span><span class="p">.</span><span class="nf">use_ssl</span> <span class="o">=</span> <span class="kp">true</span>
@@ -4048,7 +3760,7 @@ ApiKey, JWTAuth
     <span class="s">'X-Api-Key'</span><span class="p">:</span> <span class="s">"API_KEY"</span>
     <span class="p">}</span>
 
-<span class="n">conn</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"PATCH"</span><span class="p">,</span> <span class="s">"/lpb/bizyness-api/1.0.0/articles/string"</span><span class="p">,</span> <span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
+<span class="n">conn</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"PATCH"</span><span class="p">,</span> <span class="s">"/lpb/bizyness-api/1.0.0/articles/636945f14ce97a4c1c561885"</span><span class="p">,</span> <span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
 
 <span class="n">res</span> <span class="o">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">getresponse</span><span class="p">()</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">res</span><span class="p">.</span><span class="n">read</span><span class="p">()</span>
@@ -4059,7 +3771,7 @@ ApiKey, JWTAuth
 <span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
 
 <span class="nb">curl_setopt_array</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="p">[</span>
-  <span class="no">CURLOPT_URL</span> <span class="o">=&gt;</span> <span class="s2">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/articles/string"</span><span class="p">,</span>
+  <span class="no">CURLOPT_URL</span> <span class="o">=&gt;</span> <span class="s2">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/articles/636945f14ce97a4c1c561885"</span><span class="p">,</span>
   <span class="no">CURLOPT_RETURNTRANSFER</span> <span class="o">=&gt;</span> <span class="kc">true</span><span class="p">,</span>
   <span class="no">CURLOPT_ENCODING</span> <span class="o">=&gt;</span> <span class="s2">""</span><span class="p">,</span>
   <span class="no">CURLOPT_MAXREDIRS</span> <span class="o">=&gt;</span> <span class="mi">10</span><span class="p">,</span>
@@ -4084,7 +3796,7 @@ ApiKey, JWTAuth
 <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
   <span class="k">echo</span> <span class="nv">$response</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">HttpResponse</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">response</span> <span class="o">=</span> <span class="nc">Unirest</span><span class="o">.</span><span class="na">patch</span><span class="o">(</span><span class="s">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/articles/string"</span><span class="o">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">HttpResponse</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">response</span> <span class="o">=</span> <span class="nc">Unirest</span><span class="o">.</span><span class="na">patch</span><span class="o">(</span><span class="s">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/articles/636945f14ce97a4c1c561885"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"Content-Type"</span><span class="o">,</span> <span class="s">"application/json-patch+json"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"Accept"</span><span class="o">,</span> <span class="s">"application/json"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"X-Api-Key"</span><span class="o">,</span> <span class="s">"API_KEY"</span><span class="o">)</span>
@@ -4101,7 +3813,7 @@ ApiKey, JWTAuth
 
 <span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
 
-    <span class="n">url</span> <span class="o">:=</span> <span class="s">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/articles/string"</span>
+    <span class="n">url</span> <span class="o">:=</span> <span class="s">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/articles/636945f14ce97a4c1c561885"</span>
 
     <span class="n">payload</span> <span class="o">:=</span> <span class="n">strings</span><span class="o">.</span><span class="n">NewReader</span><span class="p">(</span><span class="s">"[{</span><span class="se">\"</span><span class="s">op</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">replace</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">path</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">/lines/0/type</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">value</span><span class="se">\"</span><span class="s">:1}]"</span><span class="p">)</span>
 
@@ -4418,7 +4130,7 @@ ApiKey, JWTAuth
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Return the list of countries</td>
-<td>Inline</td>
+<td><a href="#schemacountrylist">CountryList</a></td>
 </tr>
 <tr>
 <td>401</td>
@@ -4431,63 +4143,6 @@ ApiKey, JWTAuth
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.1">Internal Server Error</a></td>
 <td>Internal Server Error</td>
 <td><a href="#schemaerror">Error</a></td>
-</tr>
-</tbody></table>
-
-<h3 id="list-all-countries-responseschema">Response Schema</h3>
-
-<p>Status Code <strong>200</strong></p>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Restrictions</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>» countries</td>
-<td>[<a href="#schemacountry">Country</a>]</td>
-<td>false</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»» code</td>
-<td>string</td>
-<td>false</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»» eu_member</td>
-<td>boolean</td>
-<td>false</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»» label</td>
-<td>object</td>
-<td>false</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»»» fr</td>
-<td>string</td>
-<td>false</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»»» en</td>
-<td>string</td>
-<td>false</td>
-<td>none</td>
-<td>none</td>
 </tr>
 </tbody></table>
 
@@ -4612,7 +4267,7 @@ ApiKey, JWTAuth
 <td>The operation to perform.</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-2'>Enumerated Values</h4>
+<h4 id='enumerated-values'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -4663,7 +4318,7 @@ ApiKey, JWTAuth
 <td>The operation to perform.</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-3'>Enumerated Values</h4>
+<h4 id='enumerated-values-2'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -5077,7 +4732,7 @@ ApiKey, JWTAuth
 <td>none</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-4'>Enumerated Values</h4>
+<h4 id='enumerated-values-3'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -5391,6 +5046,133 @@ ApiKey, JWTAuth
 </tr>
 </tbody></table>
 
+<h2 id="tocS_PaymentList">PaymentList</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemapaymentlist"></a>
+<a id="schema_PaymentList"></a>
+<a id="tocSpaymentlist"></a>
+<a id="tocspaymentlist"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"payments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d5eca258126ab647499f9bf"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">123.21</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EUR"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Subscription"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1566493220992</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Client will provide the next payment tomorrow"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bank_transfer"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h3 id='properties-14'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>payments</td>
+<td>[<a href="#schemapayment">Payment</a>]</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_ArticleList">ArticleList</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaarticlelist"></a>
+<a id="schema_ArticleList"></a>
+<a id="tocSarticlelist"></a>
+<a id="tocsarticlelist"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"articles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d5eca258126ab647499f9bf"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apple"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"origin_country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FR"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">10.32</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"purchase_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">10.32</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AZ123"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Shirt"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Size M"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"vat"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"vat_included"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"second_hand_good"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h3 id='properties-15'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>articles</td>
+<td>[<a href="#schemaarticle">Article</a>]</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_CountryList">CountryList</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemacountrylist"></a>
+<a id="schema_CountryList"></a>
+<a id="tocScountrylist"></a>
+<a id="tocscountrylist"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"countries"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FR"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"eu_member"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"France"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"France"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h3 id='properties-16'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>countries</td>
+<td>[<a href="#schemacountry">Country</a>]</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
 <h2 id="tocS_CollectionId">CollectionId</h2>
 
 <!-- backwards compatibility -->
@@ -5403,7 +5185,7 @@ ApiKey, JWTAuth
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d5eca258126ab647499f9bf"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-14'>Properties</h3>
+</span></code></pre></div><h3 id='properties-17'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5448,7 +5230,7 @@ ApiKey, JWTAuth
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-15'>Properties</h3>
+</span></code></pre></div><h3 id='properties-18'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5541,7 +5323,7 @@ ApiKey, JWTAuth
   </span><span class="nl">"total_excluding_taxes"</span><span class="p">:</span><span class="w"> </span><span class="mf">98.12</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-16'>Properties</h3>
+</span></code></pre></div><h3 id='properties-19'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5580,7 +5362,7 @@ ApiKey, JWTAuth
   </span><span class="nl">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-17'>Properties</h3>
+</span></code></pre></div><h3 id='properties-20'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5626,7 +5408,7 @@ ApiKey, JWTAuth
   </span><span class="nl">"vat_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FR123456789"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-18'>Properties</h3>
+</span></code></pre></div><h3 id='properties-21'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5784,7 +5566,7 @@ ApiKey, JWTAuth
   </span><span class="nl">"vat_exemption_text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Article 138 CE/2008"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-19'>Properties</h3>
+</span></code></pre></div><h3 id='properties-22'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6047,7 +5829,7 @@ ApiKey, JWTAuth
 <td>none</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-5'>Enumerated Values</h4>
+<h4 id='enumerated-values-4'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -6238,7 +6020,7 @@ ApiKey, JWTAuth
   </span><span class="nl">"payment_method"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-20'>Properties</h3>
+</span></code></pre></div><h3 id='properties-23'>Properties</h3>
 <p>allOf</p>
 
 <table><thead>
@@ -6404,7 +6186,7 @@ ApiKey, JWTAuth
   </span><span class="nl">"total_excluding_taxes"</span><span class="p">:</span><span class="w"> </span><span class="mf">98.12</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-21'>Properties</h3>
+</span></code></pre></div><h3 id='properties-24'>Properties</h3>
 <p>allOf</p>
 
 <table><thead>

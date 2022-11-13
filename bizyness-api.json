@@ -108,7 +108,8 @@
         "description" : "Invoice ID",
         "required" : true,
         "schema" : {
-          "type" : "string"
+          "type" : "string",
+          "example" : "636945e14ce97a4c1c561885"
         }
       } ],
       "get" : {
@@ -119,15 +120,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "type" : "object",
-                  "properties" : {
-                    "payments" : {
-                      "type" : "array",
-                      "items" : {
-                        "$ref" : "#/components/schemas/Payment"
-                      }
-                    }
-                  }
+                  "$ref" : "#/components/schemas/PaymentList"
                 }
               }
             },
@@ -152,7 +145,8 @@
         "description" : "Invoice ID",
         "required" : true,
         "schema" : {
-          "type" : "string"
+          "type" : "string",
+          "example" : "636945e14ce97a4c1c561885"
         }
       } ],
       "get" : {
@@ -195,7 +189,8 @@
         "description" : "Invoice ID",
         "required" : true,
         "schema" : {
-          "type" : "string"
+          "type" : "string",
+          "example" : "636945e14ce97a4c1c561885"
         }
       } ],
       "get" : {
@@ -362,15 +357,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "type" : "object",
-                  "properties" : {
-                    "countries" : {
-                      "type" : "array",
-                      "items" : {
-                        "$ref" : "#/components/schemas/Country"
-                      }
-                    }
-                  }
+                  "$ref" : "#/components/schemas/CountryList"
                 }
               }
             }
@@ -401,15 +388,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "type" : "object",
-                  "properties" : {
-                    "articles" : {
-                      "type" : "array",
-                      "items" : {
-                        "$ref" : "#/components/schemas/Article"
-                      }
-                    }
-                  }
+                  "$ref" : "#/components/schemas/ArticleList"
                 }
               }
             }
@@ -468,7 +447,8 @@
         "description" : "Article ID",
         "required" : true,
         "schema" : {
-          "type" : "string"
+          "type" : "string",
+          "example" : "636945f14ce97a4c1c561885"
         }
       } ],
       "get" : {
@@ -946,6 +926,39 @@
             "type" : "array",
             "items" : {
               "$ref" : "#/components/schemas/Invoice"
+            }
+          }
+        }
+      },
+      "PaymentList" : {
+        "type" : "object",
+        "properties" : {
+          "payments" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Payment"
+            }
+          }
+        }
+      },
+      "ArticleList" : {
+        "type" : "object",
+        "properties" : {
+          "articles" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Article"
+            }
+          }
+        }
+      },
+      "CountryList" : {
+        "type" : "object",
+        "properties" : {
+          "countries" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Country"
             }
           }
         }
