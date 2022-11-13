@@ -1263,7 +1263,7 @@
             },
             "application/merge-patch+json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/Account"
+                "$ref" : "#/components/schemas/AccountBody"
               },
               "example" : {
                 "payment_term" : 3,
@@ -1275,6 +1275,143 @@
         "responses" : {
           "200" : {
             "description" : "Updated account",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Account"
+                }
+              }
+            }
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      }
+    },
+    "/companies/my" : {
+      "get" : {
+        "tags" : [ "Company" ],
+        "summary" : "Get current company",
+        "responses" : {
+          "200" : {
+            "description" : "Return the connected company",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Account"
+                }
+              }
+            }
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Company" ],
+        "summary" : "Update current company",
+        "requestBody" : {
+          "required" : true,
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/AccountBody"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Updated company",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Account"
+                }
+              }
+            }
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      },
+      "patch" : {
+        "tags" : [ "Company" ],
+        "summary" : "Update current company (partial)",
+        "requestBody" : {
+          "required" : true,
+          "content" : {
+            "application/json-patch+json" : {
+              "schema" : {
+                "type" : "array",
+                "items" : {
+                  "oneOf" : [ {
+                    "$ref" : "#/components/schemas/JSONPatchRequestAddReplaceTest"
+                  }, {
+                    "$ref" : "#/components/schemas/JSONPatchRequestRemove"
+                  }, {
+                    "$ref" : "#/components/schemas/JSONPatchRequestMoveCopy"
+                  } ]
+                }
+              },
+              "examples" : {
+                "AddReplaceTest" : {
+                  "value" : [ {
+                    "op" : "replace",
+                    "path" : "/last_name",
+                    "value" : "Dupont"
+                  } ]
+                },
+                "Remove" : {
+                  "value" : [ {
+                    "op" : "remove",
+                    "path" : "/last_name"
+                  } ]
+                },
+                "MoveCopy" : {
+                  "value" : [ {
+                    "op" : "copy",
+                    "from" : "/last_name",
+                    "path" : "/last_name"
+                  } ]
+                }
+              }
+            },
+            "application/merge-patch+json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/AccountBody"
+              },
+              "example" : {
+                "payment_term" : 3,
+                "template" : "london"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Updated company",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -2587,21 +2724,34 @@
           }
         }
       },
+      "ContactAddress" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/Address"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "last_name" : {
+              "type" : "string",
+              "example" : "Doe"
+            },
+            "first_name" : {
+              "type" : "string",
+              "example" : "John"
+            },
+            "company_name" : {
+              "type" : "string",
+              "example" : "John's company"
+            },
+            "vat_number" : {
+              "type" : "string",
+              "example" : "FR123456789"
+            }
+          }
+        } ]
+      },
       "Address" : {
         "type" : "object",
         "properties" : {
-          "last_name" : {
-            "type" : "string",
-            "example" : "Doe"
-          },
-          "first_name" : {
-            "type" : "string",
-            "example" : "John"
-          },
-          "company_name" : {
-            "type" : "string",
-            "example" : "John's company"
-          },
           "address" : {
             "type" : "string",
             "example" : "123 rue des archives"
@@ -2621,10 +2771,6 @@
           "country_code" : {
             "type" : "string",
             "example" : "FR"
-          },
-          "vat_number" : {
-            "type" : "string",
-            "example" : "FR123456789"
           }
         }
       },
@@ -2723,7 +2869,7 @@
             "$ref" : "#/components/schemas/ExternalReference"
           },
           "billing_address" : {
-            "$ref" : "#/components/schemas/Address"
+            "$ref" : "#/components/schemas/ContactAddress"
           },
           "subject" : {
             "type" : "string",
@@ -2911,6 +3057,68 @@
       "Account" : {
         "allOf" : [ {
           "$ref" : "#/components/schemas/AccountBody"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "billing_provider" : {
+              "type" : "string",
+              "example" : "chargebee"
+            },
+            "first_name" : {
+              "type" : "string",
+              "example" : "John"
+            },
+            "last_name" : {
+              "type" : "string",
+              "example" : "Doe"
+            },
+            "display_name" : {
+              "type" : "string",
+              "example" : "John Doe"
+            },
+            "email" : {
+              "type" : "string",
+              "example" : "john@google.com"
+            },
+            "subscription_status" : {
+              "enum" : [ "trial", "active", "suspended" ],
+              "type" : "string"
+            }
+          }
+        } ]
+      },
+      "CompanyBody" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/Address"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "company_name" : {
+              "type" : "string",
+              "example" : "John's company"
+            },
+            "trade_name" : {
+              "type" : "string",
+              "example" : "Supercar"
+            },
+            "email" : {
+              "type" : "string",
+              "example" : "john@google.com"
+            },
+            "phone" : {
+              "type" : "string",
+              "example" : 456123456789
+            },
+            "mobile" : {
+              "type" : "string",
+              "example" : 321564987
+            }
+          }
+        } ]
+      },
+      "Company" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/CompanyBody"
         }, {
           "type" : "object",
           "properties" : {
