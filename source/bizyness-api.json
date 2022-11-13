@@ -42,6 +42,12 @@
     "name" : "Report",
     "description" : "Managing your reports"
   }, {
+    "name" : "Account",
+    "description" : "Managing your account"
+  }, {
+    "name" : "Company",
+    "description" : "Managing your account"
+  }, {
     "name" : "Miscellaneous",
     "description" : "Transverval ressources"
   } ],
@@ -2747,6 +2753,27 @@
             }
           }
         } ]
+      },
+      "User" : {
+        "type" : "object",
+        "properties" : {
+          "billing_provider" : {
+            "type" : "string",
+            "example" : "chargebee"
+          },
+          "first_name" : {
+            "type" : "String",
+            "example" : "John"
+          },
+          "last_name" : {
+            "type" : "String",
+            "example" : "Doe"
+          },
+          "display_name" : {
+            "type" : "String",
+            "example" : "John Doe"
+          }
+        }
       }
     },
     "securitySchemes" : {
