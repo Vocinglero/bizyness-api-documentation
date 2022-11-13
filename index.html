@@ -2134,123 +2134,12 @@ ApiKey, JWTAuth
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d5eca258126ab647499f9bf"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">123.21</span><span class="p">,</span><span class="w">
   </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EUR"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"is_draft"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"payment_term"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"discount_amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.2</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"discount_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"percentage"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"rebate"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"activity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d5efds258126ab647499f9bf"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"template"</span><span class="p">:</span><span class="w"> </span><span class="s2">"basic"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"shipping_amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.5</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"shipping_tax_rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"taxes_liable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"taxes_included"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"client"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d5eca258126ab647499f9bf"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"billing_address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123 rue des archives"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"address_supplement"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Porte gauche"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"zip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A1234"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Paris"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"country_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FR"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"company_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John's company"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"vat_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FR123456789"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"subject"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Design of the homepage"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"lines"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AX123"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mockup and copywriting"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Homepage design"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">120.32</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"piece"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"discount_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"discount_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"percentage"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"tax_rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"origin_country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FR"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"second_hand_good"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AX456"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Logo with 3 colors"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Logo design"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">59</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"piece"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"discount_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"discount_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"percentage"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"tax_rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"origin_country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FR"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"second_hand_good"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"lines_groups"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Design and mockup"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"articles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="mi">1</span><span class="w">
-      </span><span class="p">]</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Payment to be done within 3 days"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"payment_conditions_included"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fr"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"tax_exemption_text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Article 138 CE/2008"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"payment_methods"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="s2">"string"</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"execution_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1566493220992</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"online_payment_enabled"</span><span class="p">:</span><span class="w"> </span><span class="mi">1566493220992</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"payment_gateways"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"5d5eca258126ab647499f9bf"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"5b17da549a7feb695f703975"</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"tracking_numbers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"456SDFDFD"</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"tracking_carriers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"UPS"</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"events"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1566493220992</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"invoice.history.paymentAdded"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"values"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="s2">"€"</span><span class="p">,</span><span class="w">
-        </span><span class="mi">23</span><span class="w">
-      </span><span class="p">]</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1566423220992</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"invoice.history.issued"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"values"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"total_including_taxes"</span><span class="p">:</span><span class="w"> </span><span class="mf">123.54</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"total_excluding_taxes"</span><span class="p">:</span><span class="w"> </span><span class="mf">98.12</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"draft"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"paid_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1566493220992</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"attachments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"myfile1.png"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"mydocument.pdf"</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-  </span><span class="p">]</span><span class="w">
+  </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Subscription"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1566493220992</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Client will provide the next payment tomorrow"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bank_transfer"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
@@ -2290,8 +2179,8 @@ ApiKey, JWTAuth
 <tr>
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
-<td>Created invoice</td>
-<td><a href="#schemainvoice">Invoice</a></td>
+<td>Created payment</td>
+<td><a href="#schemapayment">Payment</a></td>
 </tr>
 <tr>
 <td>401</td>
@@ -2737,7 +2626,7 @@ ApiKey, JWTAuth
 <tr>
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
-<td>Created invoice</td>
+<td>Updated invoice</td>
 <td><a href="#schemainvoice">Invoice</a></td>
 </tr>
 <tr>
@@ -6215,7 +6104,7 @@ ApiKey, JWTAuth
 <tr>
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
-<td>Created client</td>
+<td>Updated client</td>
 <td><a href="#schemaclient">Client</a></td>
 </tr>
 <tr>
@@ -13260,9 +13149,30 @@ ApiKey, JWTAuth
 <p>200 Response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d5eca258126ab647499f9bf"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My activity"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"is_default"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123 rue des archives"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"address_supplement"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Porte gauche"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"zip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A1234"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Paris"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"country_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FR"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"company_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John's company"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"trade_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Supercar"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john@google.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="mi">456123456789</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"mobile"</span><span class="p">:</span><span class="w"> </span><span class="mi">321564987</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"registration_type"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"company_identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456DS"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"vat_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456DS"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"insurance_type"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"insurance_company_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Super Insurance Company"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"insurance_geographic_coverage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"France"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"activity_type"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"second_hand_goods_selling"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"urssaf_statement_frequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"montly"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"income_tax_discharged"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"acre_applied"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"creation_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1566493220992</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"logo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"logo-company-123456789.png"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
@@ -13302,8 +13212,8 @@ ApiKey, JWTAuth
 <tr>
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
-<td>Created activity</td>
-<td><a href="#schemaactivity">Activity</a></td>
+<td>Updated company</td>
+<td><a href="#schemacompany">Company</a></td>
 </tr>
 <tr>
 <td>401</td>
