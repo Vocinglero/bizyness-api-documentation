@@ -827,21 +827,21 @@
                 "AddReplaceTest" : {
                   "value" : [ {
                     "op" : "replace",
-                    "path" : "/lines/0/type",
-                    "value" : 1
+                    "path" : "/manufacturer",
+                    "value" : "Google"
                   } ]
                 },
                 "Remove" : {
                   "value" : [ {
                     "op" : "remove",
-                    "path" : "/subject"
+                    "path" : "/manufacturer"
                   } ]
                 },
                 "MoveCopy" : {
                   "value" : [ {
                     "op" : "copy",
-                    "from" : "/lines/0/sku",
-                    "path" : "/lines/1/sku"
+                    "from" : "/title",
+                    "path" : "/description"
                   } ]
                 }
               }
@@ -928,6 +928,133 @@
               "application/json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/ClientList"
+                }
+              }
+            }
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      }
+    },
+    "/clients/{id}/attachments" : {
+      "parameters" : [ {
+        "name" : "id",
+        "in" : "path",
+        "description" : "Client ID",
+        "required" : true,
+        "schema" : {
+          "type" : "string",
+          "example" : "636945e14ce97a4c1c561885"
+        }
+      } ],
+      "post" : {
+        "tags" : [ "Client" ],
+        "summary" : "Add a list of attachments",
+        "requestBody" : {
+          "required" : true,
+          "content" : {
+            "multipart/form-data" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "file" : {
+                    "type" : "array",
+                    "items" : {
+                      "type" : "string",
+                      "format" : "binary"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Client"
+                }
+              }
+            },
+            "description" : "Created client"
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      }
+    },
+    "/clients/{id}/attachments/{attachmentId}" : {
+      "parameters" : [ {
+        "name" : "id",
+        "in" : "path",
+        "description" : "Client ID",
+        "required" : true,
+        "schema" : {
+          "type" : "string",
+          "example" : "636945e14ce97a4c1c561885"
+        }
+      }, {
+        "name" : "attachmentId",
+        "in" : "path",
+        "description" : "Attachment index",
+        "required" : true,
+        "schema" : {
+          "type" : "integer",
+          "example" : 0
+        }
+      } ],
+      "delete" : {
+        "tags" : [ "Client" ],
+        "summary" : "Delete an attachment",
+        "responses" : {
+          "204" : {
+            "description" : "The attachment was deleted successfully"
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      },
+      "get" : {
+        "tags" : [ "Client" ],
+        "summary" : "Download the attachment file",
+        "responses" : {
+          "200" : {
+            "description" : "Return the attachment file",
+            "content" : {
+              "application/pdf" : {
+                "schema" : {
+                  "type" : "string",
+                  "format" : "binary"
+                },
+                "examples" : {
+                  "sampleFile" : {
+                    "summary" : "A sample file",
+                    "externalValue" : "https://file-examples.com/storage/fe954b025e6370d449e6aa6/2017/10/file_example_PNG_500kB.png"
+                  }
                 }
               }
             }
@@ -1056,21 +1183,21 @@
                 "AddReplaceTest" : {
                   "value" : [ {
                     "op" : "replace",
-                    "path" : "/lines/0/type",
-                    "value" : 1
+                    "path" : "/last_name",
+                    "value" : "Dupont"
                   } ]
                 },
                 "Remove" : {
                   "value" : [ {
                     "op" : "remove",
-                    "path" : "/subject"
+                    "path" : "/address_supplement"
                   } ]
                 },
                 "MoveCopy" : {
                   "value" : [ {
                     "op" : "copy",
-                    "from" : "/lines/0/sku",
-                    "path" : "/lines/1/sku"
+                    "from" : "/address",
+                    "path" : "/address_supplement"
                   } ]
                 }
               }
@@ -1253,21 +1380,21 @@
                 "AddReplaceTest" : {
                   "value" : [ {
                     "op" : "replace",
-                    "path" : "/lines/0/type",
-                    "value" : 1
+                    "path" : "/label",
+                    "value" : "Other subscription"
                   } ]
                 },
                 "Remove" : {
                   "value" : [ {
                     "op" : "remove",
-                    "path" : "/subject"
+                    "path" : "/label"
                   } ]
                 },
                 "MoveCopy" : {
                   "value" : [ {
                     "op" : "copy",
-                    "from" : "/lines/0/sku",
-                    "path" : "/lines/1/sku"
+                    "from" : "/label",
+                    "path" : "/notes"
                   } ]
                 }
               }
@@ -1673,7 +1800,7 @@
             "type" : "integer",
             "example" : 1566493220992
           },
-          "notes" : {
+          "comment" : {
             "type" : "string",
             "example" : "Client will provide the next payment tomorrow"
           },
@@ -1687,6 +1814,17 @@
           "$ref" : "#/components/schemas/CollectionId"
         }, {
           "$ref" : "#/components/schemas/ClientBody"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "attachments" : {
+              "type" : "array",
+              "items" : {
+                "type" : "string",
+                "example" : [ "myfile1.png", "mydocument.pdf" ]
+              }
+            }
+          }
         } ]
       },
       "ClientBody" : {
