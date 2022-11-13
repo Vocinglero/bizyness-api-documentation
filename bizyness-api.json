@@ -1305,7 +1305,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Account"
+                  "$ref" : "#/components/schemas/Company"
                 }
               }
             }
@@ -1329,7 +1329,7 @@
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/AccountBody"
+                "$ref" : "#/components/schemas/CompanyBody"
               }
             }
           }
@@ -1340,7 +1340,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Account"
+                  "$ref" : "#/components/schemas/Company"
                 }
               }
             }
@@ -1400,7 +1400,7 @@
             },
             "application/merge-patch+json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/AccountBody"
+                "$ref" : "#/components/schemas/CompanyBody"
               },
               "example" : {
                 "payment_term" : 3,
@@ -1415,7 +1415,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Account"
+                  "$ref" : "#/components/schemas/Company"
                 }
               }
             }
@@ -3119,34 +3119,6 @@
       "Company" : {
         "allOf" : [ {
           "$ref" : "#/components/schemas/CompanyBody"
-        }, {
-          "type" : "object",
-          "properties" : {
-            "billing_provider" : {
-              "type" : "string",
-              "example" : "chargebee"
-            },
-            "first_name" : {
-              "type" : "string",
-              "example" : "John"
-            },
-            "last_name" : {
-              "type" : "string",
-              "example" : "Doe"
-            },
-            "display_name" : {
-              "type" : "string",
-              "example" : "John Doe"
-            },
-            "email" : {
-              "type" : "string",
-              "example" : "john@google.com"
-            },
-            "subscription_status" : {
-              "enum" : [ "trial", "active", "suspended" ],
-              "type" : "string"
-            }
-          }
         } ]
       }
     },
