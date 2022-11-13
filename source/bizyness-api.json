@@ -1,9 +1,9 @@
 {
   "openapi" : "3.0.3",
   "info" : {
-    "title" : "Bizyness API Documentation",
+    "title" : "API Reference",
     "version" : "1.0.0",
-    "description" : "Bizyness is an accounting software that helps entrepreneurs to manage their activities with ease.\n\n# Introduction\nThis API provides endpoints to manage the data in your Bizyness account.\n\n## Super intro\nfdsgfdsg fdsg fdsg sfdg fd\n\n# Authentication\n\nBizyness offers two forms of authentication:\n- API Key\n- JWT Token\n\n<SecurityDefinitions />\n"
+    "description" : "# Overview\n\n<mark>This API in under construction and should not be used in a production environment</mark>\n\nThe Bizyness API allows customers to create and search for accounting objects such as invoices, clients, payments and to generate various reports.\n\nThis documentation provides information about each endpoint in the API. The right-hand pane of this page shows example requests and responses for each endpoint in cURL and many other languages.\n\n## Getting started\nFollow these steps to start licensing media:\n\n1. Create a Bizyness account\n\n2. Go in your Settings and create an API Key, you can also use the JWT method to authenticate your requests\n\n## Request/Response Format\nThe default response format is JSON. Requests with a message-body use plain JSON to set or update resource attributes. Successful requests will return a 200 OK HTTP status.\n\nSome general information about responses:\n\n- Dates are returned in Unix timestamp, see [Unix time](https://en.wikipedia.org/wiki/Unix_time).\n- Resource IDs are returned as strings.\n- Any decimal monetary amount, such as prices or totals, will be returned as numbers with two decimal places.\n- Other amounts, such as item counts, are returned as integers.\n\n## Errors\nThe API returns error codes such as 400, 403, 404, and 500 along with information about the error. Here are some common error responses:\n\nA 400 Bad Request response often means that the request body is improperly formatted or missing required fields. In the case of missing fields, the response includes the name of the field that is missing, as in the example in the right-hand column.\n\nA 401 Unauthorized response often means that the request did not include a valid authentication.\n\nA 404 Not Found response can mean that the object you are trying to access does not exist.\n\nA 500 Internal Server Error response means that an error happened on the server. This can mean that the request is not valid, such as if you try to delete or edit a collection that does not exist, or if the API otherwise can't do what you requested. It can also mean a temporary problem with the API. Check your request and try again or contact us.\n\n## Pagination\nRequests that return multiple items will be paginated to 100 items by default. Alternatively the items per page can be specified with the `?limit` parameter:\n\n`GET /invoices?limit=200`\n\nYou can specify further pages with the `?page` parameter:\n\n`GET /invoices?page=2`\n\nPage number is 1-based and omitting the `?page` parameter will return the first page.\n\n## Rate limits\nAll applications are limited to a certain number of API requests per minute. If your application exceeds its limit, the API returns an error response with a status code of 429.\n\nThe API supports a limit of 10 requests per second.\n"
   },
   "servers" : [ {
     "description" : "SwaggerHub API Auto Mocking",
@@ -18,8 +18,11 @@
     "name" : "Quote",
     "description" : "Managing your quotes"
   }, {
-    "name" : "Activity",
-    "description" : "Managing your activities"
+    "name" : "Payment",
+    "description" : "Managing your payments"
+  }, {
+    "name" : "Expense",
+    "description" : "Managing your expenses"
   }, {
     "name" : "Client",
     "description" : "Managing your clients"
@@ -30,6 +33,15 @@
     "name" : "Article",
     "description" : "Managing your articles"
   }, {
+    "name" : "Bank",
+    "description" : "Managing your reports"
+  }, {
+    "name" : "Activity",
+    "description" : "Managing your activities"
+  }, {
+    "name" : "Report",
+    "description" : "Managing your reports"
+  }, {
     "name" : "Miscellaneous",
     "description" : "Transverval ressources"
   } ],
@@ -37,7 +49,45 @@
     "/invoices" : {
       "get" : {
         "tags" : [ "Invoice" ],
-        "summary" : "Retrieve all invoices",
+        "summary" : "List all invoices",
+        "parameters" : [ {
+          "$ref" : "#/components/parameters/PageParam"
+        }, {
+          "$ref" : "#/components/parameters/LimitParam"
+        }, {
+          "$ref" : "#/components/parameters/KeywordParam"
+        }, {
+          "$ref" : "#/components/parameters/DateMinParam"
+        }, {
+          "$ref" : "#/components/parameters/DateMaxParam"
+        }, {
+          "in" : "query",
+          "name" : "status",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "example" : "draft"
+          },
+          "description" : "Filter invoices by their status"
+        }, {
+          "in" : "query",
+          "name" : "client",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "example" : "5d5eca258126ab647499f9bf"
+          },
+          "description" : "Filter invoices by client"
+        }, {
+          "in" : "query",
+          "name" : "activity",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "example" : "5d5eca258126ab647499f9bf"
+          },
+          "description" : "Filter invoices by activity"
+        } ],
         "responses" : {
           "200" : {
             "description" : "Return the list of invoices",
@@ -52,7 +102,7 @@
           "500" : {
             "$ref" : "#/components/responses/InternalServerError"
           },
-          "403" : {
+          "401" : {
             "$ref" : "#/components/responses/Unauthorized"
           },
           "404" : {
@@ -62,7 +112,7 @@
       },
       "post" : {
         "tags" : [ "Invoice" ],
-        "summary" : "Create a new invoice",
+        "summary" : "Create an invoice",
         "requestBody" : {
           "required" : true,
           "content" : {
@@ -87,7 +137,79 @@
           "500" : {
             "$ref" : "#/components/responses/InternalServerError"
           },
-          "403" : {
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      }
+    },
+    "/invoices/{id}/payments" : {
+      "parameters" : [ {
+        "name" : "id",
+        "in" : "path",
+        "description" : "Invoice ID",
+        "required" : true,
+        "schema" : {
+          "type" : "string",
+          "example" : "636945e14ce97a4c1c561885"
+        }
+      } ],
+      "get" : {
+        "tags" : [ "Invoice" ],
+        "summary" : "Retrieve payments",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/PaymentList"
+                }
+              }
+            },
+            "description" : "List of payments"
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Invoice" ],
+        "summary" : "Create an payment",
+        "requestBody" : {
+          "required" : true,
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/PaymentBody"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Invoice"
+                }
+              }
+            },
+            "description" : "Created invoice"
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
             "$ref" : "#/components/responses/Unauthorized"
           },
           "404" : {
@@ -103,12 +225,13 @@
         "description" : "Invoice ID",
         "required" : true,
         "schema" : {
-          "type" : "string"
+          "type" : "string",
+          "example" : "636945e14ce97a4c1c561885"
         }
       } ],
       "get" : {
         "tags" : [ "Invoice" ],
-        "summary" : "Download invoice PDF by ID",
+        "summary" : "Download the PDF file",
         "responses" : {
           "200" : {
             "description" : "Return the PDF file",
@@ -130,7 +253,134 @@
           "500" : {
             "$ref" : "#/components/responses/InternalServerError"
           },
-          "403" : {
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      }
+    },
+    "/invoices/{id}/attachments" : {
+      "parameters" : [ {
+        "name" : "id",
+        "in" : "path",
+        "description" : "Invoice ID",
+        "required" : true,
+        "schema" : {
+          "type" : "string",
+          "example" : "636945e14ce97a4c1c561885"
+        }
+      } ],
+      "post" : {
+        "tags" : [ "Invoice" ],
+        "summary" : "Add a list of attachments",
+        "requestBody" : {
+          "required" : true,
+          "content" : {
+            "multipart/form-data" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "file" : {
+                    "type" : "array",
+                    "items" : {
+                      "type" : "string",
+                      "format" : "binary"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Invoice"
+                }
+              }
+            },
+            "description" : "Created invoice"
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      }
+    },
+    "/invoices/{id}/attachments/{attachmentId}" : {
+      "parameters" : [ {
+        "name" : "id",
+        "in" : "path",
+        "description" : "Invoice ID",
+        "required" : true,
+        "schema" : {
+          "type" : "string",
+          "example" : "636945e14ce97a4c1c561885"
+        }
+      }, {
+        "name" : "attachmentId",
+        "in" : "path",
+        "description" : "Attachment index",
+        "required" : true,
+        "schema" : {
+          "type" : "integer",
+          "example" : 0
+        }
+      } ],
+      "delete" : {
+        "tags" : [ "Invoice" ],
+        "summary" : "Delete an attachment",
+        "responses" : {
+          "204" : {
+            "description" : "The attachment was deleted successfully"
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      },
+      "get" : {
+        "tags" : [ "Invoice" ],
+        "summary" : "Download an attachment file",
+        "responses" : {
+          "200" : {
+            "description" : "Return the attachment file",
+            "content" : {
+              "application/pdf" : {
+                "schema" : {
+                  "type" : "string",
+                  "format" : "binary"
+                },
+                "examples" : {
+                  "sampleFile" : {
+                    "summary" : "A sample file",
+                    "externalValue" : "https://file-examples.com/storage/fe954b025e6370d449e6aa6/2017/10/file_example_PNG_500kB.png"
+                  }
+                }
+              }
+            }
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
             "$ref" : "#/components/responses/Unauthorized"
           },
           "404" : {
@@ -146,12 +396,13 @@
         "description" : "Invoice ID",
         "required" : true,
         "schema" : {
-          "type" : "string"
+          "type" : "string",
+          "example" : "636945e14ce97a4c1c561885"
         }
       } ],
       "get" : {
         "tags" : [ "Invoice" ],
-        "summary" : "Find invoice by ID",
+        "summary" : "Retrieve an invoice",
         "responses" : {
           "200" : {
             "description" : "Return a single invoice",
@@ -166,7 +417,7 @@
           "500" : {
             "$ref" : "#/components/responses/InternalServerError"
           },
-          "403" : {
+          "401" : {
             "$ref" : "#/components/responses/Unauthorized"
           },
           "404" : {
@@ -176,7 +427,7 @@
       },
       "delete" : {
         "tags" : [ "Invoice" ],
-        "summary" : "Delete invoice by ID",
+        "summary" : "Delete an invoice",
         "responses" : {
           "204" : {
             "description" : "The invoice was deleted successfully"
@@ -184,7 +435,7 @@
           "500" : {
             "$ref" : "#/components/responses/InternalServerError"
           },
-          "403" : {
+          "401" : {
             "$ref" : "#/components/responses/Unauthorized"
           },
           "404" : {
@@ -194,13 +445,13 @@
       },
       "put" : {
         "tags" : [ "Invoice" ],
-        "summary" : "Update a complete invoice",
+        "summary" : "Update an invoice",
         "requestBody" : {
           "required" : true,
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/Invoice"
+                "$ref" : "#/components/schemas/InvoiceBody"
               }
             }
           }
@@ -219,7 +470,7 @@
           "500" : {
             "$ref" : "#/components/responses/InternalServerError"
           },
-          "403" : {
+          "401" : {
             "$ref" : "#/components/responses/Unauthorized"
           },
           "404" : {
@@ -229,7 +480,7 @@
       },
       "patch" : {
         "tags" : [ "Invoice" ],
-        "summary" : "Update an invoice partially",
+        "summary" : "Update an invoice (partial)",
         "requestBody" : {
           "required" : true,
           "content" : {
@@ -294,7 +545,7 @@
           "500" : {
             "$ref" : "#/components/responses/InternalServerError"
           },
-          "403" : {
+          "401" : {
             "$ref" : "#/components/responses/Unauthorized"
           },
           "404" : {
@@ -306,22 +557,14 @@
     "/countries" : {
       "get" : {
         "tags" : [ "Miscellaneous" ],
-        "summary" : "Retrieve all countries",
+        "summary" : "List all countries",
         "responses" : {
           "200" : {
             "description" : "Return the list of countries",
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "type" : "object",
-                  "properties" : {
-                    "countries" : {
-                      "type" : "array",
-                      "items" : {
-                        "$ref" : "#/components/schemas/Country"
-                      }
-                    }
-                  }
+                  "$ref" : "#/components/schemas/CountryList"
                 }
               }
             }
@@ -329,7 +572,115 @@
           "500" : {
             "$ref" : "#/components/responses/InternalServerError"
           },
-          "403" : {
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          }
+        }
+      }
+    },
+    "/reports/revenue/monthly" : {
+      "parameters" : [ {
+        "in" : "query",
+        "name" : "month",
+        "schema" : {
+          "type" : "integer",
+          "minimum" : 1,
+          "maximum" : 12
+        },
+        "required" : true,
+        "description" : "The month number of the year"
+      }, {
+        "in" : "query",
+        "name" : "client",
+        "schema" : {
+          "type" : "string"
+        },
+        "required" : false,
+        "description" : "Filter revenue by client"
+      } ],
+      "get" : {
+        "tags" : [ "Report" ],
+        "summary" : "Figures of the month",
+        "responses" : {
+          "200" : {
+            "description" : "Return the figures of the month",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/FiguresMonthReport"
+                }
+              }
+            }
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          }
+        }
+      }
+    },
+    "/reports/revenue/yearly" : {
+      "parameters" : [ {
+        "in" : "query",
+        "name" : "year",
+        "schema" : {
+          "type" : "integer"
+        },
+        "required" : true,
+        "description" : "The year"
+      }, {
+        "in" : "query",
+        "name" : "client",
+        "schema" : {
+          "type" : "string"
+        },
+        "required" : false,
+        "description" : "Filter revenue by client"
+      } ],
+      "get" : {
+        "tags" : [ "Report" ],
+        "summary" : "Figures of the year",
+        "responses" : {
+          "200" : {
+            "description" : "Return the figures of the year",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/FiguresYearReport"
+                }
+              }
+            }
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          }
+        }
+      }
+    },
+    "/reports/urssaf/current" : {
+      "get" : {
+        "tags" : [ "Report" ],
+        "summary" : "URSSAF statement",
+        "responses" : {
+          "200" : {
+            "description" : "Return the URSSAF statement",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/URSSAFReportStatement"
+                }
+              }
+            }
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
             "$ref" : "#/components/responses/Unauthorized"
           }
         }
@@ -338,15 +689,13 @@
     "/articles" : {
       "get" : {
         "tags" : [ "Article" ],
-        "summary" : "Retrieve all invoices",
+        "summary" : "List all articles",
         "parameters" : [ {
-          "name" : "keyword",
-          "in" : "query",
-          "description" : "Keyword to search for",
-          "required" : false,
-          "schema" : {
-            "type" : "string"
-          }
+          "$ref" : "#/components/parameters/KeywordParam"
+        }, {
+          "$ref" : "#/components/parameters/PageParam"
+        }, {
+          "$ref" : "#/components/parameters/LimitParam"
         } ],
         "responses" : {
           "200" : {
@@ -354,15 +703,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "type" : "object",
-                  "properties" : {
-                    "articles" : {
-                      "type" : "array",
-                      "items" : {
-                        "$ref" : "#/components/schemas/Article"
-                      }
-                    }
-                  }
+                  "$ref" : "#/components/schemas/ArticleList"
                 }
               }
             }
@@ -370,7 +711,7 @@
           "500" : {
             "$ref" : "#/components/responses/InternalServerError"
           },
-          "403" : {
+          "401" : {
             "$ref" : "#/components/responses/Unauthorized"
           },
           "404" : {
@@ -380,7 +721,7 @@
       },
       "post" : {
         "tags" : [ "Article" ],
-        "summary" : "Create a new article",
+        "summary" : "Create an article",
         "requestBody" : {
           "required" : true,
           "content" : {
@@ -405,7 +746,7 @@
           "500" : {
             "$ref" : "#/components/responses/InternalServerError"
           },
-          "403" : {
+          "401" : {
             "$ref" : "#/components/responses/Unauthorized"
           },
           "404" : {
@@ -421,12 +762,13 @@
         "description" : "Article ID",
         "required" : true,
         "schema" : {
-          "type" : "string"
+          "type" : "string",
+          "example" : "636945f14ce97a4c1c561885"
         }
       } ],
       "get" : {
         "tags" : [ "Article" ],
-        "summary" : "Find article by ID",
+        "summary" : "Retrieve an article",
         "responses" : {
           "200" : {
             "description" : "Return a single article",
@@ -441,7 +783,7 @@
           "500" : {
             "$ref" : "#/components/responses/InternalServerError"
           },
-          "403" : {
+          "401" : {
             "$ref" : "#/components/responses/Unauthorized"
           },
           "404" : {
@@ -451,7 +793,7 @@
       },
       "delete" : {
         "tags" : [ "Article" ],
-        "summary" : "Delete article by ID",
+        "summary" : "Delete an article",
         "responses" : {
           "204" : {
             "description" : "The article was deleted successfully"
@@ -459,7 +801,7 @@
           "500" : {
             "$ref" : "#/components/responses/InternalServerError"
           },
-          "403" : {
+          "401" : {
             "$ref" : "#/components/responses/Unauthorized"
           },
           "404" : {
@@ -469,13 +811,13 @@
       },
       "put" : {
         "tags" : [ "Article" ],
-        "summary" : "Update a complete article",
+        "summary" : "Update an article",
         "requestBody" : {
           "required" : true,
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/Article"
+                "$ref" : "#/components/schemas/ArticleBody"
               }
             }
           }
@@ -494,7 +836,7 @@
           "500" : {
             "$ref" : "#/components/responses/InternalServerError"
           },
-          "403" : {
+          "401" : {
             "$ref" : "#/components/responses/Unauthorized"
           },
           "404" : {
@@ -504,7 +846,7 @@
       },
       "patch" : {
         "tags" : [ "Article" ],
-        "summary" : "Update an article partially",
+        "summary" : "Update an article (partial)",
         "requestBody" : {
           "required" : true,
           "content" : {
@@ -525,21 +867,21 @@
                 "AddReplaceTest" : {
                   "value" : [ {
                     "op" : "replace",
-                    "path" : "/lines/0/type",
-                    "value" : 1
+                    "path" : "/manufacturer",
+                    "value" : "Google"
                   } ]
                 },
                 "Remove" : {
                   "value" : [ {
                     "op" : "remove",
-                    "path" : "/subject"
+                    "path" : "/manufacturer"
                   } ]
                 },
                 "MoveCopy" : {
                   "value" : [ {
                     "op" : "copy",
-                    "from" : "/lines/0/sku",
-                    "path" : "/lines/1/sku"
+                    "from" : "/title",
+                    "path" : "/description"
                   } ]
                 }
               }
@@ -569,7 +911,792 @@
           "500" : {
             "$ref" : "#/components/responses/InternalServerError"
           },
-          "403" : {
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      }
+    },
+    "/activities" : {
+      "get" : {
+        "tags" : [ "Activity" ],
+        "summary" : "List all activities",
+        "parameters" : [ {
+          "$ref" : "#/components/parameters/PageParam"
+        }, {
+          "$ref" : "#/components/parameters/LimitParam"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Return the list of activities",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ActivityList"
+                }
+              }
+            }
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Activity" ],
+        "summary" : "Create an activity",
+        "requestBody" : {
+          "required" : true,
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/ActivityBody"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Activity"
+                }
+              }
+            },
+            "description" : "Created activity"
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      }
+    },
+    "/activities/{id}" : {
+      "parameters" : [ {
+        "name" : "id",
+        "in" : "path",
+        "description" : "Activity ID",
+        "required" : true,
+        "schema" : {
+          "type" : "string",
+          "example" : "636945f14ce97a4c1c561885"
+        }
+      } ],
+      "get" : {
+        "tags" : [ "Activity" ],
+        "summary" : "Retrieve an activity",
+        "responses" : {
+          "200" : {
+            "description" : "Return a single activity",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Activity"
+                }
+              }
+            }
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Activity" ],
+        "summary" : "Delete an activity",
+        "responses" : {
+          "204" : {
+            "description" : "The activity was deleted successfully"
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Activity" ],
+        "summary" : "Update an activity",
+        "requestBody" : {
+          "required" : true,
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/ActivityBody"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Updated activity",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Activity"
+                }
+              }
+            }
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      },
+      "patch" : {
+        "tags" : [ "Activity" ],
+        "summary" : "Update an activity (partial)",
+        "requestBody" : {
+          "required" : true,
+          "content" : {
+            "application/json-patch+json" : {
+              "schema" : {
+                "type" : "array",
+                "items" : {
+                  "oneOf" : [ {
+                    "$ref" : "#/components/schemas/JSONPatchRequestAddReplaceTest"
+                  }, {
+                    "$ref" : "#/components/schemas/JSONPatchRequestRemove"
+                  }, {
+                    "$ref" : "#/components/schemas/JSONPatchRequestMoveCopy"
+                  } ]
+                }
+              },
+              "examples" : {
+                "AddReplaceTest" : {
+                  "value" : [ {
+                    "op" : "replace",
+                    "path" : "/name",
+                    "value" : "My activity"
+                  } ]
+                },
+                "Remove" : {
+                  "value" : [ {
+                    "op" : "remove",
+                    "path" : "/name"
+                  } ]
+                },
+                "MoveCopy" : {
+                  "value" : [ {
+                    "op" : "copy",
+                    "from" : "/name",
+                    "path" : "/name"
+                  } ]
+                }
+              }
+            },
+            "application/merge-patch+json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Activity"
+              },
+              "example" : {
+                "payment_term" : 3,
+                "template" : "london"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Updated activity",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Activity"
+                }
+              }
+            }
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      }
+    },
+    "/banks/transactions" : {
+      "get" : {
+        "tags" : [ "Bank" ],
+        "summary" : "List all transactions",
+        "parameters" : [ {
+          "$ref" : "#/components/parameters/PageParam"
+        }, {
+          "$ref" : "#/components/parameters/LimitParam"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Return the list of transactions",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/BankTransactionList"
+                }
+              }
+            }
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      }
+    },
+    "/clients" : {
+      "get" : {
+        "tags" : [ "Client" ],
+        "summary" : "List all clients",
+        "parameters" : [ {
+          "$ref" : "#/components/parameters/PageParam"
+        }, {
+          "$ref" : "#/components/parameters/LimitParam"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Return the list of clients",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ClientList"
+                }
+              }
+            }
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      }
+    },
+    "/clients/{id}/attachments" : {
+      "parameters" : [ {
+        "name" : "id",
+        "in" : "path",
+        "description" : "Client ID",
+        "required" : true,
+        "schema" : {
+          "type" : "string",
+          "example" : "636945e14ce97a4c1c561885"
+        }
+      } ],
+      "post" : {
+        "tags" : [ "Client" ],
+        "summary" : "Add a list of attachments",
+        "requestBody" : {
+          "required" : true,
+          "content" : {
+            "multipart/form-data" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "file" : {
+                    "type" : "array",
+                    "items" : {
+                      "type" : "string",
+                      "format" : "binary"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Client"
+                }
+              }
+            },
+            "description" : "Created client"
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      }
+    },
+    "/clients/{id}/attachments/{attachmentId}" : {
+      "parameters" : [ {
+        "name" : "id",
+        "in" : "path",
+        "description" : "Client ID",
+        "required" : true,
+        "schema" : {
+          "type" : "string",
+          "example" : "636945e14ce97a4c1c561885"
+        }
+      }, {
+        "name" : "attachmentId",
+        "in" : "path",
+        "description" : "Attachment index",
+        "required" : true,
+        "schema" : {
+          "type" : "integer",
+          "example" : 0
+        }
+      } ],
+      "delete" : {
+        "tags" : [ "Client" ],
+        "summary" : "Delete an attachment",
+        "responses" : {
+          "204" : {
+            "description" : "The attachment was deleted successfully"
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      },
+      "get" : {
+        "tags" : [ "Client" ],
+        "summary" : "Download an attachment file",
+        "responses" : {
+          "200" : {
+            "description" : "Return the attachment file",
+            "content" : {
+              "application/pdf" : {
+                "schema" : {
+                  "type" : "string",
+                  "format" : "binary"
+                },
+                "examples" : {
+                  "sampleFile" : {
+                    "summary" : "A sample file",
+                    "externalValue" : "https://file-examples.com/storage/fe954b025e6370d449e6aa6/2017/10/file_example_PNG_500kB.png"
+                  }
+                }
+              }
+            }
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      }
+    },
+    "/clients/{id}" : {
+      "parameters" : [ {
+        "name" : "id",
+        "in" : "path",
+        "description" : "Client ID",
+        "required" : true,
+        "schema" : {
+          "type" : "string",
+          "example" : "636945f14ce97a4c1c561885"
+        }
+      } ],
+      "get" : {
+        "tags" : [ "Client" ],
+        "summary" : "Retrieve a client",
+        "responses" : {
+          "200" : {
+            "description" : "Return a single client",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Client"
+                }
+              }
+            }
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Client" ],
+        "summary" : "Delete a client",
+        "responses" : {
+          "204" : {
+            "description" : "The client was deleted successfully"
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Client" ],
+        "summary" : "Update a client",
+        "requestBody" : {
+          "required" : true,
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/ClientBody"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Updated client",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Client"
+                }
+              }
+            }
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      },
+      "patch" : {
+        "tags" : [ "Client" ],
+        "summary" : "Update a client (partial)",
+        "requestBody" : {
+          "required" : true,
+          "content" : {
+            "application/json-patch+json" : {
+              "schema" : {
+                "type" : "array",
+                "items" : {
+                  "oneOf" : [ {
+                    "$ref" : "#/components/schemas/JSONPatchRequestAddReplaceTest"
+                  }, {
+                    "$ref" : "#/components/schemas/JSONPatchRequestRemove"
+                  }, {
+                    "$ref" : "#/components/schemas/JSONPatchRequestMoveCopy"
+                  } ]
+                }
+              },
+              "examples" : {
+                "AddReplaceTest" : {
+                  "value" : [ {
+                    "op" : "replace",
+                    "path" : "/last_name",
+                    "value" : "Dupont"
+                  } ]
+                },
+                "Remove" : {
+                  "value" : [ {
+                    "op" : "remove",
+                    "path" : "/address_supplement"
+                  } ]
+                },
+                "MoveCopy" : {
+                  "value" : [ {
+                    "op" : "copy",
+                    "from" : "/address",
+                    "path" : "/address_supplement"
+                  } ]
+                }
+              }
+            },
+            "application/merge-patch+json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Client"
+              },
+              "example" : {
+                "payment_term" : 3,
+                "template" : "london"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Updated client",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Client"
+                }
+              }
+            }
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      }
+    },
+    "/payments" : {
+      "get" : {
+        "tags" : [ "Payment" ],
+        "summary" : "List all payments",
+        "parameters" : [ {
+          "$ref" : "#/components/parameters/PageParam"
+        }, {
+          "$ref" : "#/components/parameters/LimitParam"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Return the list of payments",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/PaymentList"
+                }
+              }
+            }
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      }
+    },
+    "/payments/{id}" : {
+      "parameters" : [ {
+        "name" : "id",
+        "in" : "path",
+        "description" : "Payment ID",
+        "required" : true,
+        "schema" : {
+          "type" : "string",
+          "example" : "636945f14ce97a4c1c561885"
+        }
+      } ],
+      "get" : {
+        "tags" : [ "Payment" ],
+        "summary" : "Retrieve a payment",
+        "responses" : {
+          "200" : {
+            "description" : "Return a single payment",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Payment"
+                }
+              }
+            }
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Payment" ],
+        "summary" : "Delete a payment",
+        "responses" : {
+          "204" : {
+            "description" : "The payment was deleted successfully"
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Payment" ],
+        "summary" : "Update a payment",
+        "requestBody" : {
+          "required" : true,
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/PaymentBody"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Updated payment",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Payment"
+                }
+              }
+            }
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      },
+      "patch" : {
+        "tags" : [ "Payment" ],
+        "summary" : "Update a payment (partial)",
+        "requestBody" : {
+          "required" : true,
+          "content" : {
+            "application/json-patch+json" : {
+              "schema" : {
+                "type" : "array",
+                "items" : {
+                  "oneOf" : [ {
+                    "$ref" : "#/components/schemas/JSONPatchRequestAddReplaceTest"
+                  }, {
+                    "$ref" : "#/components/schemas/JSONPatchRequestRemove"
+                  }, {
+                    "$ref" : "#/components/schemas/JSONPatchRequestMoveCopy"
+                  } ]
+                }
+              },
+              "examples" : {
+                "AddReplaceTest" : {
+                  "value" : [ {
+                    "op" : "replace",
+                    "path" : "/label",
+                    "value" : "Other subscription"
+                  } ]
+                },
+                "Remove" : {
+                  "value" : [ {
+                    "op" : "remove",
+                    "path" : "/label"
+                  } ]
+                },
+                "MoveCopy" : {
+                  "value" : [ {
+                    "op" : "copy",
+                    "from" : "/label",
+                    "path" : "/notes"
+                  } ]
+                }
+              }
+            },
+            "application/merge-patch+json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Payment"
+              },
+              "example" : {
+                "payment_term" : 3,
+                "template" : "london"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Updated article",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Payment"
+                }
+              }
+            }
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
             "$ref" : "#/components/responses/Unauthorized"
           },
           "404" : {
@@ -580,6 +1707,60 @@
     }
   },
   "components" : {
+    "parameters" : {
+      "PageParam" : {
+        "in" : "query",
+        "name" : "page",
+        "required" : false,
+        "schema" : {
+          "type" : "integer",
+          "minimum" : 1,
+          "default" : 1
+        },
+        "description" : "The page of results to return"
+      },
+      "LimitParam" : {
+        "in" : "query",
+        "name" : "limit",
+        "required" : false,
+        "schema" : {
+          "type" : "integer",
+          "minimum" : 1,
+          "maximum" : 250,
+          "default" : 100
+        },
+        "description" : "The number of records to return in one request"
+      },
+      "KeywordParam" : {
+        "in" : "query",
+        "name" : "keyword",
+        "required" : false,
+        "schema" : {
+          "type" : "string"
+        },
+        "description" : "The keyword to search for"
+      },
+      "DateMinParam" : {
+        "in" : "query",
+        "name" : "date_min",
+        "required" : false,
+        "schema" : {
+          "type" : "integer",
+          "example" : 1566493220992
+        },
+        "description" : "Filter invoices created at or after date"
+      },
+      "DateMaxParam" : {
+        "in" : "query",
+        "name" : "date_max",
+        "required" : false,
+        "schema" : {
+          "type" : "integer",
+          "example" : 1586493220992
+        },
+        "description" : "Filter invoices created at or before date"
+      }
+    },
     "responses" : {
       "NotFound" : {
         "description" : "The specified resource was not found",
@@ -603,7 +1784,7 @@
               "$ref" : "#/components/schemas/Error"
             },
             "example" : {
-              "code" : 403,
+              "code" : 401,
               "message" : "Unauthorized"
             }
           }
@@ -716,7 +1897,7 @@
             "type" : "string",
             "example" : "Size M"
           },
-          "vat" : {
+          "tax_rate" : {
             "type" : "number",
             "example" : 20
           },
@@ -724,7 +1905,7 @@
             "type" : "number",
             "example" : 0
           },
-          "vat_included" : {
+          "taxes_included" : {
             "type" : "boolean"
           },
           "second_hand_good" : {
@@ -763,6 +1944,295 @@
             }
           }
         }
+      },
+      "URSSAFReportStatement" : {
+        "type" : "object",
+        "properties" : {
+          "period" : {
+            "type" : "integer",
+            "example" : 1651356000000
+          },
+          "dueDate" : {
+            "type" : "integer",
+            "example" : 1656540000000
+          },
+          "distanceSalesAmount" : {
+            "type" : "integer",
+            "example" : 1235
+          },
+          "servicesAmount" : {
+            "type" : "integer",
+            "example" : 554
+          },
+          "otherServicesAmount" : {
+            "type" : "integer",
+            "example" : 787
+          },
+          "estimate" : {
+            "type" : "integer",
+            "example" : 457
+          }
+        }
+      },
+      "FiguresReportTotal" : {
+        "type" : "object",
+        "properties" : {
+          "margin" : {
+            "type" : "integer",
+            "example" : 32483
+          },
+          "incomes" : {
+            "type" : "integer",
+            "example" : 6013
+          },
+          "expenses" : {
+            "type" : "integer",
+            "example" : 214
+          },
+          "variation" : {
+            "type" : "integer",
+            "example" : 10.3
+          }
+        }
+      },
+      "FiguresMonthReport" : {
+        "type" : "object",
+        "properties" : {
+          "total" : {
+            "$ref" : "#/components/schemas/FiguresReportTotal"
+          },
+          "months" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/FiguresReportMonthItem"
+            },
+            "example" : [ {
+              "month" : 1,
+              "margin" : -393,
+              "incomes" : 456,
+              "expenses" : 849
+            }, {
+              "month" : 2,
+              "margin" : 4507,
+              "incomes" : 4556,
+              "expenses" : 49
+            } ]
+          }
+        }
+      },
+      "FiguresReportMonthItem" : {
+        "type" : "object",
+        "properties" : {
+          "month" : {
+            "type" : "integer"
+          },
+          "margin" : {
+            "type" : "integer"
+          },
+          "incomes" : {
+            "type" : "integer"
+          },
+          "expenses" : {
+            "type" : "integer"
+          }
+        }
+      },
+      "FiguresYearReport" : {
+        "type" : "object",
+        "properties" : {
+          "start" : {
+            "type" : "integer",
+            "example" : 2022
+          },
+          "total" : {
+            "$ref" : "#/components/schemas/FiguresReportTotal"
+          },
+          "months" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/FiguresReportMonthItem"
+            },
+            "example" : [ {
+              "month" : 1,
+              "margin" : -393,
+              "incomes" : 456,
+              "expenses" : 849
+            }, {
+              "month" : 2,
+              "margin" : 4507,
+              "incomes" : 4556,
+              "expenses" : 49
+            } ]
+          }
+        }
+      },
+      "Activity" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/CollectionId"
+        }, {
+          "$ref" : "#/components/schemas/ActivityBody"
+        } ]
+      },
+      "ActivityBody" : {
+        "type" : "object",
+        "properties" : {
+          "name" : {
+            "type" : "string",
+            "example" : "My activity"
+          },
+          "is_default" : {
+            "type" : "boolean"
+          }
+        }
+      },
+      "Payment" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/CollectionId"
+        }, {
+          "$ref" : "#/components/schemas/PaymentBody"
+        } ]
+      },
+      "PaymentBody" : {
+        "type" : "object",
+        "properties" : {
+          "amount" : {
+            "type" : "integer",
+            "example" : 123.21
+          },
+          "currency" : {
+            "type" : "string",
+            "example" : "EUR"
+          },
+          "label" : {
+            "type" : "string",
+            "example" : "Subscription"
+          },
+          "date" : {
+            "type" : "integer",
+            "example" : 1566493220992
+          },
+          "comment" : {
+            "type" : "string",
+            "example" : "Client will provide the next payment tomorrow"
+          },
+          "method" : {
+            "$ref" : "#/components/schemas/PaymentMethod"
+          }
+        }
+      },
+      "Client" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/CollectionId"
+        }, {
+          "$ref" : "#/components/schemas/ClientBody"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "attachments" : {
+              "type" : "array",
+              "items" : {
+                "type" : "string",
+                "example" : [ "myfile1.png", "mydocument.pdf" ]
+              }
+            }
+          }
+        } ]
+      },
+      "ClientBody" : {
+        "type" : "object",
+        "properties" : {
+          "type" : {
+            "enum" : [ "individual", "company" ],
+            "type" : "string"
+          },
+          "last_name" : {
+            "type" : "string",
+            "example" : "Doe"
+          },
+          "first_name" : {
+            "type" : "string",
+            "example" : "John"
+          },
+          "email" : {
+            "type" : "string",
+            "example" : "john.doe@google.com"
+          },
+          "phone" : {
+            "type" : "string",
+            "example" : 6215410124
+          },
+          "company_name" : {
+            "type" : "string",
+            "example" : "Doe's company"
+          },
+          "address" : {
+            "type" : "string",
+            "example" : "123 rue des archives"
+          },
+          "address_supplement" : {
+            "type" : "string",
+            "example" : "Porte gauche"
+          },
+          "zip" : {
+            "type" : "string",
+            "example" : "A1234"
+          },
+          "city" : {
+            "type" : "string",
+            "example" : "Paris"
+          },
+          "country_code" : {
+            "type" : "string",
+            "example" : "FR"
+          },
+          "vat_number" : {
+            "type" : "string",
+            "example" : "FR123456789"
+          },
+          "notes" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Note"
+            },
+            "example" : [ {
+              "date" : 1566493220992,
+              "title" : "My first note",
+              "content" : "This the content of this wonderful note"
+            }, {
+              "date" : 1586493220992,
+              "title" : "Another note",
+              "content" : "Just another note content"
+            } ]
+          }
+        }
+      },
+      "Note" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/CollectionId"
+        }, {
+          "$ref" : "#/components/schemas/NoteBody"
+        } ]
+      },
+      "NoteBody" : {
+        "type" : "object",
+        "properties" : {
+          "date" : {
+            "type" : "integer",
+            "example" : 1566493220992
+          },
+          "title" : {
+            "type" : "string",
+            "example" : "My first note"
+          },
+          "content" : {
+            "type" : "string",
+            "example" : "This the content of this wonderful note"
+          }
+        }
+      },
+      "PaymentMethod" : {
+        "enum" : [ "bank_transfer", "cash", "check", "cesu", "direct_debit", "credit_card", "paypal", "other" ],
+        "type" : "string"
       },
       "ListSummaryItem" : {
         "type" : "object",
@@ -831,6 +2301,76 @@
           }
         }
       },
+      "ClientList" : {
+        "type" : "object",
+        "properties" : {
+          "clients" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Client"
+            }
+          }
+        }
+      },
+      "PaymentList" : {
+        "type" : "object",
+        "properties" : {
+          "payments" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Payment"
+            }
+          }
+        }
+      },
+      "ActivityList" : {
+        "type" : "object",
+        "properties" : {
+          "activities" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Activity"
+            }
+          }
+        }
+      },
+      "BankTransactionList" : {
+        "type" : "object",
+        "properties" : {
+          "balance" : {
+            "type" : "integer",
+            "example" : 3214
+          },
+          "transactions" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/BankTransaction"
+            }
+          }
+        }
+      },
+      "ArticleList" : {
+        "type" : "object",
+        "properties" : {
+          "activities" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Article"
+            }
+          }
+        }
+      },
+      "CountryList" : {
+        "type" : "object",
+        "properties" : {
+          "countries" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Country"
+            }
+          }
+        }
+      },
       "CollectionId" : {
         "type" : "object",
         "properties" : {
@@ -840,16 +2380,163 @@
           }
         }
       },
-      "InvoiceBody" : {
+      "BillOfSaleEvents" : {
+        "type" : "object",
+        "properties" : {
+          "events" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "properties" : {
+                "date" : {
+                  "type" : "integer"
+                },
+                "key" : {
+                  "type" : "string"
+                },
+                "values" : {
+                  "type" : "array",
+                  "items" : {
+                    "oneOf" : [ {
+                      "type" : "string"
+                    }, {
+                      "type" : "integer"
+                    } ]
+                  }
+                }
+              }
+            },
+            "example" : [ {
+              "date" : 1566493220992,
+              "key" : "invoice.history.paymentAdded",
+              "values" : [ "€", 23 ]
+            }, {
+              "date" : 1566423220992,
+              "key" : "invoice.history.issued",
+              "values" : [ ]
+            } ]
+          }
+        }
+      },
+      "BillOfSaleAmounts" : {
+        "type" : "object",
+        "properties" : {
+          "total_including_taxes" : {
+            "type" : "number",
+            "example" : 123.54
+          },
+          "total_excluding_taxes" : {
+            "type" : "number",
+            "example" : 98.12
+          }
+        }
+      },
+      "ExternalReference" : {
+        "type" : "object",
+        "properties" : {
+          "label" : {
+            "type" : "string",
+            "example" : "5d5eca258126ab647499f9bf"
+          },
+          "identifier" : {
+            "type" : "string",
+            "example" : "John Doe"
+          }
+        }
+      },
+      "Address" : {
+        "type" : "object",
+        "properties" : {
+          "last_name" : {
+            "type" : "string",
+            "example" : "Doe"
+          },
+          "first_name" : {
+            "type" : "string",
+            "example" : "John"
+          },
+          "company_name" : {
+            "type" : "string",
+            "example" : "John's company"
+          },
+          "address" : {
+            "type" : "string",
+            "example" : "123 rue des archives"
+          },
+          "address_supplement" : {
+            "type" : "string",
+            "example" : "Porte gauche"
+          },
+          "zip" : {
+            "type" : "string",
+            "example" : "A1234"
+          },
+          "city" : {
+            "type" : "string",
+            "example" : "Paris"
+          },
+          "country_code" : {
+            "type" : "string",
+            "example" : "FR"
+          },
+          "vat_number" : {
+            "type" : "string",
+            "example" : "FR123456789"
+          }
+        }
+      },
+      "BillOfSaleLine" : {
+        "type" : "object",
+        "properties" : {
+          "sku" : {
+            "type" : "string"
+          },
+          "description" : {
+            "type" : "string"
+          },
+          "title" : {
+            "type" : "string"
+          },
+          "type" : {
+            "type" : "integer"
+          },
+          "price" : {
+            "type" : "number"
+          },
+          "quantity" : {
+            "type" : "number"
+          },
+          "unit" : {
+            "enum" : [ "piece", "hour", "day", "meter", "kilometer", "kilogram", "square_meter" ],
+            "type" : "string"
+          },
+          "discount_amount" : {
+            "type" : "number"
+          },
+          "discount_type" : {
+            "enum" : [ "percentage", "fixed" ],
+            "type" : "string"
+          },
+          "tax_rate" : {
+            "type" : "number"
+          },
+          "origin_country" : {
+            "type" : "string"
+          },
+          "second_hand_good" : {
+            "type" : "boolean"
+          }
+        }
+      },
+      "BillOfSaleBody" : {
         "type" : "object",
         "properties" : {
           "currency" : {
             "type" : "string",
             "example" : "EUR"
           },
-          "status" : {
-            "enum" : [ "draft", "not_paid", "paid", "cancelled" ],
-            "type" : "string"
+          "is_draft" : {
+            "type" : "boolean"
           },
           "payment_term" : {
             "type" : "integer",
@@ -879,69 +2566,21 @@
             "type" : "number",
             "example" : 4.5
           },
-          "shipping_vat" : {
+          "shipping_tax_rate" : {
             "type" : "number",
             "example" : 20
           },
-          "vat_liable" : {
+          "taxes_liable" : {
             "type" : "boolean"
           },
-          "vat_included" : {
+          "taxes_included" : {
             "type" : "boolean"
           },
           "client" : {
-            "type" : "object",
-            "properties" : {
-              "label" : {
-                "type" : "string",
-                "example" : "5d5eca258126ab647499f9bf"
-              },
-              "identifier" : {
-                "type" : "string",
-                "example" : "John Doe"
-              }
-            }
+            "$ref" : "#/components/schemas/ExternalReference"
           },
           "billing_address" : {
-            "type" : "object",
-            "properties" : {
-              "last_name" : {
-                "type" : "string",
-                "example" : "Doe"
-              },
-              "first_name" : {
-                "type" : "string",
-                "example" : "John"
-              },
-              "company_name" : {
-                "type" : "string",
-                "example" : "John's company"
-              },
-              "address" : {
-                "type" : "string",
-                "example" : "123 rue des archives"
-              },
-              "address_supplement" : {
-                "type" : "string",
-                "example" : "Porte gauche"
-              },
-              "zip" : {
-                "type" : "string",
-                "example" : "A1234"
-              },
-              "city" : {
-                "type" : "string",
-                "example" : "Paris"
-              },
-              "country_code" : {
-                "type" : "string",
-                "example" : "FR"
-              },
-              "vat_number" : {
-                "type" : "string",
-                "example" : "FR123456789"
-              }
-            }
+            "$ref" : "#/components/schemas/Address"
           },
           "subject" : {
             "type" : "string",
@@ -950,47 +2589,7 @@
           "lines" : {
             "type" : "array",
             "items" : {
-              "type" : "object",
-              "properties" : {
-                "sku" : {
-                  "type" : "string"
-                },
-                "description" : {
-                  "type" : "string"
-                },
-                "title" : {
-                  "type" : "string"
-                },
-                "type" : {
-                  "type" : "integer"
-                },
-                "price" : {
-                  "type" : "number"
-                },
-                "quantity" : {
-                  "type" : "number"
-                },
-                "unit" : {
-                  "enum" : [ "piece", "hour", "day", "meter", "kilometer", "kilogram", "square_meter" ],
-                  "type" : "string"
-                },
-                "discount_amount" : {
-                  "type" : "number"
-                },
-                "discount_type" : {
-                  "enum" : [ "percentage", "fixed" ],
-                  "type" : "string"
-                },
-                "vat" : {
-                  "type" : "number"
-                },
-                "origin_country" : {
-                  "type" : "string"
-                },
-                "second_hand_good" : {
-                  "type" : "boolean"
-                }
-              }
+              "$ref" : "#/components/schemas/BillOfSaleLine"
             },
             "example" : [ {
               "sku" : "AX123",
@@ -1002,7 +2601,7 @@
               "unit" : "piece",
               "discount_amount" : 10,
               "discount_type" : "percentage",
-              "vat" : 20,
+              "tax_rate" : 20,
               "origin_country" : "FR",
               "second_hand_good" : false
             }, {
@@ -1015,7 +2614,7 @@
               "unit" : "piece",
               "discount_amount" : 0,
               "discount_type" : "percentage",
-              "vat" : 20,
+              "tax_rate" : 20,
               "origin_country" : "FR",
               "second_hand_good" : false
             } ]
@@ -1045,9 +2644,6 @@
             "type" : "string",
             "example" : "Payment to be done within 3 days"
           },
-          "payment_instructions_included" : {
-            "type" : "boolean"
-          },
           "payment_conditions_included" : {
             "type" : "boolean"
           },
@@ -1055,21 +2651,70 @@
             "enum" : [ "fr", "en", "de", "es", "it" ],
             "type" : "string"
           },
-          "vat_exemption_text" : {
+          "tax_exemption_text" : {
             "type" : "string",
             "example" : "Article 138 CE/2008"
           },
-          "execution_date" : {
+          "payment_methods" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          }
+        }
+      },
+      "InvoiceBody" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/BillOfSaleBody"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "execution_date" : {
+              "type" : "integer",
+              "example" : 1566493220992
+            },
+            "online_payment_enabled" : {
+              "type" : "boolean",
+              "example" : 1566493220992
+            },
+            "payment_gateways" : {
+              "type" : "array",
+              "items" : {
+                "type" : "string",
+                "example" : [ "5d5eca258126ab647499f9bf", "5b17da549a7feb695f703975" ]
+              }
+            },
+            "tracking_numbers" : {
+              "type" : "array",
+              "items" : {
+                "type" : "string",
+                "example" : [ "456SDFDFD" ]
+              }
+            },
+            "tracking_carriers" : {
+              "type" : "array",
+              "items" : {
+                "type" : "string",
+                "example" : [ "UPS" ]
+              }
+            }
+          }
+        } ]
+      },
+      "BankTransaction" : {
+        "type" : "object",
+        "properties" : {
+          "date" : {
             "type" : "integer",
             "example" : 1566493220992
           },
-          "paid_date" : {
-            "type" : "integer",
-            "example" : 1566493220992
+          "label" : {
+            "type" : "string",
+            "example" : "Facebook ads"
           },
-          "payment_method" : {
+          "amount" : {
             "type" : "integer",
-            "example" : 1
+            "example" : 52.04
           }
         }
       },
@@ -1078,6 +2723,29 @@
           "$ref" : "#/components/schemas/CollectionId"
         }, {
           "$ref" : "#/components/schemas/InvoiceBody"
+        }, {
+          "$ref" : "#/components/schemas/BillOfSaleEvents"
+        }, {
+          "$ref" : "#/components/schemas/BillOfSaleAmounts"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "status" : {
+              "enum" : [ "draft", "not_paid", "paid", "cancelled", "overdue" ],
+              "type" : "string"
+            },
+            "paid_date" : {
+              "type" : "integer",
+              "example" : 1566493220992
+            },
+            "attachments" : {
+              "type" : "array",
+              "items" : {
+                "type" : "string",
+                "example" : [ "myfile1.png", "mydocument.pdf" ]
+              }
+            }
+          }
         } ]
       }
     },
