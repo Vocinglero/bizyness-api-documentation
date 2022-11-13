@@ -584,6 +584,30 @@
         }
       }
     },
+    "/currencies" : {
+      "get" : {
+        "tags" : [ "Miscellaneous" ],
+        "summary" : "List all currencies",
+        "responses" : {
+          "200" : {
+            "description" : "Return the list of currencies",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/CurrencyList"
+                }
+              }
+            }
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          }
+        }
+      }
+    },
     "/reports/revenue/monthly" : {
       "parameters" : [ {
         "in" : "query",
@@ -2264,6 +2288,32 @@
           "$ref" : "#/components/schemas/ArticleBody"
         } ]
       },
+      "Currency" : {
+        "type" : "object",
+        "properties" : {
+          "code" : {
+            "type" : "string",
+            "example" : "EUR"
+          },
+          "symbol" : {
+            "type" : "string",
+            "example" : "€"
+          },
+          "label" : {
+            "type" : "object",
+            "properties" : {
+              "fr" : {
+                "type" : "string",
+                "example" : "Euros"
+              },
+              "en" : {
+                "type" : "string",
+                "example" : "Euros"
+              }
+            }
+          }
+        }
+      },
       "Country" : {
         "type" : "object",
         "properties" : {
@@ -2711,6 +2761,17 @@
             "type" : "array",
             "items" : {
               "$ref" : "#/components/schemas/Country"
+            }
+          }
+        }
+      },
+      "CurrencyList" : {
+        "type" : "object",
+        "properties" : {
+          "currencies" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Currency"
             }
           }
         }
