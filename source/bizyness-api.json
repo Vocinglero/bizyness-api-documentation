@@ -3920,7 +3920,7 @@
       "ActivityList" : {
         "type" : "object",
         "properties" : {
-          "activities" : {
+          "payments" : {
             "type" : "array",
             "items" : {
               "$ref" : "#/components/schemas/Activity"
