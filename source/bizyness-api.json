@@ -21,6 +21,12 @@
     "name" : "Activity",
     "description" : "Managing your activities"
   }, {
+    "name" : "Payment",
+    "description" : "Managing your payments"
+  }, {
+    "name" : "Expense",
+    "description" : "Managing your expenses"
+  }, {
     "name" : "Client",
     "description" : "Managing your clients"
   }, {
@@ -136,6 +142,41 @@
             "$ref" : "#/components/responses/NotFound"
           }
         }
+      },
+      "post" : {
+        "tags" : [ "Invoice" ],
+        "summary" : "Create an payment.",
+        "requestBody" : {
+          "required" : true,
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/PaymentBody"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Invoice"
+                }
+              }
+            },
+            "description" : "Created invoice"
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
       }
     },
     "/invoices/{id}/download" : {
@@ -151,7 +192,7 @@
       } ],
       "get" : {
         "tags" : [ "Invoice" ],
-        "summary" : "Download PDF file",
+        "summary" : "Download the PDF file",
         "responses" : {
           "200" : {
             "description" : "Return the PDF file",
@@ -165,6 +206,133 @@
                   "sampleFile" : {
                     "summary" : "A sample file",
                     "externalValue" : "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+                  }
+                }
+              }
+            }
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      }
+    },
+    "/invoices/{id}/attachments" : {
+      "parameters" : [ {
+        "name" : "id",
+        "in" : "path",
+        "description" : "Invoice ID",
+        "required" : true,
+        "schema" : {
+          "type" : "string",
+          "example" : "636945e14ce97a4c1c561885"
+        }
+      } ],
+      "post" : {
+        "tags" : [ "Invoice" ],
+        "summary" : "Add a list of attachments",
+        "requestBody" : {
+          "required" : true,
+          "content" : {
+            "multipart/form-data" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "file" : {
+                    "type" : "array",
+                    "items" : {
+                      "type" : "string",
+                      "format" : "binary"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Invoice"
+                }
+              }
+            },
+            "description" : "Created invoice"
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      }
+    },
+    "/invoices/{id}/attachments/{attachmentId}" : {
+      "parameters" : [ {
+        "name" : "id",
+        "in" : "path",
+        "description" : "Invoice ID",
+        "required" : true,
+        "schema" : {
+          "type" : "string",
+          "example" : "636945e14ce97a4c1c561885"
+        }
+      }, {
+        "name" : "attachmentId",
+        "in" : "path",
+        "description" : "Attachment index",
+        "required" : true,
+        "schema" : {
+          "type" : "integer",
+          "example" : 0
+        }
+      } ],
+      "delete" : {
+        "tags" : [ "Invoice" ],
+        "summary" : "Delete an attachment",
+        "responses" : {
+          "204" : {
+            "description" : "The attachment was deleted successfully"
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      },
+      "get" : {
+        "tags" : [ "Invoice" ],
+        "summary" : "Download the attachment file",
+        "responses" : {
+          "200" : {
+            "description" : "Return the PDF file",
+            "content" : {
+              "application/pdf" : {
+                "schema" : {
+                  "type" : "string",
+                  "format" : "binary"
+                },
+                "examples" : {
+                  "sampleFile" : {
+                    "summary" : "A sample file",
+                    "externalValue" : "https://file-examples.com/storage/fe954b025e6370d449e6aa6/2017/10/file_example_PNG_500kB.png"
                   }
                 }
               }
@@ -273,7 +441,7 @@
       },
       "patch" : {
         "tags" : [ "Invoice" ],
-        "summary" : "Update an invoice",
+        "summary" : "Update an invoice partially",
         "requestBody" : {
           "required" : true,
           "content" : {
@@ -374,7 +542,7 @@
     "/articles" : {
       "get" : {
         "tags" : [ "Article" ],
-        "summary" : "List all invoices",
+        "summary" : "List all articles",
         "parameters" : [ {
           "$ref" : "#/components/parameters/KeywordParam"
         }, {
@@ -531,7 +699,7 @@
       },
       "patch" : {
         "tags" : [ "Article" ],
-        "summary" : "Update an article",
+        "summary" : "Update an article partially",
         "requestBody" : {
           "required" : true,
           "content" : {
@@ -589,6 +757,203 @@
               "application/json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/Article"
+                }
+              }
+            }
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      }
+    },
+    "/payments" : {
+      "get" : {
+        "tags" : [ "Payment" ],
+        "summary" : "List all payments",
+        "parameters" : [ {
+          "$ref" : "#/components/parameters/PageParam"
+        }, {
+          "$ref" : "#/components/parameters/LimitParam"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Return the list of payments",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/PaymentList"
+                }
+              }
+            }
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      }
+    },
+    "/payments/{id}" : {
+      "parameters" : [ {
+        "name" : "id",
+        "in" : "path",
+        "description" : "Payment ID",
+        "required" : true,
+        "schema" : {
+          "type" : "string",
+          "example" : "636945f14ce97a4c1c561885"
+        }
+      } ],
+      "get" : {
+        "tags" : [ "Payment" ],
+        "summary" : "Retrieve a payment",
+        "responses" : {
+          "200" : {
+            "description" : "Return a single payment",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Payment"
+                }
+              }
+            }
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Payment" ],
+        "summary" : "Delete a payment",
+        "responses" : {
+          "204" : {
+            "description" : "The payment was deleted successfully"
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Payment" ],
+        "summary" : "Update a payment",
+        "requestBody" : {
+          "required" : true,
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Payment"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Updated payment",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Payment"
+                }
+              }
+            }
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      },
+      "patch" : {
+        "tags" : [ "Payment" ],
+        "summary" : "Update a payment partially",
+        "requestBody" : {
+          "required" : true,
+          "content" : {
+            "application/json-patch+json" : {
+              "schema" : {
+                "type" : "array",
+                "items" : {
+                  "oneOf" : [ {
+                    "$ref" : "#/components/schemas/JSONPatchRequestAddReplaceTest"
+                  }, {
+                    "$ref" : "#/components/schemas/JSONPatchRequestRemove"
+                  }, {
+                    "$ref" : "#/components/schemas/JSONPatchRequestMoveCopy"
+                  } ]
+                }
+              },
+              "examples" : {
+                "AddReplaceTest" : {
+                  "value" : [ {
+                    "op" : "replace",
+                    "path" : "/lines/0/type",
+                    "value" : 1
+                  } ]
+                },
+                "Remove" : {
+                  "value" : [ {
+                    "op" : "remove",
+                    "path" : "/subject"
+                  } ]
+                },
+                "MoveCopy" : {
+                  "value" : [ {
+                    "op" : "copy",
+                    "from" : "/lines/0/sku",
+                    "path" : "/lines/1/sku"
+                  } ]
+                }
+              }
+            },
+            "application/merge-patch+json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Payment"
+              },
+              "example" : {
+                "payment_term" : 3,
+                "template" : "london"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Updated article",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Payment"
                 }
               }
             }
@@ -776,7 +1141,7 @@
             "type" : "string",
             "example" : "Size M"
           },
-          "vat" : {
+          "tax_rate" : {
             "type" : "number",
             "example" : 20
           },
@@ -784,7 +1149,7 @@
             "type" : "number",
             "example" : 0
           },
-          "vat_included" : {
+          "taxes_included" : {
             "type" : "boolean"
           },
           "second_hand_good" : {
@@ -1109,7 +1474,7 @@
             "enum" : [ "percentage", "fixed" ],
             "type" : "string"
           },
-          "vat" : {
+          "tax_rate" : {
             "type" : "number"
           },
           "origin_country" : {
@@ -1158,14 +1523,14 @@
             "type" : "number",
             "example" : 4.5
           },
-          "shipping_vat" : {
+          "shipping_tax_rate" : {
             "type" : "number",
             "example" : 20
           },
-          "vat_liable" : {
+          "taxes_liable" : {
             "type" : "boolean"
           },
-          "vat_included" : {
+          "taxes_included" : {
             "type" : "boolean"
           },
           "client" : {
@@ -1193,7 +1558,7 @@
               "unit" : "piece",
               "discount_amount" : 10,
               "discount_type" : "percentage",
-              "vat" : 20,
+              "tax_rate" : 20,
               "origin_country" : "FR",
               "second_hand_good" : false
             }, {
@@ -1206,7 +1571,7 @@
               "unit" : "piece",
               "discount_amount" : 0,
               "discount_type" : "percentage",
-              "vat" : 20,
+              "tax_rate" : 20,
               "origin_country" : "FR",
               "second_hand_good" : false
             } ]
@@ -1236,9 +1601,6 @@
             "type" : "string",
             "example" : "Payment to be done within 3 days"
           },
-          "payment_instructions_included" : {
-            "type" : "boolean"
-          },
           "payment_conditions_included" : {
             "type" : "boolean"
           },
@@ -1246,9 +1608,15 @@
             "enum" : [ "fr", "en", "de", "es", "it" ],
             "type" : "string"
           },
-          "vat_exemption_text" : {
+          "tax_exemption_text" : {
             "type" : "string",
             "example" : "Article 138 CE/2008"
+          },
+          "payment_methods" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
           }
         }
       },
@@ -1262,13 +1630,30 @@
               "type" : "integer",
               "example" : 1566493220992
             },
-            "paid_date" : {
-              "type" : "integer",
+            "online_payment_enabled" : {
+              "type" : "boolean",
               "example" : 1566493220992
             },
-            "payment_method" : {
-              "type" : "integer",
-              "example" : 1
+            "payment_gateways" : {
+              "type" : "array",
+              "items" : {
+                "type" : "string",
+                "example" : [ "5d5eca258126ab647499f9bf", "5b17da549a7feb695f703975" ]
+              }
+            },
+            "tracking_numbers" : {
+              "type" : "array",
+              "items" : {
+                "type" : "string",
+                "example" : [ "456SDFDFD" ]
+              }
+            },
+            "tracking_carriers" : {
+              "type" : "array",
+              "items" : {
+                "type" : "string",
+                "example" : [ "UPS" ]
+              }
             }
           }
         } ]
@@ -1288,6 +1673,17 @@
             "status" : {
               "enum" : [ "draft", "not_paid", "paid", "cancelled" ],
               "type" : "string"
+            },
+            "paid_date" : {
+              "type" : "integer",
+              "example" : 1566493220992
+            },
+            "attachments" : {
+              "type" : "array",
+              "items" : {
+                "type" : "string",
+                "example" : [ "myfile1.png", "mydocument.pdf" ]
+              }
             }
           }
         } ]
