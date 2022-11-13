@@ -271,7 +271,7 @@
       },
       "post" : {
         "tags" : [ "Invoice" ],
-        "summary" : "Create an payment",
+        "summary" : "Create an payment.",
         "parameters" : [ {
           "name" : "id",
           "in" : "path",
