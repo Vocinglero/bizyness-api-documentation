@@ -145,7 +145,7 @@
       },
       "post" : {
         "tags" : [ "Invoice" ],
-        "summary" : "Create an payment.",
+        "summary" : "Create an payment",
         "requestBody" : {
           "required" : true,
           "content" : {
