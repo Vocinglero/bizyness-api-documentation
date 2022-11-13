@@ -1071,6 +1071,48 @@
         }
       }
     },
+    "/clients/{id}/invoices" : {
+      "parameters" : [ {
+        "name" : "id",
+        "in" : "path",
+        "description" : "Client ID",
+        "required" : true,
+        "schema" : {
+          "type" : "string",
+          "example" : "636945f14ce97a4c1c561885"
+        }
+      } ],
+      "get" : {
+        "tags" : [ "Client" ],
+        "summary" : "Retrieve invoices",
+        "parameters" : [ {
+          "$ref" : "#/components/parameters/PageParam"
+        }, {
+          "$ref" : "#/components/parameters/LimitParam"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Return the list of invoices",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/InvoiceList"
+                }
+              }
+            }
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      }
+    },
     "/clients/{id}" : {
       "parameters" : [ {
         "name" : "id",
