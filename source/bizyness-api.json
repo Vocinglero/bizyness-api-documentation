@@ -2275,7 +2275,7 @@
       "ActivityList" : {
         "type" : "object",
         "properties" : {
-          "payments" : {
+          "activities" : {
             "type" : "array",
             "items" : {
               "$ref" : "#/components/schemas/Activity"
