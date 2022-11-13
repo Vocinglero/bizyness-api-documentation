@@ -592,7 +592,7 @@
           "type" : "integer",
           "minimum" : 1
         },
-        "description" : "The page of results to return."
+        "description" : "The page of results to return"
       },
       "LimitParam" : {
         "in" : "query",
@@ -604,7 +604,7 @@
           "maximum" : 250,
           "default" : 100
         },
-        "description" : "The number of records to return in one request."
+        "description" : "The number of records to return in one request"
       },
       "KeywordParam" : {
         "in" : "query",
@@ -613,7 +613,7 @@
         "schema" : {
           "type" : "string"
         },
-        "description" : "The keyword to search for."
+        "description" : "The keyword to search for"
       }
     },
     "responses" : {
