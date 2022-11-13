@@ -327,6 +327,12 @@
                   <li>
                     <a href="#errors" class="toc-h2 toc-link" data-title="Errors">Errors</a>
                   </li>
+                  <li>
+                    <a href="#pagination" class="toc-h2 toc-link" data-title="Pagination">Pagination</a>
+                  </li>
+                  <li>
+                    <a href="#rate-limits" class="toc-h2 toc-link" data-title="Rate limits">Rate limits</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -486,6 +492,20 @@
 <p>A 404 Not Found response can mean that the object you are trying to access does not exist.</p>
 
 <p>A 500 Internal Server Error response means that an error happened on the server. This can mean that the request is not valid, such as if you try to delete or edit a collection that does not exist, or if the API otherwise can&#39;t do what you requested. It can also mean a temporary problem with the API. Check your request and try again or contact us.</p>
+<h2 id='pagination'>Pagination</h2>
+<p>Requests that return multiple items will be paginated to 100 items by default. Alternatively the items per page can be specified with the <code>?limit</code> parameter:</p>
+
+<p><code>GET /invoices?limit=200</code></p>
+
+<p>You can specify further pages with the <code>?page</code> parameter:</p>
+
+<p><code>GET /invoices?page=2</code></p>
+
+<p>Page number is 1-based and omitting the <code>?page</code> parameter will return the first page.</p>
+<h2 id='rate-limits'>Rate limits</h2>
+<p>All applications are limited to a certain number of API requests per minute. If your application exceeds its limit, the API returns an error response with a status code of 429.</p>
+
+<p>The API supports a limit of 10 requests per second.</p>
 
 <p>Base URLs:</p>
 
