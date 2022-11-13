@@ -119,7 +119,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Invoice"
+                  "$ref" : "#/components/schemas/Payment"
                 }
               }
             },
@@ -836,6 +836,45 @@
           }
         }
       },
+      "Payment" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/CollectionId"
+        }, {
+          "$ref" : "#/components/schemas/PaymentBody"
+        } ]
+      },
+      "PaymentBody" : {
+        "type" : "object",
+        "properties" : {
+          "amount" : {
+            "type" : "integer",
+            "example" : 123.21
+          },
+          "currency" : {
+            "type" : "string",
+            "example" : "EUR"
+          },
+          "label" : {
+            "type" : "string",
+            "example" : "Subscription"
+          },
+          "date" : {
+            "type" : "integer",
+            "example" : 1566493220992
+          },
+          "notes" : {
+            "type" : "string",
+            "example" : "Client will provide the next payment tomorrow"
+          },
+          "method" : {
+            "$ref" : "#/components/schemas/PaymentMethod"
+          }
+        }
+      },
+      "PaymentMethod" : {
+        "enum" : [ "bank_transfer", "cash", "check", "cesu", "direct_debit", "credit_card", "paypal", "other" ],
+        "type" : "string"
+      },
       "ListSummaryItem" : {
         "type" : "object",
         "properties" : {
@@ -963,6 +1002,60 @@
           }
         }
       },
+      "ExternalReference" : {
+        "type" : "object",
+        "properties" : {
+          "label" : {
+            "type" : "string",
+            "example" : "5d5eca258126ab647499f9bf"
+          },
+          "identifier" : {
+            "type" : "string",
+            "example" : "John Doe"
+          }
+        }
+      },
+      "Address" : {
+        "type" : "object",
+        "properties" : {
+          "last_name" : {
+            "type" : "string",
+            "example" : "Doe"
+          },
+          "first_name" : {
+            "type" : "string",
+            "example" : "John"
+          },
+          "company_name" : {
+            "type" : "string",
+            "example" : "John's company"
+          },
+          "address" : {
+            "type" : "string",
+            "example" : "123 rue des archives"
+          },
+          "address_supplement" : {
+            "type" : "string",
+            "example" : "Porte gauche"
+          },
+          "zip" : {
+            "type" : "string",
+            "example" : "A1234"
+          },
+          "city" : {
+            "type" : "string",
+            "example" : "Paris"
+          },
+          "country_code" : {
+            "type" : "string",
+            "example" : "FR"
+          },
+          "vat_number" : {
+            "type" : "string",
+            "example" : "FR123456789"
+          }
+        }
+      },
       "BillOfSaleBody" : {
         "type" : "object",
         "properties" : {
@@ -1013,58 +1106,10 @@
             "type" : "boolean"
           },
           "client" : {
-            "type" : "object",
-            "properties" : {
-              "label" : {
-                "type" : "string",
-                "example" : "5d5eca258126ab647499f9bf"
-              },
-              "identifier" : {
-                "type" : "string",
-                "example" : "John Doe"
-              }
-            }
+            "$ref" : "#/components/schemas/ExternalReference"
           },
           "billing_address" : {
-            "type" : "object",
-            "properties" : {
-              "last_name" : {
-                "type" : "string",
-                "example" : "Doe"
-              },
-              "first_name" : {
-                "type" : "string",
-                "example" : "John"
-              },
-              "company_name" : {
-                "type" : "string",
-                "example" : "John's company"
-              },
-              "address" : {
-                "type" : "string",
-                "example" : "123 rue des archives"
-              },
-              "address_supplement" : {
-                "type" : "string",
-                "example" : "Porte gauche"
-              },
-              "zip" : {
-                "type" : "string",
-                "example" : "A1234"
-              },
-              "city" : {
-                "type" : "string",
-                "example" : "Paris"
-              },
-              "country_code" : {
-                "type" : "string",
-                "example" : "FR"
-              },
-              "vat_number" : {
-                "type" : "string",
-                "example" : "FR123456789"
-              }
-            }
+            "$ref" : "#/components/schemas/Address"
           },
           "subject" : {
             "type" : "string",
