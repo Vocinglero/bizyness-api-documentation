@@ -574,6 +574,14 @@
         },
         "required" : true,
         "description" : "The month number of the year"
+      }, {
+        "in" : "query",
+        "name" : "client",
+        "schema" : {
+          "type" : "string"
+        },
+        "required" : false,
+        "description" : "Filter revenue by client"
       } ],
       "get" : {
         "tags" : [ "Report" ],
@@ -607,6 +615,14 @@
         },
         "required" : true,
         "description" : "The year"
+      }, {
+        "in" : "query",
+        "name" : "client",
+        "schema" : {
+          "type" : "string"
+        },
+        "required" : false,
+        "description" : "Filter revenue by client"
       } ],
       "get" : {
         "tags" : [ "Report" ],
