@@ -41,9 +41,6 @@
     "name" : "Article",
     "description" : "Managing your articles"
   }, {
-    "name" : "Reports",
-    "description" : "Managing your reports"
-  }, {
     "name" : "Miscellaneous",
     "description" : "Transverval ressources"
   } ],
@@ -543,7 +540,7 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "Return the attachment file",
+            "description" : "Return the PDF file",
             "content" : {
               "application/pdf" : {
                 "schema" : {
@@ -1024,122 +1021,6 @@
               "application/json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/CountryList"
-                }
-              }
-            }
-          },
-          "500" : {
-            "description" : "Internal Server Error",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/Error"
-                },
-                "example" : {
-                  "code" : 500,
-                  "message" : "Internal server error"
-                }
-              }
-            }
-          },
-          "401" : {
-            "description" : "Unauthorized",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/Error"
-                },
-                "example" : {
-                  "code" : 401,
-                  "message" : "Unauthorized"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/reports/revenue/monthly" : {
-      "get" : {
-        "tags" : [ "Reports" ],
-        "summary" : "Figures of the month",
-        "parameters" : [ {
-          "name" : "month",
-          "in" : "query",
-          "description" : "The month number of the year",
-          "required" : true,
-          "style" : "form",
-          "explode" : true,
-          "schema" : {
-            "maximum" : 12,
-            "minimum" : 1,
-            "type" : "integer"
-          }
-        } ],
-        "responses" : {
-          "200" : {
-            "description" : "Return the figures of the month",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/FiguresMonthReport"
-                }
-              }
-            }
-          },
-          "500" : {
-            "description" : "Internal Server Error",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/Error"
-                },
-                "example" : {
-                  "code" : 500,
-                  "message" : "Internal server error"
-                }
-              }
-            }
-          },
-          "401" : {
-            "description" : "Unauthorized",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/Error"
-                },
-                "example" : {
-                  "code" : 401,
-                  "message" : "Unauthorized"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/reports/revenue/yearly" : {
-      "get" : {
-        "tags" : [ "Reports" ],
-        "summary" : "Figures of the year",
-        "parameters" : [ {
-          "name" : "year",
-          "in" : "query",
-          "description" : "The year",
-          "required" : true,
-          "style" : "form",
-          "explode" : true,
-          "schema" : {
-            "type" : "integer"
-          }
-        } ],
-        "responses" : {
-          "200" : {
-            "description" : "Return the figures of the year",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/FiguresYearReport"
                 }
               }
             }
@@ -2222,97 +2103,6 @@
           },
           "label" : {
             "$ref" : "#/components/schemas/Country_label"
-          }
-        }
-      },
-      "FiguresReportTotal" : {
-        "type" : "object",
-        "properties" : {
-          "margin" : {
-            "type" : "integer",
-            "example" : 32483
-          },
-          "incomes" : {
-            "type" : "integer",
-            "example" : 6013
-          },
-          "expenses" : {
-            "type" : "integer",
-            "example" : 214
-          },
-          "variation" : {
-            "type" : "integer"
-          }
-        }
-      },
-      "FiguresMonthReport" : {
-        "type" : "object",
-        "properties" : {
-          "total" : {
-            "$ref" : "#/components/schemas/FiguresReportTotal"
-          },
-          "months" : {
-            "type" : "array",
-            "example" : [ {
-              "month" : 1,
-              "margin" : -393,
-              "incomes" : 456,
-              "expenses" : 849
-            }, {
-              "month" : 2,
-              "margin" : 4507,
-              "incomes" : 4556,
-              "expenses" : 49
-            } ],
-            "items" : {
-              "$ref" : "#/components/schemas/FiguresReportMonthItem"
-            }
-          }
-        }
-      },
-      "FiguresReportMonthItem" : {
-        "type" : "object",
-        "properties" : {
-          "month" : {
-            "type" : "integer"
-          },
-          "margin" : {
-            "type" : "integer"
-          },
-          "incomes" : {
-            "type" : "integer"
-          },
-          "expenses" : {
-            "type" : "integer"
-          }
-        }
-      },
-      "FiguresYearReport" : {
-        "type" : "object",
-        "properties" : {
-          "start" : {
-            "type" : "integer",
-            "example" : 2022
-          },
-          "total" : {
-            "$ref" : "#/components/schemas/FiguresReportTotal"
-          },
-          "months" : {
-            "type" : "array",
-            "example" : [ {
-              "month" : 1,
-              "margin" : -393,
-              "incomes" : 456,
-              "expenses" : 849
-            }, {
-              "month" : 2,
-              "margin" : 4507,
-              "incomes" : 4556,
-              "expenses" : 49
-            } ],
-            "items" : {
-              "$ref" : "#/components/schemas/FiguresReportMonthItem"
-            }
           }
         }
       },
