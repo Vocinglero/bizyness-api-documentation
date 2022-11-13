@@ -121,7 +121,7 @@
                 "schema" : {
                   "type" : "object",
                   "properties" : {
-                    "payment" : {
+                    "payments" : {
                       "type" : "array",
                       "items" : {
                         "$ref" : "#/components/schemas/Payment"
