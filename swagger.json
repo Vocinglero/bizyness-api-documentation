@@ -42,7 +42,7 @@
     "/invoices" : {
       "get" : {
         "tags" : [ "Invoice" ],
-        "summary" : "Retrieve all invoices",
+        "summary" : "List all invoices",
         "parameters" : [ {
           "name" : "page",
           "in" : "query",
@@ -125,7 +125,7 @@
       },
       "post" : {
         "tags" : [ "Invoice" ],
-        "summary" : "Create a new invoice",
+        "summary" : "Create an invoice",
         "requestBody" : {
           "content" : {
             "application/json" : {
@@ -192,10 +192,81 @@
         }
       }
     },
+    "/invoices/{id}/payments" : {
+      "get" : {
+        "tags" : [ "Invoice" ],
+        "summary" : "Retrieve payments",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "Invoice ID",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "List of payments",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_200"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 500,
+                  "message" : "Internal server error"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 401,
+                  "message" : "Unauthorized"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "The specified resource was not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 404,
+                  "message" : "Resource not found"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/invoices/{id}/download" : {
       "get" : {
         "tags" : [ "Invoice" ],
-        "summary" : "Download invoice PDF by ID",
+        "summary" : "Download PDF file",
         "parameters" : [ {
           "name" : "id",
           "in" : "path",
@@ -273,7 +344,7 @@
     "/invoices/{id}" : {
       "get" : {
         "tags" : [ "Invoice" ],
-        "summary" : "Find invoice by ID",
+        "summary" : "Retrieve an invoice",
         "parameters" : [ {
           "name" : "id",
           "in" : "path",
@@ -342,7 +413,7 @@
       },
       "put" : {
         "tags" : [ "Invoice" ],
-        "summary" : "Update a complete invoice",
+        "summary" : "Update an invoice",
         "parameters" : [ {
           "name" : "id",
           "in" : "path",
@@ -421,7 +492,7 @@
       },
       "delete" : {
         "tags" : [ "Invoice" ],
-        "summary" : "Delete invoice by ID",
+        "summary" : "Delete an invoice",
         "parameters" : [ {
           "name" : "id",
           "in" : "path",
@@ -483,7 +554,7 @@
       },
       "patch" : {
         "tags" : [ "Invoice" ],
-        "summary" : "Update an invoice partially",
+        "summary" : "Update an invoice",
         "parameters" : [ {
           "name" : "id",
           "in" : "path",
@@ -604,14 +675,14 @@
     "/countries" : {
       "get" : {
         "tags" : [ "Miscellaneous" ],
-        "summary" : "Retrieve all countries",
+        "summary" : "List all countries",
         "responses" : {
           "200" : {
             "description" : "Return the list of countries",
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/inline_response_200"
+                  "$ref" : "#/components/schemas/inline_response_200_1"
                 }
               }
             }
@@ -650,7 +721,7 @@
     "/articles" : {
       "get" : {
         "tags" : [ "Article" ],
-        "summary" : "Retrieve all invoices",
+        "summary" : "List all invoices",
         "parameters" : [ {
           "name" : "keyword",
           "in" : "query",
@@ -692,7 +763,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/inline_response_200_1"
+                  "$ref" : "#/components/schemas/inline_response_200_2"
                 }
               }
             }
@@ -743,7 +814,7 @@
       },
       "post" : {
         "tags" : [ "Article" ],
-        "summary" : "Create a new article",
+        "summary" : "Create an article",
         "requestBody" : {
           "content" : {
             "application/json" : {
@@ -813,7 +884,7 @@
     "/articles/{id}" : {
       "get" : {
         "tags" : [ "Article" ],
-        "summary" : "Find article by ID",
+        "summary" : "Retrieve an article",
         "parameters" : [ {
           "name" : "id",
           "in" : "path",
@@ -882,7 +953,7 @@
       },
       "put" : {
         "tags" : [ "Article" ],
-        "summary" : "Update a complete article",
+        "summary" : "Update an article",
         "parameters" : [ {
           "name" : "id",
           "in" : "path",
@@ -961,7 +1032,7 @@
       },
       "delete" : {
         "tags" : [ "Article" ],
-        "summary" : "Delete article by ID",
+        "summary" : "Delete an article",
         "parameters" : [ {
           "name" : "id",
           "in" : "path",
@@ -1023,7 +1094,7 @@
       },
       "patch" : {
         "tags" : [ "Article" ],
-        "summary" : "Update an article partially",
+        "summary" : "Update an article",
         "parameters" : [ {
           "name" : "id",
           "in" : "path",
@@ -1273,6 +1344,44 @@
           }
         }
       },
+      "Payment" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/CollectionId"
+        }, {
+          "$ref" : "#/components/schemas/PaymentBody"
+        } ]
+      },
+      "PaymentBody" : {
+        "type" : "object",
+        "properties" : {
+          "amount" : {
+            "type" : "integer"
+          },
+          "currency" : {
+            "type" : "string",
+            "example" : "EUR"
+          },
+          "label" : {
+            "type" : "string",
+            "example" : "Subscription"
+          },
+          "date" : {
+            "type" : "integer",
+            "example" : 1566493220992
+          },
+          "notes" : {
+            "type" : "string",
+            "example" : "Client will provide the next payment tomorrow"
+          },
+          "method" : {
+            "$ref" : "#/components/schemas/PaymentMethod"
+          }
+        }
+      },
+      "PaymentMethod" : {
+        "type" : "string",
+        "enum" : [ "bank_transfer", "cash", "check", "cesu", "direct_debit", "credit_card", "paypal", "other" ]
+      },
       "ListSummaryItem" : {
         "type" : "object",
         "properties" : {
@@ -1382,6 +1491,60 @@
           }
         }
       },
+      "ExternalReference" : {
+        "type" : "object",
+        "properties" : {
+          "label" : {
+            "type" : "string",
+            "example" : "5d5eca258126ab647499f9bf"
+          },
+          "identifier" : {
+            "type" : "string",
+            "example" : "John Doe"
+          }
+        }
+      },
+      "Address" : {
+        "type" : "object",
+        "properties" : {
+          "last_name" : {
+            "type" : "string",
+            "example" : "Doe"
+          },
+          "first_name" : {
+            "type" : "string",
+            "example" : "John"
+          },
+          "company_name" : {
+            "type" : "string",
+            "example" : "John's company"
+          },
+          "address" : {
+            "type" : "string",
+            "example" : "123 rue des archives"
+          },
+          "address_supplement" : {
+            "type" : "string",
+            "example" : "Porte gauche"
+          },
+          "zip" : {
+            "type" : "string",
+            "example" : "A1234"
+          },
+          "city" : {
+            "type" : "string",
+            "example" : "Paris"
+          },
+          "country_code" : {
+            "type" : "string",
+            "example" : "FR"
+          },
+          "vat_number" : {
+            "type" : "string",
+            "example" : "FR123456789"
+          }
+        }
+      },
       "BillOfSaleBody" : {
         "type" : "object",
         "properties" : {
@@ -1432,10 +1595,10 @@
             "type" : "boolean"
           },
           "client" : {
-            "$ref" : "#/components/schemas/BillOfSaleBody_client"
+            "$ref" : "#/components/schemas/ExternalReference"
           },
           "billing_address" : {
-            "$ref" : "#/components/schemas/BillOfSaleBody_billing_address"
+            "$ref" : "#/components/schemas/Address"
           },
           "subject" : {
             "type" : "string",
@@ -1539,6 +1702,17 @@
       "inline_response_200" : {
         "type" : "object",
         "properties" : {
+          "payments" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Payment"
+            }
+          }
+        }
+      },
+      "inline_response_200_1" : {
+        "type" : "object",
+        "properties" : {
           "countries" : {
             "type" : "array",
             "items" : {
@@ -1547,7 +1721,7 @@
           }
         }
       },
-      "inline_response_200_1" : {
+      "inline_response_200_2" : {
         "type" : "object",
         "properties" : {
           "articles" : {
@@ -1589,60 +1763,6 @@
                 "type" : "integer"
               } ]
             }
-          }
-        }
-      },
-      "BillOfSaleBody_client" : {
-        "type" : "object",
-        "properties" : {
-          "label" : {
-            "type" : "string",
-            "example" : "5d5eca258126ab647499f9bf"
-          },
-          "identifier" : {
-            "type" : "string",
-            "example" : "John Doe"
-          }
-        }
-      },
-      "BillOfSaleBody_billing_address" : {
-        "type" : "object",
-        "properties" : {
-          "last_name" : {
-            "type" : "string",
-            "example" : "Doe"
-          },
-          "first_name" : {
-            "type" : "string",
-            "example" : "John"
-          },
-          "company_name" : {
-            "type" : "string",
-            "example" : "John's company"
-          },
-          "address" : {
-            "type" : "string",
-            "example" : "123 rue des archives"
-          },
-          "address_supplement" : {
-            "type" : "string",
-            "example" : "Porte gauche"
-          },
-          "zip" : {
-            "type" : "string",
-            "example" : "A1234"
-          },
-          "city" : {
-            "type" : "string",
-            "example" : "Paris"
-          },
-          "country_code" : {
-            "type" : "string",
-            "example" : "FR"
-          },
-          "vat_number" : {
-            "type" : "string",
-            "example" : "FR123456789"
           }
         }
       },
