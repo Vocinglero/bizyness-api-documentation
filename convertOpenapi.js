@@ -6,13 +6,7 @@ const options = {
   sample:true,
   codeSamples:true,
   tocSummary:true,
-  version:true,
-  tagGroups: [
-    {
-      title: "Companies",
-      tags: ["Invoice","Payment"]
-    }
-  ]
+  version:true
 };
 
 const fileData = fs.readFileSync('source/bizyness-api.json', 'utf8');
