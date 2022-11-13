@@ -380,6 +380,29 @@
               </ul>
           </li>
           <li>
+            <a href="#api-reference-activity" class="toc-h1 toc-link" data-title="Activity">Activity</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#list-all-activities" class="toc-h2 toc-link" data-title="List all activities">List all activities</a>
+                  </li>
+                  <li>
+                    <a href="#create-an-activity" class="toc-h2 toc-link" data-title="Create an activity">Create an activity</a>
+                  </li>
+                  <li>
+                    <a href="#retrieve-an-activity" class="toc-h2 toc-link" data-title="Retrieve an activity">Retrieve an activity</a>
+                  </li>
+                  <li>
+                    <a href="#delete-an-activity" class="toc-h2 toc-link" data-title="Delete an activity">Delete an activity</a>
+                  </li>
+                  <li>
+                    <a href="#update-an-activity" class="toc-h2 toc-link" data-title="Update an activity">Update an activity</a>
+                  </li>
+                  <li>
+                    <a href="#update-an-activity-partially" class="toc-h2 toc-link" data-title="Update an activity partially">Update an activity partially</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#api-reference-payment" class="toc-h1 toc-link" data-title="Payment">Payment</a>
               <ul class="toc-list-h2">
                   <li>
@@ -412,7 +435,7 @@
                     <a href="#delete-an-attachment-2" class="toc-h2 toc-link" data-title="Delete an attachment">Delete an attachment</a>
                   </li>
                   <li>
-                    <a href="#download-the-attachment-file" class="toc-h2 toc-link" data-title="Download the attachment file">Download the attachment file</a>
+                    <a href="#download-an-attachment-file-2" class="toc-h2 toc-link" data-title="Download an attachment file">Download an attachment file</a>
                   </li>
                   <li>
                     <a href="#retrieve-a-client" class="toc-h2 toc-link" data-title="Retrieve a client">Retrieve a client</a>
@@ -521,6 +544,12 @@
                     <a href="#tocS_FiguresYearReport" class="toc-h2 toc-link" data-title="FiguresYearReport">FiguresYearReport</a>
                   </li>
                   <li>
+                    <a href="#tocS_Activity" class="toc-h2 toc-link" data-title="Activity">Activity</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_ActivityBody" class="toc-h2 toc-link" data-title="ActivityBody">ActivityBody</a>
+                  </li>
+                  <li>
                     <a href="#tocS_Payment" class="toc-h2 toc-link" data-title="Payment">Payment</a>
                   </li>
                   <li>
@@ -555,6 +584,9 @@
                   </li>
                   <li>
                     <a href="#tocS_PaymentList" class="toc-h2 toc-link" data-title="PaymentList">PaymentList</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_ActivityList" class="toc-h2 toc-link" data-title="ActivityList">ActivityList</a>
                   </li>
                   <li>
                     <a href="#tocS_BankTransactionList" class="toc-h2 toc-link" data-title="BankTransactionList">BankTransactionList</a>
@@ -4530,6 +4562,1412 @@ To perform this operation, you must be authenticated by means of one of the foll
 ApiKey, JWTAuth
 </aside>
 
+<h1 id="api-reference-activity">Activity</h1>
+
+<p>Managing your activities</p>
+<h2 id='list-all-activities'>List all activities</h2>
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> GET <span class="se">\</span>
+  <span class="nt">--url</span> https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/activities <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'X-Api-Key: API_KEY'</span>
+</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/lpb/bizyness-api/1.0.0/activities</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">X-Api-Key</span><span class="p">:</span> <span class="s">API_KEY</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">virtserver.swaggerhub.com</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">xhr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">withCredentials</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">readystatechange</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">===</span> <span class="k">this</span><span class="p">.</span><span class="nx">DONE</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">responseText</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="dl">"</span><span class="s2">GET</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/activities</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">Accept</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">X-Api-Key</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">API_KEY</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'uri'</span>
+<span class="nb">require</span> <span class="s1">'net/http'</span>
+<span class="nb">require</span> <span class="s1">'openssl'</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/activities"</span><span class="p">)</span>
+
+<span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">url</span><span class="p">.</span><span class="nf">port</span><span class="p">)</span>
+<span class="n">http</span><span class="p">.</span><span class="nf">use_ssl</span> <span class="o">=</span> <span class="kp">true</span>
+<span class="n">http</span><span class="p">.</span><span class="nf">verify_mode</span> <span class="o">=</span> <span class="no">OpenSSL</span><span class="o">::</span><span class="no">SSL</span><span class="o">::</span><span class="no">VERIFY_NONE</span>
+
+<span class="n">request</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Get</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"Accept"</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'application/json'</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"X-Api-Key"</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'API_KEY'</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+<span class="nb">puts</span> <span class="n">response</span><span class="p">.</span><span class="nf">read_body</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">http.client</span>
+
+<span class="n">conn</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="n">client</span><span class="p">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="s">"virtserver.swaggerhub.com"</span><span class="p">)</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">'Accept'</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
+    <span class="s">'X-Api-Key'</span><span class="p">:</span> <span class="s">"API_KEY"</span>
+    <span class="p">}</span>
+
+<span class="n">conn</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="s">"/lpb/bizyness-api/1.0.0/activities"</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">getresponse</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">res</span><span class="p">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="s">"utf-8"</span><span class="p">))</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
+
+<span class="nb">curl_setopt_array</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="p">[</span>
+  <span class="no">CURLOPT_URL</span> <span class="o">=&gt;</span> <span class="s2">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/activities"</span><span class="p">,</span>
+  <span class="no">CURLOPT_RETURNTRANSFER</span> <span class="o">=&gt;</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="no">CURLOPT_ENCODING</span> <span class="o">=&gt;</span> <span class="s2">""</span><span class="p">,</span>
+  <span class="no">CURLOPT_MAXREDIRS</span> <span class="o">=&gt;</span> <span class="mi">10</span><span class="p">,</span>
+  <span class="no">CURLOPT_TIMEOUT</span> <span class="o">=&gt;</span> <span class="mi">30</span><span class="p">,</span>
+  <span class="no">CURLOPT_HTTP_VERSION</span> <span class="o">=&gt;</span> <span class="no">CURL_HTTP_VERSION_1_1</span><span class="p">,</span>
+  <span class="no">CURLOPT_CUSTOMREQUEST</span> <span class="o">=&gt;</span> <span class="s2">"GET"</span><span class="p">,</span>
+  <span class="no">CURLOPT_HTTPHEADER</span> <span class="o">=&gt;</span> <span class="p">[</span>
+    <span class="s2">"Accept: application/json"</span><span class="p">,</span>
+    <span class="s2">"X-Api-Key: API_KEY"</span>
+  <span class="p">],</span>
+<span class="p">]);</span>
+
+<span class="nv">$response</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+<span class="nv">$err</span> <span class="o">=</span> <span class="nb">curl_error</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+
+<span class="nb">curl_close</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nv">$err</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s2">"cURL Error #:"</span> <span class="mf">.</span> <span class="nv">$err</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="nv">$response</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">HttpResponse</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">response</span> <span class="o">=</span> <span class="nc">Unirest</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/activities"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"Accept"</span><span class="o">,</span> <span class="s">"application/json"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"X-Api-Key"</span><span class="o">,</span> <span class="s">"API_KEY"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">asString</span><span class="o">();</span>
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+    <span class="s">"fmt"</span>
+    <span class="s">"net/http"</span>
+    <span class="s">"io/ioutil"</span>
+<span class="p">)</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="n">url</span> <span class="o">:=</span> <span class="s">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/activities"</span>
+
+    <span class="n">req</span><span class="p">,</span> <span class="n">_</span> <span class="o">:=</span> <span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="no">nil</span><span class="p">)</span>
+
+    <span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s">"Accept"</span><span class="p">,</span> <span class="s">"application/json"</span><span class="p">)</span>
+    <span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s">"X-Api-Key"</span><span class="p">,</span> <span class="s">"API_KEY"</span><span class="p">)</span>
+
+    <span class="n">res</span><span class="p">,</span> <span class="n">_</span> <span class="o">:=</span> <span class="n">http</span><span class="o">.</span><span class="n">DefaultClient</span><span class="o">.</span><span class="n">Do</span><span class="p">(</span><span class="n">req</span><span class="p">)</span>
+
+    <span class="k">defer</span> <span class="n">res</span><span class="o">.</span><span class="n">Body</span><span class="o">.</span><span class="n">Close</span><span class="p">()</span>
+    <span class="n">body</span><span class="p">,</span> <span class="n">_</span> <span class="o">:=</span> <span class="n">ioutil</span><span class="o">.</span><span class="n">ReadAll</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">Body</span><span class="p">)</span>
+
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="kt">string</span><span class="p">(</span><span class="n">body</span><span class="p">))</span>
+
+<span class="p">}</span>
+</code></pre></div>
+<p><code>GET /activities</code></p>
+
+<h3 id="list-all-activities-parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>page</td>
+<td>query</td>
+<td>integer</td>
+<td>false</td>
+<td>The page of results to return</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>query</td>
+<td>integer</td>
+<td>false</td>
+<td>The number of records to return in one request</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example responses</p>
+
+<p>200 Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"payments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d5eca258126ab647499f9bf"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My activity"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"is_default"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>401 Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">401</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Unauthorized"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>404 Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">404</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Resource not found"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>500 Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Internal server error"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<h3 id="list-all-activities-responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>Return the list of activities</td>
+<td><a href="#schemaactivitylist">ActivityList</a></td>
+</tr>
+<tr>
+<td>401</td>
+<td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td>
+<td>Unauthorized</td>
+<td><a href="#schemaerror">Error</a></td>
+</tr>
+<tr>
+<td>404</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td>
+<td>The specified resource was not found</td>
+<td><a href="#schemaerror">Error</a></td>
+</tr>
+<tr>
+<td>500</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.1">Internal Server Error</a></td>
+<td>Internal Server Error</td>
+<td><a href="#schemaerror">Error</a></td>
+</tr>
+</tbody></table>
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+ApiKey, JWTAuth
+</aside>
+<h2 id='create-an-activity'>Create an activity</h2>
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> POST <span class="se">\</span>
+  <span class="nt">--url</span> https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/activities <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'X-Api-Key: API_KEY'</span> <span class="se">\</span>
+  <span class="nt">--data</span> <span class="s1">'{"name":"My activity","is_default":true}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">/lpb/bizyness-api/1.0.0/activities</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">X-Api-Key</span><span class="p">:</span> <span class="s">API_KEY</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">virtserver.swaggerhub.com</span>
+<span class="na">Content-Length</span><span class="p">:</span> <span class="s">40</span>
+
+<span class="p">{</span><span class="nl">"name"</span><span class="p">:</span><span class="s2">"My activity"</span><span class="p">,</span><span class="nl">"is_default"</span><span class="p">:</span><span class="kc">true</span><span class="p">}</span><span class="w">
+</span></code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
+  <span class="dl">"</span><span class="s2">name</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">My activity</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">is_default</span><span class="dl">"</span><span class="p">:</span> <span class="kc">true</span>
+<span class="p">});</span>
+
+<span class="kd">const</span> <span class="nx">xhr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">withCredentials</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">readystatechange</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">===</span> <span class="k">this</span><span class="p">.</span><span class="nx">DONE</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">responseText</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="dl">"</span><span class="s2">POST</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/activities</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">Content-Type</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">Accept</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">X-Api-Key</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">API_KEY</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'uri'</span>
+<span class="nb">require</span> <span class="s1">'net/http'</span>
+<span class="nb">require</span> <span class="s1">'openssl'</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/activities"</span><span class="p">)</span>
+
+<span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">url</span><span class="p">.</span><span class="nf">port</span><span class="p">)</span>
+<span class="n">http</span><span class="p">.</span><span class="nf">use_ssl</span> <span class="o">=</span> <span class="kp">true</span>
+<span class="n">http</span><span class="p">.</span><span class="nf">verify_mode</span> <span class="o">=</span> <span class="no">OpenSSL</span><span class="o">::</span><span class="no">SSL</span><span class="o">::</span><span class="no">VERIFY_NONE</span>
+
+<span class="n">request</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Post</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"Content-Type"</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'application/json'</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"Accept"</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'application/json'</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"X-Api-Key"</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'API_KEY'</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">body</span> <span class="o">=</span> <span class="s2">"{</span><span class="se">\"</span><span class="s2">name</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">My activity</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">is_default</span><span class="se">\"</span><span class="s2">:true}"</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+<span class="nb">puts</span> <span class="n">response</span><span class="p">.</span><span class="nf">read_body</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">http.client</span>
+
+<span class="n">conn</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="n">client</span><span class="p">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="s">"virtserver.swaggerhub.com"</span><span class="p">)</span>
+
+<span class="n">payload</span> <span class="o">=</span> <span class="s">"{</span><span class="se">\"</span><span class="s">name</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">My activity</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">is_default</span><span class="se">\"</span><span class="s">:true}"</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
+    <span class="s">'Accept'</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
+    <span class="s">'X-Api-Key'</span><span class="p">:</span> <span class="s">"API_KEY"</span>
+    <span class="p">}</span>
+
+<span class="n">conn</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="s">"/lpb/bizyness-api/1.0.0/activities"</span><span class="p">,</span> <span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">getresponse</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">res</span><span class="p">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="s">"utf-8"</span><span class="p">))</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
+
+<span class="nb">curl_setopt_array</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="p">[</span>
+  <span class="no">CURLOPT_URL</span> <span class="o">=&gt;</span> <span class="s2">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/activities"</span><span class="p">,</span>
+  <span class="no">CURLOPT_RETURNTRANSFER</span> <span class="o">=&gt;</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="no">CURLOPT_ENCODING</span> <span class="o">=&gt;</span> <span class="s2">""</span><span class="p">,</span>
+  <span class="no">CURLOPT_MAXREDIRS</span> <span class="o">=&gt;</span> <span class="mi">10</span><span class="p">,</span>
+  <span class="no">CURLOPT_TIMEOUT</span> <span class="o">=&gt;</span> <span class="mi">30</span><span class="p">,</span>
+  <span class="no">CURLOPT_HTTP_VERSION</span> <span class="o">=&gt;</span> <span class="no">CURL_HTTP_VERSION_1_1</span><span class="p">,</span>
+  <span class="no">CURLOPT_CUSTOMREQUEST</span> <span class="o">=&gt;</span> <span class="s2">"POST"</span><span class="p">,</span>
+  <span class="no">CURLOPT_POSTFIELDS</span> <span class="o">=&gt;</span> <span class="s2">"{\"</span><span class="n">name</span><span class="err">\</span><span class="s2">":</span><span class="se">\"</span><span class="s2">My activity</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">is_default</span><span class="se">\"</span><span class="s2">:true}"</span><span class="p">,</span>
+  <span class="no">CURLOPT_HTTPHEADER</span> <span class="o">=&gt;</span> <span class="p">[</span>
+    <span class="s2">"Accept: application/json"</span><span class="p">,</span>
+    <span class="s2">"Content-Type: application/json"</span><span class="p">,</span>
+    <span class="s2">"X-Api-Key: API_KEY"</span>
+  <span class="p">],</span>
+<span class="p">]);</span>
+
+<span class="nv">$response</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+<span class="nv">$err</span> <span class="o">=</span> <span class="nb">curl_error</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+
+<span class="nb">curl_close</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nv">$err</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s2">"cURL Error #:"</span> <span class="mf">.</span> <span class="nv">$err</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="nv">$response</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">HttpResponse</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">response</span> <span class="o">=</span> <span class="nc">Unirest</span><span class="o">.</span><span class="na">post</span><span class="o">(</span><span class="s">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/activities"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"Content-Type"</span><span class="o">,</span> <span class="s">"application/json"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"Accept"</span><span class="o">,</span> <span class="s">"application/json"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"X-Api-Key"</span><span class="o">,</span> <span class="s">"API_KEY"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">body</span><span class="o">(</span><span class="s">"{\"name\":\"My activity\",\"is_default\":true}"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">asString</span><span class="o">();</span>
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+    <span class="s">"fmt"</span>
+    <span class="s">"strings"</span>
+    <span class="s">"net/http"</span>
+    <span class="s">"io/ioutil"</span>
+<span class="p">)</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="n">url</span> <span class="o">:=</span> <span class="s">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/activities"</span>
+
+    <span class="n">payload</span> <span class="o">:=</span> <span class="n">strings</span><span class="o">.</span><span class="n">NewReader</span><span class="p">(</span><span class="s">"{</span><span class="se">\"</span><span class="s">name</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">My activity</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">is_default</span><span class="se">\"</span><span class="s">:true}"</span><span class="p">)</span>
+
+    <span class="n">req</span><span class="p">,</span> <span class="n">_</span> <span class="o">:=</span> <span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">payload</span><span class="p">)</span>
+
+    <span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s">"Content-Type"</span><span class="p">,</span> <span class="s">"application/json"</span><span class="p">)</span>
+    <span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s">"Accept"</span><span class="p">,</span> <span class="s">"application/json"</span><span class="p">)</span>
+    <span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s">"X-Api-Key"</span><span class="p">,</span> <span class="s">"API_KEY"</span><span class="p">)</span>
+
+    <span class="n">res</span><span class="p">,</span> <span class="n">_</span> <span class="o">:=</span> <span class="n">http</span><span class="o">.</span><span class="n">DefaultClient</span><span class="o">.</span><span class="n">Do</span><span class="p">(</span><span class="n">req</span><span class="p">)</span>
+
+    <span class="k">defer</span> <span class="n">res</span><span class="o">.</span><span class="n">Body</span><span class="o">.</span><span class="n">Close</span><span class="p">()</span>
+    <span class="n">body</span><span class="p">,</span> <span class="n">_</span> <span class="o">:=</span> <span class="n">ioutil</span><span class="o">.</span><span class="n">ReadAll</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">Body</span><span class="p">)</span>
+
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="kt">string</span><span class="p">(</span><span class="n">body</span><span class="p">))</span>
+
+<span class="p">}</span>
+</code></pre></div>
+<p><code>POST /activities</code></p>
+
+<blockquote>
+<p>Body parameter</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My activity"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"is_default"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<h3 id="create-an-activity-parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>body</td>
+<td>body</td>
+<td><a href="#schemaactivitybody">ActivityBody</a></td>
+<td>true</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example responses</p>
+
+<p>200 Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d5eca258126ab647499f9bf"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My activity"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"is_default"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>401 Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">401</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Unauthorized"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>404 Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">404</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Resource not found"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>500 Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Internal server error"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<h3 id="create-an-activity-responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>Created activity</td>
+<td><a href="#schemaactivity">Activity</a></td>
+</tr>
+<tr>
+<td>401</td>
+<td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td>
+<td>Unauthorized</td>
+<td><a href="#schemaerror">Error</a></td>
+</tr>
+<tr>
+<td>404</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td>
+<td>The specified resource was not found</td>
+<td><a href="#schemaerror">Error</a></td>
+</tr>
+<tr>
+<td>500</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.1">Internal Server Error</a></td>
+<td>Internal Server Error</td>
+<td><a href="#schemaerror">Error</a></td>
+</tr>
+</tbody></table>
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+ApiKey, JWTAuth
+</aside>
+<h2 id='retrieve-an-activity'>Retrieve an activity</h2>
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> GET <span class="se">\</span>
+  <span class="nt">--url</span> https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/activities/636945f14ce97a4c1c561885 <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'X-Api-Key: API_KEY'</span>
+</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/lpb/bizyness-api/1.0.0/activities/636945f14ce97a4c1c561885</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">X-Api-Key</span><span class="p">:</span> <span class="s">API_KEY</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">virtserver.swaggerhub.com</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">xhr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">withCredentials</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">readystatechange</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">===</span> <span class="k">this</span><span class="p">.</span><span class="nx">DONE</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">responseText</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="dl">"</span><span class="s2">GET</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/activities/636945f14ce97a4c1c561885</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">Accept</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">X-Api-Key</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">API_KEY</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'uri'</span>
+<span class="nb">require</span> <span class="s1">'net/http'</span>
+<span class="nb">require</span> <span class="s1">'openssl'</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/activities/636945f14ce97a4c1c561885"</span><span class="p">)</span>
+
+<span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">url</span><span class="p">.</span><span class="nf">port</span><span class="p">)</span>
+<span class="n">http</span><span class="p">.</span><span class="nf">use_ssl</span> <span class="o">=</span> <span class="kp">true</span>
+<span class="n">http</span><span class="p">.</span><span class="nf">verify_mode</span> <span class="o">=</span> <span class="no">OpenSSL</span><span class="o">::</span><span class="no">SSL</span><span class="o">::</span><span class="no">VERIFY_NONE</span>
+
+<span class="n">request</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Get</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"Accept"</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'application/json'</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"X-Api-Key"</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'API_KEY'</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+<span class="nb">puts</span> <span class="n">response</span><span class="p">.</span><span class="nf">read_body</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">http.client</span>
+
+<span class="n">conn</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="n">client</span><span class="p">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="s">"virtserver.swaggerhub.com"</span><span class="p">)</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">'Accept'</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
+    <span class="s">'X-Api-Key'</span><span class="p">:</span> <span class="s">"API_KEY"</span>
+    <span class="p">}</span>
+
+<span class="n">conn</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="s">"/lpb/bizyness-api/1.0.0/activities/636945f14ce97a4c1c561885"</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">getresponse</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">res</span><span class="p">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="s">"utf-8"</span><span class="p">))</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
+
+<span class="nb">curl_setopt_array</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="p">[</span>
+  <span class="no">CURLOPT_URL</span> <span class="o">=&gt;</span> <span class="s2">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/activities/636945f14ce97a4c1c561885"</span><span class="p">,</span>
+  <span class="no">CURLOPT_RETURNTRANSFER</span> <span class="o">=&gt;</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="no">CURLOPT_ENCODING</span> <span class="o">=&gt;</span> <span class="s2">""</span><span class="p">,</span>
+  <span class="no">CURLOPT_MAXREDIRS</span> <span class="o">=&gt;</span> <span class="mi">10</span><span class="p">,</span>
+  <span class="no">CURLOPT_TIMEOUT</span> <span class="o">=&gt;</span> <span class="mi">30</span><span class="p">,</span>
+  <span class="no">CURLOPT_HTTP_VERSION</span> <span class="o">=&gt;</span> <span class="no">CURL_HTTP_VERSION_1_1</span><span class="p">,</span>
+  <span class="no">CURLOPT_CUSTOMREQUEST</span> <span class="o">=&gt;</span> <span class="s2">"GET"</span><span class="p">,</span>
+  <span class="no">CURLOPT_HTTPHEADER</span> <span class="o">=&gt;</span> <span class="p">[</span>
+    <span class="s2">"Accept: application/json"</span><span class="p">,</span>
+    <span class="s2">"X-Api-Key: API_KEY"</span>
+  <span class="p">],</span>
+<span class="p">]);</span>
+
+<span class="nv">$response</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+<span class="nv">$err</span> <span class="o">=</span> <span class="nb">curl_error</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+
+<span class="nb">curl_close</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nv">$err</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s2">"cURL Error #:"</span> <span class="mf">.</span> <span class="nv">$err</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="nv">$response</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">HttpResponse</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">response</span> <span class="o">=</span> <span class="nc">Unirest</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/activities/636945f14ce97a4c1c561885"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"Accept"</span><span class="o">,</span> <span class="s">"application/json"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"X-Api-Key"</span><span class="o">,</span> <span class="s">"API_KEY"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">asString</span><span class="o">();</span>
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+    <span class="s">"fmt"</span>
+    <span class="s">"net/http"</span>
+    <span class="s">"io/ioutil"</span>
+<span class="p">)</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="n">url</span> <span class="o">:=</span> <span class="s">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/activities/636945f14ce97a4c1c561885"</span>
+
+    <span class="n">req</span><span class="p">,</span> <span class="n">_</span> <span class="o">:=</span> <span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="no">nil</span><span class="p">)</span>
+
+    <span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s">"Accept"</span><span class="p">,</span> <span class="s">"application/json"</span><span class="p">)</span>
+    <span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s">"X-Api-Key"</span><span class="p">,</span> <span class="s">"API_KEY"</span><span class="p">)</span>
+
+    <span class="n">res</span><span class="p">,</span> <span class="n">_</span> <span class="o">:=</span> <span class="n">http</span><span class="o">.</span><span class="n">DefaultClient</span><span class="o">.</span><span class="n">Do</span><span class="p">(</span><span class="n">req</span><span class="p">)</span>
+
+    <span class="k">defer</span> <span class="n">res</span><span class="o">.</span><span class="n">Body</span><span class="o">.</span><span class="n">Close</span><span class="p">()</span>
+    <span class="n">body</span><span class="p">,</span> <span class="n">_</span> <span class="o">:=</span> <span class="n">ioutil</span><span class="o">.</span><span class="n">ReadAll</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">Body</span><span class="p">)</span>
+
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="kt">string</span><span class="p">(</span><span class="n">body</span><span class="p">))</span>
+
+<span class="p">}</span>
+</code></pre></div>
+<p><code>GET /activities/{id}</code></p>
+
+<h3 id="retrieve-an-activity-parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>path</td>
+<td>string</td>
+<td>true</td>
+<td>Activity ID</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example responses</p>
+
+<p>200 Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d5eca258126ab647499f9bf"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My activity"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"is_default"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>401 Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">401</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Unauthorized"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>404 Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">404</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Resource not found"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>500 Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Internal server error"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<h3 id="retrieve-an-activity-responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>Return a single activity</td>
+<td><a href="#schemaactivity">Activity</a></td>
+</tr>
+<tr>
+<td>401</td>
+<td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td>
+<td>Unauthorized</td>
+<td><a href="#schemaerror">Error</a></td>
+</tr>
+<tr>
+<td>404</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td>
+<td>The specified resource was not found</td>
+<td><a href="#schemaerror">Error</a></td>
+</tr>
+<tr>
+<td>500</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.1">Internal Server Error</a></td>
+<td>Internal Server Error</td>
+<td><a href="#schemaerror">Error</a></td>
+</tr>
+</tbody></table>
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+ApiKey, JWTAuth
+</aside>
+<h2 id='delete-an-activity'>Delete an activity</h2>
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> DELETE <span class="se">\</span>
+  <span class="nt">--url</span> https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/activities/636945f14ce97a4c1c561885 <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'X-Api-Key: API_KEY'</span>
+</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">DELETE</span> <span class="nn">/lpb/bizyness-api/1.0.0/activities/636945f14ce97a4c1c561885</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">X-Api-Key</span><span class="p">:</span> <span class="s">API_KEY</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">virtserver.swaggerhub.com</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">xhr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">withCredentials</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">readystatechange</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">===</span> <span class="k">this</span><span class="p">.</span><span class="nx">DONE</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">responseText</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="dl">"</span><span class="s2">DELETE</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/activities/636945f14ce97a4c1c561885</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">Accept</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">X-Api-Key</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">API_KEY</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'uri'</span>
+<span class="nb">require</span> <span class="s1">'net/http'</span>
+<span class="nb">require</span> <span class="s1">'openssl'</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/activities/636945f14ce97a4c1c561885"</span><span class="p">)</span>
+
+<span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">url</span><span class="p">.</span><span class="nf">port</span><span class="p">)</span>
+<span class="n">http</span><span class="p">.</span><span class="nf">use_ssl</span> <span class="o">=</span> <span class="kp">true</span>
+<span class="n">http</span><span class="p">.</span><span class="nf">verify_mode</span> <span class="o">=</span> <span class="no">OpenSSL</span><span class="o">::</span><span class="no">SSL</span><span class="o">::</span><span class="no">VERIFY_NONE</span>
+
+<span class="n">request</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Delete</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"Accept"</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'application/json'</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"X-Api-Key"</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'API_KEY'</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+<span class="nb">puts</span> <span class="n">response</span><span class="p">.</span><span class="nf">read_body</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">http.client</span>
+
+<span class="n">conn</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="n">client</span><span class="p">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="s">"virtserver.swaggerhub.com"</span><span class="p">)</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">'Accept'</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
+    <span class="s">'X-Api-Key'</span><span class="p">:</span> <span class="s">"API_KEY"</span>
+    <span class="p">}</span>
+
+<span class="n">conn</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"DELETE"</span><span class="p">,</span> <span class="s">"/lpb/bizyness-api/1.0.0/activities/636945f14ce97a4c1c561885"</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">getresponse</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">res</span><span class="p">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="s">"utf-8"</span><span class="p">))</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
+
+<span class="nb">curl_setopt_array</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="p">[</span>
+  <span class="no">CURLOPT_URL</span> <span class="o">=&gt;</span> <span class="s2">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/activities/636945f14ce97a4c1c561885"</span><span class="p">,</span>
+  <span class="no">CURLOPT_RETURNTRANSFER</span> <span class="o">=&gt;</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="no">CURLOPT_ENCODING</span> <span class="o">=&gt;</span> <span class="s2">""</span><span class="p">,</span>
+  <span class="no">CURLOPT_MAXREDIRS</span> <span class="o">=&gt;</span> <span class="mi">10</span><span class="p">,</span>
+  <span class="no">CURLOPT_TIMEOUT</span> <span class="o">=&gt;</span> <span class="mi">30</span><span class="p">,</span>
+  <span class="no">CURLOPT_HTTP_VERSION</span> <span class="o">=&gt;</span> <span class="no">CURL_HTTP_VERSION_1_1</span><span class="p">,</span>
+  <span class="no">CURLOPT_CUSTOMREQUEST</span> <span class="o">=&gt;</span> <span class="s2">"DELETE"</span><span class="p">,</span>
+  <span class="no">CURLOPT_HTTPHEADER</span> <span class="o">=&gt;</span> <span class="p">[</span>
+    <span class="s2">"Accept: application/json"</span><span class="p">,</span>
+    <span class="s2">"X-Api-Key: API_KEY"</span>
+  <span class="p">],</span>
+<span class="p">]);</span>
+
+<span class="nv">$response</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+<span class="nv">$err</span> <span class="o">=</span> <span class="nb">curl_error</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+
+<span class="nb">curl_close</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nv">$err</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s2">"cURL Error #:"</span> <span class="mf">.</span> <span class="nv">$err</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="nv">$response</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">HttpResponse</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">response</span> <span class="o">=</span> <span class="nc">Unirest</span><span class="o">.</span><span class="na">delete</span><span class="o">(</span><span class="s">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/activities/636945f14ce97a4c1c561885"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"Accept"</span><span class="o">,</span> <span class="s">"application/json"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"X-Api-Key"</span><span class="o">,</span> <span class="s">"API_KEY"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">asString</span><span class="o">();</span>
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+    <span class="s">"fmt"</span>
+    <span class="s">"net/http"</span>
+    <span class="s">"io/ioutil"</span>
+<span class="p">)</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="n">url</span> <span class="o">:=</span> <span class="s">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/activities/636945f14ce97a4c1c561885"</span>
+
+    <span class="n">req</span><span class="p">,</span> <span class="n">_</span> <span class="o">:=</span> <span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"DELETE"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="no">nil</span><span class="p">)</span>
+
+    <span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s">"Accept"</span><span class="p">,</span> <span class="s">"application/json"</span><span class="p">)</span>
+    <span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s">"X-Api-Key"</span><span class="p">,</span> <span class="s">"API_KEY"</span><span class="p">)</span>
+
+    <span class="n">res</span><span class="p">,</span> <span class="n">_</span> <span class="o">:=</span> <span class="n">http</span><span class="o">.</span><span class="n">DefaultClient</span><span class="o">.</span><span class="n">Do</span><span class="p">(</span><span class="n">req</span><span class="p">)</span>
+
+    <span class="k">defer</span> <span class="n">res</span><span class="o">.</span><span class="n">Body</span><span class="o">.</span><span class="n">Close</span><span class="p">()</span>
+    <span class="n">body</span><span class="p">,</span> <span class="n">_</span> <span class="o">:=</span> <span class="n">ioutil</span><span class="o">.</span><span class="n">ReadAll</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">Body</span><span class="p">)</span>
+
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="kt">string</span><span class="p">(</span><span class="n">body</span><span class="p">))</span>
+
+<span class="p">}</span>
+</code></pre></div>
+<p><code>DELETE /activities/{id}</code></p>
+
+<h3 id="delete-an-activity-parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>path</td>
+<td>string</td>
+<td>true</td>
+<td>Activity ID</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example responses</p>
+
+<p>401 Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">401</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Unauthorized"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>404 Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">404</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Resource not found"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>500 Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Internal server error"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<h3 id="delete-an-activity-responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>204</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.5">No Content</a></td>
+<td>The activity was deleted successfully</td>
+<td>None</td>
+</tr>
+<tr>
+<td>401</td>
+<td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td>
+<td>Unauthorized</td>
+<td><a href="#schemaerror">Error</a></td>
+</tr>
+<tr>
+<td>404</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td>
+<td>The specified resource was not found</td>
+<td><a href="#schemaerror">Error</a></td>
+</tr>
+<tr>
+<td>500</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.1">Internal Server Error</a></td>
+<td>Internal Server Error</td>
+<td><a href="#schemaerror">Error</a></td>
+</tr>
+</tbody></table>
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+ApiKey, JWTAuth
+</aside>
+<h2 id='update-an-activity'>Update an activity</h2>
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> PUT <span class="se">\</span>
+  <span class="nt">--url</span> https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/activities/636945f14ce97a4c1c561885 <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'X-Api-Key: API_KEY'</span> <span class="se">\</span>
+  <span class="nt">--data</span> <span class="s1">'{"name":"My activity","is_default":true}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">PUT</span> <span class="nn">/lpb/bizyness-api/1.0.0/activities/636945f14ce97a4c1c561885</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">X-Api-Key</span><span class="p">:</span> <span class="s">API_KEY</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">virtserver.swaggerhub.com</span>
+<span class="na">Content-Length</span><span class="p">:</span> <span class="s">40</span>
+
+<span class="p">{</span><span class="nl">"name"</span><span class="p">:</span><span class="s2">"My activity"</span><span class="p">,</span><span class="nl">"is_default"</span><span class="p">:</span><span class="kc">true</span><span class="p">}</span><span class="w">
+</span></code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
+  <span class="dl">"</span><span class="s2">name</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">My activity</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">is_default</span><span class="dl">"</span><span class="p">:</span> <span class="kc">true</span>
+<span class="p">});</span>
+
+<span class="kd">const</span> <span class="nx">xhr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">withCredentials</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">readystatechange</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">===</span> <span class="k">this</span><span class="p">.</span><span class="nx">DONE</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">responseText</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="dl">"</span><span class="s2">PUT</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/activities/636945f14ce97a4c1c561885</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">Content-Type</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">Accept</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">X-Api-Key</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">API_KEY</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'uri'</span>
+<span class="nb">require</span> <span class="s1">'net/http'</span>
+<span class="nb">require</span> <span class="s1">'openssl'</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/activities/636945f14ce97a4c1c561885"</span><span class="p">)</span>
+
+<span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">url</span><span class="p">.</span><span class="nf">port</span><span class="p">)</span>
+<span class="n">http</span><span class="p">.</span><span class="nf">use_ssl</span> <span class="o">=</span> <span class="kp">true</span>
+<span class="n">http</span><span class="p">.</span><span class="nf">verify_mode</span> <span class="o">=</span> <span class="no">OpenSSL</span><span class="o">::</span><span class="no">SSL</span><span class="o">::</span><span class="no">VERIFY_NONE</span>
+
+<span class="n">request</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Put</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"Content-Type"</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'application/json'</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"Accept"</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'application/json'</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"X-Api-Key"</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'API_KEY'</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">body</span> <span class="o">=</span> <span class="s2">"{</span><span class="se">\"</span><span class="s2">name</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">My activity</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">is_default</span><span class="se">\"</span><span class="s2">:true}"</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+<span class="nb">puts</span> <span class="n">response</span><span class="p">.</span><span class="nf">read_body</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">http.client</span>
+
+<span class="n">conn</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="n">client</span><span class="p">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="s">"virtserver.swaggerhub.com"</span><span class="p">)</span>
+
+<span class="n">payload</span> <span class="o">=</span> <span class="s">"{</span><span class="se">\"</span><span class="s">name</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">My activity</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">is_default</span><span class="se">\"</span><span class="s">:true}"</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
+    <span class="s">'Accept'</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
+    <span class="s">'X-Api-Key'</span><span class="p">:</span> <span class="s">"API_KEY"</span>
+    <span class="p">}</span>
+
+<span class="n">conn</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"PUT"</span><span class="p">,</span> <span class="s">"/lpb/bizyness-api/1.0.0/activities/636945f14ce97a4c1c561885"</span><span class="p">,</span> <span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">getresponse</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">res</span><span class="p">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="s">"utf-8"</span><span class="p">))</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
+
+<span class="nb">curl_setopt_array</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="p">[</span>
+  <span class="no">CURLOPT_URL</span> <span class="o">=&gt;</span> <span class="s2">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/activities/636945f14ce97a4c1c561885"</span><span class="p">,</span>
+  <span class="no">CURLOPT_RETURNTRANSFER</span> <span class="o">=&gt;</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="no">CURLOPT_ENCODING</span> <span class="o">=&gt;</span> <span class="s2">""</span><span class="p">,</span>
+  <span class="no">CURLOPT_MAXREDIRS</span> <span class="o">=&gt;</span> <span class="mi">10</span><span class="p">,</span>
+  <span class="no">CURLOPT_TIMEOUT</span> <span class="o">=&gt;</span> <span class="mi">30</span><span class="p">,</span>
+  <span class="no">CURLOPT_HTTP_VERSION</span> <span class="o">=&gt;</span> <span class="no">CURL_HTTP_VERSION_1_1</span><span class="p">,</span>
+  <span class="no">CURLOPT_CUSTOMREQUEST</span> <span class="o">=&gt;</span> <span class="s2">"PUT"</span><span class="p">,</span>
+  <span class="no">CURLOPT_POSTFIELDS</span> <span class="o">=&gt;</span> <span class="s2">"{\"</span><span class="n">name</span><span class="err">\</span><span class="s2">":</span><span class="se">\"</span><span class="s2">My activity</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">is_default</span><span class="se">\"</span><span class="s2">:true}"</span><span class="p">,</span>
+  <span class="no">CURLOPT_HTTPHEADER</span> <span class="o">=&gt;</span> <span class="p">[</span>
+    <span class="s2">"Accept: application/json"</span><span class="p">,</span>
+    <span class="s2">"Content-Type: application/json"</span><span class="p">,</span>
+    <span class="s2">"X-Api-Key: API_KEY"</span>
+  <span class="p">],</span>
+<span class="p">]);</span>
+
+<span class="nv">$response</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+<span class="nv">$err</span> <span class="o">=</span> <span class="nb">curl_error</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+
+<span class="nb">curl_close</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nv">$err</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s2">"cURL Error #:"</span> <span class="mf">.</span> <span class="nv">$err</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="nv">$response</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">HttpResponse</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">response</span> <span class="o">=</span> <span class="nc">Unirest</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/activities/636945f14ce97a4c1c561885"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"Content-Type"</span><span class="o">,</span> <span class="s">"application/json"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"Accept"</span><span class="o">,</span> <span class="s">"application/json"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"X-Api-Key"</span><span class="o">,</span> <span class="s">"API_KEY"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">body</span><span class="o">(</span><span class="s">"{\"name\":\"My activity\",\"is_default\":true}"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">asString</span><span class="o">();</span>
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+    <span class="s">"fmt"</span>
+    <span class="s">"strings"</span>
+    <span class="s">"net/http"</span>
+    <span class="s">"io/ioutil"</span>
+<span class="p">)</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="n">url</span> <span class="o">:=</span> <span class="s">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/activities/636945f14ce97a4c1c561885"</span>
+
+    <span class="n">payload</span> <span class="o">:=</span> <span class="n">strings</span><span class="o">.</span><span class="n">NewReader</span><span class="p">(</span><span class="s">"{</span><span class="se">\"</span><span class="s">name</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">My activity</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">is_default</span><span class="se">\"</span><span class="s">:true}"</span><span class="p">)</span>
+
+    <span class="n">req</span><span class="p">,</span> <span class="n">_</span> <span class="o">:=</span> <span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"PUT"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">payload</span><span class="p">)</span>
+
+    <span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s">"Content-Type"</span><span class="p">,</span> <span class="s">"application/json"</span><span class="p">)</span>
+    <span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s">"Accept"</span><span class="p">,</span> <span class="s">"application/json"</span><span class="p">)</span>
+    <span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s">"X-Api-Key"</span><span class="p">,</span> <span class="s">"API_KEY"</span><span class="p">)</span>
+
+    <span class="n">res</span><span class="p">,</span> <span class="n">_</span> <span class="o">:=</span> <span class="n">http</span><span class="o">.</span><span class="n">DefaultClient</span><span class="o">.</span><span class="n">Do</span><span class="p">(</span><span class="n">req</span><span class="p">)</span>
+
+    <span class="k">defer</span> <span class="n">res</span><span class="o">.</span><span class="n">Body</span><span class="o">.</span><span class="n">Close</span><span class="p">()</span>
+    <span class="n">body</span><span class="p">,</span> <span class="n">_</span> <span class="o">:=</span> <span class="n">ioutil</span><span class="o">.</span><span class="n">ReadAll</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">Body</span><span class="p">)</span>
+
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="kt">string</span><span class="p">(</span><span class="n">body</span><span class="p">))</span>
+
+<span class="p">}</span>
+</code></pre></div>
+<p><code>PUT /activities/{id}</code></p>
+
+<blockquote>
+<p>Body parameter</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My activity"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"is_default"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<h3 id="update-an-activity-parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>body</td>
+<td>body</td>
+<td><a href="#schemaactivitybody">ActivityBody</a></td>
+<td>true</td>
+<td>none</td>
+</tr>
+<tr>
+<td>id</td>
+<td>path</td>
+<td>string</td>
+<td>true</td>
+<td>Activity ID</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example responses</p>
+
+<p>200 Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d5eca258126ab647499f9bf"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My activity"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"is_default"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>401 Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">401</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Unauthorized"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>404 Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">404</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Resource not found"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>500 Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Internal server error"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<h3 id="update-an-activity-responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>Updated activity</td>
+<td><a href="#schemaactivity">Activity</a></td>
+</tr>
+<tr>
+<td>401</td>
+<td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td>
+<td>Unauthorized</td>
+<td><a href="#schemaerror">Error</a></td>
+</tr>
+<tr>
+<td>404</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td>
+<td>The specified resource was not found</td>
+<td><a href="#schemaerror">Error</a></td>
+</tr>
+<tr>
+<td>500</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.1">Internal Server Error</a></td>
+<td>Internal Server Error</td>
+<td><a href="#schemaerror">Error</a></td>
+</tr>
+</tbody></table>
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+ApiKey, JWTAuth
+</aside>
+<h2 id='update-an-activity-partially'>Update an activity partially</h2>
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> PATCH <span class="se">\</span>
+  <span class="nt">--url</span> https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/activities/636945f14ce97a4c1c561885 <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'Content-Type: application/json-patch+json'</span> <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'X-Api-Key: API_KEY'</span> <span class="se">\</span>
+  <span class="nt">--data</span> <span class="s1">'[{"op":"replace","path":"/name","value":"My activity"}]'</span>
+</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">PATCH</span> <span class="nn">/lpb/bizyness-api/1.0.0/activities/636945f14ce97a4c1c561885</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json-patch+json</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">X-Api-Key</span><span class="p">:</span> <span class="s">API_KEY</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">virtserver.swaggerhub.com</span>
+<span class="na">Content-Length</span><span class="p">:</span> <span class="s">55</span>
+
+[{"op":"replace","path":"/name","value":"My activity"}]
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">[{</span><span class="se">\"</span><span class="s2">op</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">replace</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">path</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">/name</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">value</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">My activity</span><span class="se">\"</span><span class="s2">}]</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">xhr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">withCredentials</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">readystatechange</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">===</span> <span class="k">this</span><span class="p">.</span><span class="nx">DONE</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">responseText</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="dl">"</span><span class="s2">PATCH</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/activities/636945f14ce97a4c1c561885</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">Content-Type</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">application/json-patch+json</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">Accept</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">X-Api-Key</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">API_KEY</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'uri'</span>
+<span class="nb">require</span> <span class="s1">'net/http'</span>
+<span class="nb">require</span> <span class="s1">'openssl'</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/activities/636945f14ce97a4c1c561885"</span><span class="p">)</span>
+
+<span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">url</span><span class="p">.</span><span class="nf">port</span><span class="p">)</span>
+<span class="n">http</span><span class="p">.</span><span class="nf">use_ssl</span> <span class="o">=</span> <span class="kp">true</span>
+<span class="n">http</span><span class="p">.</span><span class="nf">verify_mode</span> <span class="o">=</span> <span class="no">OpenSSL</span><span class="o">::</span><span class="no">SSL</span><span class="o">::</span><span class="no">VERIFY_NONE</span>
+
+<span class="n">request</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Patch</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"Content-Type"</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'application/json-patch+json'</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"Accept"</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'application/json'</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"X-Api-Key"</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'API_KEY'</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">body</span> <span class="o">=</span> <span class="s2">"[{</span><span class="se">\"</span><span class="s2">op</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">replace</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">path</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">/name</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">value</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">My activity</span><span class="se">\"</span><span class="s2">}]"</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+<span class="nb">puts</span> <span class="n">response</span><span class="p">.</span><span class="nf">read_body</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">http.client</span>
+
+<span class="n">conn</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="n">client</span><span class="p">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="s">"virtserver.swaggerhub.com"</span><span class="p">)</span>
+
+<span class="n">payload</span> <span class="o">=</span> <span class="s">"[{</span><span class="se">\"</span><span class="s">op</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">replace</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">path</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">/name</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">value</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">My activity</span><span class="se">\"</span><span class="s">}]"</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">"application/json-patch+json"</span><span class="p">,</span>
+    <span class="s">'Accept'</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
+    <span class="s">'X-Api-Key'</span><span class="p">:</span> <span class="s">"API_KEY"</span>
+    <span class="p">}</span>
+
+<span class="n">conn</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"PATCH"</span><span class="p">,</span> <span class="s">"/lpb/bizyness-api/1.0.0/activities/636945f14ce97a4c1c561885"</span><span class="p">,</span> <span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">getresponse</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">res</span><span class="p">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="s">"utf-8"</span><span class="p">))</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
+
+<span class="nb">curl_setopt_array</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="p">[</span>
+  <span class="no">CURLOPT_URL</span> <span class="o">=&gt;</span> <span class="s2">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/activities/636945f14ce97a4c1c561885"</span><span class="p">,</span>
+  <span class="no">CURLOPT_RETURNTRANSFER</span> <span class="o">=&gt;</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="no">CURLOPT_ENCODING</span> <span class="o">=&gt;</span> <span class="s2">""</span><span class="p">,</span>
+  <span class="no">CURLOPT_MAXREDIRS</span> <span class="o">=&gt;</span> <span class="mi">10</span><span class="p">,</span>
+  <span class="no">CURLOPT_TIMEOUT</span> <span class="o">=&gt;</span> <span class="mi">30</span><span class="p">,</span>
+  <span class="no">CURLOPT_HTTP_VERSION</span> <span class="o">=&gt;</span> <span class="no">CURL_HTTP_VERSION_1_1</span><span class="p">,</span>
+  <span class="no">CURLOPT_CUSTOMREQUEST</span> <span class="o">=&gt;</span> <span class="s2">"PATCH"</span><span class="p">,</span>
+  <span class="no">CURLOPT_POSTFIELDS</span> <span class="o">=&gt;</span> <span class="s2">"[{\"</span><span class="n">op</span><span class="err">\</span><span class="s2">":</span><span class="se">\"</span><span class="s2">replace</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">path</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">/name</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">value</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">My activity</span><span class="se">\"</span><span class="s2">}]"</span><span class="p">,</span>
+  <span class="no">CURLOPT_HTTPHEADER</span> <span class="o">=&gt;</span> <span class="p">[</span>
+    <span class="s2">"Accept: application/json"</span><span class="p">,</span>
+    <span class="s2">"Content-Type: application/json-patch+json"</span><span class="p">,</span>
+    <span class="s2">"X-Api-Key: API_KEY"</span>
+  <span class="p">],</span>
+<span class="p">]);</span>
+
+<span class="nv">$response</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+<span class="nv">$err</span> <span class="o">=</span> <span class="nb">curl_error</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+
+<span class="nb">curl_close</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nv">$err</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s2">"cURL Error #:"</span> <span class="mf">.</span> <span class="nv">$err</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="nv">$response</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">HttpResponse</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">response</span> <span class="o">=</span> <span class="nc">Unirest</span><span class="o">.</span><span class="na">patch</span><span class="o">(</span><span class="s">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/activities/636945f14ce97a4c1c561885"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"Content-Type"</span><span class="o">,</span> <span class="s">"application/json-patch+json"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"Accept"</span><span class="o">,</span> <span class="s">"application/json"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"X-Api-Key"</span><span class="o">,</span> <span class="s">"API_KEY"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">body</span><span class="o">(</span><span class="s">"[{\"op\":\"replace\",\"path\":\"/name\",\"value\":\"My activity\"}]"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">asString</span><span class="o">();</span>
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+    <span class="s">"fmt"</span>
+    <span class="s">"strings"</span>
+    <span class="s">"net/http"</span>
+    <span class="s">"io/ioutil"</span>
+<span class="p">)</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="n">url</span> <span class="o">:=</span> <span class="s">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/activities/636945f14ce97a4c1c561885"</span>
+
+    <span class="n">payload</span> <span class="o">:=</span> <span class="n">strings</span><span class="o">.</span><span class="n">NewReader</span><span class="p">(</span><span class="s">"[{</span><span class="se">\"</span><span class="s">op</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">replace</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">path</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">/name</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">value</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">My activity</span><span class="se">\"</span><span class="s">}]"</span><span class="p">)</span>
+
+    <span class="n">req</span><span class="p">,</span> <span class="n">_</span> <span class="o">:=</span> <span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"PATCH"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">payload</span><span class="p">)</span>
+
+    <span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s">"Content-Type"</span><span class="p">,</span> <span class="s">"application/json-patch+json"</span><span class="p">)</span>
+    <span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s">"Accept"</span><span class="p">,</span> <span class="s">"application/json"</span><span class="p">)</span>
+    <span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s">"X-Api-Key"</span><span class="p">,</span> <span class="s">"API_KEY"</span><span class="p">)</span>
+
+    <span class="n">res</span><span class="p">,</span> <span class="n">_</span> <span class="o">:=</span> <span class="n">http</span><span class="o">.</span><span class="n">DefaultClient</span><span class="o">.</span><span class="n">Do</span><span class="p">(</span><span class="n">req</span><span class="p">)</span>
+
+    <span class="k">defer</span> <span class="n">res</span><span class="o">.</span><span class="n">Body</span><span class="o">.</span><span class="n">Close</span><span class="p">()</span>
+    <span class="n">body</span><span class="p">,</span> <span class="n">_</span> <span class="o">:=</span> <span class="n">ioutil</span><span class="o">.</span><span class="n">ReadAll</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">Body</span><span class="p">)</span>
+
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="kt">string</span><span class="p">(</span><span class="n">body</span><span class="p">))</span>
+
+<span class="p">}</span>
+</code></pre></div>
+<p><code>PATCH /activities/{id}</code></p>
+
+<blockquote>
+<p>Body parameter</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"op"</span><span class="p">:</span><span class="w"> </span><span class="s2">"replace"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/name"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My activity"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<h3 id="update-an-activity-partially-parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>body</td>
+<td>body</td>
+<td>array[any]</td>
+<td>true</td>
+<td>none</td>
+</tr>
+<tr>
+<td>id</td>
+<td>path</td>
+<td>string</td>
+<td>true</td>
+<td>Activity ID</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example responses</p>
+
+<p>200 Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d5eca258126ab647499f9bf"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My activity"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"is_default"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>401 Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">401</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Unauthorized"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>404 Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">404</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Resource not found"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>500 Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Internal server error"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<h3 id="update-an-activity-partially-responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>Updated activity</td>
+<td><a href="#schemaactivity">Activity</a></td>
+</tr>
+<tr>
+<td>401</td>
+<td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td>
+<td>Unauthorized</td>
+<td><a href="#schemaerror">Error</a></td>
+</tr>
+<tr>
+<td>404</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td>
+<td>The specified resource was not found</td>
+<td><a href="#schemaerror">Error</a></td>
+</tr>
+<tr>
+<td>500</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.1">Internal Server Error</a></td>
+<td>Internal Server Error</td>
+<td><a href="#schemaerror">Error</a></td>
+</tr>
+</tbody></table>
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+ApiKey, JWTAuth
+</aside>
+
 <h1 id="api-reference-payment">Payment</h1>
 
 <p>Managing your payments</p>
@@ -6337,7 +7775,7 @@ ApiKey, JWTAuth
 To perform this operation, you must be authenticated by means of one of the following methods:
 ApiKey, JWTAuth
 </aside>
-<h2 id='download-the-attachment-file'>Download the attachment file</h2>
+<h2 id='download-an-attachment-file-2'>Download an attachment file</h2>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -6458,7 +7896,7 @@ ApiKey, JWTAuth
 </code></pre></div>
 <p><code>GET /clients/{id}/attachments/{attachmentId}</code></p>
 
-<h3 id="download-the-attachment-file-parameters">Parameters</h3>
+<h3 id="download-an-attachment-file-parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -6513,7 +7951,7 @@ ApiKey, JWTAuth
   </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Internal server error"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<h3 id="download-the-attachment-file-responses">Responses</h3>
+<h3 id="download-an-attachment-file-responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -7775,7 +9213,7 @@ ApiKey, JWTAuth
 <p>200 Response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"articles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="nl">"activities"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d5eca258126ab647499f9bf"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apple"</span><span class="p">,</span><span class="w">
@@ -11096,6 +12534,100 @@ ApiKey, JWTAuth
 </tr>
 </tbody></table>
 
+<h2 id="tocS_Activity">Activity</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaactivity"></a>
+<a id="schema_Activity"></a>
+<a id="tocSactivity"></a>
+<a id="tocsactivity"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d5eca258126ab647499f9bf"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My activity"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"is_default"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h3 id='properties-13'>Properties</h3>
+<p>allOf</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td><a href="#schemacollectionid">CollectionId</a></td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<p>and</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td><a href="#schemaactivitybody">ActivityBody</a></td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_ActivityBody">ActivityBody</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaactivitybody"></a>
+<a id="schema_ActivityBody"></a>
+<a id="tocSactivitybody"></a>
+<a id="tocsactivitybody"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My activity"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"is_default"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h3 id='properties-14'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>is_default</td>
+<td>boolean</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
 <h2 id="tocS_Payment">Payment</h2>
 
 <!-- backwards compatibility -->
@@ -11114,7 +12646,7 @@ ApiKey, JWTAuth
   </span><span class="nl">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bank_transfer"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-13'>Properties</h3>
+</span></code></pre></div><h3 id='properties-15'>Properties</h3>
 <p>allOf</p>
 
 <table><thead>
@@ -11172,7 +12704,7 @@ ApiKey, JWTAuth
   </span><span class="nl">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bank_transfer"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-14'>Properties</h3>
+</span></code></pre></div><h3 id='properties-16'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -11268,7 +12800,7 @@ ApiKey, JWTAuth
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-15'>Properties</h3>
+</span></code></pre></div><h3 id='properties-17'>Properties</h3>
 <p>allOf</p>
 
 <table><thead>
@@ -11371,7 +12903,7 @@ ApiKey, JWTAuth
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-16'>Properties</h3>
+</span></code></pre></div><h3 id='properties-18'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -11505,7 +13037,7 @@ ApiKey, JWTAuth
   </span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This the content of this wonderful note"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-17'>Properties</h3>
+</span></code></pre></div><h3 id='properties-19'>Properties</h3>
 <p>allOf</p>
 
 <table><thead>
@@ -11560,7 +13092,7 @@ ApiKey, JWTAuth
   </span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This the content of this wonderful note"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-18'>Properties</h3>
+</span></code></pre></div><h3 id='properties-20'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -11603,7 +13135,7 @@ ApiKey, JWTAuth
 <a id="tocspaymentmethod"></a></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">"bank_transfer"</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-19'>Properties</h3>
+</span></code></pre></div><h3 id='properties-21'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -11675,7 +13207,7 @@ ApiKey, JWTAuth
   </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-20'>Properties</h3>
+</span></code></pre></div><h3 id='properties-22'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -11732,7 +13264,7 @@ ApiKey, JWTAuth
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-21'>Properties</h3>
+</span></code></pre></div><h3 id='properties-23'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -11934,7 +13466,7 @@ ApiKey, JWTAuth
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-22'>Properties</h3>
+</span></code></pre></div><h3 id='properties-24'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -12006,7 +13538,7 @@ ApiKey, JWTAuth
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-23'>Properties</h3>
+</span></code></pre></div><h3 id='properties-25'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -12047,7 +13579,7 @@ ApiKey, JWTAuth
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-24'>Properties</h3>
+</span></code></pre></div><h3 id='properties-26'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -12060,6 +13592,43 @@ ApiKey, JWTAuth
 <tr>
 <td>payments</td>
 <td>[<a href="#schemapayment">Payment</a>]</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_ActivityList">ActivityList</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaactivitylist"></a>
+<a id="schema_ActivityList"></a>
+<a id="tocSactivitylist"></a>
+<a id="tocsactivitylist"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"payments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d5eca258126ab647499f9bf"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My activity"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"is_default"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h3 id='properties-27'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>payments</td>
+<td>[<a href="#schemaactivity">Activity</a>]</td>
 <td>false</td>
 <td>none</td>
 <td>none</td>
@@ -12085,7 +13654,7 @@ ApiKey, JWTAuth
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-25'>Properties</h3>
+</span></code></pre></div><h3 id='properties-28'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -12120,7 +13689,7 @@ ApiKey, JWTAuth
 <a id="tocSarticlelist"></a>
 <a id="tocsarticlelist"></a></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"articles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="nl">"activities"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d5eca258126ab647499f9bf"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apple"</span><span class="p">,</span><span class="w">
@@ -12138,7 +13707,7 @@ ApiKey, JWTAuth
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-26'>Properties</h3>
+</span></code></pre></div><h3 id='properties-29'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -12149,7 +13718,7 @@ ApiKey, JWTAuth
 </tr>
 </thead><tbody>
 <tr>
-<td>articles</td>
+<td>activities</td>
 <td>[<a href="#schemaarticle">Article</a>]</td>
 <td>false</td>
 <td>none</td>
@@ -12178,7 +13747,7 @@ ApiKey, JWTAuth
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-27'>Properties</h3>
+</span></code></pre></div><h3 id='properties-30'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -12209,7 +13778,7 @@ ApiKey, JWTAuth
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d5eca258126ab647499f9bf"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-28'>Properties</h3>
+</span></code></pre></div><h3 id='properties-31'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -12254,7 +13823,7 @@ ApiKey, JWTAuth
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-29'>Properties</h3>
+</span></code></pre></div><h3 id='properties-32'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -12347,7 +13916,7 @@ ApiKey, JWTAuth
   </span><span class="nl">"total_excluding_taxes"</span><span class="p">:</span><span class="w"> </span><span class="mf">98.12</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-30'>Properties</h3>
+</span></code></pre></div><h3 id='properties-33'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -12386,7 +13955,7 @@ ApiKey, JWTAuth
   </span><span class="nl">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-31'>Properties</h3>
+</span></code></pre></div><h3 id='properties-34'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -12432,7 +14001,7 @@ ApiKey, JWTAuth
   </span><span class="nl">"vat_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FR123456789"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-32'>Properties</h3>
+</span></code></pre></div><h3 id='properties-35'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -12530,7 +14099,7 @@ ApiKey, JWTAuth
   </span><span class="nl">"second_hand_good"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-33'>Properties</h3>
+</span></code></pre></div><h3 id='properties-36'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -12755,7 +14324,7 @@ ApiKey, JWTAuth
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-34'>Properties</h3>
+</span></code></pre></div><h3 id='properties-37'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -13090,7 +14659,7 @@ ApiKey, JWTAuth
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-35'>Properties</h3>
+</span></code></pre></div><h3 id='properties-38'>Properties</h3>
 <p>allOf</p>
 
 <table><thead>
@@ -13180,7 +14749,7 @@ ApiKey, JWTAuth
   </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">52.04</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-36'>Properties</h3>
+</span></code></pre></div><h3 id='properties-39'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -13342,7 +14911,7 @@ ApiKey, JWTAuth
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-37'>Properties</h3>
+</span></code></pre></div><h3 id='properties-40'>Properties</h3>
 <p>allOf</p>
 
 <table><thead>
