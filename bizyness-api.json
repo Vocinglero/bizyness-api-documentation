@@ -55,6 +55,8 @@
         }, {
           "$ref" : "#/components/parameters/LimitParam"
         }, {
+          "$ref" : "#/components/parameters/KeywordParam"
+        }, {
           "in" : "query",
           "name" : "status",
           "required" : false,
