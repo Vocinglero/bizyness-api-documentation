@@ -3363,6 +3363,34 @@
             "creation_date" : {
               "type" : "number",
               "example" : 1566493220992
+            },
+            "vat_liable" : {
+              "type" : "boolean"
+            },
+            "vat_liability_date" : {
+              "type" : "number",
+              "example" : 1566493220992
+            },
+            "oss_liable" : {
+              "type" : "boolean"
+            },
+            "oss_liability_date" : {
+              "type" : "number",
+              "example" : 1566493220992
+            },
+            "oss_threshold_exceeded" : {
+              "type" : "boolean"
+            },
+            "oss_threshold_exceeding_date" : {
+              "type" : "number",
+              "example" : 1566493220992
+            },
+            "ioss_liable" : {
+              "type" : "boolean"
+            },
+            "ioss_liability_date" : {
+              "type" : "number",
+              "example" : 1566493220992
             }
           }
         } ]
