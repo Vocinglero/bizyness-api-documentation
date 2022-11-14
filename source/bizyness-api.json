@@ -2557,10 +2557,10 @@
             "type" : "object",
             "properties" : {
               "distance_sales" : {
-                "$ref" : "#/components/schemas/FiguresReportTotal"
+                "$ref" : "#/components/schemas/MicroReportActivity"
               },
               "services" : {
-                "$ref" : "#/components/schemas/FiguresReportTotal"
+                "$ref" : "#/components/schemas/MicroReportActivity"
               }
             },
             "example" : [ {
