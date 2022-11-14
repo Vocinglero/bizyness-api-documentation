@@ -276,6 +276,83 @@
         }
       }
     },
+    "/invoices/preview" : {
+      "post" : {
+        "tags" : [ "Invoice" ],
+        "summary" : "Preview the PDF",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/InvoiceBody"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Return the PDF file",
+            "content" : {
+              "application/pdf" : {
+                "schema" : {
+                  "type" : "string",
+                  "format" : "binary"
+                },
+                "examples" : {
+                  "sampleFile" : {
+                    "summary" : "A sample file",
+                    "externalValue" : "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+                  }
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 500,
+                  "message" : "Internal server error"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 401,
+                  "message" : "Unauthorized"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "The specified resource was not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 404,
+                  "message" : "Resource not found"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/invoices/{id}/payments" : {
       "get" : {
         "tags" : [ "Invoice" ],
@@ -431,7 +508,7 @@
     "/invoices/{id}/download" : {
       "get" : {
         "tags" : [ "Invoice" ],
-        "summary" : "Download the PDF file",
+        "summary" : "Download the PDF",
         "parameters" : [ {
           "name" : "id",
           "in" : "path",
@@ -3058,6 +3135,16 @@
             "type" : "integer",
             "default" : 100
           }
+        }, {
+          "name" : "keyword",
+          "in" : "query",
+          "description" : "The keyword to search for",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
         } ],
         "responses" : {
           "200" : {
@@ -3066,6 +3153,74 @@
               "application/json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/ClientList"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 500,
+                  "message" : "Internal server error"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 401,
+                  "message" : "Unauthorized"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "The specified resource was not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 404,
+                  "message" : "Resource not found"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Client" ],
+        "summary" : "Create a client",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/ClientBody"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Created client",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Client"
                 }
               }
             }
@@ -4317,7 +4472,7 @@
       "FiguresMonthReport" : {
         "type" : "object",
         "properties" : {
-          "total" : {
+          "summary" : {
             "$ref" : "#/components/schemas/FiguresReportTotal"
           },
           "months" : {
@@ -4356,6 +4511,20 @@
           }
         }
       },
+      "MicroReportActivity" : {
+        "type" : "object",
+        "properties" : {
+          "amount" : {
+            "type" : "integer"
+          },
+          "vat_threshold" : {
+            "type" : "integer"
+          },
+          "micro_threshold" : {
+            "type" : "integer"
+          }
+        }
+      },
       "FiguresYearReport" : {
         "type" : "object",
         "properties" : {
@@ -4363,7 +4532,7 @@
             "type" : "integer",
             "example" : 2022
           },
-          "total" : {
+          "summary" : {
             "$ref" : "#/components/schemas/FiguresReportTotal"
           },
           "months" : {
@@ -4382,6 +4551,9 @@
             "items" : {
               "$ref" : "#/components/schemas/FiguresReportMonthItem"
             }
+          },
+          "micro" : {
+            "$ref" : "#/components/schemas/FiguresYearReport_micro"
           }
         }
       },
@@ -5176,6 +5348,34 @@
             "creation_date" : {
               "type" : "number",
               "example" : 1566493220992
+            },
+            "vat_liable" : {
+              "type" : "boolean"
+            },
+            "vat_liability_date" : {
+              "type" : "number",
+              "example" : 1566493220992
+            },
+            "oss_liable" : {
+              "type" : "boolean"
+            },
+            "oss_liability_date" : {
+              "type" : "number",
+              "example" : 1566493220992
+            },
+            "oss_threshold_exceeded" : {
+              "type" : "boolean"
+            },
+            "oss_threshold_exceeding_date" : {
+              "type" : "number",
+              "example" : 1566493220992
+            },
+            "ioss_liable" : {
+              "type" : "boolean"
+            },
+            "ioss_liability_date" : {
+              "type" : "number",
+              "example" : 1566493220992
             }
           }
         } ]
@@ -5258,6 +5458,18 @@
             "example" : "France"
           }
         }
+      },
+      "FiguresYearReport_micro" : {
+        "type" : "object",
+        "properties" : {
+          "distance_sales" : {
+            "$ref" : "#/components/schemas/MicroReportActivity"
+          },
+          "services" : {
+            "$ref" : "#/components/schemas/MicroReportActivity"
+          }
+        },
+        "example" : "{\"distance_sales\":{\"amount\":1234,\"vat_threshold\":45121,\"micro_threshold\":98451},\"services\":{\"amount\":213,\"vat_threshold\":12015,\"micro_threshold\":35120}}"
       },
       "BillOfSaleEvents_events" : {
         "type" : "object",
