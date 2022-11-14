@@ -1604,6 +1604,8 @@
           "$ref" : "#/components/parameters/PageParam"
         }, {
           "$ref" : "#/components/parameters/LimitParam"
+        }, {
+          "$ref" : "#/components/parameters/KeywordParam"
         } ],
         "responses" : {
           "200" : {
