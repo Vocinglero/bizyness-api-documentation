@@ -152,6 +152,50 @@
         }
       }
     },
+    "/invoices/preview" : {
+      "post" : {
+        "tags" : [ "Invoice" ],
+        "summary" : "Preview the PDF",
+        "requestBody" : {
+          "required" : true,
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/InvoiceBody"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Return the PDF file",
+            "content" : {
+              "application/pdf" : {
+                "schema" : {
+                  "type" : "string",
+                  "format" : "binary"
+                },
+                "examples" : {
+                  "sampleFile" : {
+                    "summary" : "A sample file",
+                    "externalValue" : "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+                  }
+                }
+              }
+            }
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      }
+    },
     "/invoices/{id}/payments" : {
       "parameters" : [ {
         "name" : "id",
@@ -237,7 +281,7 @@
       } ],
       "get" : {
         "tags" : [ "Invoice" ],
-        "summary" : "Download the PDF file",
+        "summary" : "Download the PDF",
         "responses" : {
           "200" : {
             "description" : "Return the PDF file",
@@ -1571,6 +1615,41 @@
                 }
               }
             }
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Client" ],
+        "summary" : "Create a client",
+        "requestBody" : {
+          "required" : true,
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/ClientBody"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Client"
+                }
+              }
+            },
+            "description" : "Created client"
           },
           "500" : {
             "$ref" : "#/components/responses/InternalServerError"
