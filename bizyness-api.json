@@ -2473,7 +2473,7 @@
       "FiguresMonthReport" : {
         "type" : "object",
         "properties" : {
-          "total" : {
+          "summary" : {
             "$ref" : "#/components/schemas/FiguresReportTotal"
           },
           "months" : {
@@ -2519,7 +2519,7 @@
             "type" : "integer",
             "example" : 2022
           },
-          "total" : {
+          "summary" : {
             "$ref" : "#/components/schemas/FiguresReportTotal"
           },
           "months" : {
