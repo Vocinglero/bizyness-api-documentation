@@ -2563,7 +2563,7 @@
                 "$ref" : "#/components/schemas/MicroReportActivity"
               }
             },
-            "example" : [ {
+            "example" : {
               "distance_sales" : {
                 "amount" : 1234,
                 "vat_threshold" : 45121,
@@ -2574,7 +2574,7 @@
                 "vat_threshold" : 12015,
                 "micro_threshold" : 35120
               }
-            } ]
+            }
           }
         }
       },
