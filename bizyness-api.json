@@ -2564,15 +2564,16 @@
               }
             },
             "example" : [ {
-              "month" : 1,
-              "margin" : -393,
-              "incomes" : 456,
-              "expenses" : 849
-            }, {
-              "month" : 2,
-              "margin" : 4507,
-              "incomes" : 4556,
-              "expenses" : 49
+              "distance_sales" : {
+                "amount" : 1234,
+                "vat_threshold" : 45121,
+                "micro_threshold" : 98451
+              },
+              "services" : {
+                "amount" : 213,
+                "vat_threshold" : 12015,
+                "micro_threshold" : 35120
+              }
             } ]
           }
         }
