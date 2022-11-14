@@ -590,6 +590,9 @@
                     <a href="#tocS_FiguresReportMonthItem" class="toc-h2 toc-link" data-title="FiguresReportMonthItem">FiguresReportMonthItem</a>
                   </li>
                   <li>
+                    <a href="#tocS_MicroReportActivity" class="toc-h2 toc-link" data-title="MicroReportActivity">MicroReportActivity</a>
+                  </li>
+                  <li>
                     <a href="#tocS_FiguresYearReport" class="toc-h2 toc-link" data-title="FiguresYearReport">FiguresYearReport</a>
                   </li>
                   <li>
@@ -12125,6 +12128,20 @@ ApiKey, JWTAuth
       </span><span class="nl">"incomes"</span><span class="p">:</span><span class="w"> </span><span class="mi">4556</span><span class="p">,</span><span class="w">
       </span><span class="nl">"expenses"</span><span class="p">:</span><span class="w"> </span><span class="mi">49</span><span class="w">
     </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"micro"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"month"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"margin"</span><span class="p">:</span><span class="w"> </span><span class="mi">-393</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"incomes"</span><span class="p">:</span><span class="w"> </span><span class="mi">456</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"expenses"</span><span class="p">:</span><span class="w"> </span><span class="mi">849</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"month"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"margin"</span><span class="p">:</span><span class="w"> </span><span class="mi">4507</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"incomes"</span><span class="p">:</span><span class="w"> </span><span class="mi">4556</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"expenses"</span><span class="p">:</span><span class="w"> </span><span class="mi">49</span><span class="w">
+    </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -15341,6 +15358,53 @@ ApiKey, JWTAuth
 </tr>
 </tbody></table>
 
+<h2 id="tocS_MicroReportActivity">MicroReportActivity</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemamicroreportactivity"></a>
+<a id="schema_MicroReportActivity"></a>
+<a id="tocSmicroreportactivity"></a>
+<a id="tocsmicroreportactivity"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"vat_threshold"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"micro_threshold"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h3 id='properties-13'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>amount</td>
+<td>integer</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>vat_threshold</td>
+<td>integer</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>micro_threshold</td>
+<td>integer</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
 <h2 id="tocS_FiguresYearReport">FiguresYearReport</h2>
 
 <!-- backwards compatibility -->
@@ -15370,10 +15434,24 @@ ApiKey, JWTAuth
       </span><span class="nl">"incomes"</span><span class="p">:</span><span class="w"> </span><span class="mi">4556</span><span class="p">,</span><span class="w">
       </span><span class="nl">"expenses"</span><span class="p">:</span><span class="w"> </span><span class="mi">49</span><span class="w">
     </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"micro"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"month"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"margin"</span><span class="p">:</span><span class="w"> </span><span class="mi">-393</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"incomes"</span><span class="p">:</span><span class="w"> </span><span class="mi">456</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"expenses"</span><span class="p">:</span><span class="w"> </span><span class="mi">849</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"month"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"margin"</span><span class="p">:</span><span class="w"> </span><span class="mi">4507</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"incomes"</span><span class="p">:</span><span class="w"> </span><span class="mi">4556</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"expenses"</span><span class="p">:</span><span class="w"> </span><span class="mi">49</span><span class="w">
+    </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-13'>Properties</h3>
+</span></code></pre></div><h3 id='properties-14'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -15404,6 +15482,27 @@ ApiKey, JWTAuth
 <td>none</td>
 <td>none</td>
 </tr>
+<tr>
+<td>micro</td>
+<td>object</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» distance_sales</td>
+<td><a href="#schemafiguresreporttotal">FiguresReportTotal</a></td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» services</td>
+<td><a href="#schemafiguresreporttotal">FiguresReportTotal</a></td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
 </tbody></table>
 
 <h2 id="tocS_Activity">Activity</h2>
@@ -15420,7 +15519,7 @@ ApiKey, JWTAuth
   </span><span class="nl">"is_default"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-14'>Properties</h3>
+</span></code></pre></div><h3 id='properties-15'>Properties</h3>
 <p>allOf</p>
 
 <table><thead>
@@ -15474,7 +15573,7 @@ ApiKey, JWTAuth
   </span><span class="nl">"is_default"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-15'>Properties</h3>
+</span></code></pre></div><h3 id='properties-16'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -15518,7 +15617,7 @@ ApiKey, JWTAuth
   </span><span class="nl">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bank_transfer"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-16'>Properties</h3>
+</span></code></pre></div><h3 id='properties-17'>Properties</h3>
 <p>allOf</p>
 
 <table><thead>
@@ -15576,7 +15675,7 @@ ApiKey, JWTAuth
   </span><span class="nl">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bank_transfer"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-17'>Properties</h3>
+</span></code></pre></div><h3 id='properties-18'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -15672,7 +15771,7 @@ ApiKey, JWTAuth
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-18'>Properties</h3>
+</span></code></pre></div><h3 id='properties-19'>Properties</h3>
 <p>allOf</p>
 
 <table><thead>
@@ -15775,7 +15874,7 @@ ApiKey, JWTAuth
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-19'>Properties</h3>
+</span></code></pre></div><h3 id='properties-20'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -15909,7 +16008,7 @@ ApiKey, JWTAuth
   </span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This the content of this wonderful note"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-20'>Properties</h3>
+</span></code></pre></div><h3 id='properties-21'>Properties</h3>
 <p>allOf</p>
 
 <table><thead>
@@ -15964,7 +16063,7 @@ ApiKey, JWTAuth
   </span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This the content of this wonderful note"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-21'>Properties</h3>
+</span></code></pre></div><h3 id='properties-22'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -16007,7 +16106,7 @@ ApiKey, JWTAuth
 <a id="tocspaymentmethod"></a></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">"bank_transfer"</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-22'>Properties</h3>
+</span></code></pre></div><h3 id='properties-23'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -16079,7 +16178,7 @@ ApiKey, JWTAuth
   </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-23'>Properties</h3>
+</span></code></pre></div><h3 id='properties-24'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -16136,7 +16235,7 @@ ApiKey, JWTAuth
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-24'>Properties</h3>
+</span></code></pre></div><h3 id='properties-25'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -16338,7 +16437,7 @@ ApiKey, JWTAuth
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-25'>Properties</h3>
+</span></code></pre></div><h3 id='properties-26'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -16410,7 +16509,7 @@ ApiKey, JWTAuth
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-26'>Properties</h3>
+</span></code></pre></div><h3 id='properties-27'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -16451,7 +16550,7 @@ ApiKey, JWTAuth
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-27'>Properties</h3>
+</span></code></pre></div><h3 id='properties-28'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -16488,7 +16587,7 @@ ApiKey, JWTAuth
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-28'>Properties</h3>
+</span></code></pre></div><h3 id='properties-29'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -16526,7 +16625,7 @@ ApiKey, JWTAuth
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-29'>Properties</h3>
+</span></code></pre></div><h3 id='properties-30'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -16579,7 +16678,7 @@ ApiKey, JWTAuth
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-30'>Properties</h3>
+</span></code></pre></div><h3 id='properties-31'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -16619,7 +16718,7 @@ ApiKey, JWTAuth
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-31'>Properties</h3>
+</span></code></pre></div><h3 id='properties-32'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -16659,7 +16758,7 @@ ApiKey, JWTAuth
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-32'>Properties</h3>
+</span></code></pre></div><h3 id='properties-33'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -16690,7 +16789,7 @@ ApiKey, JWTAuth
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d5eca258126ab647499f9bf"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-33'>Properties</h3>
+</span></code></pre></div><h3 id='properties-34'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -16735,7 +16834,7 @@ ApiKey, JWTAuth
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-34'>Properties</h3>
+</span></code></pre></div><h3 id='properties-35'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -16828,7 +16927,7 @@ ApiKey, JWTAuth
   </span><span class="nl">"total_excluding_taxes"</span><span class="p">:</span><span class="w"> </span><span class="mf">98.12</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-35'>Properties</h3>
+</span></code></pre></div><h3 id='properties-36'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -16867,7 +16966,7 @@ ApiKey, JWTAuth
   </span><span class="nl">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-36'>Properties</h3>
+</span></code></pre></div><h3 id='properties-37'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -16913,7 +17012,7 @@ ApiKey, JWTAuth
   </span><span class="nl">"vat_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FR123456789"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-37'>Properties</h3>
+</span></code></pre></div><h3 id='properties-38'>Properties</h3>
 <p>allOf</p>
 
 <table><thead>
@@ -16998,7 +17097,7 @@ ApiKey, JWTAuth
   </span><span class="nl">"country_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FR"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-38'>Properties</h3>
+</span></code></pre></div><h3 id='properties-39'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -17068,7 +17167,7 @@ ApiKey, JWTAuth
   </span><span class="nl">"second_hand_good"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-39'>Properties</h3>
+</span></code></pre></div><h3 id='properties-40'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -17293,7 +17392,7 @@ ApiKey, JWTAuth
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-40'>Properties</h3>
+</span></code></pre></div><h3 id='properties-41'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -17628,7 +17727,7 @@ ApiKey, JWTAuth
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-41'>Properties</h3>
+</span></code></pre></div><h3 id='properties-42'>Properties</h3>
 <p>allOf</p>
 
 <table><thead>
@@ -17718,7 +17817,7 @@ ApiKey, JWTAuth
   </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">52.04</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-42'>Properties</h3>
+</span></code></pre></div><h3 id='properties-43'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -17880,7 +17979,7 @@ ApiKey, JWTAuth
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-43'>Properties</h3>
+</span></code></pre></div><h3 id='properties-44'>Properties</h3>
 <p>allOf</p>
 
 <table><thead>
@@ -18044,7 +18143,7 @@ ApiKey, JWTAuth
   </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john@google.com"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-44'>Properties</h3>
+</span></code></pre></div><h3 id='properties-45'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -18094,7 +18193,7 @@ ApiKey, JWTAuth
   </span><span class="nl">"subscription_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"trial"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-45'>Properties</h3>
+</span></code></pre></div><h3 id='properties-46'>Properties</h3>
 <p>allOf</p>
 
 <table><thead>
@@ -18238,7 +18337,7 @@ ApiKey, JWTAuth
   </span><span class="nl">"ioss_liability_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1566493220992</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-46'>Properties</h3>
+</span></code></pre></div><h3 id='properties-47'>Properties</h3>
 <p>allOf</p>
 
 <table><thead>
@@ -18513,7 +18612,7 @@ ApiKey, JWTAuth
   </span><span class="nl">"logo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"logo-company-123456789.png"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-47'>Properties</h3>
+</span></code></pre></div><h3 id='properties-48'>Properties</h3>
 <p>allOf</p>
 
 <table><thead>
