@@ -12,6 +12,9 @@
     "url" : "https://api.bizyness.fr"
   } ],
   "tags" : [ {
+    "name" : "Authentication",
+    "description" : "Managing authentication"
+  }, {
     "name" : "Invoice",
     "description" : "Managing your invoices"
   }, {
@@ -52,6 +55,43 @@
     "description" : "Transverval ressources"
   } ],
   "paths" : {
+    "/login" : {
+      "post" : {
+        "tags" : [ "Authentication" ],
+        "summary" : "Authenticate a user",
+        "requestBody" : {
+          "required" : true,
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/EmailPasswordBody"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/AuthenticatedAccount"
+                }
+              }
+            },
+            "description" : "Created invoice"
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      }
+    },
     "/invoices" : {
       "get" : {
         "tags" : [ "Invoice" ],
@@ -3192,6 +3232,35 @@
             "items" : {
               "type" : "string"
             }
+          }
+        }
+      },
+      "EmailPasswordBody" : {
+        "type" : "object",
+        "properties" : {
+          "email" : {
+            "type" : "integer",
+            "example" : "johndoe@google.com"
+          },
+          "passsword" : {
+            "type" : "boolean",
+            "example" : "password123!"
+          }
+        }
+      },
+      "AuthenticatedAccount" : {
+        "type" : "object",
+        "properties" : {
+          "access_token" : {
+            "type" : "string",
+            "example" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxMkRERkRGREZEIiwiaWF0IjoxNjYyMjAyMzYwLCJleHAiOjE2NjI0NjE1NjB9.zbVs3S-PBdCLeK4gL4UrFPUjohzTtuK_zKeUVtyrZxs"
+          },
+          "type" : {
+            "type" : "string",
+            "example" : "Bearer"
+          },
+          "user" : {
+            "$ref" : "#/components/schemas/Account"
           }
         }
       },
