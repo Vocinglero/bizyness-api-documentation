@@ -58,13 +58,13 @@
     "/login" : {
       "post" : {
         "tags" : [ "Authentication" ],
-        "summary" : "Authenticate a user",
+        "summary" : "Authenticate",
         "requestBody" : {
           "required" : true,
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/EmailPasswordBody"
+                "$ref" : "#/components/schemas/AuthenticationBody"
               }
             }
           }
@@ -79,6 +79,36 @@
               }
             },
             "description" : "Created invoice"
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      }
+    },
+    "/forgot" : {
+      "post" : {
+        "tags" : [ "Authentication" ],
+        "summary" : "Reset password",
+        "requestBody" : {
+          "required" : true,
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/ForgotBody"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "204" : {
+            "description" : "The password was reseted successfully"
           },
           "500" : {
             "$ref" : "#/components/responses/InternalServerError"
@@ -3235,7 +3265,7 @@
           }
         }
       },
-      "EmailPasswordBody" : {
+      "AuthenticationBody" : {
         "type" : "object",
         "properties" : {
           "email" : {
@@ -3245,6 +3275,15 @@
           "passsword" : {
             "type" : "boolean",
             "example" : "password123!"
+          }
+        }
+      },
+      "ForgotBody" : {
+        "type" : "object",
+        "properties" : {
+          "email" : {
+            "type" : "integer",
+            "example" : "johndoe@google.com"
           }
         }
       },
