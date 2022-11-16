@@ -694,6 +694,46 @@
         }
       }
     },
+    "/invoices/{id}/send" : {
+      "parameters" : [ {
+        "name" : "id",
+        "in" : "path",
+        "description" : "Invoice ID",
+        "required" : true,
+        "schema" : {
+          "type" : "string",
+          "example" : "636945e14ce97a4c1c561885"
+        }
+      } ],
+      "post" : {
+        "tags" : [ "Invoice" ],
+        "summary" : "Send an invoice",
+        "requestBody" : {
+          "required" : true,
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/PaymentBody"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "204" : {
+            "description" : "The invoice was sent successfully"
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      }
+    },
     "/countries" : {
       "get" : {
         "tags" : [ "Miscellaneous" ],
@@ -3289,11 +3329,11 @@
         "type" : "object",
         "properties" : {
           "email" : {
-            "type" : "integer",
+            "type" : "string",
             "example" : "johndoe@google.com"
           },
           "passsword" : {
-            "type" : "boolean",
+            "type" : "string",
             "example" : "password123!"
           }
         }
@@ -3302,8 +3342,25 @@
         "type" : "object",
         "properties" : {
           "email" : {
-            "type" : "integer",
+            "type" : "string",
             "example" : "johndoe@google.com"
+          }
+        }
+      },
+      "BillOfSaleSendBody" : {
+        "type" : "object",
+        "properties" : {
+          "email" : {
+            "type" : "string",
+            "example" : "johndoe@google.com"
+          },
+          "title" : {
+            "type" : "string",
+            "example" : "Here is your invoice"
+          },
+          "body" : {
+            "type" : "string",
+            "example" : "Please find attached your invoice"
           }
         }
       },
