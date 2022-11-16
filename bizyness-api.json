@@ -713,7 +713,7 @@
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/PaymentBody"
+                "$ref" : "#/components/schemas/BillOfSaleSendBody"
               }
             }
           }
