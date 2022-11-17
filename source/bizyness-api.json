@@ -4691,19 +4691,19 @@
             "type" : "integer",
             "example" : 1651356000000
           },
-          "dueDate" : {
+          "due_date" : {
             "type" : "integer",
             "example" : 1656540000000
           },
-          "distanceSalesAmount" : {
+          "distance_sales_amount" : {
             "type" : "integer",
             "example" : 1235
           },
-          "servicesAmount" : {
+          "services_amount" : {
             "type" : "integer",
             "example" : 554
           },
-          "otherServicesAmount" : {
+          "other_services_amount" : {
             "type" : "integer",
             "example" : 787
           },
