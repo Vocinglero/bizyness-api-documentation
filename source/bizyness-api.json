@@ -3463,8 +3463,8 @@
                 "example" : [ "myfile1.png", "mydocument.pdf" ]
               }
             },
-            "user" : {
-              "$ref" : "#/components/schemas/Account"
+            "client" : {
+              "$ref" : "#/components/schemas/ClientBody"
             }
           }
         } ]
