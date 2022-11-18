@@ -5545,7 +5545,7 @@
                 "example" : "[\"myfile1.png\",\"mydocument.pdf\"]"
               }
             },
-            "client" : {
+            "shipping_address" : {
               "$ref" : "#/components/schemas/ContactAddress"
             }
           }
