@@ -3323,7 +3323,7 @@
             "items" : {
               "type" : "string"
             },
-            "example" : [ "cash" ]
+            "example" : [ "cash", "credit_card" ]
           }
         }
       },
@@ -3393,8 +3393,7 @@
               "example" : 1566493220992
             },
             "online_payment_enabled" : {
-              "type" : "boolean",
-              "example" : 1566493220992
+              "type" : "boolean"
             },
             "payment_gateways_id" : {
               "type" : "array",
