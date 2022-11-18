@@ -5212,10 +5212,6 @@
             "vat_number" : {
               "type" : "string",
               "example" : "FR123456789"
-            },
-            "display_name" : {
-              "type" : "string",
-              "example" : "John Doe"
             }
           }
         } ]
@@ -5407,7 +5403,6 @@
           },
           "payment_methods" : {
             "type" : "array",
-            "example" : [ "cash", "credit_card" ],
             "items" : {
               "type" : "string"
             }
@@ -5480,27 +5475,28 @@
               "example" : 1566493220992
             },
             "online_payment_enabled" : {
-              "type" : "boolean"
+              "type" : "boolean",
+              "example" : false
             },
             "payment_gateways_id" : {
               "type" : "array",
-              "example" : [ "5d5eca258126ab647499f9bf", "5b17da549a7feb695f703975" ],
               "items" : {
-                "type" : "string"
+                "type" : "string",
+                "example" : "[\"5d5eca258126ab647499f9bf\",\"5b17da549a7feb695f703975\"]"
               }
             },
             "tracking_numbers" : {
               "type" : "array",
-              "example" : [ "456SDFDFD" ],
               "items" : {
-                "type" : "string"
+                "type" : "string",
+                "example" : "[\"456SDFDFD\"]"
               }
             },
             "tracking_carriers" : {
               "type" : "array",
-              "example" : [ "UPS" ],
               "items" : {
-                "type" : "string"
+                "type" : "string",
+                "example" : "[\"UPS\"]"
               }
             }
           }
@@ -5549,7 +5545,7 @@
                 "example" : "[\"myfile1.png\",\"mydocument.pdf\"]"
               }
             },
-            "client_address" : {
+            "shipping_address" : {
               "$ref" : "#/components/schemas/ContactAddress"
             }
           }
