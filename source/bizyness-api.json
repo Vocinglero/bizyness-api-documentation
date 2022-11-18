@@ -5276,7 +5276,7 @@
           "tax_rate" : {
             "type" : "number"
           },
-          "origin_country" : {
+          "origin_country_code" : {
             "type" : "string"
           },
           "second_hand_good" : {
@@ -5310,7 +5310,7 @@
             "type" : "number",
             "example" : 10
           },
-          "activity" : {
+          "activity_id" : {
             "type" : "string",
             "example" : "5d5efds258126ab647499f9bf"
           },
@@ -5332,8 +5332,9 @@
           "taxes_included" : {
             "type" : "boolean"
           },
-          "client" : {
-            "$ref" : "#/components/schemas/ExternalReference"
+          "client_id" : {
+            "type" : "string",
+            "example" : "54tefds258126ab647499f9bf"
           },
           "billing_address" : {
             "$ref" : "#/components/schemas/ContactAddress"
@@ -5477,7 +5478,7 @@
               "type" : "boolean",
               "example" : false
             },
-            "payment_gateways" : {
+            "payment_gateways_id" : {
               "type" : "array",
               "items" : {
                 "type" : "string",
@@ -5543,6 +5544,9 @@
                 "type" : "string",
                 "example" : "[\"myfile1.png\",\"mydocument.pdf\"]"
               }
+            },
+            "client" : {
+              "$ref" : "#/components/schemas/ContactAddress"
             }
           }
         } ]
