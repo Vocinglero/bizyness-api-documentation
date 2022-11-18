@@ -3118,6 +3118,10 @@
             "vat_number" : {
               "type" : "string",
               "example" : "FR123456789"
+            },
+            "display_name" : {
+              "type" : "string",
+              "example" : "John Doe"
             }
           }
         } ]
