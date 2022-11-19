@@ -450,7 +450,7 @@
       },
       "post" : {
         "tags" : [ "Invoice" ],
-        "summary" : "Cancel an invoice",
+        "summary" : "Create a an invoice",
         "requestBody" : {
           "required" : true,
           "content" : {
