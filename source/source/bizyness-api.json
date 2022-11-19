@@ -5176,19 +5176,10 @@
           "date" : {
             "type" : "integer",
             "example" : 1566423220992
-          }
-        }
-      },
-      "ExternalReference" : {
-        "type" : "object",
-        "properties" : {
-          "label" : {
-            "type" : "string",
-            "example" : "5d5eca258126ab647499f9bf"
           },
-          "identifier" : {
+          "name" : {
             "type" : "string",
-            "example" : "John Doe"
+            "example" : "202212345"
           }
         }
       },
