@@ -3076,6 +3076,10 @@
           "date" : {
             "type" : "integer",
             "example" : 1566423220992
+          },
+          "name" : {
+            "type" : "string",
+            "example" : 202212345
           }
         }
       },
