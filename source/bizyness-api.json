@@ -5147,7 +5147,7 @@
           }
         }
       },
-      "BillOfSaleEvents" : {
+      "BillOfSaleAttributes" : {
         "type" : "object",
         "properties" : {
           "events" : {
@@ -5162,14 +5162,9 @@
               "values" : [ ]
             } ],
             "items" : {
-              "$ref" : "#/components/schemas/BillOfSaleEvents_events"
+              "$ref" : "#/components/schemas/BillOfSaleAttributes_events"
             }
-          }
-        }
-      },
-      "BillOfSaleAmounts" : {
-        "type" : "object",
-        "properties" : {
+          },
           "total_including_taxes" : {
             "type" : "number",
             "example" : 123.54
@@ -5177,12 +5172,7 @@
           "total_excluding_taxes" : {
             "type" : "number",
             "example" : 98.12
-          }
-        }
-      },
-      "BillOfSaleDates" : {
-        "type" : "object",
-        "properties" : {
+          },
           "date" : {
             "type" : "integer",
             "example" : 1566423220992
@@ -5540,11 +5530,7 @@
         }, {
           "$ref" : "#/components/schemas/InvoiceBody"
         }, {
-          "$ref" : "#/components/schemas/BillOfSaleEvents"
-        }, {
-          "$ref" : "#/components/schemas/BillOfSaleAmounts"
-        }, {
-          "$ref" : "#/components/schemas/BillOfSaleDates"
+          "$ref" : "#/components/schemas/BillOfSaleAttributes"
         }, {
           "type" : "object",
           "properties" : {
@@ -5812,7 +5798,7 @@
         },
         "example" : "{\"distance_sales\":{\"amount\":1234,\"vat_threshold\":45121,\"micro_threshold\":98451},\"services\":{\"amount\":213,\"vat_threshold\":12015,\"micro_threshold\":35120}}"
       },
-      "BillOfSaleEvents_events" : {
+      "BillOfSaleAttributes_events" : {
         "type" : "object",
         "properties" : {
           "date" : {
