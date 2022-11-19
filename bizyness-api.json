@@ -3083,19 +3083,6 @@
           }
         }
       },
-      "ExternalReference" : {
-        "type" : "object",
-        "properties" : {
-          "label" : {
-            "type" : "string",
-            "example" : "5d5eca258126ab647499f9bf"
-          },
-          "identifier" : {
-            "type" : "string",
-            "example" : "John Doe"
-          }
-        }
-      },
       "ContactAddress" : {
         "allOf" : [ {
           "$ref" : "#/components/schemas/Address"
