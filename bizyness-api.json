@@ -3033,7 +3033,7 @@
           }
         }
       },
-      "BillOfSaleEvents" : {
+      "BillOfSaleAttributes" : {
         "type" : "object",
         "properties" : {
           "events" : {
@@ -3064,12 +3064,7 @@
               "key" : "invoice.history.issued",
               "values" : [ ]
             } ]
-          }
-        }
-      },
-      "BillOfSaleAmounts" : {
-        "type" : "object",
-        "properties" : {
+          },
           "total_including_taxes" : {
             "type" : "number",
             "example" : 123.54
@@ -3077,12 +3072,7 @@
           "total_excluding_taxes" : {
             "type" : "number",
             "example" : 98.12
-          }
-        }
-      },
-      "BillOfSaleDates" : {
-        "type" : "object",
-        "properties" : {
+          },
           "date" : {
             "type" : "integer",
             "example" : 1566423220992
@@ -3451,11 +3441,7 @@
         }, {
           "$ref" : "#/components/schemas/InvoiceBody"
         }, {
-          "$ref" : "#/components/schemas/BillOfSaleEvents"
-        }, {
-          "$ref" : "#/components/schemas/BillOfSaleAmounts"
-        }, {
-          "$ref" : "#/components/schemas/BillOfSaleDates"
+          "$ref" : "#/components/schemas/BillOfSaleAttributes"
         }, {
           "type" : "object",
           "properties" : {
