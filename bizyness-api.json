@@ -412,6 +412,43 @@
         }
       }
     },
+    "/invoices/{id}/cancel" : {
+      "parameters" : [ {
+        "name" : "id",
+        "in" : "path",
+        "description" : "Invoice ID",
+        "required" : true,
+        "schema" : {
+          "type" : "string",
+          "example" : "636945e14ce97a4c1c561885"
+        }
+      } ],
+      "post" : {
+        "tags" : [ "Invoice" ],
+        "summary" : "Cancel an invoice",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Invoice"
+                }
+              }
+            },
+            "description" : "Created credit note"
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      }
+    },
     "/invoices/{id}/attachments" : {
       "parameters" : [ {
         "name" : "id",
