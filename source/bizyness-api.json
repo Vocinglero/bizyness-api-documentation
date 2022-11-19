@@ -167,7 +167,7 @@
           "description" : "Filter invoices by their status"
         }, {
           "in" : "query",
-          "name" : "client",
+          "name" : "client_id",
           "required" : false,
           "schema" : {
             "type" : "string",
@@ -176,7 +176,7 @@
           "description" : "Filter invoices by client"
         }, {
           "in" : "query",
-          "name" : "activity",
+          "name" : "activity_id",
           "required" : false,
           "schema" : {
             "type" : "string",
@@ -795,7 +795,7 @@
         "description" : "The month number of the year"
       }, {
         "in" : "query",
-        "name" : "client",
+        "name" : "client_id",
         "schema" : {
           "type" : "string"
         },
@@ -836,7 +836,7 @@
         "description" : "The year"
       }, {
         "in" : "query",
-        "name" : "client",
+        "name" : "client_id",
         "schema" : {
           "type" : "string"
         },
