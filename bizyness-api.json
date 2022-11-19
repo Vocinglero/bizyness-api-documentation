@@ -3060,6 +3060,17 @@
           }
         }
       },
+      "CreditNoteList" : {
+        "type" : "object",
+        "properties" : {
+          "credit_notes" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Invoice"
+            }
+          }
+        }
+      },
       "InvoiceList" : {
         "type" : "object",
         "properties" : {
@@ -3502,43 +3513,6 @@
             "$ref" : "#/components/schemas/Account"
           }
         }
-      },
-      "CreditNoteBody" : {
-        "allOf" : [ {
-          "$ref" : "#/components/schemas/BillOfSaleBody"
-        }, {
-          "type" : "object",
-          "properties" : {
-            "execution_date" : {
-              "type" : "integer",
-              "example" : 1566493220992
-            },
-            "online_payment_enabled" : {
-              "type" : "boolean"
-            },
-            "payment_gateways_id" : {
-              "type" : "array",
-              "items" : {
-                "type" : "string"
-              },
-              "example" : [ "5d5eca258126ab647499f9bf", "5b17da549a7feb695f703975" ]
-            },
-            "tracking_numbers" : {
-              "type" : "array",
-              "items" : {
-                "type" : "string"
-              },
-              "example" : [ "456SDFDFD" ]
-            },
-            "tracking_carriers" : {
-              "type" : "array",
-              "items" : {
-                "type" : "string"
-              },
-              "example" : [ "UPS" ]
-            }
-          }
-        } ]
       },
       "InvoiceBody" : {
         "allOf" : [ {
