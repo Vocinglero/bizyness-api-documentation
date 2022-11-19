@@ -435,7 +435,7 @@
                 }
               }
             },
-            "description" : "List of payments"
+            "description" : "List of credit notes"
           },
           "500" : {
             "$ref" : "#/components/responses/InternalServerError"
@@ -450,7 +450,7 @@
       },
       "post" : {
         "tags" : [ "Invoice" ],
-        "summary" : "Create a an invoice",
+        "summary" : "Create a credit note",
         "requestBody" : {
           "required" : true,
           "content" : {
