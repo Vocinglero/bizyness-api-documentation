@@ -3079,7 +3079,7 @@
           },
           "name" : {
             "type" : "string",
-            "example" : 202212345
+            "example" : "202212345"
           }
         }
       },
