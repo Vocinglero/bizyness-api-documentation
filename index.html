@@ -766,13 +766,13 @@
 <h2 id='errors'>Errors</h2>
 <p>The API returns error codes such as 400, 403, 404, and 500 along with information about the error. Here are some common error responses:</p>
 
-<p>A 400 Bad Request response often means that the request body is improperly formatted or missing required fields. In the case of missing fields, the response includes the name of the field that is missing, as in the example in the right-hand column.</p>
+<p>A <code>400 Bad Request</code> response often means that the request body is improperly formatted or missing required fields. In the case of missing fields, the response includes the name of the field that is missing, as in the example in the right-hand column.</p>
 
-<p>A 401 Unauthorized response often means that the request did not include a valid authentication.</p>
+<p>A <code>401 Unauthorized</code> response often means that the request did not include a valid authentication.</p>
 
-<p>A 404 Not Found response can mean that the object you are trying to access does not exist.</p>
+<p>A <code>404 Not Found</code> response can mean that the object you are trying to access does not exist.</p>
 
-<p>A 500 Internal Server Error response means that an error happened on the server. This can mean that the request is not valid, such as if you try to delete or edit a collection that does not exist, or if the API otherwise can&#39;t do what you requested. It can also mean a temporary problem with the API. Check your request and try again or contact us.</p>
+<p>A <code>500 Internal Server Error</code> response means that an error happened on the server. This can mean that the request is not valid, such as if you try to delete or edit a collection that does not exist, or if the API otherwise can&#39;t do what you requested. It can also mean a temporary problem with the API. Check your request and try again or contact us.</p>
 <h2 id='pagination'>Pagination</h2>
 <p>Requests that return multiple items will be restricted to 100 items by default. Alternatively the items per page can be specified with the <code>limit</code> parameter:</p>
 
@@ -783,12 +783,14 @@
 <p><code>GET /invoices?offset=10</code></p>
 
 <p>You can combine the <code>limit</code> and the <code>offset</code> parameters to request a particular set of items. Note that the offset option is applied before the limit option, regardless of its position in the request.</p>
+
+<p>The total entries will be set in the HTTP header <code>X-Total-Count</code></p>
 <h2 id='sorting'>Sorting</h2>
-<p>Resources returned can be sorted using <code>sort</code> parameter.</p>
+<p>Multiple items returned in a request can be sorted using <code>sort</code> parameter.</p>
 
 <p><code>GET /invoices?sort=+name,-subject</code></p>
 
-<p>Attributes used in the <code>sort</code> parameter must be part of the requested resource. If multiple attributes are sorted they must be separated by a comma (,). The order of each attribute must be set using either + (ascending) or - (descending). If no sign is set, the default ordering is ascending.</p>
+<p>Attributes used in the <code>sort</code> parameter must be part of the requested resources. If multiple attributes are sorted they must be separated by a comma (,). The order of each attribute must be set using either + (ascending) or - (descending). If no sign is set, the default ordering is ascending.</p>
 <h2 id='put-patch-methods'>PUT/PATCH methods</h2>
 <p>PUT and PATCH requests are used to update objects identified in the requests&#39; paths:</p>
 
@@ -1910,6 +1912,24 @@ ApiKey, JWTAuth
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.1">Internal Server Error</a></td>
 <td>Internal Server Error</td>
 <td><a href="#schemaerror">Error</a></td>
+</tr>
+</tbody></table>
+<h3 id='response-headers'>Response Headers</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Header</th>
+<th>Type</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>X-Total-Count</td>
+<td>integer</td>
+<td></td>
+<td>Total entries</td>
 </tr>
 </tbody></table>
 
@@ -6163,6 +6183,24 @@ ApiKey, JWTAuth
 <td><a href="#schemaerror">Error</a></td>
 </tr>
 </tbody></table>
+<h3 id='response-headers-2'>Response Headers</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Header</th>
+<th>Type</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>X-Total-Count</td>
+<td>integer</td>
+<td></td>
+<td>Total entries</td>
+</tr>
+</tbody></table>
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
@@ -7383,6 +7421,24 @@ ApiKey, JWTAuth
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.1">Internal Server Error</a></td>
 <td>Internal Server Error</td>
 <td><a href="#schemaerror">Error</a></td>
+</tr>
+</tbody></table>
+<h3 id='response-headers-3'>Response Headers</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Header</th>
+<th>Type</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>X-Total-Count</td>
+<td>integer</td>
+<td></td>
+<td>Total entries</td>
 </tr>
 </tbody></table>
 
@@ -9595,6 +9651,24 @@ ApiKey, JWTAuth
 <td><a href="#schemaerror">Error</a></td>
 </tr>
 </tbody></table>
+<h3 id='response-headers-4'>Response Headers</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Header</th>
+<th>Type</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>X-Total-Count</td>
+<td>integer</td>
+<td></td>
+<td>Total entries</td>
+</tr>
+</tbody></table>
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
@@ -11532,6 +11606,24 @@ ApiKey, JWTAuth
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.1">Internal Server Error</a></td>
 <td>Internal Server Error</td>
 <td><a href="#schemaerror">Error</a></td>
+</tr>
+</tbody></table>
+<h3 id='response-headers-5'>Response Headers</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Header</th>
+<th>Type</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>X-Total-Count</td>
+<td>integer</td>
+<td></td>
+<td>Total entries</td>
 </tr>
 </tbody></table>
 
