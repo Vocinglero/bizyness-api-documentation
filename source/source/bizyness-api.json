@@ -815,7 +815,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/InvoiceList"
+                  "$ref" : "#/components/schemas/CreditNoteBody"
                 }
               }
             }
@@ -5292,6 +5292,17 @@
           "draft" : {
             "size" : 5,
             "amount" : 19.01
+          }
+        }
+      },
+      "CreditNoteList" : {
+        "type" : "object",
+        "properties" : {
+          "credit_notes" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Invoice"
+            }
           }
         }
       },
