@@ -811,7 +811,7 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "List of credit notes",
+            "description" : "List of payments",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -866,7 +866,7 @@
       },
       "post" : {
         "tags" : [ "Invoice" ],
-        "summary" : "Create a credit note",
+        "summary" : "Create a an invoice",
         "parameters" : [ {
           "name" : "id",
           "in" : "path",
