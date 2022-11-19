@@ -2481,7 +2481,7 @@
             "example" : 20
           },
           "type" : {
-            "type" : "number",
+            "type" : "integer",
             "example" : 0
           },
           "taxes_included" : {
@@ -2562,19 +2562,19 @@
             "example" : 1656540000000
           },
           "distance_sales_amount" : {
-            "type" : "integer",
+            "type" : "number",
             "example" : 1235
           },
           "services_amount" : {
-            "type" : "integer",
+            "type" : "number",
             "example" : 554
           },
           "other_services_amount" : {
-            "type" : "integer",
+            "type" : "number",
             "example" : 787
           },
           "estimate" : {
-            "type" : "integer",
+            "type" : "number",
             "example" : 457
           }
         }
@@ -2583,19 +2583,19 @@
         "type" : "object",
         "properties" : {
           "margin" : {
-            "type" : "integer",
+            "type" : "number",
             "example" : 32483
           },
           "incomes" : {
-            "type" : "integer",
+            "type" : "number",
             "example" : 6013
           },
           "expenses" : {
-            "type" : "integer",
+            "type" : "number",
             "example" : 214
           },
           "variation" : {
-            "type" : "integer",
+            "type" : "number",
             "example" : 10.3
           }
         }
@@ -2632,13 +2632,13 @@
             "type" : "integer"
           },
           "margin" : {
-            "type" : "integer"
+            "type" : "number"
           },
           "incomes" : {
-            "type" : "integer"
+            "type" : "number"
           },
           "expenses" : {
-            "type" : "integer"
+            "type" : "number"
           }
         }
       },
@@ -2646,13 +2646,13 @@
         "type" : "object",
         "properties" : {
           "amount" : {
-            "type" : "integer"
+            "type" : "number"
           },
           "vat_threshold" : {
-            "type" : "integer"
+            "type" : "number"
           },
           "micro_threshold" : {
-            "type" : "integer"
+            "type" : "number"
           }
         }
       },
@@ -2738,7 +2738,7 @@
         "type" : "object",
         "properties" : {
           "amount" : {
-            "type" : "integer",
+            "type" : "number",
             "example" : 123.21
           },
           "currency" : {
@@ -2980,7 +2980,7 @@
         "type" : "object",
         "properties" : {
           "balance" : {
-            "type" : "integer",
+            "type" : "number",
             "example" : 3214
           },
           "transactions" : {
@@ -3077,6 +3077,15 @@
           "total_excluding_taxes" : {
             "type" : "number",
             "example" : 98.12
+          }
+        }
+      },
+      "BillOfSaleDates" : {
+        "type" : "object",
+        "properties" : {
+          "date" : {
+            "type" : "integer",
+            "example" : 1566423220992
           }
         }
       },
@@ -3431,7 +3440,7 @@
             "example" : "Facebook ads"
           },
           "amount" : {
-            "type" : "integer",
+            "type" : "number",
             "example" : 52.04
           }
         }
@@ -3445,6 +3454,8 @@
           "$ref" : "#/components/schemas/BillOfSaleEvents"
         }, {
           "$ref" : "#/components/schemas/BillOfSaleAmounts"
+        }, {
+          "$ref" : "#/components/schemas/BillOfSaleDates"
         }, {
           "type" : "object",
           "properties" : {
@@ -3587,35 +3598,35 @@
               "type" : "boolean"
             },
             "creation_date" : {
-              "type" : "number",
+              "type" : "integer",
               "example" : 1566493220992
             },
             "vat_liable" : {
               "type" : "boolean"
             },
             "vat_liability_date" : {
-              "type" : "number",
+              "type" : "integer",
               "example" : 1566493220992
             },
             "oss_liable" : {
               "type" : "boolean"
             },
             "oss_liability_date" : {
-              "type" : "number",
+              "type" : "integer",
               "example" : 1566493220992
             },
             "oss_threshold_exceeded" : {
               "type" : "boolean"
             },
             "oss_threshold_exceeding_date" : {
-              "type" : "number",
+              "type" : "integer",
               "example" : 1566493220992
             },
             "ioss_liable" : {
               "type" : "boolean"
             },
             "ioss_liability_date" : {
-              "type" : "number",
+              "type" : "integer",
               "example" : 1566493220992
             }
           }
