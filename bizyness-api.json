@@ -3459,9 +3459,9 @@
             "attachments" : {
               "type" : "array",
               "items" : {
-                "type" : "string",
-                "example" : [ "myfile1.png", "mydocument.pdf" ]
-              }
+                "type" : "string"
+              },
+              "example" : [ "myfile1.png", "mydocument.pdf" ]
             },
             "client_address" : {
               "$ref" : "#/components/schemas/ContactAddress"
