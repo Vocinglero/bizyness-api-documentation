@@ -815,7 +815,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/CreditNoteBody"
+                  "$ref" : "#/components/schemas/CreditNoteList"
                 }
               }
             }
@@ -4858,7 +4858,7 @@
             "type" : "string",
             "example" : "Apple"
           },
-          "origin_country" : {
+          "origin_country_code" : {
             "type" : "string",
             "example" : "FR"
           },
@@ -5615,7 +5615,7 @@
               "discount_amount" : 10,
               "discount_type" : "percentage",
               "tax_rate" : 20,
-              "origin_country" : "FR",
+              "origin_country_code" : "FR",
               "second_hand_good" : false
             }, {
               "sku" : "AX456",
@@ -5628,7 +5628,7 @@
               "discount_amount" : 0,
               "discount_type" : "percentage",
               "tax_rate" : 20,
-              "origin_country" : "FR",
+              "origin_country_code" : "FR",
               "second_hand_good" : false
             } ],
             "items" : {
