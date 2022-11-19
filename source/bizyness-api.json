@@ -412,7 +412,7 @@
         }
       }
     },
-    "/invoices/{id}/creditNote" : {
+    "/invoices/{id}/creditNotes" : {
       "parameters" : [ {
         "name" : "id",
         "in" : "path",
@@ -423,6 +423,31 @@
           "example" : "636945e14ce97a4c1c561885"
         }
       } ],
+      "get" : {
+        "tags" : [ "Invoice" ],
+        "summary" : "Retrieve credit notes",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/InvoiceList"
+                }
+              }
+            },
+            "description" : "List of payments"
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      },
       "post" : {
         "tags" : [ "Invoice" ],
         "summary" : "Cancel an invoice",
