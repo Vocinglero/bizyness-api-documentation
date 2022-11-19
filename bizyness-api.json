@@ -412,7 +412,7 @@
         }
       }
     },
-    "/invoices/{id}/cancel" : {
+    "/invoices/{id}/creditNote" : {
       "parameters" : [ {
         "name" : "id",
         "in" : "path",
@@ -426,6 +426,16 @@
       "post" : {
         "tags" : [ "Invoice" ],
         "summary" : "Cancel an invoice",
+        "requestBody" : {
+          "required" : true,
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/InvoiceBody"
+              }
+            }
+          }
+        },
         "responses" : {
           "200" : {
             "content" : {
