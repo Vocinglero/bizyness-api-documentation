@@ -319,7 +319,7 @@
             "example" : "draft"
           }
         }, {
-          "name" : "client_id",
+          "name" : "client",
           "in" : "query",
           "description" : "Filter invoices by client",
           "required" : false,
@@ -330,7 +330,7 @@
             "example" : "5d5eca258126ab647499f9bf"
           }
         }, {
-          "name" : "activity_id",
+          "name" : "activity",
           "in" : "query",
           "description" : "Filter invoices by activity",
           "required" : false,
@@ -1538,7 +1538,7 @@
             "type" : "integer"
           }
         }, {
-          "name" : "client_id",
+          "name" : "client",
           "in" : "query",
           "description" : "Filter revenue by client",
           "required" : false,
@@ -1605,7 +1605,7 @@
             "type" : "integer"
           }
         }, {
-          "name" : "client_id",
+          "name" : "client",
           "in" : "query",
           "description" : "Filter revenue by client",
           "required" : false,
