@@ -3050,11 +3050,7 @@
                 "values" : {
                   "type" : "array",
                   "items" : {
-                    "oneOf" : [ {
-                      "type" : "string"
-                    }, {
-                      "type" : "integer"
-                    } ]
+                    "type" : "string"
                   }
                 }
               }
@@ -3062,7 +3058,7 @@
             "example" : [ {
               "date" : 1566493220992,
               "key" : "invoice.history.paymentAdded",
-              "values" : [ "€", 23 ]
+              "values" : [ "23.32", "€" ]
             }, {
               "date" : 1566423220992,
               "key" : "invoice.history.issued",
