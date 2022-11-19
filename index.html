@@ -331,6 +331,9 @@
                     <a href="#pagination" class="toc-h2 toc-link" data-title="Pagination">Pagination</a>
                   </li>
                   <li>
+                    <a href="#sorting" class="toc-h2 toc-link" data-title="Sorting">Sorting</a>
+                  </li>
+                  <li>
                     <a href="#put-patch-methods" class="toc-h2 toc-link" data-title="PUT/PATCH methods">PUT/PATCH methods</a>
                   </li>
                   <li>
@@ -771,15 +774,21 @@
 
 <p>A 500 Internal Server Error response means that an error happened on the server. This can mean that the request is not valid, such as if you try to delete or edit a collection that does not exist, or if the API otherwise can&#39;t do what you requested. It can also mean a temporary problem with the API. Check your request and try again or contact us.</p>
 <h2 id='pagination'>Pagination</h2>
-<p>Requests that return multiple items will be paginated to 100 items by default. Alternatively the items per page can be specified with the <code>?limit</code> parameter:</p>
+<p>Requests that return multiple items will be restricted to 100 items by default. Alternatively the items per page can be specified with the <code>limit</code> parameter:</p>
 
 <p><code>GET /invoices?limit=200</code></p>
 
-<p>You can specify further pages with the <code>?page</code> parameter:</p>
+<p>The (zero-based) <code>offset</code> query parameter is used to exclude from a response the first N items of a resource collection.</p>
 
-<p><code>GET /invoices?page=2</code></p>
+<p><code>GET /invoices?offset=10</code></p>
 
-<p>Page number is 1-based and omitting the <code>?page</code> parameter will return the first page.</p>
+<p>You can combine the <code>limit</code> and the <code>offset</code> parameters to request a particular set of items. Note that the offset option is applied before the limit option, regardless of its position in the request.</p>
+<h2 id='sorting'>Sorting</h2>
+<p>Resources returned can be sorted using <code>sort</code> parameter.</p>
+
+<p><code>GET /invoices?sort=+name,-subject</code></p>
+
+<p>Attributes used in the <code>sort</code> parameter must be part of the requested resource. If multiple attributes are sorted they must be separated by a comma (,). The order of each attribute must be set using either + (ascending) or - (descending). If no sign is set, the default ordering is ascending.</p>
 <h2 id='put-patch-methods'>PUT/PATCH methods</h2>
 <p>PUT and PATCH requests are used to update objects identified in the requests&#39; paths:</p>
 
@@ -1623,18 +1632,18 @@ ApiKey, JWTAuth
 </tr>
 </thead><tbody>
 <tr>
-<td>page</td>
+<td>offset</td>
 <td>query</td>
 <td>integer</td>
 <td>false</td>
-<td>The page of results to return</td>
+<td>The (zero-based) offset of the first item returned in the collection. In a zero-based offset 0 is a correct value.</td>
 </tr>
 <tr>
 <td>limit</td>
 <td>query</td>
 <td>integer</td>
 <td>false</td>
-<td>The number of records to return in one request</td>
+<td>The maximum number of entries to return. If the value exceeds the maximum, then the maximum value will be used.</td>
 </tr>
 <tr>
 <td>keyword</td>
@@ -1648,14 +1657,21 @@ ApiKey, JWTAuth
 <td>query</td>
 <td>integer</td>
 <td>false</td>
-<td>Filter invoices created at or after date</td>
+<td>Filter records created at or after date</td>
 </tr>
 <tr>
 <td>date_max</td>
 <td>query</td>
 <td>integer</td>
 <td>false</td>
-<td>Filter invoices created at or before date</td>
+<td>Filter records created at or before date</td>
+</tr>
+<tr>
+<td>sort</td>
+<td>query</td>
+<td>string</td>
+<td>false</td>
+<td>Sort records by attributes</td>
 </tr>
 <tr>
 <td>status</td>
@@ -6047,18 +6063,25 @@ ApiKey, JWTAuth
 </tr>
 </thead><tbody>
 <tr>
-<td>page</td>
+<td>offset</td>
 <td>query</td>
 <td>integer</td>
 <td>false</td>
-<td>The page of results to return</td>
+<td>The (zero-based) offset of the first item returned in the collection. In a zero-based offset 0 is a correct value.</td>
 </tr>
 <tr>
 <td>limit</td>
 <td>query</td>
 <td>integer</td>
 <td>false</td>
-<td>The number of records to return in one request</td>
+<td>The maximum number of entries to return. If the value exceeds the maximum, then the maximum value will be used.</td>
+</tr>
+<tr>
+<td>sort</td>
+<td>query</td>
+<td>string</td>
+<td>false</td>
+<td>Sort records by attributes</td>
 </tr>
 </tbody></table>
 
@@ -7231,18 +7254,18 @@ ApiKey, JWTAuth
 </tr>
 </thead><tbody>
 <tr>
-<td>page</td>
+<td>offset</td>
 <td>query</td>
 <td>integer</td>
 <td>false</td>
-<td>The page of results to return</td>
+<td>The (zero-based) offset of the first item returned in the collection. In a zero-based offset 0 is a correct value.</td>
 </tr>
 <tr>
 <td>limit</td>
 <td>query</td>
 <td>integer</td>
 <td>false</td>
-<td>The number of records to return in one request</td>
+<td>The maximum number of entries to return. If the value exceeds the maximum, then the maximum value will be used.</td>
 </tr>
 <tr>
 <td>keyword</td>
@@ -7250,6 +7273,13 @@ ApiKey, JWTAuth
 <td>string</td>
 <td>false</td>
 <td>The keyword to search for</td>
+</tr>
+<tr>
+<td>sort</td>
+<td>query</td>
+<td>string</td>
+<td>false</td>
+<td>Sort records by attributes</td>
 </tr>
 </tbody></table>
 
@@ -9460,18 +9490,25 @@ ApiKey, JWTAuth
 <td>The keyword to search for</td>
 </tr>
 <tr>
-<td>page</td>
+<td>offset</td>
 <td>query</td>
 <td>integer</td>
 <td>false</td>
-<td>The page of results to return</td>
+<td>The (zero-based) offset of the first item returned in the collection. In a zero-based offset 0 is a correct value.</td>
 </tr>
 <tr>
 <td>limit</td>
 <td>query</td>
 <td>integer</td>
 <td>false</td>
-<td>The number of records to return in one request</td>
+<td>The maximum number of entries to return. If the value exceeds the maximum, then the maximum value will be used.</td>
+</tr>
+<tr>
+<td>sort</td>
+<td>query</td>
+<td>string</td>
+<td>false</td>
+<td>Sort records by attributes</td>
 </tr>
 </tbody></table>
 
@@ -11169,18 +11206,18 @@ ApiKey, JWTAuth
 </tr>
 </thead><tbody>
 <tr>
-<td>page</td>
+<td>offset</td>
 <td>query</td>
 <td>integer</td>
 <td>false</td>
-<td>The page of results to return</td>
+<td>The (zero-based) offset of the first item returned in the collection. In a zero-based offset 0 is a correct value.</td>
 </tr>
 <tr>
 <td>limit</td>
 <td>query</td>
 <td>integer</td>
 <td>false</td>
-<td>The number of records to return in one request</td>
+<td>The maximum number of entries to return. If the value exceeds the maximum, then the maximum value will be used.</td>
 </tr>
 </tbody></table>
 
@@ -11401,18 +11438,25 @@ ApiKey, JWTAuth
 </tr>
 </thead><tbody>
 <tr>
-<td>page</td>
+<td>offset</td>
 <td>query</td>
 <td>integer</td>
 <td>false</td>
-<td>The page of results to return</td>
+<td>The (zero-based) offset of the first item returned in the collection. In a zero-based offset 0 is a correct value.</td>
 </tr>
 <tr>
 <td>limit</td>
 <td>query</td>
 <td>integer</td>
 <td>false</td>
-<td>The number of records to return in one request</td>
+<td>The maximum number of entries to return. If the value exceeds the maximum, then the maximum value will be used.</td>
+</tr>
+<tr>
+<td>sort</td>
+<td>query</td>
+<td>string</td>
+<td>false</td>
+<td>Sort records by attributes</td>
 </tr>
 </tbody></table>
 
