@@ -3766,6 +3766,102 @@
         }
       }
     },
+    "/clients/top" : {
+      "get" : {
+        "tags" : [ "Client" ],
+        "summary" : "List top clients",
+        "parameters" : [ {
+          "name" : "offset",
+          "in" : "query",
+          "description" : "The (zero-based) offset of the first item returned in the collection. In a zero-based offset 0 is a correct value.",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "minimum" : 0,
+            "type" : "integer",
+            "default" : 0
+          }
+        }, {
+          "name" : "limit",
+          "in" : "query",
+          "description" : "The maximum number of entries to return. If the value exceeds the maximum, then the maximum value will be used.",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "maximum" : 250,
+            "minimum" : 1,
+            "type" : "integer",
+            "default" : 100
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Return the list of clients sorting by the number of time they have been billed, in descending order",
+            "headers" : {
+              "X-Total-Count" : {
+                "description" : "Total entries",
+                "style" : "simple",
+                "explode" : false,
+                "schema" : {
+                  "type" : "integer"
+                }
+              }
+            },
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ClientList"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 500,
+                  "message" : "Internal server error"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 401,
+                  "message" : "Unauthorized"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "The specified resource was not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 404,
+                  "message" : "Resource not found"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/clients/{id}/attachments" : {
       "post" : {
         "tags" : [ "Client" ],
