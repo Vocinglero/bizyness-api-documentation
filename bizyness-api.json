@@ -3362,6 +3362,9 @@
           },
           "disbursement_fees" : {
             "type" : "boolean"
+          },
+          "article_id" : {
+            "type" : "string"
           }
         }
       },
@@ -3372,7 +3375,7 @@
             "type" : "string",
             "example" : "EUR"
           },
-          "is_draft" : {
+          "draft" : {
             "type" : "boolean"
           },
           "payment_term" : {
@@ -3441,7 +3444,9 @@
               "discount_type" : "percentage",
               "tax_rate" : 20,
               "origin_country_code" : "FR",
-              "second_hand_good" : false
+              "second_hand_good" : false,
+              "disbursement_fees" : false,
+              "article_id" : "5d5efds258126ab647499f9bf"
             }, {
               "sku" : "AX456",
               "description" : "Logo with 3 colors",
@@ -3454,7 +3459,9 @@
               "discount_type" : "percentage",
               "tax_rate" : 20,
               "origin_country_code" : "FR",
-              "second_hand_good" : false
+              "second_hand_good" : false,
+              "disbursement_fees" : false,
+              "article_id" : "5d5aaaa451ab647499f9bf"
             } ]
           },
           "lines_groups" : {
