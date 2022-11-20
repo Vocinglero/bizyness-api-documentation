@@ -5184,7 +5184,7 @@
             "type" : "string",
             "example" : "My activity"
           },
-          "is_default" : {
+          "default" : {
             "type" : "boolean"
           }
         }
@@ -5635,6 +5635,9 @@
             "type" : "string"
           },
           "second_hand_good" : {
+            "type" : "boolean"
+          },
+          "disbursement_fees" : {
             "type" : "boolean"
           }
         }
