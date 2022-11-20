@@ -1907,6 +1907,46 @@
         }
       }
     },
+    "/clients/top" : {
+      "get" : {
+        "tags" : [ "Client" ],
+        "summary" : "List top clients",
+        "parameters" : [ {
+          "$ref" : "#/components/parameters/OffsetParam"
+        }, {
+          "$ref" : "#/components/parameters/LimitParam"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Return the list of clients sorting by the number of time they have been billed, in descending order",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ClientList"
+                }
+              }
+            },
+            "headers" : {
+              "X-Total-Count" : {
+                "schema" : {
+                  "type" : "integer"
+                },
+                "description" : "Total entries"
+              }
+            }
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      }
+    },
     "/clients/{id}/attachments" : {
       "parameters" : [ {
         "name" : "id",
