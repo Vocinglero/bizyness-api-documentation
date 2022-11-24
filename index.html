@@ -657,6 +657,9 @@
                     <a href="#tocS_NoteBody" class="toc-h2 toc-link" data-title="NoteBody">NoteBody</a>
                   </li>
                   <li>
+                    <a href="#tocS_TaxLiability" class="toc-h2 toc-link" data-title="TaxLiability">TaxLiability</a>
+                  </li>
+                  <li>
                     <a href="#tocS_PaymentMethod" class="toc-h2 toc-link" data-title="PaymentMethod">PaymentMethod</a>
                   </li>
                   <li>
@@ -18966,6 +18969,53 @@ ApiKey, JWTAuth
 </tr>
 </tbody></table>
 
+<h2 id="tocS_TaxLiability">TaxLiability</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemataxliability"></a>
+<a id="schema_TaxLiability"></a>
+<a id="tocStaxliability"></a>
+<a id="tocstaxliability"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"taxable_country_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FR"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"taxes_liable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tax_exemption_text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Article 138 CE/2008"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h3 id='properties-23'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>taxable_country_code</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>taxes_liable</td>
+<td>boolean</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>tax_exemption_text</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
 <h2 id="tocS_PaymentMethod">PaymentMethod</h2>
 
 <!-- backwards compatibility -->
@@ -18976,7 +19026,7 @@ ApiKey, JWTAuth
 <a id="tocspaymentmethod"></a></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">"bank_transfer"</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-23'>Properties</h3>
+</span></code></pre></div><h3 id='properties-24'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -19048,7 +19098,7 @@ ApiKey, JWTAuth
   </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-24'>Properties</h3>
+</span></code></pre></div><h3 id='properties-25'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -19105,7 +19155,7 @@ ApiKey, JWTAuth
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-25'>Properties</h3>
+</span></code></pre></div><h3 id='properties-26'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -19294,7 +19344,7 @@ ApiKey, JWTAuth
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-26'>Properties</h3>
+</span></code></pre></div><h3 id='properties-27'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -19477,7 +19527,7 @@ ApiKey, JWTAuth
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-27'>Properties</h3>
+</span></code></pre></div><h3 id='properties-28'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -19549,7 +19599,7 @@ ApiKey, JWTAuth
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-28'>Properties</h3>
+</span></code></pre></div><h3 id='properties-29'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -19590,7 +19640,7 @@ ApiKey, JWTAuth
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-29'>Properties</h3>
+</span></code></pre></div><h3 id='properties-30'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -19627,7 +19677,7 @@ ApiKey, JWTAuth
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-30'>Properties</h3>
+</span></code></pre></div><h3 id='properties-31'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -19665,7 +19715,7 @@ ApiKey, JWTAuth
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-31'>Properties</h3>
+</span></code></pre></div><h3 id='properties-32'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -19718,7 +19768,7 @@ ApiKey, JWTAuth
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-32'>Properties</h3>
+</span></code></pre></div><h3 id='properties-33'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -19758,7 +19808,7 @@ ApiKey, JWTAuth
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-33'>Properties</h3>
+</span></code></pre></div><h3 id='properties-34'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -19798,7 +19848,7 @@ ApiKey, JWTAuth
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-34'>Properties</h3>
+</span></code></pre></div><h3 id='properties-35'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -19829,7 +19879,7 @@ ApiKey, JWTAuth
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d5eca258126ab647499f9bf"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-35'>Properties</h3>
+</span></code></pre></div><h3 id='properties-36'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -19878,7 +19928,7 @@ ApiKey, JWTAuth
   </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"202212345"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-36'>Properties</h3>
+</span></code></pre></div><h3 id='properties-37'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -19967,7 +20017,7 @@ ApiKey, JWTAuth
   </span><span class="nl">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-37'>Properties</h3>
+</span></code></pre></div><h3 id='properties-38'>Properties</h3>
 <p>allOf</p>
 
 <table><thead>
@@ -20059,7 +20109,7 @@ ApiKey, JWTAuth
   </span><span class="nl">"country_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FR"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-38'>Properties</h3>
+</span></code></pre></div><h3 id='properties-39'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -20131,7 +20181,7 @@ ApiKey, JWTAuth
   </span><span class="nl">"article_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-39'>Properties</h3>
+</span></code></pre></div><h3 id='properties-40'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -20373,7 +20423,7 @@ ApiKey, JWTAuth
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-40'>Properties</h3>
+</span></code></pre></div><h3 id='properties-41'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -20618,7 +20668,7 @@ ApiKey, JWTAuth
   </span><span class="nl">"passsword"</span><span class="p">:</span><span class="w"> </span><span class="s2">"password123!"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-41'>Properties</h3>
+</span></code></pre></div><h3 id='properties-42'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -20656,7 +20706,7 @@ ApiKey, JWTAuth
   </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"johndoe@google.com"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-42'>Properties</h3>
+</span></code></pre></div><h3 id='properties-43'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -20689,7 +20739,7 @@ ApiKey, JWTAuth
   </span><span class="nl">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Please find attached your invoice"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-43'>Properties</h3>
+</span></code></pre></div><h3 id='properties-44'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -20743,7 +20793,7 @@ ApiKey, JWTAuth
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-44'>Properties</h3>
+</span></code></pre></div><h3 id='properties-45'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -20876,7 +20926,7 @@ ApiKey, JWTAuth
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-45'>Properties</h3>
+</span></code></pre></div><h3 id='properties-46'>Properties</h3>
 <p>allOf</p>
 
 <table><thead>
@@ -20966,7 +21016,7 @@ ApiKey, JWTAuth
   </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">52.04</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-46'>Properties</h3>
+</span></code></pre></div><h3 id='properties-47'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -21137,7 +21187,7 @@ ApiKey, JWTAuth
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-47'>Properties</h3>
+</span></code></pre></div><h3 id='properties-48'>Properties</h3>
 <p>allOf</p>
 
 <table><thead>
@@ -21288,7 +21338,7 @@ ApiKey, JWTAuth
   </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john@google.com"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-48'>Properties</h3>
+</span></code></pre></div><h3 id='properties-49'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -21338,7 +21388,7 @@ ApiKey, JWTAuth
   </span><span class="nl">"subscription_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"trial"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-49'>Properties</h3>
+</span></code></pre></div><h3 id='properties-50'>Properties</h3>
 <p>allOf</p>
 
 <table><thead>
@@ -21482,7 +21532,7 @@ ApiKey, JWTAuth
   </span><span class="nl">"ioss_liability_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1566493220992</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-50'>Properties</h3>
+</span></code></pre></div><h3 id='properties-51'>Properties</h3>
 <p>allOf</p>
 
 <table><thead>
@@ -21757,7 +21807,7 @@ ApiKey, JWTAuth
   </span><span class="nl">"logo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"logo-company-123456789.png"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-51'>Properties</h3>
+</span></code></pre></div><h3 id='properties-52'>Properties</h3>
 <p>allOf</p>
 
 <table><thead>

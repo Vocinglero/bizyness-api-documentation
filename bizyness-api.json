@@ -3083,6 +3083,22 @@
           }
         }
       },
+      "TaxLiability" : {
+        "type" : "object",
+        "properties" : {
+          "taxable_country_code" : {
+            "type" : "string",
+            "example" : "FR"
+          },
+          "taxes_liable" : {
+            "type" : "boolean"
+          },
+          "tax_exemption_text" : {
+            "type" : "string",
+            "example" : "Article 138 CE/2008"
+          }
+        }
+      },
       "PaymentMethod" : {
         "enum" : [ "bank_transfer", "cash", "check", "cesu", "direct_debit", "credit_card", "paypal", "other" ],
         "type" : "string"
