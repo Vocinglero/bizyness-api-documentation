@@ -2468,11 +2468,11 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Invoice"
+                  "$ref" : "#/components/schemas/TaxLiability"
                 }
               }
             },
-            "description" : "Created invoice"
+            "description" : "Tax Liability"
           },
           "500" : {
             "$ref" : "#/components/responses/InternalServerError"
