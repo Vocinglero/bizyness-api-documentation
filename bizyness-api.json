@@ -51,6 +51,9 @@
     "name" : "Company",
     "description" : "Managing your account"
   }, {
+    "name" : "Tax",
+    "description" : "Managing your taxes"
+  }, {
     "name" : "Miscellaneous",
     "description" : "Transverval ressources"
   } ],
@@ -2433,6 +2436,43 @@
                 }
               }
             }
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      }
+    },
+    "/taxes/check_liability" : {
+      "post" : {
+        "tags" : [ "Tax" ],
+        "summary" : "Get applicable taxes",
+        "requestBody" : {
+          "required" : true,
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/InvoiceBody"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Invoice"
+                }
+              }
+            },
+            "description" : "Created invoice"
           },
           "500" : {
             "$ref" : "#/components/responses/InternalServerError"
