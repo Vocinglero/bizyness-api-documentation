@@ -3094,8 +3094,17 @@
             "type" : "boolean"
           },
           "tax_exemption_text" : {
-            "type" : "string",
-            "example" : "Article 138 CE/2008"
+            "type" : "object",
+            "properties" : {
+              "fr" : {
+                "type" : "string",
+                "example" : "Article 138 CE/2008"
+              },
+              "en" : {
+                "type" : "string",
+                "example" : "Article 138 CE/2008"
+              }
+            }
           }
         }
       },
