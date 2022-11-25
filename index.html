@@ -17522,14 +17522,15 @@ ApiKey, JWTAuth
 <p>200 Response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"currencies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="nl">"vat_rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EUR"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"€"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Euros"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Euros"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
+      </span><span class="nl">"standard_rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"reduced_rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="mi">13</span><span class="p">,</span><span class="w">
+        </span><span class="mi">10</span><span class="p">,</span><span class="w">
+        </span><span class="mi">0</span><span class="w">
+      </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -17564,7 +17565,7 @@ ApiKey, JWTAuth
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Return the list of VAT rates</td>
-<td><a href="#schemacurrencylist">CurrencyList</a></td>
+<td><a href="#schemavatrateslist">VatRatesList</a></td>
 </tr>
 <tr>
 <td>401</td>
@@ -18020,11 +18021,9 @@ ApiKey, JWTAuth
   </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EUR"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"standard_rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
   </span><span class="nl">"reduced_rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">[</span><span class="w">
-      </span><span class="mi">13</span><span class="p">,</span><span class="w">
-      </span><span class="mi">10</span><span class="p">,</span><span class="w">
-      </span><span class="mi">0</span><span class="w">
-    </span><span class="p">]</span><span class="w">
+    </span><span class="mi">13</span><span class="p">,</span><span class="w">
+    </span><span class="mi">10</span><span class="p">,</span><span class="w">
+    </span><span class="mi">0</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
@@ -20028,11 +20027,9 @@ ApiKey, JWTAuth
       </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EUR"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"standard_rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
       </span><span class="nl">"reduced_rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">[</span><span class="w">
-          </span><span class="mi">13</span><span class="p">,</span><span class="w">
-          </span><span class="mi">10</span><span class="p">,</span><span class="w">
-          </span><span class="mi">0</span><span class="w">
-        </span><span class="p">]</span><span class="w">
+        </span><span class="mi">13</span><span class="p">,</span><span class="w">
+        </span><span class="mi">10</span><span class="p">,</span><span class="w">
+        </span><span class="mi">0</span><span class="w">
       </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
