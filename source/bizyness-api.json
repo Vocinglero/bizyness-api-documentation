@@ -901,7 +901,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/VatRatesList"
+                  "$ref" : "#/components/schemas/PaymentMethodsList"
                 }
               }
             }
