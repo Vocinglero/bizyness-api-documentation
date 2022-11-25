@@ -2809,7 +2809,7 @@
         "properties" : {
           "code" : {
             "type" : "string",
-            "example" : "FR"
+            "example" : "cash"
           },
           "label" : {
             "type" : "object",
