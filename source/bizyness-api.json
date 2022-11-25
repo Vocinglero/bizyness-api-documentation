@@ -877,7 +877,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/CurrencyList"
+                  "$ref" : "#/components/schemas/VatRatesList"
                 }
               }
             }
@@ -2774,9 +2774,9 @@
           "reduced_rates" : {
             "type" : "array",
             "items" : {
-              "type" : "number",
-              "example" : [ 13, 10, 0 ]
-            }
+              "type" : "number"
+            },
+            "example" : [ 13, 10, 0 ]
           }
         }
       },
