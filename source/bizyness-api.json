@@ -925,7 +925,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/PaymentMethodsList"
+                  "$ref" : "#/components/schemas/DocumentLanguagesList"
                 }
               }
             }
@@ -2866,7 +2866,7 @@
               },
               "en" : {
                 "type" : "string",
-                "example" : "Cash"
+                "example" : "French"
               }
             }
           }
@@ -3426,7 +3426,7 @@
           }
         }
       },
-      "DocumentLaguagesList" : {
+      "DocumentLanguagesList" : {
         "type" : "object",
         "properties" : {
           "languages" : {
