@@ -867,6 +867,30 @@
         }
       }
     },
+    "/vat_rates" : {
+      "get" : {
+        "tags" : [ "Miscellaneous" ],
+        "summary" : "List all VAT rates",
+        "responses" : {
+          "200" : {
+            "description" : "Return the list of VAT rates",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/CurrencyList"
+                }
+              }
+            }
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          }
+        }
+      }
+    },
     "/reports/revenue/monthly" : {
       "parameters" : [ {
         "in" : "query",
@@ -2736,6 +2760,26 @@
           }
         }
       },
+      "VatRate" : {
+        "type" : "object",
+        "properties" : {
+          "code" : {
+            "type" : "string",
+            "example" : "EUR"
+          },
+          "standard_rate" : {
+            "type" : "number",
+            "example" : 20
+          },
+          "reduced_rates" : {
+            "type" : "array",
+            "items" : {
+              "type" : "number",
+              "example" : [ ]
+            }
+          }
+        }
+      },
       "Country" : {
         "type" : "object",
         "properties" : {
@@ -3264,6 +3308,17 @@
         "type" : "object",
         "properties" : {
           "currencies" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Currency"
+            }
+          }
+        }
+      },
+      "VatRatesList" : {
+        "type" : "object",
+        "properties" : {
+          "vat_rates" : {
             "type" : "array",
             "items" : {
               "$ref" : "#/components/schemas/Currency"
