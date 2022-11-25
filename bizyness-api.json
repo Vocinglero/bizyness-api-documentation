@@ -822,7 +822,7 @@
     "/countries" : {
       "get" : {
         "tags" : [ "Miscellaneous" ],
-        "summary" : "List supported countries",
+        "summary" : "List of supported countries",
         "responses" : {
           "200" : {
             "description" : "Return the list of countries",
@@ -846,7 +846,7 @@
     "/currencies" : {
       "get" : {
         "tags" : [ "Miscellaneous" ],
-        "summary" : "List supported currencies",
+        "summary" : "List of supported currencies",
         "responses" : {
           "200" : {
             "description" : "Return the list of currencies",
@@ -870,7 +870,7 @@
     "/vat_rates" : {
       "get" : {
         "tags" : [ "Miscellaneous" ],
-        "summary" : "List supported VAT rates",
+        "summary" : "List of supported VAT rates",
         "responses" : {
           "200" : {
             "description" : "Return the list of VAT rates",
@@ -894,7 +894,7 @@
     "/payment_methods" : {
       "get" : {
         "tags" : [ "Miscellaneous" ],
-        "summary" : "List supported payment methods",
+        "summary" : "List of supported payment methods",
         "responses" : {
           "200" : {
             "description" : "Return the list of payment methods",
@@ -918,7 +918,7 @@
     "/languages" : {
       "get" : {
         "tags" : [ "Miscellaneous" ],
-        "summary" : "List supported languages",
+        "summary" : "List of supported languages",
         "responses" : {
           "200" : {
             "description" : "Return the list of languages",
@@ -926,6 +926,30 @@
               "application/json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/DocumentLanguagesList"
+                }
+              }
+            }
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          }
+        }
+      }
+    },
+    "/templates" : {
+      "get" : {
+        "tags" : [ "Miscellaneous" ],
+        "summary" : "List of supported templates",
+        "responses" : {
+          "200" : {
+            "description" : "Return the list of templates",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/DocumentTemplatesList"
                 }
               }
             }
@@ -3462,7 +3486,7 @@
       "DocumentTemplatesList" : {
         "type" : "object",
         "properties" : {
-          "languages" : {
+          "templates" : {
             "type" : "array",
             "items" : {
               "$ref" : "#/components/schemas/DocumentTemplate"
