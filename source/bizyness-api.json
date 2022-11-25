@@ -543,7 +543,7 @@
         }
       }
     },
-    "/invoices/{id}/attachments/{attachmentId}" : {
+    "/invoices/{id}/attachments/{attachmentIndex}" : {
       "parameters" : [ {
         "name" : "id",
         "in" : "path",
@@ -554,7 +554,7 @@
           "example" : "636945e14ce97a4c1c561885"
         }
       }, {
-        "name" : "attachmentId",
+        "name" : "attachmentIndex",
         "in" : "path",
         "description" : "Attachment index",
         "required" : true,
