@@ -3621,11 +3621,7 @@
             "example" : "Article 138 CE/2008"
           },
           "payment_methods" : {
-            "type" : "array",
-            "items" : {
-              "type" : "string"
-            },
-            "example" : [ "cash", "credit_card" ]
+            "$ref" : "#/components/schemas/PaymentMethod"
           }
         }
       },
