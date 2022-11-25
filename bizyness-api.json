@@ -3498,10 +3498,6 @@
           "draft" : {
             "type" : "boolean"
           },
-          "payment_term" : {
-            "type" : "integer",
-            "example" : 1
-          },
           "discount_amount" : {
             "type" : "number",
             "example" : 12.2
