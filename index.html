@@ -717,7 +717,7 @@
                     <a href="#tocS_PaymentMethodsList" class="toc-h2 toc-link" data-title="PaymentMethodsList">PaymentMethodsList</a>
                   </li>
                   <li>
-                    <a href="#tocS_DocumentLaguagesList" class="toc-h2 toc-link" data-title="DocumentLaguagesList">DocumentLaguagesList</a>
+                    <a href="#tocS_DocumentLanguagesList" class="toc-h2 toc-link" data-title="DocumentLanguagesList">DocumentLanguagesList</a>
                   </li>
                   <li>
                     <a href="#tocS_CollectionId" class="toc-h2 toc-link" data-title="CollectionId">CollectionId</a>
@@ -17905,12 +17905,12 @@ ApiKey, JWTAuth
 <p>200 Response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"payment_methods"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="nl">"languages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cash"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fr"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Espèce"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cash"</span><span class="w">
+        </span><span class="nl">"fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Français"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"French"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
@@ -17946,7 +17946,7 @@ ApiKey, JWTAuth
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Return the list of languages</td>
-<td><a href="#schemapaymentmethodslist">PaymentMethodsList</a></td>
+<td><a href="#schemadocumentlanguageslist">DocumentLanguagesList</a></td>
 </tr>
 <tr>
 <td>401</td>
@@ -18509,7 +18509,7 @@ ApiKey, JWTAuth
   </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fr"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Français"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cash"</span><span class="w">
+    </span><span class="nl">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"French"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
@@ -20517,21 +20517,21 @@ ApiKey, JWTAuth
 </tr>
 </tbody></table>
 
-<h2 id="tocS_DocumentLaguagesList">DocumentLaguagesList</h2>
+<h2 id="tocS_DocumentLanguagesList">DocumentLanguagesList</h2>
 
 <!-- backwards compatibility -->
 
-<p><a id="schemadocumentlaguageslist"></a>
-<a id="schema_DocumentLaguagesList"></a>
-<a id="tocSdocumentlaguageslist"></a>
-<a id="tocsdocumentlaguageslist"></a></p>
+<p><a id="schemadocumentlanguageslist"></a>
+<a id="schema_DocumentLanguagesList"></a>
+<a id="tocSdocumentlanguageslist"></a>
+<a id="tocsdocumentlanguageslist"></a></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"languages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fr"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Français"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cash"</span><span class="w">
+        </span><span class="nl">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"French"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
