@@ -1030,7 +1030,7 @@
         }
       }
     },
-    "/invoices/{id}/attachments/{attachmentId}" : {
+    "/invoices/{id}/attachments/{attachmentIndex}" : {
       "get" : {
         "tags" : [ "Invoice" ],
         "summary" : "Download an attachment file",
@@ -1046,7 +1046,7 @@
             "example" : "636945e14ce97a4c1c561885"
           }
         }, {
-          "name" : "attachmentId",
+          "name" : "attachmentIndex",
           "in" : "path",
           "description" : "Attachment index",
           "required" : true,
@@ -1134,7 +1134,7 @@
             "example" : "636945e14ce97a4c1c561885"
           }
         }, {
-          "name" : "attachmentId",
+          "name" : "attachmentIndex",
           "in" : "path",
           "description" : "Attachment index",
           "required" : true,
@@ -5792,7 +5792,7 @@
       "ArticleList" : {
         "type" : "object",
         "properties" : {
-          "activities" : {
+          "articles" : {
             "type" : "array",
             "items" : {
               "$ref" : "#/components/schemas/Article"
