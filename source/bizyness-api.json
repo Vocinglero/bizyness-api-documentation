@@ -891,6 +891,30 @@
         }
       }
     },
+    "/payment_methods" : {
+      "get" : {
+        "tags" : [ "Miscellaneous" ],
+        "summary" : "List all support payment methods",
+        "responses" : {
+          "200" : {
+            "description" : "Return the list of payment methods",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/VatRatesList"
+                }
+              }
+            }
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          }
+        }
+      }
+    },
     "/reports/revenue/monthly" : {
       "parameters" : [ {
         "in" : "query",
@@ -2780,6 +2804,28 @@
           }
         }
       },
+      "PaymentMethod" : {
+        "type" : "object",
+        "properties" : {
+          "code" : {
+            "type" : "string",
+            "example" : "FR"
+          },
+          "label" : {
+            "type" : "object",
+            "properties" : {
+              "fr" : {
+                "type" : "string",
+                "example" : "Espèce"
+              },
+              "en" : {
+                "type" : "string",
+                "example" : "Cash"
+              }
+            }
+          }
+        }
+      },
       "Country" : {
         "type" : "object",
         "properties" : {
@@ -3013,7 +3059,8 @@
             "example" : "Client will provide the next payment tomorrow"
           },
           "method" : {
-            "$ref" : "#/components/schemas/PaymentMethod"
+            "type" : "string",
+            "example" : "cash"
           }
         }
       },
@@ -3151,10 +3198,6 @@
             }
           }
         }
-      },
-      "PaymentMethod" : {
-        "enum" : [ "bank_transfer", "cash", "check", "cesu", "direct_debit", "credit_card", "paypal", "other" ],
-        "type" : "string"
       },
       "ListSummaryItem" : {
         "type" : "object",
@@ -3322,6 +3365,17 @@
             "type" : "array",
             "items" : {
               "$ref" : "#/components/schemas/VatRate"
+            }
+          }
+        }
+      },
+      "PaymentMethodsList" : {
+        "type" : "object",
+        "properties" : {
+          "payment_methods" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/PaymentMethod"
             }
           }
         }
@@ -3619,7 +3673,7 @@
           "payment_methods" : {
             "type" : "array",
             "items" : {
-              "$ref" : "#/components/schemas/PaymentMethod"
+              "type" : "string"
             },
             "example" : [ "cash", "credit_card" ]
           }
