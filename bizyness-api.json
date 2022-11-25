@@ -3420,7 +3420,7 @@
       "ArticleList" : {
         "type" : "object",
         "properties" : {
-          "activities" : {
+          "articles" : {
             "type" : "array",
             "items" : {
               "$ref" : "#/components/schemas/Article"
