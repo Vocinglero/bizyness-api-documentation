@@ -56,6 +56,9 @@
     "name" : "Company",
     "description" : "Managing your account"
   }, {
+    "name" : "Tax",
+    "description" : "Managing your taxes"
+  }, {
     "name" : "Miscellaneous",
     "description" : "Transverval ressources"
   } ],
@@ -1658,6 +1661,52 @@
               "application/json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/CurrencyList"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 500,
+                  "message" : "Internal server error"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 401,
+                  "message" : "Unauthorized"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/vat_rates" : {
+      "get" : {
+        "tags" : [ "Miscellaneous" ],
+        "summary" : "List all VAT rates",
+        "responses" : {
+          "200" : {
+            "description" : "Return the list of VAT rates",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/VatRatesList"
                 }
               }
             }
@@ -4883,6 +4932,76 @@
           }
         }
       }
+    },
+    "/taxes/check_liability" : {
+      "post" : {
+        "tags" : [ "Tax" ],
+        "summary" : "Get applicable taxes",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/InvoiceBody"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Tax Liability",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/TaxLiability"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 500,
+                  "message" : "Internal server error"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 401,
+                  "message" : "Unauthorized"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "The specified resource was not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 404,
+                  "message" : "Resource not found"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components" : {
@@ -5014,6 +5133,26 @@
           },
           "label" : {
             "$ref" : "#/components/schemas/Currency_label"
+          }
+        }
+      },
+      "VatRate" : {
+        "type" : "object",
+        "properties" : {
+          "code" : {
+            "type" : "string",
+            "example" : "EUR"
+          },
+          "standard_rate" : {
+            "type" : "number",
+            "example" : 20
+          },
+          "reduced_rates" : {
+            "type" : "array",
+            "example" : [ 13, 10, 0 ],
+            "items" : {
+              "type" : "number"
+            }
           }
         }
       },
@@ -5334,6 +5473,21 @@
           }
         }
       },
+      "TaxLiability" : {
+        "type" : "object",
+        "properties" : {
+          "taxable_country_code" : {
+            "type" : "string",
+            "example" : "FR"
+          },
+          "taxes_liable" : {
+            "type" : "boolean"
+          },
+          "tax_exemption_text" : {
+            "$ref" : "#/components/schemas/TaxLiability_tax_exemption_text"
+          }
+        }
+      },
       "PaymentMethod" : {
         "type" : "string",
         "enum" : [ "bank_transfer", "cash", "check", "cesu", "direct_debit", "credit_card", "paypal", "other" ]
@@ -5493,6 +5647,17 @@
             "type" : "array",
             "items" : {
               "$ref" : "#/components/schemas/Currency"
+            }
+          }
+        }
+      },
+      "VatRatesList" : {
+        "type" : "object",
+        "properties" : {
+          "vat_rates" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/VatRate"
             }
           }
         }
@@ -5770,7 +5935,7 @@
             "type" : "array",
             "example" : [ "cash", "credit_card" ],
             "items" : {
-              "type" : "string"
+              "$ref" : "#/components/schemas/PaymentMethod"
             }
           }
         }
@@ -6157,6 +6322,19 @@
           }
         },
         "example" : "{\"distance_sales\":{\"amount\":1234,\"vat_threshold\":45121,\"micro_threshold\":98451},\"services\":{\"amount\":213,\"vat_threshold\":12015,\"micro_threshold\":35120}}"
+      },
+      "TaxLiability_tax_exemption_text" : {
+        "type" : "object",
+        "properties" : {
+          "fr" : {
+            "type" : "string",
+            "example" : "Article 138 CE/2008"
+          },
+          "en" : {
+            "type" : "string",
+            "example" : "Article 138 CE/2008"
+          }
+        }
       },
       "BillOfSaleAttributes_events" : {
         "type" : "object",
