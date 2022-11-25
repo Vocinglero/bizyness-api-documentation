@@ -2872,6 +2872,28 @@
           }
         }
       },
+      "DocumentTemplate" : {
+        "type" : "object",
+        "properties" : {
+          "code" : {
+            "type" : "string",
+            "example" : "paris"
+          },
+          "label" : {
+            "type" : "object",
+            "properties" : {
+              "fr" : {
+                "type" : "string",
+                "example" : "Paris"
+              },
+              "en" : {
+                "type" : "string",
+                "example" : "Paris"
+              }
+            }
+          }
+        }
+      },
       "Country" : {
         "type" : "object",
         "properties" : {
@@ -3433,6 +3455,17 @@
             "type" : "array",
             "items" : {
               "$ref" : "#/components/schemas/DocumentLanguage"
+            }
+          }
+        }
+      },
+      "DocumentTemplatesList" : {
+        "type" : "object",
+        "properties" : {
+          "languages" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/DocumentTemplate"
             }
           }
         }
