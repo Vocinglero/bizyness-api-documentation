@@ -2775,7 +2775,7 @@
             "type" : "array",
             "items" : {
               "type" : "number",
-              "example" : [ ]
+              "example" : [ 13, 10, 0 ]
             }
           }
         }
@@ -3321,7 +3321,7 @@
           "vat_rates" : {
             "type" : "array",
             "items" : {
-              "$ref" : "#/components/schemas/Currency"
+              "$ref" : "#/components/schemas/VatRate"
             }
           }
         }
