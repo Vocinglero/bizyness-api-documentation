@@ -3752,6 +3752,10 @@
               "type" : "integer",
               "example" : 1566493220992
             },
+            "due_date" : {
+              "type" : "integer",
+              "example" : 1656540000000
+            },
             "attachments" : {
               "type" : "array",
               "items" : {
