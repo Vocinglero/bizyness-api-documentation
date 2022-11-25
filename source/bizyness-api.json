@@ -822,7 +822,7 @@
     "/countries" : {
       "get" : {
         "tags" : [ "Miscellaneous" ],
-        "summary" : "List all countries",
+        "summary" : "List supported countries",
         "responses" : {
           "200" : {
             "description" : "Return the list of countries",
@@ -846,7 +846,7 @@
     "/currencies" : {
       "get" : {
         "tags" : [ "Miscellaneous" ],
-        "summary" : "List all currencies",
+        "summary" : "List supported currencies",
         "responses" : {
           "200" : {
             "description" : "Return the list of currencies",
@@ -870,7 +870,7 @@
     "/vat_rates" : {
       "get" : {
         "tags" : [ "Miscellaneous" ],
-        "summary" : "List all VAT rates",
+        "summary" : "List supported VAT rates",
         "responses" : {
           "200" : {
             "description" : "Return the list of VAT rates",
@@ -894,10 +894,34 @@
     "/payment_methods" : {
       "get" : {
         "tags" : [ "Miscellaneous" ],
-        "summary" : "List all support payment methods",
+        "summary" : "List supported payment methods",
         "responses" : {
           "200" : {
             "description" : "Return the list of payment methods",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/PaymentMethodsList"
+                }
+              }
+            }
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          }
+        }
+      }
+    },
+    "/languages" : {
+      "get" : {
+        "tags" : [ "Miscellaneous" ],
+        "summary" : "List supported languages",
+        "responses" : {
+          "200" : {
+            "description" : "Return the list of languages",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -2826,6 +2850,28 @@
           }
         }
       },
+      "DocumentLanguage" : {
+        "type" : "object",
+        "properties" : {
+          "code" : {
+            "type" : "string",
+            "example" : "fr"
+          },
+          "label" : {
+            "type" : "object",
+            "properties" : {
+              "fr" : {
+                "type" : "string",
+                "example" : "Français"
+              },
+              "en" : {
+                "type" : "string",
+                "example" : "Cash"
+              }
+            }
+          }
+        }
+      },
       "Country" : {
         "type" : "object",
         "properties" : {
@@ -3376,6 +3422,17 @@
             "type" : "array",
             "items" : {
               "$ref" : "#/components/schemas/PaymentMethod"
+            }
+          }
+        }
+      },
+      "DocumentLaguagesList" : {
+        "type" : "object",
+        "properties" : {
+          "languages" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/DocumentLanguage"
             }
           }
         }
