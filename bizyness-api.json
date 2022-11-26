@@ -3746,9 +3746,13 @@
             "enum" : [ "percentage", "fixed" ],
             "type" : "string"
           },
-          "rebate" : {
+          "rebate_rate" : {
             "type" : "number",
             "example" : 10
+          },
+          "late_penalty_rate" : {
+            "type" : "number",
+            "example" : 20
           },
           "activity_id" : {
             "type" : "string",
