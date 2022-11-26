@@ -6477,7 +6477,7 @@
               "type" : "string"
             }
           },
-          "document_ids" : {
+          "documents_ids" : {
             "type" : "array",
             "example" : [ "5d5aaaa451ab647499f9bf", "45aa451ab6499999f9bf" ],
             "items" : {
@@ -6554,7 +6554,7 @@
             "online_payment_enabled" : {
               "type" : "boolean"
             },
-            "payment_gateway_ids" : {
+            "payment_gateways_ids" : {
               "type" : "array",
               "example" : [ "5d5eca258126ab647499f9bf", "5b17da549a7feb695f703975" ],
               "items" : {
