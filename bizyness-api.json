@@ -57,6 +57,9 @@
     "name" : "Tax",
     "description" : "Managing your taxes"
   }, {
+    "name" : "Integration",
+    "description" : "Managing your integrations"
+  }, {
     "name" : "Miscellaneous",
     "description" : "Transverval ressources"
   } ],
@@ -2644,6 +2647,55 @@
           }
         }
       }
+    },
+    "/integrations" : {
+      "get" : {
+        "tags" : [ "Integration" ],
+        "summary" : "List all integrated services",
+        "parameters" : [ {
+          "$ref" : "#/components/parameters/OffsetParam"
+        }, {
+          "$ref" : "#/components/parameters/LimitParam"
+        }, {
+          "in" : "query",
+          "name" : "category",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "example" : "payment_method"
+          },
+          "description" : "Filter integrated services by their category"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Return the list of integrations",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/IntegrationList"
+                }
+              }
+            },
+            "headers" : {
+              "X-Total-Count" : {
+                "schema" : {
+                  "type" : "integer"
+                },
+                "description" : "Total entries"
+              }
+            }
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      }
     }
   },
   "components" : {
@@ -2939,6 +2991,27 @@
             }
           }
         }
+      },
+      "Integration" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/CollectionId"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "name" : {
+              "type" : "string",
+              "example" : "Compte Paypal"
+            },
+            "type" : {
+              "type" : "string",
+              "example" : "paypal"
+            },
+            "category" : {
+              "type" : "string",
+              "example" : "payment_gateway"
+            }
+          }
+        } ]
       },
       "URSSAFReportStatement" : {
         "type" : "object",
@@ -3459,6 +3532,17 @@
             "type" : "array",
             "items" : {
               "$ref" : "#/components/schemas/Country"
+            }
+          }
+        }
+      },
+      "IntegrationList" : {
+        "type" : "object",
+        "properties" : {
+          "countries" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Integration"
             }
           }
         }
