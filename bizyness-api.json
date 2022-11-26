@@ -894,78 +894,6 @@
         }
       }
     },
-    "/payment_methods" : {
-      "get" : {
-        "tags" : [ "Miscellaneous" ],
-        "summary" : "List of supported payment methods",
-        "responses" : {
-          "200" : {
-            "description" : "Return the list of payment methods",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/PaymentMethodsList"
-                }
-              }
-            }
-          },
-          "500" : {
-            "$ref" : "#/components/responses/InternalServerError"
-          },
-          "401" : {
-            "$ref" : "#/components/responses/Unauthorized"
-          }
-        }
-      }
-    },
-    "/languages" : {
-      "get" : {
-        "tags" : [ "Miscellaneous" ],
-        "summary" : "List of supported languages",
-        "responses" : {
-          "200" : {
-            "description" : "Return the list of languages",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/DocumentLanguagesList"
-                }
-              }
-            }
-          },
-          "500" : {
-            "$ref" : "#/components/responses/InternalServerError"
-          },
-          "401" : {
-            "$ref" : "#/components/responses/Unauthorized"
-          }
-        }
-      }
-    },
-    "/templates" : {
-      "get" : {
-        "tags" : [ "Miscellaneous" ],
-        "summary" : "List of supported templates",
-        "responses" : {
-          "200" : {
-            "description" : "Return the list of templates",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/DocumentTemplatesList"
-                }
-              }
-            }
-          },
-          "500" : {
-            "$ref" : "#/components/responses/InternalServerError"
-          },
-          "401" : {
-            "$ref" : "#/components/responses/Unauthorized"
-          }
-        }
-      }
-    },
     "/reports/revenue/monthly" : {
       "parameters" : [ {
         "in" : "query",
@@ -2987,72 +2915,6 @@
           }
         }
       },
-      "PaymentMethod" : {
-        "type" : "object",
-        "properties" : {
-          "code" : {
-            "type" : "string",
-            "example" : "cash"
-          },
-          "label" : {
-            "type" : "object",
-            "properties" : {
-              "fr" : {
-                "type" : "string",
-                "example" : "Espèce"
-              },
-              "en" : {
-                "type" : "string",
-                "example" : "Cash"
-              }
-            }
-          }
-        }
-      },
-      "DocumentLanguage" : {
-        "type" : "object",
-        "properties" : {
-          "code" : {
-            "type" : "string",
-            "example" : "fr"
-          },
-          "label" : {
-            "type" : "object",
-            "properties" : {
-              "fr" : {
-                "type" : "string",
-                "example" : "Français"
-              },
-              "en" : {
-                "type" : "string",
-                "example" : "French"
-              }
-            }
-          }
-        }
-      },
-      "DocumentTemplate" : {
-        "type" : "object",
-        "properties" : {
-          "code" : {
-            "type" : "string",
-            "example" : "paris"
-          },
-          "label" : {
-            "type" : "object",
-            "properties" : {
-              "fr" : {
-                "type" : "string",
-                "example" : "Paris"
-              },
-              "en" : {
-                "type" : "string",
-                "example" : "Paris"
-              }
-            }
-          }
-        }
-      },
       "Country" : {
         "type" : "object",
         "properties" : {
@@ -3623,39 +3485,6 @@
           }
         }
       },
-      "PaymentMethodsList" : {
-        "type" : "object",
-        "properties" : {
-          "payment_methods" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "#/components/schemas/PaymentMethod"
-            }
-          }
-        }
-      },
-      "DocumentLanguagesList" : {
-        "type" : "object",
-        "properties" : {
-          "languages" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "#/components/schemas/DocumentLanguage"
-            }
-          }
-        }
-      },
-      "DocumentTemplatesList" : {
-        "type" : "object",
-        "properties" : {
-          "templates" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "#/components/schemas/DocumentTemplate"
-            }
-          }
-        }
-      },
       "CollectionId" : {
         "type" : "object",
         "properties" : {
@@ -3902,7 +3731,6 @@
               "tax_rate" : 20,
               "origin_country_code" : "FR",
               "second_hand_good" : false,
-              "disbursement_fees" : false,
               "article_id" : "5d5aaaa451ab647499f9bf"
             } ]
           },
