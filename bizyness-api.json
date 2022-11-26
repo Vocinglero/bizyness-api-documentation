@@ -3952,6 +3952,13 @@
               "type" : "string"
             },
             "example" : [ "cash", "credit_card" ]
+          },
+          "documents_id" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            },
+            "example" : [ "5d5aaaa451ab647499f9bf", "45aa451ab647499f9bf" ]
           }
         }
       },
