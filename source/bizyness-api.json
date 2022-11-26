@@ -3953,12 +3953,12 @@
             },
             "example" : [ "cash", "credit_card" ]
           },
-          "documents_id" : {
+          "documents_ids" : {
             "type" : "array",
             "items" : {
               "type" : "string"
             },
-            "example" : [ "5d5aaaa451ab647499f9bf", "45aa451ab647499f9bf" ]
+            "example" : [ "5d5aaaa451ab647499f9bf", "45aa451ab6499999f9bf" ]
           }
         }
       },
@@ -4030,7 +4030,7 @@
             "online_payment_enabled" : {
               "type" : "boolean"
             },
-            "payment_gateways_id" : {
+            "payment_gateways_ids" : {
               "type" : "array",
               "items" : {
                 "type" : "string"
