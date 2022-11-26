@@ -5356,7 +5356,7 @@
           "explode" : true,
           "schema" : {
             "type" : "string",
-            "example" : "payment_method"
+            "example" : "payment_gateway"
           }
         } ],
         "responses" : {
@@ -6110,7 +6110,7 @@
       "IntegrationList" : {
         "type" : "object",
         "properties" : {
-          "countries" : {
+          "integrations" : {
             "type" : "array",
             "items" : {
               "$ref" : "#/components/schemas/Integration"
