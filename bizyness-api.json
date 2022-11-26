@@ -3953,7 +3953,7 @@
             },
             "example" : [ "cash", "credit_card" ]
           },
-          "documents_ids" : {
+          "document_ids" : {
             "type" : "array",
             "items" : {
               "type" : "string"
@@ -4030,7 +4030,7 @@
             "online_payment_enabled" : {
               "type" : "boolean"
             },
-            "payment_gateways_ids" : {
+            "payment_gateway_ids" : {
               "type" : "array",
               "items" : {
                 "type" : "string"
