@@ -3810,9 +3810,6 @@
           "second_hand_good" : {
             "type" : "boolean"
           },
-          "disbursement_fees" : {
-            "type" : "boolean"
-          },
           "article_id" : {
             "type" : "string"
           }
@@ -3891,7 +3888,6 @@
               "tax_rate" : 20,
               "origin_country_code" : "FR",
               "second_hand_good" : false,
-              "disbursement_fees" : false,
               "article_id" : "5d5efds258126ab647499f9bf"
             }, {
               "sku" : "AX456",
