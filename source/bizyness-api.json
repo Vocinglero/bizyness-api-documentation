@@ -2662,7 +2662,7 @@
           "required" : false,
           "schema" : {
             "type" : "string",
-            "example" : "payment_method"
+            "example" : "payment_gateway"
           },
           "description" : "Filter integrated services by their category"
         } ],
@@ -3539,7 +3539,7 @@
       "IntegrationList" : {
         "type" : "object",
         "properties" : {
-          "countries" : {
+          "integrations" : {
             "type" : "array",
             "items" : {
               "$ref" : "#/components/schemas/Integration"
