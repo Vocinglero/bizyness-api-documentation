@@ -5563,7 +5563,7 @@
         "properties" : {
           "code" : {
             "type" : "string",
-            "example" : "FR"
+            "example" : "EUR"
           },
           "standard_rate" : {
             "type" : "number",
