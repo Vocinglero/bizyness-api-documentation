@@ -62,6 +62,9 @@
     "name" : "Tax",
     "description" : "Managing your taxes"
   }, {
+    "name" : "Integration",
+    "description" : "Managing your integrations"
+  }, {
     "name" : "Miscellaneous",
     "description" : "Transverval ressources"
   } ],
@@ -5314,6 +5317,113 @@
           }
         }
       }
+    },
+    "/integrations" : {
+      "get" : {
+        "tags" : [ "Integration" ],
+        "summary" : "List all integrated services",
+        "parameters" : [ {
+          "name" : "offset",
+          "in" : "query",
+          "description" : "The (zero-based) offset of the first item returned in the collection. In a zero-based offset 0 is a correct value.",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "minimum" : 0,
+            "type" : "integer",
+            "default" : 0
+          }
+        }, {
+          "name" : "limit",
+          "in" : "query",
+          "description" : "The maximum number of entries to return. If the value exceeds the maximum, then the maximum value will be used.",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "maximum" : 250,
+            "minimum" : 1,
+            "type" : "integer",
+            "default" : 100
+          }
+        }, {
+          "name" : "category",
+          "in" : "query",
+          "description" : "Filter integrated services by their category",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "example" : "payment_method"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Return the list of integrations",
+            "headers" : {
+              "X-Total-Count" : {
+                "description" : "Total entries",
+                "style" : "simple",
+                "explode" : false,
+                "schema" : {
+                  "type" : "integer"
+                }
+              }
+            },
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/IntegrationList"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 500,
+                  "message" : "Internal server error"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 401,
+                  "message" : "Unauthorized"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "The specified resource was not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 404,
+                  "message" : "Resource not found"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components" : {
@@ -5482,6 +5592,27 @@
             "$ref" : "#/components/schemas/Country_label"
           }
         }
+      },
+      "Integration" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/CollectionId"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "name" : {
+              "type" : "string",
+              "example" : "Compte Paypal"
+            },
+            "type" : {
+              "type" : "string",
+              "example" : "paypal"
+            },
+            "category" : {
+              "type" : "string",
+              "example" : "payment_gateway"
+            }
+          }
+        } ]
       },
       "URSSAFReportStatement" : {
         "type" : "object",
@@ -5972,6 +6103,17 @@
             "type" : "array",
             "items" : {
               "$ref" : "#/components/schemas/Country"
+            }
+          }
+        }
+      },
+      "IntegrationList" : {
+        "type" : "object",
+        "properties" : {
+          "countries" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Integration"
             }
           }
         }
