@@ -42,6 +42,9 @@
     "name" : "Activity",
     "description" : "Managing your activities"
   }, {
+    "name" : "Document",
+    "description" : "Managing your documents"
+  }, {
     "name" : "Report",
     "description" : "Managing your reports"
   }, {
@@ -1302,6 +1305,138 @@
                 }
               }
             }
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      }
+    },
+    "/documents" : {
+      "get" : {
+        "tags" : [ "Document" ],
+        "summary" : "List all documents",
+        "parameters" : [ {
+          "$ref" : "#/components/parameters/OffsetParam"
+        }, {
+          "$ref" : "#/components/parameters/LimitParam"
+        }, {
+          "$ref" : "#/components/parameters/SortParam"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Return the list of documents",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/DocumentList"
+                }
+              }
+            },
+            "headers" : {
+              "X-Total-Count" : {
+                "schema" : {
+                  "type" : "integer"
+                },
+                "description" : "Total entries"
+              }
+            }
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Document" ],
+        "summary" : "Create an document",
+        "requestBody" : {
+          "required" : true,
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/DocumentBody"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Document"
+                }
+              }
+            },
+            "description" : "Created document"
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      }
+    },
+    "/documents/{id}" : {
+      "parameters" : [ {
+        "name" : "id",
+        "in" : "path",
+        "description" : "Document ID",
+        "required" : true,
+        "schema" : {
+          "type" : "string",
+          "example" : "636945f14ce97a4c1c561885"
+        }
+      } ],
+      "get" : {
+        "tags" : [ "Document" ],
+        "summary" : "Retrieve an document",
+        "responses" : {
+          "200" : {
+            "description" : "Return a single document",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Document"
+                }
+              }
+            }
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Document" ],
+        "summary" : "Delete a document",
+        "responses" : {
+          "204" : {
+            "description" : "The document was deleted successfully"
           },
           "500" : {
             "$ref" : "#/components/responses/InternalServerError"
@@ -3120,6 +3255,22 @@
           }
         }
       },
+      "Document" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/CollectionId"
+        }, {
+          "$ref" : "#/components/schemas/DocumentBody"
+        } ]
+      },
+      "DocumentBody" : {
+        "type" : "object",
+        "properties" : {
+          "name" : {
+            "type" : "string",
+            "example" : "My activity"
+          }
+        }
+      },
       "Payment" : {
         "allOf" : [ {
           "$ref" : "#/components/schemas/CollectionId"
@@ -3398,6 +3549,17 @@
             "type" : "array",
             "items" : {
               "$ref" : "#/components/schemas/Activity"
+            }
+          }
+        }
+      },
+      "DocumentList" : {
+        "type" : "object",
+        "properties" : {
+          "documents" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Document"
             }
           }
         }
