@@ -3811,7 +3811,7 @@
               "sku" : "AX456",
               "description" : "Logo with 3 colors",
               "title" : "Logo design",
-              "type" : 0,
+              "type" : "goods",
               "price" : 59,
               "quantity" : 1,
               "unit" : "piece",
@@ -4120,8 +4120,8 @@
               "example" : "France"
             },
             "activity_type" : {
-              "type" : "integer",
-              "example" : 0
+              "enum" : [ "goods", "services", "other_services" ],
+              "type" : "string"
             },
             "second_hand_goods_selling" : {
               "type" : "boolean"
