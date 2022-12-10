@@ -3695,7 +3695,8 @@
             "type" : "string"
           },
           "type" : {
-            "type" : "integer"
+            "enum" : [ "goods", "services", "other_services", "disbursement_fees" ],
+            "type" : "string"
           },
           "price" : {
             "type" : "number"
@@ -3796,7 +3797,7 @@
               "sku" : "AX123",
               "description" : "Mockup and copywriting",
               "title" : "Homepage design",
-              "type" : 0,
+              "type" : "goods",
               "price" : 120.32,
               "quantity" : 1,
               "unit" : "piece",
