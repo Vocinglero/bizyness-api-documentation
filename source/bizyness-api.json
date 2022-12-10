@@ -520,6 +520,7 @@
                 "examples" : {
                   "sampleFile" : {
                     "summary" : "A sample file",
+                    "value" : null,
                     "externalValue" : "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
                   }
                 }
@@ -751,6 +752,7 @@
                 "examples" : {
                   "sampleFile" : {
                     "summary" : "A sample file",
+                    "value" : null,
                     "externalValue" : "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
                   }
                 }
@@ -1075,6 +1077,7 @@
                 "examples" : {
                   "sampleFile" : {
                     "summary" : "A sample file",
+                    "value" : null,
                     "externalValue" : "https://file-examples.com/storage/fe954b025e6370d449e6aa6/2017/10/file_example_PNG_500kB.png"
                   }
                 }
@@ -4347,6 +4350,7 @@
                 "examples" : {
                   "sampleFile" : {
                     "summary" : "A sample file",
+                    "value" : null,
                     "externalValue" : "https://file-examples.com/storage/fe954b025e6370d449e6aa6/2017/10/file_example_PNG_500kB.png"
                   }
                 }
@@ -6252,7 +6256,8 @@
             "type" : "string"
           },
           "type" : {
-            "type" : "integer"
+            "type" : "string",
+            "enum" : [ "goods", "services", "other_services", "disbursement_fees" ]
           },
           "price" : {
             "type" : "number"
@@ -6350,7 +6355,7 @@
               "sku" : "AX123",
               "description" : "Mockup and copywriting",
               "title" : "Homepage design",
-              "type" : 0,
+              "type" : "goods",
               "price" : 120.32,
               "quantity" : 1,
               "unit" : "piece",
@@ -6364,7 +6369,7 @@
               "sku" : "AX456",
               "description" : "Logo with 3 colors",
               "title" : "Logo design",
-              "type" : 0,
+              "type" : "goods",
               "price" : 59,
               "quantity" : 1,
               "unit" : "piece",
@@ -6665,8 +6670,8 @@
               "example" : "France"
             },
             "activity_type" : {
-              "type" : "integer",
-              "example" : 0
+              "type" : "string",
+              "enum" : [ "goods", "services", "other_services" ]
             },
             "second_hand_goods_selling" : {
               "type" : "boolean"
