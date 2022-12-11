@@ -3593,22 +3593,22 @@
                   "type" : "string"
                 },
                 "values" : {
-                  "type" : "array",
-                  "items" : {
-                    "type" : "object",
-                    "additionalProperties" : true
-                  }
+                  "type" : "object",
+                  "additionalProperties" : true
                 }
               }
             },
             "example" : [ {
               "date" : 1566493220992,
               "key" : "invoice.history.paymentAdded",
-              "values" : [ "23.32", "€" ]
+              "values" : {
+                "total" : 23.32,
+                "currency" : "€"
+              }
             }, {
               "date" : 1566423220992,
               "key" : "invoice.history.issued",
-              "values" : [ ]
+              "values" : null
             } ]
           },
           "total_including_taxes" : {
