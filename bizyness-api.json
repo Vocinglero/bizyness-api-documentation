@@ -3274,6 +3274,10 @@
                 "type" : "string",
                 "example" : [ "myfile1.png", "mydocument.pdf" ]
               }
+            },
+            "display_name" : {
+              "type" : "string",
+              "example" : "John Doe"
             }
           }
         } ]
