@@ -2067,7 +2067,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Invoice"
+                  "$ref" : "#/components/schemas/Article"
                 }
               }
             }
@@ -2219,7 +2219,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Invoice"
+                  "$ref" : "#/components/schemas/Article"
                 }
               }
             }
@@ -3997,6 +3997,28 @@
           "explode" : true,
           "schema" : {
             "type" : "string"
+          }
+        }, {
+          "name" : "country",
+          "in" : "query",
+          "description" : "Filter clients by country",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "example" : "FR"
+          }
+        }, {
+          "name" : "type",
+          "in" : "query",
+          "description" : "Filter clients by type",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "enum" : [ "individual", "company" ]
           }
         } ],
         "responses" : {
@@ -6161,11 +6183,13 @@
             "example" : [ {
               "date" : 1566493220992,
               "key" : "invoice.history.paymentAdded",
-              "values" : [ "23.32", "€" ]
+              "values" : {
+                "total" : 23.32,
+                "currency" : "€"
+              }
             }, {
               "date" : 1566423220992,
-              "key" : "invoice.history.issued",
-              "values" : [ ]
+              "key" : "invoice.history.issued"
             } ],
             "items" : {
               "$ref" : "#/components/schemas/BillOfSaleAttributes_events"
@@ -6835,10 +6859,8 @@
             "type" : "string"
           },
           "values" : {
-            "type" : "array",
-            "items" : {
-              "type" : "string"
-            }
+            "type" : "object",
+            "additionalProperties" : true
           }
         }
       },
