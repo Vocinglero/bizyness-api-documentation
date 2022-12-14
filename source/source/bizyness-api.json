@@ -3999,7 +3999,7 @@
             "type" : "string"
           }
         }, {
-          "name" : "country",
+          "name" : "country_code",
           "in" : "query",
           "description" : "Filter clients by country",
           "required" : false,
