@@ -4166,7 +4166,7 @@
           "explode" : true,
           "schema" : {
             "type" : "string",
-            "example" : "FR"
+            "example" : "636945e14ce97a4c1c561885,632325e14fdss7a4c1c561885"
           }
         } ],
         "responses" : {
