@@ -2088,6 +2088,34 @@
             "$ref" : "#/components/responses/NotFound"
           }
         }
+      },
+      "delete" : {
+        "tags" : [ "Client" ],
+        "summary" : "Delete multiple clients",
+        "parameters" : [ {
+          "in" : "query",
+          "name" : "ids",
+          "required" : true,
+          "schema" : {
+            "type" : "string",
+            "example" : "FR"
+          },
+          "description" : "The list of ids to delete"
+        } ],
+        "responses" : {
+          "204" : {
+            "description" : "The clients were deleted successfully"
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
       }
     },
     "/clients/top" : {
