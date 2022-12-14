@@ -2007,7 +2007,7 @@
           "$ref" : "#/components/parameters/SortParam"
         }, {
           "in" : "query",
-          "name" : "country",
+          "name" : "country_code",
           "required" : false,
           "schema" : {
             "type" : "string",
