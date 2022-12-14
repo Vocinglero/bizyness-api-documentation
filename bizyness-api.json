@@ -2005,6 +2005,24 @@
           "$ref" : "#/components/parameters/KeywordParam"
         }, {
           "$ref" : "#/components/parameters/SortParam"
+        }, {
+          "in" : "query",
+          "name" : "country",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "example" : "FR"
+          },
+          "description" : "Filter clients by country"
+        }, {
+          "in" : "query",
+          "name" : "type",
+          "required" : false,
+          "schema" : {
+            "enum" : [ "individual", "company" ],
+            "type" : "string"
+          },
+          "description" : "Filter clients by type"
         } ],
         "responses" : {
           "200" : {
