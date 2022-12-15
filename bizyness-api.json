@@ -2098,7 +2098,7 @@
           "required" : true,
           "schema" : {
             "type" : "string",
-            "example" : "636945e14ce97a4c1c561885,632325e14fdss7a4c1c561885"
+            "example" : "636945e14ce97a4c1c561885,632325e14fdss7a4c1c561111"
           },
           "description" : "The list of ids to delete"
         } ],
@@ -3970,7 +3970,7 @@
         "properties" : {
           "access_token" : {
             "type" : "string",
-            "example" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxMkRERkRGREZEIiwiaWF0IjoxNjYyMjAyMzYwLCJleHAiOjE2NjI0NjE1NjB9.zbVs3S-PBdCLeK4gL4UrFPUjohzTtuK_zKeUVtyrZxs"
+            "example" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxMkRERkRGREZEIiwiaWF0IjoxNjYyMjAyMzYwLCJleHAiOjM2NjI0NjE1NjB9.4IerGtmliX_NI9IZ3l8wltpk7BW5zA7NxcPb_AKVMuA"
           },
           "type" : {
             "type" : "string",

@@ -1071,7 +1071,7 @@
 <p>200 Response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxMkRERkRGREZEIiwiaWF0IjoxNjYyMjAyMzYwLCJleHAiOjE2NjI0NjE1NjB9.zbVs3S-PBdCLeK4gL4UrFPUjohzTtuK_zKeUVtyrZxs"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxMkRERkRGREZEIiwiaWF0IjoxNjYyMjAyMzYwLCJleHAiOjM2NjI0NjE1NjB9.4IerGtmliX_NI9IZ3l8wltpk7BW5zA7NxcPb_AKVMuA"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bearer"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
@@ -8856,10 +8856,10 @@ ApiKey, JWTAuth
 <p>Code samples</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> DELETE <span class="se">\</span>
-  <span class="nt">--url</span> <span class="s1">'https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/clients?ids=636945e14ce97a4c1c561885%2C632325e14fdss7a4c1c561885'</span> <span class="se">\</span>
+  <span class="nt">--url</span> <span class="s1">'https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/clients?ids=636945e14ce97a4c1c561885%2C632325e14fdss7a4c1c561111'</span> <span class="se">\</span>
   <span class="nt">--header</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">--header</span> <span class="s1">'X-Api-Key: API_KEY'</span>
-</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">DELETE</span> <span class="nn">/lpb/bizyness-api/1.0.0/clients?ids=636945e14ce97a4c1c561885%2C632325e14fdss7a4c1c561885</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">DELETE</span> <span class="nn">/lpb/bizyness-api/1.0.0/clients?ids=636945e14ce97a4c1c561885%2C632325e14fdss7a4c1c561111</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">X-Api-Key</span><span class="p">:</span> <span class="s">API_KEY</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">virtserver.swaggerhub.com</span>
@@ -8875,7 +8875,7 @@ ApiKey, JWTAuth
   <span class="p">}</span>
 <span class="p">});</span>
 
-<span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="dl">"</span><span class="s2">DELETE</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/clients?ids=636945e14ce97a4c1c561885%2C632325e14fdss7a4c1c561885</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="dl">"</span><span class="s2">DELETE</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/clients?ids=636945e14ce97a4c1c561885%2C632325e14fdss7a4c1c561111</span><span class="dl">"</span><span class="p">);</span>
 <span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">Accept</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">);</span>
 <span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">X-Api-Key</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">API_KEY</span><span class="dl">"</span><span class="p">);</span>
 
@@ -8884,7 +8884,7 @@ ApiKey, JWTAuth
 <span class="nb">require</span> <span class="s1">'net/http'</span>
 <span class="nb">require</span> <span class="s1">'openssl'</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/clients?ids=636945e14ce97a4c1c561885%2C632325e14fdss7a4c1c561885"</span><span class="p">)</span>
+<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/clients?ids=636945e14ce97a4c1c561885%2C632325e14fdss7a4c1c561111"</span><span class="p">)</span>
 
 <span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">url</span><span class="p">.</span><span class="nf">port</span><span class="p">)</span>
 <span class="n">http</span><span class="p">.</span><span class="nf">use_ssl</span> <span class="o">=</span> <span class="kp">true</span>
@@ -8905,7 +8905,7 @@ ApiKey, JWTAuth
     <span class="s">'X-Api-Key'</span><span class="p">:</span> <span class="s">"API_KEY"</span>
     <span class="p">}</span>
 
-<span class="n">conn</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"DELETE"</span><span class="p">,</span> <span class="s">"/lpb/bizyness-api/1.0.0/clients?ids=636945e14ce97a4c1c561885%2C632325e14fdss7a4c1c561885"</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+<span class="n">conn</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"DELETE"</span><span class="p">,</span> <span class="s">"/lpb/bizyness-api/1.0.0/clients?ids=636945e14ce97a4c1c561885%2C632325e14fdss7a4c1c561111"</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
 <span class="n">res</span> <span class="o">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">getresponse</span><span class="p">()</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">res</span><span class="p">.</span><span class="n">read</span><span class="p">()</span>
@@ -8916,7 +8916,7 @@ ApiKey, JWTAuth
 <span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
 
 <span class="nb">curl_setopt_array</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="p">[</span>
-  <span class="no">CURLOPT_URL</span> <span class="o">=&gt;</span> <span class="s2">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/clients?ids=636945e14ce97a4c1c561885%2C632325e14fdss7a4c1c561885"</span><span class="p">,</span>
+  <span class="no">CURLOPT_URL</span> <span class="o">=&gt;</span> <span class="s2">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/clients?ids=636945e14ce97a4c1c561885%2C632325e14fdss7a4c1c561111"</span><span class="p">,</span>
   <span class="no">CURLOPT_RETURNTRANSFER</span> <span class="o">=&gt;</span> <span class="kc">true</span><span class="p">,</span>
   <span class="no">CURLOPT_ENCODING</span> <span class="o">=&gt;</span> <span class="s2">""</span><span class="p">,</span>
   <span class="no">CURLOPT_MAXREDIRS</span> <span class="o">=&gt;</span> <span class="mi">10</span><span class="p">,</span>
@@ -8939,7 +8939,7 @@ ApiKey, JWTAuth
 <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
   <span class="k">echo</span> <span class="nv">$response</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">HttpResponse</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">response</span> <span class="o">=</span> <span class="nc">Unirest</span><span class="o">.</span><span class="na">delete</span><span class="o">(</span><span class="s">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/clients?ids=636945e14ce97a4c1c561885%2C632325e14fdss7a4c1c561885"</span><span class="o">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">HttpResponse</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">response</span> <span class="o">=</span> <span class="nc">Unirest</span><span class="o">.</span><span class="na">delete</span><span class="o">(</span><span class="s">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/clients?ids=636945e14ce97a4c1c561885%2C632325e14fdss7a4c1c561111"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"Accept"</span><span class="o">,</span> <span class="s">"application/json"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"X-Api-Key"</span><span class="o">,</span> <span class="s">"API_KEY"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">asString</span><span class="o">();</span>
@@ -8953,7 +8953,7 @@ ApiKey, JWTAuth
 
 <span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
 
-    <span class="n">url</span> <span class="o">:=</span> <span class="s">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/clients?ids=636945e14ce97a4c1c561885%2C632325e14fdss7a4c1c561885"</span>
+    <span class="n">url</span> <span class="o">:=</span> <span class="s">"https://virtserver.swaggerhub.com/lpb/bizyness-api/1.0.0/clients?ids=636945e14ce97a4c1c561885%2C632325e14fdss7a4c1c561111"</span>
 
     <span class="n">req</span><span class="p">,</span> <span class="n">_</span> <span class="o">:=</span> <span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"DELETE"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="no">nil</span><span class="p">)</span>
 
@@ -22442,7 +22442,7 @@ ApiKey, JWTAuth
 <a id="tocSauthenticatedaccount"></a>
 <a id="tocsauthenticatedaccount"></a></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxMkRERkRGREZEIiwiaWF0IjoxNjYyMjAyMzYwLCJleHAiOjE2NjI0NjE1NjB9.zbVs3S-PBdCLeK4gL4UrFPUjohzTtuK_zKeUVtyrZxs"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxMkRERkRGREZEIiwiaWF0IjoxNjYyMjAyMzYwLCJleHAiOjM2NjI0NjE1NjB9.4IerGtmliX_NI9IZ3l8wltpk7BW5zA7NxcPb_AKVMuA"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bearer"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
