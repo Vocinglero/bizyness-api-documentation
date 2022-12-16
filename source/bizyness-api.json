@@ -3299,9 +3299,9 @@
             "attachments" : {
               "type" : "array",
               "items" : {
-                "type" : "string",
-                "example" : [ "myfile1.png", "mydocument.pdf" ]
-              }
+                "type" : "string"
+              },
+              "example" : [ "myfile1.png", "mydocument.pdf" ]
             },
             "display_name" : {
               "type" : "string",
@@ -3479,11 +3479,11 @@
           },
           "canceled" : {
             "size" : 1,
-            "amount" : 32.3
+            "amount" : 10
           },
           "draft" : {
             "size" : 4,
-            "amount" : 19.01
+            "amount" : 9.01
           }
         }
       },
