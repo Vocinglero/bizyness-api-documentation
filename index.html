@@ -913,7 +913,7 @@
 
 <p>A <code>500 Internal Server Error</code> response means that an error happened on the server. This can mean that the request is not valid, such as if you try to delete or edit a collection that does not exist, or if the API otherwise can&#39;t do what you requested. It can also mean a temporary problem with the API. Check your request and try again or contact us.</p>
 <h2 id='pagination'>Pagination</h2>
-<p>Requests that return multiple items will be restricted to 100 items by default. Alternatively the items per page can be specified with the <code>limit</code> parameter:</p>
+<p>Requests that return multiple items will be restricted to 100 items by default, with a maximum of 250 items. Alternatively the items per page can be specified with the <code>limit</code> parameter:</p>
 
 <p><code>GET /invoices?limit=200</code></p>
 
@@ -12177,7 +12177,7 @@ ApiKey, JWTAuth
 <p>200 Response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"clients"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="nl">"suppliers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d5eca258126ab647499f9bf"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
@@ -25140,7 +25140,7 @@ ApiKey, JWTAuth
 <a id="tocSsupplierlist"></a>
 <a id="tocssupplierlist"></a></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"clients"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="nl">"suppliers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d5eca258126ab647499f9bf"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
@@ -25185,7 +25185,7 @@ ApiKey, JWTAuth
 </tr>
 </thead><tbody>
 <tr>
-<td>clients</td>
+<td>suppliers</td>
 <td>[<a href="#schemasupplier">Supplier</a>]</td>
 <td>false</td>
 <td>none</td>
