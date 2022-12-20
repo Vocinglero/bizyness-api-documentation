@@ -825,6 +825,116 @@
         }
       }
     },
+    "/quotes" : {
+      "get" : {
+        "tags" : [ "Quote" ],
+        "summary" : "List all quotes",
+        "parameters" : [ {
+          "$ref" : "#/components/parameters/OffsetParam"
+        }, {
+          "$ref" : "#/components/parameters/LimitParam"
+        }, {
+          "$ref" : "#/components/parameters/KeywordParam"
+        }, {
+          "$ref" : "#/components/parameters/DateMinParam"
+        }, {
+          "$ref" : "#/components/parameters/DateMaxParam"
+        }, {
+          "$ref" : "#/components/parameters/SortParam"
+        }, {
+          "in" : "query",
+          "name" : "status",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "example" : "draft"
+          },
+          "description" : "Filter quotes by their status"
+        }, {
+          "in" : "query",
+          "name" : "client_id",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "example" : "5d5eca258126ab647499f9bf"
+          },
+          "description" : "Filter quotes by client"
+        }, {
+          "in" : "query",
+          "name" : "activity_id",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "example" : "5d5eca258126ab647499f9bf"
+          },
+          "description" : "Filter quotes by activity"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Return the list of quotes",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/QuoteList"
+                }
+              }
+            },
+            "headers" : {
+              "X-Total-Count" : {
+                "schema" : {
+                  "type" : "integer"
+                },
+                "description" : "Total entries"
+              }
+            }
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Invoice" ],
+        "summary" : "Create a quote",
+        "requestBody" : {
+          "required" : true,
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/QuoteBody"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Quote"
+                }
+              }
+            },
+            "description" : "Created quote"
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      }
+    },
     "/countries" : {
       "get" : {
         "tags" : [ "Miscellaneous" ],
@@ -3487,6 +3597,55 @@
           }
         }
       },
+      "QuoteListSummary" : {
+        "type" : "object",
+        "properties" : {
+          "total" : {
+            "$ref" : "#/components/schemas/ListSummaryItem"
+          },
+          "accepted" : {
+            "$ref" : "#/components/schemas/ListSummaryItem"
+          },
+          "refused" : {
+            "$ref" : "#/components/schemas/ListSummaryItem"
+          },
+          "pending" : {
+            "$ref" : "#/components/schemas/ListSummaryItem"
+          },
+          "archived" : {
+            "$ref" : "#/components/schemas/ListSummaryItem"
+          },
+          "draft" : {
+            "$ref" : "#/components/schemas/ListSummaryItem"
+          }
+        },
+        "example" : {
+          "total" : {
+            "size" : 123,
+            "amount" : 1203.54
+          },
+          "accepted" : {
+            "size" : 110,
+            "amount" : 1052.23
+          },
+          "refused" : {
+            "size" : 2,
+            "amount" : 100
+          },
+          "pending" : {
+            "size" : 6,
+            "amount" : 32.3
+          },
+          "archived" : {
+            "size" : 1,
+            "amount" : 10
+          },
+          "draft" : {
+            "size" : 4,
+            "amount" : 9.01
+          }
+        }
+      },
       "CreditNoteList" : {
         "type" : "object",
         "properties" : {
@@ -3508,6 +3667,20 @@
             "type" : "array",
             "items" : {
               "$ref" : "#/components/schemas/Invoice"
+            }
+          }
+        }
+      },
+      "QuoteList" : {
+        "type" : "object",
+        "properties" : {
+          "summary" : {
+            "$ref" : "#/components/schemas/QuoteListSummary"
+          },
+          "quotes" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Quote"
             }
           }
         }
@@ -4025,6 +4198,29 @@
           }
         } ]
       },
+      "QuoteBody" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/BillOfSaleBody"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "expiration_date" : {
+              "type" : "integer",
+              "example" : 1566493220992
+            },
+            "online_payment_enabled" : {
+              "type" : "boolean"
+            },
+            "payment_gateway_ids" : {
+              "type" : "array",
+              "items" : {
+                "type" : "string"
+              },
+              "example" : [ "5d5eca258126ab647499f9bf", "5b17da549a7feb695f703975" ]
+            }
+          }
+        } ]
+      },
       "BankTransaction" : {
         "type" : "object",
         "properties" : {
@@ -4063,6 +4259,33 @@
             "due_date" : {
               "type" : "integer",
               "example" : 1656540000000
+            },
+            "attachments" : {
+              "type" : "array",
+              "items" : {
+                "type" : "string"
+              },
+              "example" : [ "myfile1.png", "mydocument.pdf" ]
+            },
+            "client_address" : {
+              "$ref" : "#/components/schemas/ContactAddress"
+            }
+          }
+        } ]
+      },
+      "Quote" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/CollectionId"
+        }, {
+          "$ref" : "#/components/schemas/QuoteBody"
+        }, {
+          "$ref" : "#/components/schemas/BillOfSaleAttributes"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "status" : {
+              "enum" : [ "draft", "accepted", "refused", "pending", "archived" ],
+              "type" : "string"
             },
             "attachments" : {
               "type" : "array",
