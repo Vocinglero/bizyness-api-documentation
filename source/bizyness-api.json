@@ -2560,6 +2560,405 @@
         }
       }
     },
+    "/suppliers" : {
+      "get" : {
+        "tags" : [ "Supplier" ],
+        "summary" : "List all suppliers",
+        "parameters" : [ {
+          "$ref" : "#/components/parameters/OffsetParam"
+        }, {
+          "$ref" : "#/components/parameters/LimitParam"
+        }, {
+          "$ref" : "#/components/parameters/KeywordParam"
+        }, {
+          "$ref" : "#/components/parameters/SortParam"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Return the list of suppliers",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/SupplierList"
+                }
+              }
+            },
+            "headers" : {
+              "X-Total-Count" : {
+                "schema" : {
+                  "type" : "integer"
+                },
+                "description" : "Total entries"
+              }
+            }
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Supplier" ],
+        "summary" : "Create a supplier",
+        "requestBody" : {
+          "required" : true,
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/SupplierBody"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Supplier"
+                }
+              }
+            },
+            "description" : "Created client"
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Supplier" ],
+        "summary" : "Delete multiple suppliers",
+        "parameters" : [ {
+          "in" : "query",
+          "name" : "ids",
+          "required" : true,
+          "schema" : {
+            "type" : "string",
+            "example" : "636945e14ce97a4c1c561885,632325e14fdss7a4c1c561111"
+          },
+          "description" : "The list of ids to delete"
+        } ],
+        "responses" : {
+          "204" : {
+            "description" : "The suppliers were deleted successfully"
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      }
+    },
+    "/suppliers/{id}/attachments" : {
+      "parameters" : [ {
+        "name" : "id",
+        "in" : "path",
+        "description" : "Supplier ID",
+        "required" : true,
+        "schema" : {
+          "type" : "string",
+          "example" : "636945e14ce97a4c1c561885"
+        }
+      } ],
+      "post" : {
+        "tags" : [ "Supplier" ],
+        "summary" : "Add a list of attachments",
+        "requestBody" : {
+          "required" : true,
+          "content" : {
+            "multipart/form-data" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "file" : {
+                    "type" : "array",
+                    "items" : {
+                      "type" : "string",
+                      "format" : "binary"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Supplier"
+                }
+              }
+            },
+            "description" : "Updated supplier"
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      }
+    },
+    "/suppliers/{id}/attachments/{attachmentId}" : {
+      "parameters" : [ {
+        "name" : "id",
+        "in" : "path",
+        "description" : "Supplier ID",
+        "required" : true,
+        "schema" : {
+          "type" : "string",
+          "example" : "636945e14ce97a4c1c561885"
+        }
+      }, {
+        "name" : "attachmentId",
+        "in" : "path",
+        "description" : "Attachment index",
+        "required" : true,
+        "schema" : {
+          "type" : "integer",
+          "example" : 0
+        }
+      } ],
+      "delete" : {
+        "tags" : [ "Supplier" ],
+        "summary" : "Delete an attachment",
+        "responses" : {
+          "204" : {
+            "description" : "The attachment was deleted successfully"
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      },
+      "get" : {
+        "tags" : [ "Supplier" ],
+        "summary" : "Download an attachment file",
+        "responses" : {
+          "200" : {
+            "description" : "Return the attachment file",
+            "content" : {
+              "application/pdf" : {
+                "schema" : {
+                  "type" : "string",
+                  "format" : "binary"
+                },
+                "examples" : {
+                  "sampleFile" : {
+                    "summary" : "A sample file",
+                    "externalValue" : "https://file-examples.com/storage/fe954b025e6370d449e6aa6/2017/10/file_example_PNG_500kB.png"
+                  }
+                }
+              }
+            }
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      }
+    },
+    "/suppliers/{id}" : {
+      "parameters" : [ {
+        "name" : "id",
+        "in" : "path",
+        "description" : "Client ID",
+        "required" : true,
+        "schema" : {
+          "type" : "string",
+          "example" : "636945f14ce97a4c1c561885"
+        }
+      } ],
+      "get" : {
+        "tags" : [ "Supplier" ],
+        "summary" : "Retrieve a supplier",
+        "responses" : {
+          "200" : {
+            "description" : "Return a single supplier",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Supplier"
+                }
+              }
+            }
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Supplier" ],
+        "summary" : "Delete a supplier",
+        "responses" : {
+          "204" : {
+            "description" : "The supplier was deleted successfully"
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Supplier" ],
+        "summary" : "Update a supplier",
+        "requestBody" : {
+          "required" : true,
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/SupplierBody"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Updated supplier",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Supplier"
+                }
+              }
+            }
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      },
+      "patch" : {
+        "tags" : [ "Supplier" ],
+        "summary" : "Update a supplier (partial)",
+        "requestBody" : {
+          "required" : true,
+          "content" : {
+            "application/json-patch+json" : {
+              "schema" : {
+                "type" : "array",
+                "items" : {
+                  "oneOf" : [ {
+                    "$ref" : "#/components/schemas/JSONPatchRequestAddReplaceTest"
+                  }, {
+                    "$ref" : "#/components/schemas/JSONPatchRequestRemove"
+                  }, {
+                    "$ref" : "#/components/schemas/JSONPatchRequestMoveCopy"
+                  } ]
+                }
+              },
+              "examples" : {
+                "AddReplaceTest" : {
+                  "value" : [ {
+                    "op" : "replace",
+                    "path" : "/last_name",
+                    "value" : "Dupont"
+                  } ]
+                },
+                "Remove" : {
+                  "value" : [ {
+                    "op" : "remove",
+                    "path" : "/address_supplement"
+                  } ]
+                },
+                "MoveCopy" : {
+                  "value" : [ {
+                    "op" : "copy",
+                    "from" : "/address",
+                    "path" : "/address_supplement"
+                  } ]
+                }
+              }
+            },
+            "application/merge-patch+json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Client"
+              },
+              "example" : {
+                "payment_term" : 3,
+                "template" : "london"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Updated supplier",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Supplier"
+                }
+              }
+            }
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      }
+    },
     "/payments" : {
       "get" : {
         "tags" : [ "Payment" ],
@@ -3488,6 +3887,88 @@
           }
         }
       },
+      "Supplier" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/CollectionId"
+        }, {
+          "$ref" : "#/components/schemas/SupplierBody"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "attachments" : {
+              "type" : "array",
+              "items" : {
+                "type" : "string"
+              },
+              "example" : [ "myfile1.png", "mydocument.pdf" ]
+            },
+            "display_name" : {
+              "type" : "string",
+              "example" : "John Doe"
+            }
+          }
+        } ]
+      },
+      "SupplierBody" : {
+        "type" : "object",
+        "properties" : {
+          "last_name" : {
+            "type" : "string",
+            "example" : "Doe"
+          },
+          "first_name" : {
+            "type" : "string",
+            "example" : "John"
+          },
+          "email" : {
+            "type" : "string",
+            "example" : "john.doe@google.com"
+          },
+          "phone" : {
+            "type" : "string",
+            "example" : 6215410124
+          },
+          "company_name" : {
+            "type" : "string",
+            "example" : "Doe's company"
+          },
+          "address" : {
+            "type" : "string",
+            "example" : "123 rue des archives"
+          },
+          "address_supplement" : {
+            "type" : "string",
+            "example" : "Porte gauche"
+          },
+          "zip" : {
+            "type" : "string",
+            "example" : "A1234"
+          },
+          "city" : {
+            "type" : "string",
+            "example" : "Paris"
+          },
+          "country_code" : {
+            "type" : "string",
+            "example" : "FR"
+          },
+          "notes" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Note"
+            },
+            "example" : [ {
+              "date" : 1566493220992,
+              "title" : "My first note",
+              "content" : "This the content of this wonderful note"
+            }, {
+              "date" : 1586493220992,
+              "title" : "Another note",
+              "content" : "Just another note content"
+            } ]
+          }
+        }
+      },
       "Note" : {
         "allOf" : [ {
           "$ref" : "#/components/schemas/CollectionId"
@@ -3692,6 +4173,17 @@
             "type" : "array",
             "items" : {
               "$ref" : "#/components/schemas/Client"
+            }
+          }
+        }
+      },
+      "SupplierList" : {
+        "type" : "object",
+        "properties" : {
+          "clients" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Supplier"
             }
           }
         }
