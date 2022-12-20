@@ -1613,6 +1613,245 @@
         }
       }
     },
+    "/quotes" : {
+      "get" : {
+        "tags" : [ "Quote" ],
+        "summary" : "List all quotes",
+        "parameters" : [ {
+          "name" : "offset",
+          "in" : "query",
+          "description" : "The (zero-based) offset of the first item returned in the collection. In a zero-based offset 0 is a correct value.",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "minimum" : 0,
+            "type" : "integer",
+            "default" : 0
+          }
+        }, {
+          "name" : "limit",
+          "in" : "query",
+          "description" : "The maximum number of entries to return. If the value exceeds the maximum, then the maximum value will be used.",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "maximum" : 250,
+            "minimum" : 1,
+            "type" : "integer",
+            "default" : 100
+          }
+        }, {
+          "name" : "keyword",
+          "in" : "query",
+          "description" : "The keyword to search for",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "date_min",
+          "in" : "query",
+          "description" : "Filter records created at or after date",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer",
+            "example" : 1566493220992
+          }
+        }, {
+          "name" : "date_max",
+          "in" : "query",
+          "description" : "Filter records created at or before date",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer",
+            "example" : 1586493220992
+          }
+        }, {
+          "name" : "sort",
+          "in" : "query",
+          "description" : "Sort records by attributes",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "status",
+          "in" : "query",
+          "description" : "Filter quotes by their status",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "example" : "draft"
+          }
+        }, {
+          "name" : "client_id",
+          "in" : "query",
+          "description" : "Filter quotes by client",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "example" : "5d5eca258126ab647499f9bf"
+          }
+        }, {
+          "name" : "activity_id",
+          "in" : "query",
+          "description" : "Filter quotes by activity",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "example" : "5d5eca258126ab647499f9bf"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Return the list of quotes",
+            "headers" : {
+              "X-Total-Count" : {
+                "description" : "Total entries",
+                "style" : "simple",
+                "explode" : false,
+                "schema" : {
+                  "type" : "integer"
+                }
+              }
+            },
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/QuoteList"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 500,
+                  "message" : "Internal server error"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 401,
+                  "message" : "Unauthorized"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "The specified resource was not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 404,
+                  "message" : "Resource not found"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Invoice" ],
+        "summary" : "Create a quote",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/QuoteBody"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Created quote",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Quote"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 500,
+                  "message" : "Internal server error"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 401,
+                  "message" : "Unauthorized"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "The specified resource was not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 404,
+                  "message" : "Resource not found"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/countries" : {
       "get" : {
         "tags" : [ "Miscellaneous" ],
@@ -5922,9 +6161,9 @@
           "properties" : {
             "attachments" : {
               "type" : "array",
+              "example" : [ "myfile1.png", "mydocument.pdf" ],
               "items" : {
-                "type" : "string",
-                "example" : "[\"myfile1.png\",\"mydocument.pdf\"]"
+                "type" : "string"
               }
             },
             "display_name" : {
@@ -6067,6 +6306,9 @@
           "overdue" : {
             "$ref" : "#/components/schemas/ListSummaryItem"
           },
+          "canceled" : {
+            "$ref" : "#/components/schemas/ListSummaryItem"
+          },
           "draft" : {
             "$ref" : "#/components/schemas/ListSummaryItem"
           }
@@ -6088,9 +6330,62 @@
             "size" : 6,
             "amount" : 32.3
           },
+          "canceled" : {
+            "size" : 1,
+            "amount" : 10
+          },
           "draft" : {
-            "size" : 5,
-            "amount" : 19.01
+            "size" : 4,
+            "amount" : 9.01
+          }
+        }
+      },
+      "QuoteListSummary" : {
+        "type" : "object",
+        "properties" : {
+          "total" : {
+            "$ref" : "#/components/schemas/ListSummaryItem"
+          },
+          "accepted" : {
+            "$ref" : "#/components/schemas/ListSummaryItem"
+          },
+          "refused" : {
+            "$ref" : "#/components/schemas/ListSummaryItem"
+          },
+          "pending" : {
+            "$ref" : "#/components/schemas/ListSummaryItem"
+          },
+          "archived" : {
+            "$ref" : "#/components/schemas/ListSummaryItem"
+          },
+          "draft" : {
+            "$ref" : "#/components/schemas/ListSummaryItem"
+          }
+        },
+        "example" : {
+          "total" : {
+            "size" : 123,
+            "amount" : 1203.54
+          },
+          "accepted" : {
+            "size" : 110,
+            "amount" : 1052.23
+          },
+          "refused" : {
+            "size" : 2,
+            "amount" : 100
+          },
+          "pending" : {
+            "size" : 6,
+            "amount" : 32.3
+          },
+          "archived" : {
+            "size" : 1,
+            "amount" : 10
+          },
+          "draft" : {
+            "size" : 4,
+            "amount" : 9.01
           }
         }
       },
@@ -6115,6 +6410,20 @@
             "type" : "array",
             "items" : {
               "$ref" : "#/components/schemas/Invoice"
+            }
+          }
+        }
+      },
+      "QuoteList" : {
+        "type" : "object",
+        "properties" : {
+          "summary" : {
+            "$ref" : "#/components/schemas/QuoteListSummary"
+          },
+          "quotes" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Quote"
             }
           }
         }
@@ -6608,6 +6917,29 @@
           }
         } ]
       },
+      "QuoteBody" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/BillOfSaleBody"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "expiration_date" : {
+              "type" : "integer",
+              "example" : 1566493220992
+            },
+            "online_payment_enabled" : {
+              "type" : "boolean"
+            },
+            "payment_gateway_ids" : {
+              "type" : "array",
+              "example" : [ "5d5eca258126ab647499f9bf", "5b17da549a7feb695f703975" ],
+              "items" : {
+                "type" : "string"
+              }
+            }
+          }
+        } ]
+      },
       "BankTransaction" : {
         "type" : "object",
         "properties" : {
@@ -6646,6 +6978,33 @@
             "due_date" : {
               "type" : "integer",
               "example" : 1656540000000
+            },
+            "attachments" : {
+              "type" : "array",
+              "example" : [ "myfile1.png", "mydocument.pdf" ],
+              "items" : {
+                "type" : "string"
+              }
+            },
+            "client_address" : {
+              "$ref" : "#/components/schemas/ContactAddress"
+            }
+          }
+        } ]
+      },
+      "Quote" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/CollectionId"
+        }, {
+          "$ref" : "#/components/schemas/QuoteBody"
+        }, {
+          "$ref" : "#/components/schemas/BillOfSaleAttributes"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "status" : {
+              "type" : "string",
+              "enum" : [ "draft", "accepted", "refused", "pending", "archived" ]
             },
             "attachments" : {
               "type" : "array",
