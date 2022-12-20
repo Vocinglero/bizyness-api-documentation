@@ -4650,6 +4650,9 @@
           },
           "user" : {
             "$ref" : "#/components/schemas/Account"
+          },
+          "company" : {
+            "$ref" : "#/components/schemas/Company"
           }
         }
       },
