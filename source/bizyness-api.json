@@ -2959,6 +2959,48 @@
         }
       }
     },
+    "/expenses" : {
+      "get" : {
+        "tags" : [ "Expense" ],
+        "summary" : "List all expenses",
+        "parameters" : [ {
+          "$ref" : "#/components/parameters/OffsetParam"
+        }, {
+          "$ref" : "#/components/parameters/LimitParam"
+        }, {
+          "$ref" : "#/components/parameters/SortParam"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Return the list of expenses",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ExpenseList"
+                }
+              }
+            },
+            "headers" : {
+              "X-Total-Count" : {
+                "schema" : {
+                  "type" : "integer"
+                },
+                "description" : "Total entries"
+              }
+            }
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
+      }
+    },
     "/payments" : {
       "get" : {
         "tags" : [ "Payment" ],
@@ -3797,6 +3839,65 @@
           }
         }
       },
+      "Expense" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/CollectionId"
+        }, {
+          "$ref" : "#/components/schemas/ExpenseBody"
+        } ]
+      },
+      "ExpenseBody" : {
+        "type" : "object",
+        "properties" : {
+          "amount" : {
+            "type" : "number",
+            "example" : 123.21
+          },
+          "currency" : {
+            "type" : "string",
+            "example" : "EUR"
+          },
+          "label" : {
+            "type" : "string",
+            "example" : "Subscription"
+          },
+          "reference" : {
+            "type" : "string",
+            "example" : null
+          },
+          "date" : {
+            "type" : "integer",
+            "example" : 1566493220992
+          },
+          "notes" : {
+            "type" : "string",
+            "example" : "Payment for the restaurant"
+          },
+          "type_id" : {
+            "type" : "string",
+            "example" : "1ds234d56ffgds7896rs"
+          },
+          "supplier_id" : {
+            "type" : "string",
+            "example" : "4f88dfd54gfd784refdd"
+          },
+          "vat_liable" : {
+            "type" : "boolean"
+          },
+          "tax_mode" : {
+            "type" : "string",
+            "enum" : [ "percentage", "amount" ]
+          },
+          "tax_amount" : {
+            "type" : "number",
+            "example" : 65.23
+          },
+          "payment_method" : {
+            "type" : "string",
+            "example" : "cash"
+          }
+        }
+      },
       "Client" : {
         "allOf" : [ {
           "$ref" : "#/components/schemas/CollectionId"
@@ -4195,6 +4296,17 @@
             "type" : "array",
             "items" : {
               "$ref" : "#/components/schemas/Payment"
+            }
+          }
+        }
+      },
+      "ExpenseList" : {
+        "type" : "object",
+        "properties" : {
+          "expenses" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Expense"
             }
           }
         }
