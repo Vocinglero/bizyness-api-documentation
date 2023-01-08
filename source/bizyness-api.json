@@ -1024,7 +1024,7 @@
         }
       } ],
       "delete" : {
-        "tags" : [ "Recurring Recurring invoice" ],
+        "tags" : [ "Recurring invoice" ],
         "summary" : "Delete an attachment",
         "responses" : {
           "204" : {
