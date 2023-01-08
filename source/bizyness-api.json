@@ -3428,6 +3428,41 @@
             "$ref" : "#/components/responses/NotFound"
           }
         }
+      },
+      "post" : {
+        "tags" : [ "Expense" ],
+        "summary" : "Create an expense",
+        "requestBody" : {
+          "required" : true,
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/ExpenseBody"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Expense"
+                }
+              }
+            },
+            "description" : "Created expense"
+          },
+          "500" : {
+            "$ref" : "#/components/responses/InternalServerError"
+          },
+          "401" : {
+            "$ref" : "#/components/responses/Unauthorized"
+          },
+          "404" : {
+            "$ref" : "#/components/responses/NotFound"
+          }
+        }
       }
     },
     "/expenses/{id}" : {
