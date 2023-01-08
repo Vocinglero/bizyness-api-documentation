@@ -1784,7 +1784,7 @@
         }
       },
       "post" : {
-        "tags" : [ "Invoice" ],
+        "tags" : [ "Quote" ],
         "summary" : "Create a quote",
         "requestBody" : {
           "content" : {
@@ -1806,6 +1806,821 @@
                 }
               }
             }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 500,
+                  "message" : "Internal server error"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 401,
+                  "message" : "Unauthorized"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "The specified resource was not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 404,
+                  "message" : "Resource not found"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/quotes/preview" : {
+      "post" : {
+        "tags" : [ "Quote" ],
+        "summary" : "Preview the PDF",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/QuoteBody"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Return the PDF file",
+            "content" : {
+              "application/pdf" : {
+                "schema" : {
+                  "type" : "string",
+                  "format" : "binary"
+                },
+                "examples" : {
+                  "sampleFile" : {
+                    "summary" : "A sample file",
+                    "value" : null,
+                    "externalValue" : "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+                  }
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 500,
+                  "message" : "Internal server error"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 401,
+                  "message" : "Unauthorized"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "The specified resource was not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 404,
+                  "message" : "Resource not found"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/quotes/{id}/download" : {
+      "get" : {
+        "tags" : [ "Quote" ],
+        "summary" : "Download the PDF",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "Quote ID",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "example" : "636945e14ce97a4c1c561885"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Return the PDF file",
+            "content" : {
+              "application/pdf" : {
+                "schema" : {
+                  "type" : "string",
+                  "format" : "binary"
+                },
+                "examples" : {
+                  "sampleFile" : {
+                    "summary" : "A sample file",
+                    "value" : null,
+                    "externalValue" : "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+                  }
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 500,
+                  "message" : "Internal server error"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 401,
+                  "message" : "Unauthorized"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "The specified resource was not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 404,
+                  "message" : "Resource not found"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/quotes/{id}/attachments" : {
+      "post" : {
+        "tags" : [ "Quote" ],
+        "summary" : "Add a list of attachments",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "Quote ID",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "example" : "636945e14ce97a4c1c561885"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "multipart/form-data" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/id_attachments_body_1"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Updated invoice",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Quote"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 500,
+                  "message" : "Internal server error"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 401,
+                  "message" : "Unauthorized"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "The specified resource was not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 404,
+                  "message" : "Resource not found"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/quotes/{id}/attachments/{attachmentIndex}" : {
+      "get" : {
+        "tags" : [ "Quote" ],
+        "summary" : "Download an attachment file",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "Quote ID",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "example" : "636945e14ce97a4c1c561885"
+          }
+        }, {
+          "name" : "attachmentIndex",
+          "in" : "path",
+          "description" : "Attachment index",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer",
+            "example" : 0
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Return the attachment file",
+            "content" : {
+              "application/pdf" : {
+                "schema" : {
+                  "type" : "string",
+                  "format" : "binary"
+                },
+                "examples" : {
+                  "sampleFile" : {
+                    "summary" : "A sample file",
+                    "value" : null,
+                    "externalValue" : "https://file-examples.com/storage/fe954b025e6370d449e6aa6/2017/10/file_example_PNG_500kB.png"
+                  }
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 500,
+                  "message" : "Internal server error"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 401,
+                  "message" : "Unauthorized"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "The specified resource was not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 404,
+                  "message" : "Resource not found"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Quote" ],
+        "summary" : "Delete an attachment",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "Quote ID",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "example" : "636945e14ce97a4c1c561885"
+          }
+        }, {
+          "name" : "attachmentIndex",
+          "in" : "path",
+          "description" : "Attachment index",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer",
+            "example" : 0
+          }
+        } ],
+        "responses" : {
+          "204" : {
+            "description" : "The attachment was deleted successfully"
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 500,
+                  "message" : "Internal server error"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 401,
+                  "message" : "Unauthorized"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "The specified resource was not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 404,
+                  "message" : "Resource not found"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/quotes/{id}" : {
+      "get" : {
+        "tags" : [ "Quote" ],
+        "summary" : "Retrieve a quote",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "Quote ID",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "example" : "636945e14ce97a4c1c561885"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Return a single quote",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Quote"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 500,
+                  "message" : "Internal server error"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 401,
+                  "message" : "Unauthorized"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "The specified resource was not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 404,
+                  "message" : "Resource not found"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Quote" ],
+        "summary" : "Update a quote",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "Quote ID",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "example" : "636945e14ce97a4c1c561885"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/QuoteBody"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Updated invoice",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Quote"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 500,
+                  "message" : "Internal server error"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 401,
+                  "message" : "Unauthorized"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "The specified resource was not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 404,
+                  "message" : "Resource not found"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Quote" ],
+        "summary" : "Delete a quote",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "Quote ID",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "example" : "636945e14ce97a4c1c561885"
+          }
+        } ],
+        "responses" : {
+          "204" : {
+            "description" : "The quote was deleted successfully"
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 500,
+                  "message" : "Internal server error"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 401,
+                  "message" : "Unauthorized"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "The specified resource was not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 404,
+                  "message" : "Resource not found"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch" : {
+        "tags" : [ "Quote" ],
+        "summary" : "Update a quote (partial)",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "Quote ID",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "example" : "636945e14ce97a4c1c561885"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json-patch+json" : {
+              "schema" : {
+                "type" : "array",
+                "items" : {
+                  "oneOf" : [ {
+                    "$ref" : "#/components/schemas/JSONPatchRequestAddReplaceTest"
+                  }, {
+                    "$ref" : "#/components/schemas/JSONPatchRequestRemove"
+                  }, {
+                    "$ref" : "#/components/schemas/JSONPatchRequestMoveCopy"
+                  } ]
+                }
+              },
+              "examples" : {
+                "AddReplaceTest" : {
+                  "value" : [ {
+                    "op" : "replace",
+                    "path" : "/lines/0/type",
+                    "value" : 1
+                  } ]
+                },
+                "Remove" : {
+                  "value" : [ {
+                    "op" : "remove",
+                    "path" : "/subject"
+                  } ]
+                },
+                "MoveCopy" : {
+                  "value" : [ {
+                    "op" : "copy",
+                    "from" : "/lines/0/sku",
+                    "path" : "/lines/1/sku"
+                  } ]
+                }
+              }
+            },
+            "application/merge-patch+json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Quote"
+              },
+              "example" : {
+                "payment_term" : 3,
+                "template" : "london"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Updated quote",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Quote"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 500,
+                  "message" : "Internal server error"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 401,
+                  "message" : "Unauthorized"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "The specified resource was not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 404,
+                  "message" : "Resource not found"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/quotes/{id}/send" : {
+      "post" : {
+        "tags" : [ "Quotes" ],
+        "summary" : "Send an invoice",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "Quote ID",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "example" : "636945e14ce97a4c1c561885"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/BillOfSaleSendBody"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "204" : {
+            "description" : "The invoice was sent successfully"
           },
           "500" : {
             "description" : "Internal Server Error",
@@ -4573,7 +5388,7 @@
           "content" : {
             "multipart/form-data" : {
               "schema" : {
-                "$ref" : "#/components/schemas/id_attachments_body_1"
+                "$ref" : "#/components/schemas/id_attachments_body_2"
               }
             }
           },
@@ -5402,7 +6217,7 @@
           "content" : {
             "multipart/form-data" : {
               "schema" : {
-                "$ref" : "#/components/schemas/id_attachments_body_2"
+                "$ref" : "#/components/schemas/id_attachments_body_3"
               }
             }
           },
@@ -6079,6 +6894,74 @@
             }
           }
         }
+      },
+      "post" : {
+        "tags" : [ "Expense" ],
+        "summary" : "Create an expense",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/ExpenseBody"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Created expense",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Expense"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 500,
+                  "message" : "Internal server error"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 401,
+                  "message" : "Unauthorized"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "The specified resource was not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 404,
+                  "message" : "Resource not found"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/expenses/{id}" : {
@@ -6436,7 +7319,7 @@
           "content" : {
             "multipart/form-data" : {
               "schema" : {
-                "$ref" : "#/components/schemas/id_attachments_body_3"
+                "$ref" : "#/components/schemas/id_attachments_body_4"
               }
             }
           },
@@ -7684,6 +8567,17 @@
           "$ref" : "#/components/schemas/CollectionId"
         }, {
           "$ref" : "#/components/schemas/ExpenseBody"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "attachments" : {
+              "type" : "array",
+              "example" : [ "myfile1.png", "mydocument.pdf" ],
+              "items" : {
+                "type" : "string"
+              }
+            }
+          }
         } ]
       },
       "ExpenseBody" : {
@@ -7702,7 +8596,8 @@
             "example" : "Subscription"
           },
           "reference" : {
-            "type" : "string"
+            "type" : "string",
+            "example" : "#123456789"
           },
           "date" : {
             "type" : "integer",
@@ -8893,7 +9788,7 @@
           }
         }
       },
-      "my_logo_body" : {
+      "id_attachments_body_1" : {
         "type" : "object",
         "properties" : {
           "file" : {
@@ -8905,7 +9800,7 @@
           }
         }
       },
-      "id_attachments_body_1" : {
+      "my_logo_body" : {
         "type" : "object",
         "properties" : {
           "file" : {
@@ -8930,6 +9825,18 @@
         }
       },
       "id_attachments_body_3" : {
+        "type" : "object",
+        "properties" : {
+          "file" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string",
+              "format" : "binary"
+            }
+          }
+        }
+      },
+      "id_attachments_body_4" : {
         "type" : "object",
         "properties" : {
           "file" : {
