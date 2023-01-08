@@ -23,6 +23,9 @@
     "name" : "Invoice",
     "description" : "Managing your invoices"
   }, {
+    "name" : "Recurring Invoice",
+    "description" : "Managing your recurring invoices"
+  }, {
     "name" : "Quote",
     "description" : "Managing your quotes"
   }, {
@@ -1613,6 +1616,830 @@
         }
       }
     },
+    "/recurring_invoices" : {
+      "get" : {
+        "tags" : [ "Recurring Invoice" ],
+        "summary" : "List all invoices",
+        "parameters" : [ {
+          "name" : "offset",
+          "in" : "query",
+          "description" : "The (zero-based) offset of the first item returned in the collection. In a zero-based offset 0 is a correct value.",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "minimum" : 0,
+            "type" : "integer",
+            "default" : 0
+          }
+        }, {
+          "name" : "limit",
+          "in" : "query",
+          "description" : "The maximum number of entries to return. If the value exceeds the maximum, then the maximum value will be used.",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "maximum" : 250,
+            "minimum" : 1,
+            "type" : "integer",
+            "default" : 100
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Return the list of recurring invoices",
+            "headers" : {
+              "X-Total-Count" : {
+                "description" : "Total entries",
+                "style" : "simple",
+                "explode" : false,
+                "schema" : {
+                  "type" : "integer"
+                }
+              }
+            },
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/RecurringInvoiceList"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 500,
+                  "message" : "Internal server error"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 401,
+                  "message" : "Unauthorized"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "The specified resource was not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 404,
+                  "message" : "Resource not found"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Recurring Invoice" ],
+        "summary" : "Create a recurring invoice",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/RecurringInvoiceBody"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Created recurring invoice",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/RecurringInvoice"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 500,
+                  "message" : "Internal server error"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 401,
+                  "message" : "Unauthorized"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "The specified resource was not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 404,
+                  "message" : "Resource not found"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/recurring_invoices/preview" : {
+      "post" : {
+        "tags" : [ "Recurring Invoice" ],
+        "summary" : "Preview the PDF",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/RecurringInvoiceBody"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Return the PDF file",
+            "content" : {
+              "application/pdf" : {
+                "schema" : {
+                  "type" : "string",
+                  "format" : "binary"
+                },
+                "examples" : {
+                  "sampleFile" : {
+                    "summary" : "A sample file",
+                    "value" : null,
+                    "externalValue" : "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+                  }
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 500,
+                  "message" : "Internal server error"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 401,
+                  "message" : "Unauthorized"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "The specified resource was not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 404,
+                  "message" : "Resource not found"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/recurring_invoices/{id}/attachments" : {
+      "post" : {
+        "tags" : [ "Recurring Invoice" ],
+        "summary" : "Add a list of attachments",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "Recurring invoice ID",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "example" : "636945e14ce97a4c1c561885"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "multipart/form-data" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/id_attachments_body_1"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Updated recurring invoice",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/RecurringInvoice"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 500,
+                  "message" : "Internal server error"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 401,
+                  "message" : "Unauthorized"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "The specified resource was not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 404,
+                  "message" : "Resource not found"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/recurring_invoices/{id}/attachments/{attachmentIndex}" : {
+      "get" : {
+        "tags" : [ "Recurring Invoice" ],
+        "summary" : "Download an attachment file",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "Recurring invoice ID",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "example" : "636945e14ce97a4c1c561885"
+          }
+        }, {
+          "name" : "attachmentIndex",
+          "in" : "path",
+          "description" : "Attachment index",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer",
+            "example" : 0
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Return the attachment file",
+            "content" : {
+              "application/pdf" : {
+                "schema" : {
+                  "type" : "string",
+                  "format" : "binary"
+                },
+                "examples" : {
+                  "sampleFile" : {
+                    "summary" : "A sample file",
+                    "value" : null,
+                    "externalValue" : "https://file-examples.com/storage/fe954b025e6370d449e6aa6/2017/10/file_example_PNG_500kB.png"
+                  }
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 500,
+                  "message" : "Internal server error"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 401,
+                  "message" : "Unauthorized"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "The specified resource was not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 404,
+                  "message" : "Resource not found"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Recurring Invoice" ],
+        "summary" : "Delete an attachment",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "Recurring invoice ID",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "example" : "636945e14ce97a4c1c561885"
+          }
+        }, {
+          "name" : "attachmentIndex",
+          "in" : "path",
+          "description" : "Attachment index",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer",
+            "example" : 0
+          }
+        } ],
+        "responses" : {
+          "204" : {
+            "description" : "The attachment was deleted successfully"
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 500,
+                  "message" : "Internal server error"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 401,
+                  "message" : "Unauthorized"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "The specified resource was not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 404,
+                  "message" : "Resource not found"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/recurring_invoices/{id}" : {
+      "get" : {
+        "tags" : [ "Recurring Invoice" ],
+        "summary" : "Retrieve a recurring invoice",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "Recurring invoice ID",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "example" : "636945e14ce97a4c1c561885"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Return a single recurring invoice",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/RecurringInvoice"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 500,
+                  "message" : "Internal server error"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 401,
+                  "message" : "Unauthorized"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "The specified resource was not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 404,
+                  "message" : "Resource not found"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Recurring Invoice" ],
+        "summary" : "Update a recurring invoice",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "Recurring invoice ID",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "example" : "636945e14ce97a4c1c561885"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/RecurringInvoiceBody"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Updated recurring invoice",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/RecurringInvoice"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 500,
+                  "message" : "Internal server error"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 401,
+                  "message" : "Unauthorized"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "The specified resource was not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 404,
+                  "message" : "Resource not found"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Recurring Invoice" ],
+        "summary" : "Delete a recurring invoice",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "Recurring invoice ID",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "example" : "636945e14ce97a4c1c561885"
+          }
+        } ],
+        "responses" : {
+          "204" : {
+            "description" : "The recurring invoice was deleted successfully"
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 500,
+                  "message" : "Internal server error"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 401,
+                  "message" : "Unauthorized"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "The specified resource was not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 404,
+                  "message" : "Resource not found"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch" : {
+        "tags" : [ "Recurring Invoice" ],
+        "summary" : "Update a recurring invoice (partial)",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "Recurring invoice ID",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "example" : "636945e14ce97a4c1c561885"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json-patch+json" : {
+              "schema" : {
+                "type" : "array",
+                "items" : {
+                  "oneOf" : [ {
+                    "$ref" : "#/components/schemas/JSONPatchRequestAddReplaceTest"
+                  }, {
+                    "$ref" : "#/components/schemas/JSONPatchRequestRemove"
+                  }, {
+                    "$ref" : "#/components/schemas/JSONPatchRequestMoveCopy"
+                  } ]
+                }
+              },
+              "examples" : {
+                "AddReplaceTest" : {
+                  "value" : [ {
+                    "op" : "replace",
+                    "path" : "/lines/0/type",
+                    "value" : 1
+                  } ]
+                },
+                "Remove" : {
+                  "value" : [ {
+                    "op" : "remove",
+                    "path" : "/subject"
+                  } ]
+                },
+                "MoveCopy" : {
+                  "value" : [ {
+                    "op" : "copy",
+                    "from" : "/lines/0/sku",
+                    "path" : "/lines/1/sku"
+                  } ]
+                }
+              }
+            },
+            "application/merge-patch+json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/RecurringInvoice"
+              },
+              "example" : {
+                "payment_term" : 3,
+                "template" : "london"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Updated recurring invoice",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/RecurringInvoice"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 500,
+                  "message" : "Internal server error"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 401,
+                  "message" : "Unauthorized"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "The specified resource was not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                },
+                "example" : {
+                  "code" : 404,
+                  "message" : "Resource not found"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/quotes" : {
       "get" : {
         "tags" : [ "Quote" ],
@@ -2030,7 +2857,7 @@
           "content" : {
             "multipart/form-data" : {
               "schema" : {
-                "$ref" : "#/components/schemas/id_attachments_body_1"
+                "$ref" : "#/components/schemas/id_attachments_body_2"
               }
             }
           },
@@ -5388,7 +6215,7 @@
           "content" : {
             "multipart/form-data" : {
               "schema" : {
-                "$ref" : "#/components/schemas/id_attachments_body_2"
+                "$ref" : "#/components/schemas/id_attachments_body_3"
               }
             }
           },
@@ -6217,7 +7044,7 @@
           "content" : {
             "multipart/form-data" : {
               "schema" : {
-                "$ref" : "#/components/schemas/id_attachments_body_3"
+                "$ref" : "#/components/schemas/id_attachments_body_4"
               }
             }
           },
@@ -7319,7 +8146,7 @@
           "content" : {
             "multipart/form-data" : {
               "schema" : {
-                "$ref" : "#/components/schemas/id_attachments_body_4"
+                "$ref" : "#/components/schemas/id_attachments_body_5"
               }
             }
           },
@@ -8977,6 +9804,17 @@
           }
         }
       },
+      "RecurringInvoiceList" : {
+        "type" : "object",
+        "properties" : {
+          "recurring_invoices" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/RecurringInvoice"
+            }
+          }
+        }
+      },
       "QuoteList" : {
         "type" : "object",
         "properties" : {
@@ -9410,6 +10248,54 @@
           }
         }
       },
+      "RecurringBody" : {
+        "type" : "object",
+        "properties" : {
+          "frequency" : {
+            "$ref" : "#/components/schemas/RecurringFrequency"
+          },
+          "duration" : {
+            "$ref" : "#/components/schemas/RecurringDuration"
+          },
+          "enabled" : {
+            "type" : "boolean"
+          },
+          "start_date" : {
+            "type" : "integer",
+            "example" : 1566493220992
+          }
+        }
+      },
+      "RecurringFrequency" : {
+        "type" : "object",
+        "properties" : {
+          "type" : {
+            "type" : "string",
+            "enum" : [ "week", "month", "quarter", "year" ]
+          },
+          "occurence_type" : {
+            "type" : "string",
+            "enum" : [ "day", "week", "month", "year" ]
+          },
+          "occurence_value" : {
+            "type" : "integer",
+            "example" : 2
+          }
+        }
+      },
+      "RecurringDuration" : {
+        "type" : "object",
+        "properties" : {
+          "type" : {
+            "type" : "string",
+            "enum" : [ "not_limited", "limited" ]
+          },
+          "date" : {
+            "type" : "integer",
+            "example" : 1566423220992
+          }
+        }
+      },
       "AuthenticationBody" : {
         "type" : "object",
         "properties" : {
@@ -9505,6 +10391,30 @@
           }
         } ]
       },
+      "RecurringInvoiceBody" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/BillOfSaleBody"
+        }, {
+          "$ref" : "#/components/schemas/RecurringBody"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "invoice_sending" : {
+              "type" : "boolean"
+            },
+            "online_payment_enabled" : {
+              "type" : "boolean"
+            },
+            "payment_gateway_ids" : {
+              "type" : "array",
+              "example" : [ "5d5eca258126ab647499f9bf", "5b17da549a7feb695f703975" ],
+              "items" : {
+                "type" : "string"
+              }
+            }
+          }
+        } ]
+      },
       "QuoteBody" : {
         "allOf" : [ {
           "$ref" : "#/components/schemas/BillOfSaleBody"
@@ -9567,6 +10477,31 @@
               "type" : "integer",
               "example" : 1656540000000
             },
+            "attachments" : {
+              "type" : "array",
+              "example" : [ "myfile1.png", "mydocument.pdf" ],
+              "items" : {
+                "type" : "string"
+              }
+            },
+            "client_address" : {
+              "$ref" : "#/components/schemas/ContactAddress"
+            }
+          }
+        } ]
+      },
+      "RecurringInvoice" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/CollectionId"
+        }, {
+          "$ref" : "#/components/schemas/InvoiceBody"
+        }, {
+          "$ref" : "#/components/schemas/BillOfSaleAttributes"
+        }, {
+          "$ref" : "#/components/schemas/RecurringInvoiceBody"
+        }, {
+          "type" : "object",
+          "properties" : {
             "attachments" : {
               "type" : "array",
               "example" : [ "myfile1.png", "mydocument.pdf" ],
@@ -9800,7 +10735,7 @@
           }
         }
       },
-      "my_logo_body" : {
+      "id_attachments_body_2" : {
         "type" : "object",
         "properties" : {
           "file" : {
@@ -9812,7 +10747,7 @@
           }
         }
       },
-      "id_attachments_body_2" : {
+      "my_logo_body" : {
         "type" : "object",
         "properties" : {
           "file" : {
@@ -9837,6 +10772,18 @@
         }
       },
       "id_attachments_body_4" : {
+        "type" : "object",
+        "properties" : {
+          "file" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string",
+              "format" : "binary"
+            }
+          }
+        }
+      },
+      "id_attachments_body_5" : {
         "type" : "object",
         "properties" : {
           "file" : {
