@@ -4609,10 +4609,6 @@
                 "type" : "string"
               },
               "example" : [ "myfile1.png", "mydocument.pdf" ]
-            },
-            "display_name" : {
-              "type" : "string",
-              "example" : "John Doe"
             }
           }
         } ]
@@ -4634,7 +4630,7 @@
           },
           "reference" : {
             "type" : "string",
-            "example" : null
+            "example" : "#123456789"
           },
           "date" : {
             "type" : "integer",
