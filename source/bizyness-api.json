@@ -6266,11 +6266,11 @@
             },
             "phone" : {
               "type" : "string",
-              "example" : 456123456789
+              "example" : "456123456789"
             },
             "mobile" : {
               "type" : "string",
-              "example" : 321564987
+              "example" : "321564987"
             },
             "registration_type" : {
               "type" : "integer",
