@@ -10261,8 +10261,8 @@
             "type" : "boolean"
           },
           "start_date" : {
-            "type" : "integer",
-            "example" : 1566493220992
+            "type" : "string",
+            "example" : "2022-02-12"
           }
         }
       },
@@ -10271,7 +10271,7 @@
         "properties" : {
           "type" : {
             "type" : "string",
-            "enum" : [ "week", "month", "quarter", "year" ]
+            "enum" : [ "weekly", "monthly", "quarterly", "yearly" ]
           },
           "occurence_type" : {
             "type" : "string",
@@ -10291,8 +10291,8 @@
             "enum" : [ "not_limited", "limited" ]
           },
           "date" : {
-            "type" : "integer",
-            "example" : 1566423220992
+            "type" : "string",
+            "example" : "2023-02-12"
           }
         }
       },
@@ -10609,6 +10609,10 @@
             "email" : {
               "type" : "string",
               "example" : "john@google.com"
+            },
+            "website" : {
+              "type" : "string",
+              "example" : "https://www.google.com"
             },
             "phone" : {
               "type" : "string",
