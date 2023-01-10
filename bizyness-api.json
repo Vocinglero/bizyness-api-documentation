@@ -6264,6 +6264,10 @@
               "type" : "string",
               "example" : "john@google.com"
             },
+            "website" : {
+              "type" : "string",
+              "example" : "https://www.google.com"
+            },
             "phone" : {
               "type" : "string",
               "example" : "456123456789"
