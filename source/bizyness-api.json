@@ -6273,8 +6273,8 @@
               "example" : "321564987"
             },
             "registration_type" : {
-              "type" : "integer",
-              "example" : 0
+              "enum" : [ "exempted", "rcs", "rm", "rseirl", "rcs-rm" ],
+              "type" : "string"
             },
             "company_identifier" : {
               "type" : "string",
@@ -6284,9 +6284,8 @@
               "type" : "string",
               "example" : "123456DS"
             },
-            "insurance_type" : {
-              "type" : "integer",
-              "example" : 0
+            "insurance_enabled" : {
+              "type" : "boolean"
             },
             "insurance_company_name" : {
               "type" : "string",
@@ -6344,6 +6343,10 @@
             "ioss_liability_date" : {
               "type" : "integer",
               "example" : 1566493220992
+            },
+            "status" : {
+              "enum" : [ "micro", "ei", "sarl", "sas", "other" ],
+              "type" : "string"
             }
           }
         } ]
@@ -6354,10 +6357,6 @@
         }, {
           "type" : "object",
           "properties" : {
-            "status" : {
-              "type" : "integer",
-              "example" : 0
-            },
             "logo" : {
               "type" : "string",
               "example" : "logo-company-123456789.png"
