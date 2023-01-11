@@ -6280,6 +6280,10 @@
               "enum" : [ "exempted", "rcs", "rm", "rseirl", "rcs-rm" ],
               "type" : "string"
             },
+            "registration_detail" : {
+              "type" : "string",
+              "example" : "Bobigny"
+            },
             "company_identifier" : {
               "type" : "string",
               "example" : "123456DS"
