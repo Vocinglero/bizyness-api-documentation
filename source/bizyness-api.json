@@ -10626,6 +10626,10 @@
               "type" : "string",
               "enum" : [ "exempted", "rcs", "rm", "rseirl", "rcs-rm" ]
             },
+            "registration_detail" : {
+              "type" : "string",
+              "example" : "Bobigny"
+            },
             "company_identifier" : {
               "type" : "string",
               "example" : "123456DS"
